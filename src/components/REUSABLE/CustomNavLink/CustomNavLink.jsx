@@ -1,0 +1,22 @@
+import { NavLink } from 'react-router-dom';
+import css from './customNavLink.module.css';
+import clsx from 'clsx';
+
+const CustomNavLink = ({ addClass = '', children, ...otherProps }) => {
+  const addClassName = ({ isActive }) => {
+    if (!isActive) {
+      return clsx(css.link, addClass);
+    }
+    return clsx(css.link, css.isActive, addClass);
+  };
+
+  return (
+    <div className={css.wrapper}>
+      <NavLink className={props => addClassName(props)} {...otherProps}>
+        {children}
+      </NavLink>
+    </div>
+  );
+};
+
+export default CustomNavLink;
