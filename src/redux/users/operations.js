@@ -1,13 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import CONSTANTS from 'src/components/Constants/constants.js';
 import { handleToken } from 'src/utils/handleToken';
 
-export const register = createAsyncThunk(
-  'auth/register',
+export const signUp = createAsyncThunk(
+  'users/signUp',
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await axios.post('/users/signup', credentials);
+      const res = await axios.post(
+        `${CONSTANTS.USERS_ENDPOINTS.signUp}`,
+        credentials,
+      );
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }
@@ -19,11 +23,14 @@ export const register = createAsyncThunk(
   },
 );
 
-export const login = createAsyncThunk(
-  'auth/login',
+export const signIn = createAsyncThunk(
+  'users/signIn',
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await axios.post('/users/login', credentials);
+      const res = await axios.post(
+        `${CONSTANTS.USERS_ENDPOINTS.signIn}`,
+        credentials,
+      );
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }
@@ -40,10 +47,10 @@ export const login = createAsyncThunk(
 );
 
 export const logout = createAsyncThunk(
-  'auth/logout',
+  'users/logout',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axios.post('/users/logout');
+      const res = await axios.post(`${CONSTANTS.USERS_ENDPOINTS.logout}`);
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }
@@ -54,16 +61,13 @@ export const logout = createAsyncThunk(
   },
 );
 
-export const refreshCurrentUser = createAsyncThunk(
-  'auth/refresh',
+export const refresh = createAsyncThunk(
+  'users/refresh',
   async (_, { getState, rejectWithValue }) => {
-    const currentToken = getState().auth.token;
-    // if (!currentToken) {
-    //   return rejectWithValue();
-    // }
+    const currentToken = getState().users.token;
     handleToken.set(currentToken);
     try {
-      const res = await axios.get('/users/current');
+      const res = await axios.get(`${CONSTANTS.USERS_ENDPOINTS.refresh}`);
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }

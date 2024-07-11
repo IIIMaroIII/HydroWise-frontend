@@ -1,5 +1,5 @@
 export const initialState = {
-  filters: {
-    name: '',
+  water: {
+    test: null,
   },
 };

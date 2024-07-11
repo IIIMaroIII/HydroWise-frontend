@@ -1,40 +1,40 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
-import { login, logout, refreshCurrentUser, register } from './operations';
+import { logout, refresh, signIn, signUp } from './operations.js';
 
-export const authSlice = createSlice({
-  name: 'auth',
+export const usersSlice = createSlice({
+  name: 'users',
   initialState: initialState,
   extraReducers: builder => {
     builder
-      .addCase(register.pending, state => {
+      .addCase(signUp.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(register.fulfilled, (state, { payload }) => {
+      .addCase(signUp.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
         state.isLoading = null;
         state.error = null;
-        console.log('Register has been successful🎊');
+        console.log('You`ve been successfully signed up🎊');
       })
-      .addCase(register.rejected, (state, { payload }) => {
+      .addCase(signUp.rejected, (state, { payload }) => {
         state.error = payload;
         state.isLoading = false;
       })
-      .addCase(login.pending, state => {
+      .addCase(signIn.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(login.fulfilled, (state, { payload }) => {
+      .addCase(signIn.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(login.rejected, (state, { payload }) => {
+      .addCase(signIn.rejected, (state, { payload }) => {
         state.error = payload;
         state.isLoading = false;
       })
@@ -53,21 +53,21 @@ export const authSlice = createSlice({
         state.error = payload;
         state.isLoading = false;
       })
-      .addCase(refreshCurrentUser.pending, state => {
+      .addCase(refresh.pending, state => {
         state.isRefreshing = true;
         state.error = null;
       })
-      .addCase(refreshCurrentUser.fulfilled, (state, { payload }) => {
+      .addCase(refresh.fulfilled, (state, { payload }) => {
         state.user = payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
       })
-      .addCase(refreshCurrentUser.rejected, (state, { payload }) => {
+      .addCase(refresh.rejected, (state, { payload }) => {
         state.error = payload;
         state.isRefreshing = false;
       });
   },
 });
 
-export const authReducer = authSlice.reducer;
+export const usersReducer = usersSlice.reducer;

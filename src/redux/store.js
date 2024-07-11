@@ -10,17 +10,17 @@ import {
 } from 'redux-persist';
 import { configureStore } from '@reduxjs/toolkit';
 
-import { contactsReducer } from './contacts/slice';
-import { filtersReducer } from './filters/slice';
-import { authReducer } from './auth/slice';
 import { persistConfig } from 'src/utils/persistConfig';
+import { usersReducer } from './users/slice';
+import { waterReducer } from './water/slice';
+
+const rootReducer = {
+  users: persistReducer(persistConfig.token, usersReducer),
+  water: waterReducer,
+};
 
 const store = configureStore({
-  reducer: {
-    auth: persistReducer(persistConfig.token, authReducer),
-    contacts: contactsReducer,
-    filters: filtersReducer,
-  },
+  reducer: rootReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
