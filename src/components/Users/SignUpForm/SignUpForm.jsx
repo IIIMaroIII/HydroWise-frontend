@@ -1,3 +1,7 @@
+import eyeOpenIcon from './eye.png';
+import eyeClosedIcon from './eye-off.png';
+import Photo from './Rectangle 19.jpg';
+
 import css from './signUpForm.module.css';
 
 import { useState } from 'react';
@@ -72,7 +76,7 @@ const SignUpForm = () => {
                 className={css.togglePassword}
                 onClick={togglePasswordVisibility}
               >
-                {showPassword ? '👁️' : '👁️'}
+                <img src={showPassword ? eyeOpenIcon : eyeClosedIcon} alt="toggle visibility" />
               </span>
               {errors.password && <p>{errors.password.message}</p>}
             </div>
@@ -87,7 +91,7 @@ const SignUpForm = () => {
                 className={css.togglePassword}
                 onClick={togglePasswordVisibility}
               >
-                {showPassword ? '👁️' : '👁️'}
+                <img src={showPassword ? eyeOpenIcon : eyeClosedIcon} alt="toggle visibility" />
               </span>
               {errors.repeatPassword && <p>{errors.repeatPassword.message}</p>}
             </div>
@@ -98,10 +102,7 @@ const SignUpForm = () => {
           </form>
         </div>
         <div className={css.imageSection}>
-          {/* Тимчасова рамка для зображення */}
-          <div
-            style={{ width: '100%', height: '100%', backgroundColor: '#ccc' }}
-          ></div>
+          <img src={Photo} alt="photo" />
         </div>
       </div>
       <ToastContainer />
