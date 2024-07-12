@@ -1,6 +1,7 @@
 import {  useSelector } from "react-redux";
-import UserBar from "../UserBar/UserBar"
+
 import { selectUser } from "src/redux/users/selectors";
+import UserBar from "../UserBar/UserBar";
 
 const UserPanel = () => {
   const user = useSelector(selectUser);

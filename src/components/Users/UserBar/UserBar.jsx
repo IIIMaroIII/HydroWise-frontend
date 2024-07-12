@@ -3,6 +3,7 @@ import { useSelector } from "react-redux"
 import { selectUser } from "src/redux/users/selectors";
 import UserBarPopover from "../UserBarPopover/UserBarPopover";
 
+
 const UserBar = () => {
     const user = useSelector(selectUser);
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
