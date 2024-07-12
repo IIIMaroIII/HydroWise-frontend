@@ -1,4 +1,4 @@
-.sign-up-container {
+.signUpContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   background-color: #f0eff4;
 }
 
-.sign-up-form {
+.signUpForm {
   display: flex;
   background-color: #ffffff;
   border-radius: 10px;
@@ -16,13 +16,13 @@
   width: 100%;
 }
 
-.form-section,
-.image-section {
+.formSection,
+.imageSection {
   flex: 1;
   padding: 40px;
 }
 
-.form-section {
+.formSection {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,19 +33,19 @@ h2 {
   color: #2f2f2f;
 }
 
-.input-container {
+.inputContainer {
   margin-bottom: 15px;
   position: relative;
 }
 
-.input-container label {
+.inputContainer label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
   color: #323f47;
 }
 
-.input-container input {
+.inputContainer input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -53,12 +53,12 @@ h2 {
   color: #323f47;
 }
 
-.input-container input:focus {
+.inputContainer input:focus {
   border-color: #9be1a0;
   outline: none;
 }
 
-.input-container .toggle-password {
+.inputContainer .togglePassword {
   position: absolute;
   right: 10px;
   top: 50%;
@@ -66,8 +66,8 @@ h2 {
   cursor: pointer;
 }
 
-.input-container p {
-  color: #ff0000fb;
+.inputContainer p {
+  color: #ff0000;
   margin: 5px 0 0;
 }
 
@@ -102,7 +102,7 @@ p a:hover {
   text-decoration: underline;
 }
 
-.image-section {
+.imageSection {
   background-color: #e6e6e6;
   display: flex;
   justify-content: center;
@@ -110,7 +110,7 @@ p a:hover {
   border-left: 1px solid #ddd;
 }
 
-.image-section img {
+.imageSection img {
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
