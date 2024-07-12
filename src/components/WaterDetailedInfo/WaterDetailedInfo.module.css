@@ -1,0 +1,27 @@
+.container {
+  background-color: #f0eff4;
+  border-radius: 30px;
+  max-width: 343px;
+  height: 770px;
+}
+
+@media screen and (min-width: 375px) {
+  .container {
+    max-width: 343px;
+    height: 770px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 704px;
+    height: 738px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 672px;
+    height: 736px;
+  }
+}

@@ -1,3 +1,4 @@
+
 import WaterMainInfo from "src/components/Water/WaterMainInfo/WaterMainInfo";
 import WaterDetailedInfo from "src/components/Water/WaterDetailedInfo/WaterDetailedInfo";
 
@@ -11,8 +12,6 @@ const TrackerPage = () => {
       <WaterDetailedInfo />
   </>)
   
-  
-
-};
+ 
 
 export default TrackerPage;
