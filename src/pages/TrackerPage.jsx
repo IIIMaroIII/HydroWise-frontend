@@ -6,7 +6,7 @@ const TrackerPage = () => {
 
   return (
     <>
-      <div>Tracker Page</div>;
+      <div>Tracker Page</div>
       <WaterMainInfo  />
       <WaterDetailedInfo />
   </>)
