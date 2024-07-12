@@ -27,7 +27,7 @@ const SignInForm = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(validationSchema),
-  });.
+  });
 
   const onSubmit = async data => {
     try {
