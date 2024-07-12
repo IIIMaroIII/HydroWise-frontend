@@ -6,7 +6,7 @@ const SignInPage = lazy(() => import('./pages/SignInPage'));
 const TrackerPage = lazy(() => import('./pages/TrackerPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage'));
 
-// import PrivateRoute from './PrivateRoute';
+import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
@@ -21,9 +21,9 @@ function App() {
           <Route
             path="/tracker"
             element={
-              // <PrivateRoute redirectTo="/signin"> <-- Надо будет вернуть обратно
+              <PrivateRoute redirectTo="/signin">
                 <TrackerPage />
-              // </PrivateRoute>
+              </PrivateRoute>
             }
           />
           <Route
