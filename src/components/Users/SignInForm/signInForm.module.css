@@ -24,6 +24,10 @@
   box-sizing: border-box;
 }
 
+.formSection {
+  padding: 169px 118px;
+}
+
 .imageSection {
   background-image: url('./Rectangle 19.jpg');
   background-size: cover;
@@ -31,15 +35,44 @@
   border-radius: 16px;
   background-repeat: no-repeat;
 }
+.form {
+  width: 436px;
+  height: 398px;
+  padding: 169px 118px;
+}
+
+h1 {
+  position: absolute;
+  width: 152px;
+  height: 24px;
+  left: 240px;
+  top: 240px;
+  color: rgb(50, 63, 71);
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -1%;
+  text-align: center;
+  text-transform: uppercase;
+}
 
 h2 {
-  margin-bottom: 20px;
-  color: #2f2f2f;
+  position: static;
+  width: 436px;
+  height: 38px;
+  color: rgb(50, 63, 71);
+  font-family: Poppins;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 38px;
+  letter-spacing: -1%;
+  text-align: left;
 }
 
 .inputContainer {
-  margin-bottom: 15px;
   position: relative;
+  margin-top: 32px;
 }
 
 .inputContainer label {
@@ -53,7 +86,7 @@ h2 {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 15px;
   color: #323f47;
 }
 
@@ -86,6 +119,16 @@ button {
   padding: 18px;
   border-radius: 30px;
   background: rgb(155, 225, 160);
+  margin-top: 32px;
+}
+.buttonSpan {
+  color: rgb(50, 63, 71);
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -1%;
+  text-align: center;
 }
 
 button:hover {

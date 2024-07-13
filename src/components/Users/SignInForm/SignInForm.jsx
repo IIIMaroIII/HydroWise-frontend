@@ -50,7 +50,8 @@ const SignInForm = () => {
     <div className={css.signInContainer}>
       <div className={css.signInForm}>
         <div className={css.formSection}>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form className={css.c} onSubmit={handleSubmit(onSubmit)}>
+            <h1> AquaTrack </h1>
             <h2>Sign In</h2>
             <div className={css.inputContainer}>
               <label>Email</label>
@@ -80,7 +81,9 @@ const SignInForm = () => {
               {errors.password && <p>{errors.password.message}</p>}
             </div>
 
-            <button type="submit">Sign In</button>
+            <button type="submit">
+              <span className={css.buttonSpan}>Sign In</span>
+            </button>
             <p>
               Don’t have an account? <a href="/signup">Sign Up</a>
             </p>
