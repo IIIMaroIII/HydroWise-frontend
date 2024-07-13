@@ -21,32 +21,35 @@ function App() {
         <Container>
           <Logo />
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route
-              path="/tracker"
-              element={
-                <PrivateRoute redirectTo="/signin">
-                  <TrackerPage />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                <RestrictedRoute redirectTo="/tracker">
-                  <SignUpPage />
-                </RestrictedRoute>
-              }
-            />
+            {/* <Route
+            path="/tracker"
+            element={
+              <PrivateRoute redirectTo="/signin">
+                <TrackerPage />
+              </PrivateRoute>
+            }
+          /> */}
+            {/* <Route
+            path="/signup"
+            element={
+              <RestrictedRoute redirectTo="/tracker">
+              <SignUpPage />
+              </RestrictedRoute>
+            }
+          /> */}
 
-            <Route
-              path="/signin"
-              element={
-                <RestrictedRoute redirectTo="/tracker">
-                  <SignInPage />
-                </RestrictedRoute>
-              }
-            />
+            {/* <Route
+            path="/signin"
+            element={
+              <RestrictedRoute redirectTo="/tracker">
+                <SignInPage />
+              </RestrictedRoute>
+            }
+          /> */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/tracker" element={<TrackerPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/signin" element={<SignInPage />} />
           </Routes>
         </Container>
       </SharedLayout>
