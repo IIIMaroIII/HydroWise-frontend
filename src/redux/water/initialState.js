@@ -1,5 +1,9 @@
 export const initialState = {
   water: {
-    test: null,
+    dailyNorma: 2,
+    items: [],
+    monthlyItems: [],
   },
+  isLoading: false,
+  isError: null,
 };
