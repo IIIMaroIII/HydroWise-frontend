@@ -1,6 +1,19 @@
 .container {
-  max-width: 1440px;
+  max-width: 375px;
   margin: 0 auto;
   overflow: hidden;
-  padding: 24px;
+  padding: 16px;
+
+  @media (width<375px) {
+    max-width: 374px;
+  }
+
+  @media (768px<=width) {
+    max-width: 768px;
+    padding: 32px;
+  }
+
+  @media (1440px<=width) {
+    max-width: 1440px;
+  }
 }

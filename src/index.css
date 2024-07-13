@@ -16,6 +16,7 @@
     0 8px 16px rgba(0, 0, 0, 0.5);
   --transition-delay: 500ms;
   --default-delay: 250ms;
+}
 
 ul {
   padding: 0;

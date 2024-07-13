@@ -1,7 +1,8 @@
+import CustomNavLink from '../CustomNavLink/CustomNavLink';
 import css from './logo.module.css';
 
 const Logo = () => {
-  return <div>Logo</div>;
+  return <CustomNavLink to="/">AquaTrack</CustomNavLink>;
 };
 
 export default Logo;
