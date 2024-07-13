@@ -8,7 +8,9 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Photo from './Rectangle 19.jpg';
+
+import eyeOpenIcon from '../SignUpForm/eye.png';
+import eyeClosedIcon from '../SignUpForm/eye-off.png';
 
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -70,7 +72,10 @@ const SignInForm = () => {
                 className={css.togglePassword}
                 onClick={togglePasswordVisibility}
               >
-                {showPassword ? '👁️' : '👁️'}
+                <img
+                  src={showPassword ? eyeOpenIcon : eyeClosedIcon}
+                  alt="toggle visibility"
+                />
               </span>
               {errors.password && <p>{errors.password.message}</p>}
             </div>
