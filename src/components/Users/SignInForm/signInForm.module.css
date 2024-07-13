@@ -3,36 +3,33 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh; /* Оновлено на 100vh для адаптивності */
+  height: 100vh;
   background-color: #f0eff4;
 }
 
 .signInForm {
   display: flex;
-  gap: 32px; /* Додаємо gap між секціями */
-  width: 80%; /* Адаптивна ширина для кращої підтримки різних екранів */
-  max-width: 1200px; /* Максимальна ширина для великого екрана */
-  padding: 32px; /* Додаємо padding для загального контейнера */
-  background-color: #fff; /* Додаємо фон для кращого вигляду */
-  border-radius: 16px; /* Додаємо закруглення */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Додаємо тінь для кращого вигляду */
+  gap: 32px;
+  padding: 32px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.formSection {
-  flex: 1;
-  padding: 20px; /* Додаємо padding всередині секції форми */
+.formSection,
+.imageSection {
+  width: 672px;
+  height: 736px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .imageSection {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.imageSection img {
-  max-width: 100%; /* Зміна розміру зображення для підтримки адаптивності */
-  border-radius: 16px; /* Закруглені кути для зображення */
+  background-image: url('./Rectangle 19.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  background-repeat: no-repeat;
 }
 
 h2 {

@@ -81,9 +81,7 @@ const SignInForm = () => {
             </p>
           </form>
         </div>
-        <div className={css.imageSection}>
-          <img src={Photo} alt="photo" />
-        </div>
+        <div className={css.imageSection}></div>
       </div>
       <ToastContainer />
     </div>
