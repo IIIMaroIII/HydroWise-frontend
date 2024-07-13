@@ -1,0 +1,115 @@
+.signInContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh; /* Оновлено на 100vh для адаптивності */
+  background-color: #f0eff4;
+}
+
+.signInForm {
+  display: flex;
+  gap: 32px; /* Додаємо gap між секціями */
+  width: 80%; /* Адаптивна ширина для кращої підтримки різних екранів */
+  max-width: 1200px; /* Максимальна ширина для великого екрана */
+  padding: 32px; /* Додаємо padding для загального контейнера */
+  background-color: #fff; /* Додаємо фон для кращого вигляду */
+  border-radius: 16px; /* Додаємо закруглення */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Додаємо тінь для кращого вигляду */
+}
+
+.formSection {
+  flex: 1;
+  padding: 20px; /* Додаємо padding всередині секції форми */
+}
+
+.imageSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageSection img {
+  max-width: 100%; /* Зміна розміру зображення для підтримки адаптивності */
+  border-radius: 16px; /* Закруглені кути для зображення */
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #2f2f2f;
+}
+
+.inputContainer {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.inputContainer label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #323f47;
+}
+
+.inputContainer input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #323f47;
+}
+
+.inputContainer input:focus {
+  border-color: #9be1a0;
+  outline: none;
+}
+
+.inputContainer .togglePassword {
+  position: absolute;
+  right: 10px;
+  top: 65%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.inputContainer p {
+  color: #ff0000;
+  margin: 5px 0 0;
+}
+
+button {
+  width: 100%;
+  height: 60px;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  border-radius: 30px;
+  background: rgb(155, 225, 160);
+}
+
+button:hover {
+  background-color: #88d392;
+}
+
+p {
+  color: rgb(47, 47, 47);
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+  letter-spacing: -1%;
+  text-align: center;
+}
+
+p a {
+  color: #9be1a0;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
