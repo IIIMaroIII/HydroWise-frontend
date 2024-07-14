@@ -1,16 +1,29 @@
-import CalendarList from './CalendarList/CalendarList.jsx';
+import { CalendarItem } from './CalendarList/CalendarItem/CalendarItem';
+import css from './calendar.module.css';
 
-const Calendar = () => {
-  const day = {
-    days: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    date: Date.now(),
-  };
+export const Calendar = ({ selectedDate }) => {
+  const daysInMonth = new Date(
+    selectedDate.getFullYear(),
+    selectedDate.getMonth() + 1,
+    0
+  ).getDate();
 
+  const daysArray = Array.from(
+    { length: daysInMonth },
+    (_, index) => index + 1
+  );
+  console.log(daysArray);
   return (
     <>
-      <CalendarList dayObj={day} />
+      <ul className={css.list}>
+        {daysArray.map(day => (
+          <li key={day} className={css.item}>
+            <CalendarItem day={day} />
+            {console.log(day)}
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
-
 export default Calendar;
