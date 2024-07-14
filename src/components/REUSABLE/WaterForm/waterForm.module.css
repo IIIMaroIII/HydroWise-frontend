@@ -1,0 +1,102 @@
+.amountContainer {
+  display: flex;
+  align-items: center;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.input {
+  width: 438px;
+  height: 56px;
+}
+.waterAdjustmentBtn {
+  box-sizing: border-box;
+  border: 1.5px solid rgb(50, 63, 71);
+  border-radius: 30px;
+  width: 43px;
+  height: 43px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.waterAdjustmentContainer {
+  display: flex;
+  gap: 8px;
+}
+.waterAmount {
+  border-radius: 30px;
+  background: rgb(50, 63, 71);
+  padding: 11px 20px 11px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.waterControlContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.waterInfoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.recordingTimeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 8px;
+}
+
+.waterInfoField {
+  width: 303px;
+  padding: 14px 0px 14px 16px;
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  border-radius: 15px;
+}
+
+.waterInfoField:active,
+.waterInfoField:focus {
+  outline: none;
+  border: 1px solid rgba(47, 47, 47, 0.4);
+}
+
+.waterAmountText {
+  font-weight: 700;
+  color: rgb(50, 63, 71);
+}
+
+.waterAmountDisplay {
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+}
+
+.saveBtn {
+  padding: 14px 40px 14px 40px;
+  border-radius: 30px;
+  background: rgb(155, 225, 160);
+  color: rgb(50, 63, 71);
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+}
+.saveBtn:hover {
+  background-color: rgb(135, 210, 141);
+}
+
+@media (min-width: 768px) {
+  .saveBtn {
+    padding: 18px 50px 18px 50px;
+  }
+  .waterInfoField {
+    width: 438px;
+    padding: 16px 0px 16px 16px;
+  }
+}

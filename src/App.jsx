@@ -47,6 +47,7 @@ function App() {
           <Route path="/tracker" element={<TrackerPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" element={<SignInPage />} />
+
           <Route path="/modals" element={<ModalsPage />} />
         </Routes>
       </SharedLayout>
@@ -54,5 +55,3 @@ function App() {
   );
 }
 export default App;
-
-// Request failed with status code 400 - user exist
