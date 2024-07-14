@@ -7,6 +7,11 @@ const ModalsPage = () => {
   return (
     <>
       <MainModal open={open}>
+        <button>DeleteWaterModal</button>
+        <button>LogOutModal</button>
+        <button>UserSettingsModal</button>
+        <button>WaterModal</button>
+        <button></button>
         <UserSettingsModal />
       </MainModal>
     </>
