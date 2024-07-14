@@ -4,13 +4,8 @@ import css from '../WaterList/WaterList.module.css';
 const WaterList = () => {
   // const dailyItems = useSelector(selectWaterItems);
   const dailyItems = [
-    { volume: '250ml', date: '7:00am' },
-    { volume: '250ml', date: '7:00am' },
-    { volume: '250ml', date: '7:00am' },
-    { volume: '250ml', date: '7:00am' },
-    { volume: '250ml', date: '7:00am' },
-    { volume: '250ml', date: '7:00am' },
-    { volume: '250ml', date: '7:00am' },
+    { volume: '250ml', date: '7:00am', _id: 1 },
+    { volume: '350ml', date: '10:00am', _id: 2 },
   ];
 
   return (
