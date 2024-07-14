@@ -12,6 +12,7 @@ import eyeOpenIcon from '../SignUpForm/eye.png';
 import eyeClosedIcon from '../SignUpForm/eye-off.png';
 import { signIn } from 'src/redux/users/operations.js';
 import { useDispatch } from 'react-redux';
+import Button from 'src/components/REUSABLE/Button/Button';
 
 const SignInForm = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const SignInForm = () => {
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Email is invalid').required('Email is required'),
     password: Yup.string()
-      .min(3, 'Password must be at least 6 characters')
+      .min(3, 'Password must be at least 3 characters')
       .required('Password is required'),
   });
 
@@ -52,7 +53,7 @@ const SignInForm = () => {
       <div className={css.signInForm}>
         <div className={css.formSection}>
           <form className={css.c} onSubmit={handleSubmit(onSubmit)}>
-            <h1> AquaTrack </h1>
+            {/* <h1> AquaTrack </h1> тут мусить бути перевикористовуване лого */}
             <h2>Sign In</h2>
             <div className={css.inputContainer}>
               <label>Email</label>
@@ -81,10 +82,10 @@ const SignInForm = () => {
               </span>
               {errors.password && <p>{errors.password.message}</p>}
             </div>
+            <Button type="submit" addClass={css.buttonSpan}>
+              Sign In
+            </Button>
 
-            <button type="submit">
-              <span className={css.buttonSpan}>Sign In</span>
-            </button>
             <p>
               Don’t have an account? <a href="/signup">Sign Up</a>
             </p>
