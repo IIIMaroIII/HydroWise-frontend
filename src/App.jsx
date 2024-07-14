@@ -11,6 +11,7 @@ import RestrictedRoute from './RestrictedRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
 import './App.css';
+import ModalsPage from './pages/ModalsPage.jsx';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="/tracker" element={<TrackerPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" element={<SignInPage />} />
+          <Route path="/modals" element={<ModalsPage />} />
         </Routes>
       </SharedLayout>
     </>
