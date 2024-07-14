@@ -8,8 +8,9 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
-import eyeOpenIcon from '../SignUpForm/eye.png';
-import eyeClosedIcon from '../SignUpForm/eye-off.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+
 import { signIn } from 'src/redux/users/operations.js';
 import { useDispatch } from 'react-redux';
 import Button from 'src/components/REUSABLE/Button/Button';
@@ -75,17 +76,13 @@ const SignInForm = () => {
                 className={css.togglePassword}
                 onClick={togglePasswordVisibility}
               >
-                <img
-                  src={showPassword ? eyeOpenIcon : eyeClosedIcon}
-                  alt="toggle visibility"
-                />
+                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
               </span>
               {errors.password && <p>{errors.password.message}</p>}
             </div>
-            <Button type="submit" addClass={css.buttonSpan}>
+            <Button type="submit" addClass={css.buttonSpanSignInForm}>
               Sign In
             </Button>
-
             <p>
               Don’t have an account? <a href="/signup">Sign Up</a>
             </p>
