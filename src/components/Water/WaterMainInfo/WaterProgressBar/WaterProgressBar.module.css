@@ -1,0 +1,57 @@
+.water_progress_container {
+  border-radius: 15px;
+  padding: 12px;
+  width: 198px;
+  height: 70px;
+}
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.progress_bar {
+  position: relative;
+  background: #e0e0e0;
+  border-radius: 9px;
+  width: 174px;
+  height: 6px;
+}
+.progress {
+  height: 100%;
+  border-radius: 10px;
+  background: #9be1a0;
+  transition: width 0.2s ease-in;
+}
+.thumb {
+  position: absolute;
+  top: -2px;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  border: 2px solid #9be1a0;
+  background: #ffffff;
+  transform: translateX(-50%);
+  transition: left 0.2s ease-in;
+}
+.thumb_value {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+  background-color: white;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: #9be1a0;
+  opacity: 0;
+  transition: opacity 0.2s ease-in;
+}
+.thumb:hover .thumb_value {
+  opacity: 1;
+}
+.progress_labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 12px;
+}

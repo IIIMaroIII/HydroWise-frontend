@@ -4,6 +4,13 @@ export const initialState = {
     items: [],
     monthlyItems: [],
   },
+  modalFlags: {
+    isModalOpen: false,
+    isWaterOpen: false,
+    isDeleteWaterModalOpen: false,
+    isUsersSettingsModalOpen: false,
+    isLogoutModalOpen: false,
+  },
   isLoading: false,
-  isError: null,
+  error: null,
 };
