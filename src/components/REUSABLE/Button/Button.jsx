@@ -14,6 +14,7 @@ const Button = ({
         css.btn,
         {
           [css.isSelected]: selected,
+          [css.isDisabled]: disabled,
         },
         addClass,
       )}
