@@ -6,20 +6,22 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 import eyeOpenIcon from '../SignUpForm/eye.png';
 import eyeClosedIcon from '../SignUpForm/eye-off.png';
+import { signIn } from 'src/redux/users/operations.js';
+import { useDispatch } from 'react-redux';
 
 const SignInForm = () => {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Email is invalid').required('Email is required'),
     password: Yup.string()
-      .min(6, 'Password must be at least 6 characters')
+      .min(3, 'Password must be at least 6 characters')
       .required('Password is required'),
   });
 
@@ -32,15 +34,13 @@ const SignInForm = () => {
   });
 
   const onSubmit = async data => {
-    try {
-      const response = await axios.post('/api/login', data);
-      toast.success('Login successful!');
-      localStorage.setItem('token', response.data.token);
-      navigate('/tracker');
-      console.log(response);
-    } catch (error) {
-      toast.error('Email or password is incorrect. Please try again.');
-    }
+    dispatch(signIn(data))
+      .unwrap()
+      .catch(err => {
+        toast.error('Oops, check your email and password and try again 😬');
+      });
+
+    navigate('/tracker');
   };
 
   const togglePasswordVisibility = () => {
