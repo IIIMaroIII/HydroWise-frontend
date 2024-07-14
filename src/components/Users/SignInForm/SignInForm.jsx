@@ -37,6 +37,7 @@ const SignInForm = () => {
       toast.success('Login successful!');
       localStorage.setItem('token', response.data.token);
       navigate('/tracker');
+      console.log(response);
     } catch (error) {
       toast.error('Email or password is incorrect. Please try again.');
     }
