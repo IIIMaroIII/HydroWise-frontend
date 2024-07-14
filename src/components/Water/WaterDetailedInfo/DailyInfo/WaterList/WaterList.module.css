@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  gap: 16px;
+}
+
+.item {
+  width: 192px;
+  display: flex;
+  border: 1px solid black;
+  border-radius: 10px;
+  gap: 10px;
+  justify-content: space-between;
+}
