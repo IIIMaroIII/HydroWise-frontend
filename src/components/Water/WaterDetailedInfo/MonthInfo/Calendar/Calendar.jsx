@@ -12,14 +12,12 @@ export const Calendar = ({ selectedDate }) => {
     { length: daysInMonth },
     (_, index) => index + 1
   );
-  console.log(daysArray);
   return (
     <>
       <ul className={css.list}>
         {daysArray.map(day => (
           <li key={day} className={css.item}>
             <CalendarItem day={day} />
-            {console.log(day)}
           </li>
         ))}
       </ul>
