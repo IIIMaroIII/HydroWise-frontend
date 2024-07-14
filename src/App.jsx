@@ -46,6 +46,7 @@ function App() {
           <Route path="/tracker" element={<TrackerPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/signin" element={<SignInPage />} />
+          
         </Routes>
       </SharedLayout>
     </>
