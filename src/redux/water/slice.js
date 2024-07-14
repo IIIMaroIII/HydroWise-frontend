@@ -1,18 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
-import toast from "react-hot-toast";
+import toast from 'react-hot-toast';
 import { initialState } from './initialState';
-import { addWater, changeWater, deleteWater, fetchDailyWater, fetchMonthlyWater } from './operations.js';
+import {
+  addWater,
+  changeWater,
+  deleteWater,
+  fetchDailyWater,
+  fetchMonthlyWater,
+} from './operations.js';
 
-
-const handleRejected = (state) => {
+const handleRejected = state => {
   state.isLoading = false;
-  state.isLoading = true;
-}
+  state.error = null;
+};
 
-const handlePending = (state) => {
+const handlePending = state => {
+  state.error = null;
   state.isLoading = true;
-  state.isLoading = false;
-}
+};
 export const waterSlice = createSlice({
   name: 'water',
   initialState: initialState.water,
@@ -37,19 +42,19 @@ export const waterSlice = createSlice({
             borderRadius: '10px',
             background: 'rgb(144, 26, 228)',
             color: '#fff',
-      }
-    });
+          },
+        });
       })
       .addCase(deleteWater.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
+        state.isLoading = false;
+        state.items = state.items.filter(item => item.id !== action.payload.id);
         toast(`You deleted a water record!`, {
           style: {
             borderRadius: '10px',
             background: 'rgb(144, 26, 228)',
             color: '#fff',
-      }
-    });
+          },
+        });
       })
 
       // .addCase(changeWater.fulfilled, (state, action) => {
@@ -64,12 +69,12 @@ export const waterSlice = createSlice({
         state.isLoading = false;
         state.monthlyItems = action.payload;
       })
-      
-      .addCase(changeWater.rejected,handleRejected)
+
+      .addCase(changeWater.rejected, handleRejected)
       .addCase(fetchDailyWater.rejected, handleRejected)
       .addCase(addWater.rejected, handleRejected)
       .addCase(deleteWater.rejected, handleRejected)
-    .addCase(fetchMonthlyWater.rejected, handleRejected)
+      .addCase(fetchMonthlyWater.rejected, handleRejected);
   },
 });
 
