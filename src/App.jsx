@@ -11,7 +11,6 @@ import RestrictedRoute from './RestrictedRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
 import './App.css';
-import Logo from './components/REUSABLE/Logo/Logo';
 import Container from './components/REUSABLE/Container/Container';
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
     <>
       <SharedLayout>
         <Container>
-          <Logo />
           <Routes>
             {/* <Route
             path="/tracker"

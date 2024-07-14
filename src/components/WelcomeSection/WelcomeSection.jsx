@@ -1,10 +1,12 @@
 import css from './WelcomeSection.module.css';
 
 import CustomNavLink from '../REUSABLE/CustomNavLink/CustomNavLink';
+import Logo from '../REUSABLE/Logo/Logo';
 
 const WelcomeSection = () => {
   return (
     <div>
+      <Logo />
       <p>Record daily water intake and track</p>
       <h1>Water consumption tracker</h1>
       <div className={css.homePageBtn}>
