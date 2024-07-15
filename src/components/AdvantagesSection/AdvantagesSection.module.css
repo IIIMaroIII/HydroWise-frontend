@@ -20,22 +20,76 @@
 
 .homePageCustomers {
   background-color: var(--white);
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   padding: 10px 14px;
   width: 160px;
-  height: 48px;
   position: absolute;
   top: 209px;
   left: 16px;
-  /* text-align: center; */
+  text-align: center;
   font-weight: 700;
   font-size: 12px;
   line-height: 117%;
   color: var(--dark-blue);
+  display: inline-flex;
+
+  @media (width>=768px) {
+    top: 283px;
+    left: 32px;
+    padding: 10px 20px;
+    font-size: 15px;
+    line-height: 149%;
+    width: 237px;
+  }
+
+  @media (width>=1440px) {
+    top: 537px;
+  }
 }
 
 .homePageCustomersSpan {
   color: var(--light-green);
+}
+
+.homePageCustomersPhotoContainer {
+  display: flex;
+  text-align: left;
+}
+
+.homePageCustomersPhoto {
+  position: absolute;
+  display: inline-flex;
+  flex-direction: row;
+  border-radius: 50px;
+  width: 26.4px;
+  height: 28px;
+  z-index: 100;
+
+  @media (width>=768px) {
+    width: 47px;
+    height: 47px;
+  }
+}
+
+.secondUserPhoto {
+  position: relative;
+  left: 17.91px;
+  z-index: 2;
+
+  @media (width>=768px) {
+    left: 28px;
+  }
+}
+
+.thirdUserPhoto {
+  position: relative;
+  left: 8.49px;
+  z-index: 1;
+
+  @media (width>=768px) {
+    left: 9px;
+  }
 }
 
 .homePageBenefits {
@@ -44,53 +98,64 @@
   display: flex;
   gap: 4px;
   flex-wrap: wrap;
-  align-items: center;
-  text-align: center;
+
+  @media (width>=768px) {
+    padding-top: 336px;
+    padding-left: 430px;
+    gap: 10px;
+  }
+
+  @media (width>=1440px) {
+    padding-top: 594px;
+    padding-left: 398px;
+  }
 }
 
-.homePageBenefitsHabitDrive {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.homePageBenefitsLinks {
+  text-decoration: none;
 }
 
-.homePageBenefitsHabitDrive,
-.homePageBenefitsStatistics,
-.homePageBenefitsSettings {
-  background-color: var(--dark-blue);
+.homePageBenefitsLinksStatistics {
+  color: var(--dark-blue);
+}
+
+.homePageBenefitsLinksHabitDrive {
+  color: var(--white);
+}
+
+.homePageBenefitsItems {
   border-radius: 30px;
   padding: 9px 12px;
-  color: var(--white);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
   font-weight: 700;
   font-size: 8px;
   line-height: 100%;
   letter-spacing: -0.01em;
+
+  @media (width>=768px) {
+    padding: 11px 16px;
+    font-size: 12px;
+  }
 }
 
-.homePageBenefitsStatistics {
+.homePageBenefitsItemsHabitDrive {
+  background-color: var(--dark-blue);
+}
+
+.homePageBenefitsItemsStatistics {
   background-color: var(--light-green);
-  color: var(--dark-blue);
 }
 
-.homePageBenefitsSettings {
+.homePageBenefitsItemsSettings {
   background-color: var(--white);
   color: var(--dark-blue);
 }
 
 .homePageBenefitsIcon {
-  /* width: 16px; 
-  height: 16px; */
+  width: 7px;
+  height: 7px;
   background-color: var(--light-green);
   border-radius: 100%;
-  /* margin-right: 4px; */
-  display: inline-block; /* Сменить на inline-block для правильного выравнивания */
+  margin-right: 4px;
   vertical-align: middle;
-  text-align: center;
 }

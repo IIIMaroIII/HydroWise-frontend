@@ -4,16 +4,19 @@ import UsersNav from 'src/components/Users/UsersNav/UsersNav.jsx';
 import WelcomeSection from 'src/components/WelcomeSection/WelcomeSection';
 import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSection';
 import css from './HomePage.module.css';
+import Container from 'src/components/REUSABLE/Container/Container';
 
 const HomePage = () => {
   return (
-    <div className={css.homePageContainer}>
-      <WelcomeSection />
-      <AdvantagesSection />
-      {/* <Navigation />
+    <Container>
+      <div className={css.homePageContainer}>
+        <WelcomeSection />
+        <AdvantagesSection />
+        {/* <Navigation />
       <UsersNav />
       <SignUpForm /> */}
-    </div>
+      </div>
+    </Container>
   );
 };
 

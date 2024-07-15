@@ -4,10 +4,6 @@
   overflow: hidden;
   padding: 16px;
 
-  @media (width<375px) {
-    max-width: 374px;
-  }
-
   @media (768px<=width) {
     max-width: 768px;
     padding: 32px;
@@ -16,13 +12,4 @@
   @media (1440px<=width) {
     max-width: 1440px;
   }
-}
-
-.desktop {
-}
-
-.tablet {
-}
-
-.mobile {
 }
