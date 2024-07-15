@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import { CalendarItem } from './CalendarList/CalendarItem/CalendarItem';
 import css from './calendar.module.css';
 
 export const Calendar = ({ selectedDate }) => {
+  const [chosenDate, setChosenDate] = useState(null);
+
   const daysInMonth = new Date(
     selectedDate.getFullYear(),
     selectedDate.getMonth() + 1,
@@ -15,6 +18,14 @@ export const Calendar = ({ selectedDate }) => {
   const getCurrentDate = day => {
     const currentDate = new Date();
     currentDate.setDate(day);
+    currentDate.setMonth(selectedDate.getMonth());
+    currentDate.setFullYear(selectedDate.getFullYear());
+    const formattedDate = `${currentDate.getDate()} ${currentDate.toLocaleString(
+      'default',
+      { month: 'long' },
+    )} ${currentDate.getFullYear()}`;
+
+    setChosenDate(formattedDate);
     console.log(currentDate);
   };
   return (
@@ -30,6 +41,7 @@ export const Calendar = ({ selectedDate }) => {
           </li>
         ))}
       </ul>
+      {!chosenDate ? null : <b>Chosen date: {chosenDate}</b>}
     </>
   );
 };
