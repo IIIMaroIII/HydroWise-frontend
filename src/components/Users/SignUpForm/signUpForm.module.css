@@ -71,7 +71,6 @@ h2.formTitle {
   line-height: 1;
   letter-spacing: -0.01em;
   margin-bottom: 32px;
-
 }
 
 .inputContainer {
@@ -79,11 +78,11 @@ h2.formTitle {
   position: relative;
 }
 
-.inputContainer label {
+.formLabel {
   display: block;
   margin-bottom: 8px;
-font-size: 14px;
-line-height: 18px;
+  font-size: 14px;
+  line-height: 1.29;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--black);
@@ -98,33 +97,16 @@ line-height: 18px;
   font-weight: 400;
   color: var(--black);
   opacity: 60%;
-  
 }
 
 .inputContainer input:focus {
-  border-color: color(--green-hover);
+  border-color: var(--green-hover);
   outline: none;
 }
 
 .inputContainer p {
   color: #ff0000;
   margin: 5px 0 0;
-}
-
-/* button {
-  width: 100%;
-  padding: 10px;
-  background-color: var(--green);
-  border: none;
-  border-radius: 5px;
-  color: var(--dark-grey);
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
-} */
-
-button:hover {
-  background-color: var(--green-hover);
 }
 
 p {
@@ -134,12 +116,11 @@ p {
   opacity: 50%;
   text-decoration: none;
   font-weight: 400;
-  
+
   font-size: 14px;
 }
 
 a {
-  
   color: var(--black);
   text-decoration: underline;
   font-size: 14px;
@@ -189,34 +170,12 @@ p a:hover {
   margin-bottom: 70px;
 }
 
-/* .formTitle {
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 1;
-  letter-spacing: -0.01em;
-
-  margin-bottom: 32px;
-} */
-
 .mainForm {
   margin-bottom: 16px;
 }
 
-.fieldThumb {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 15px;
-}
 
-.formLabel {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.01em;
-}
-
-.formInput {
+/* .formInput {
   width: 100%;
   border: 1px solid var(--border-color);
   border-radius: 15px;
@@ -232,11 +191,11 @@ p a:hover {
   padding: 16px;
 
   transition: border-color var(--animation);
-}
+} */
 
 .formInput:hover,
 .formInput:focus {
-  border-color: var(--accent-secondary);
+  border-color: var(--green-hover);
 }
 
 .passwordWrapper {
@@ -295,7 +254,7 @@ p a:hover {
 
 .btnform:hover,
 .btnform:active {
-  background-color: var(--accent-secondary);
+  background-color: var(--green-hover);
 }
 
 .btnform:disabled {
