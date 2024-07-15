@@ -5,6 +5,7 @@
   --grey: #f0eff4;
   --dark-grey: #323f47;
   --black: #2f2f2f;
+  --red-error: #EF5050
 }
 
 .imageSection {
@@ -153,7 +154,7 @@ p a:hover {
 .btnform {
   width: 100%;
   padding: 10px;
-  background-color: #9be1a0;
+  background-color: var(--green);
   border: none;
   border-radius: 30px;
   color: var(--dark-grey);
@@ -170,9 +171,9 @@ p a:hover {
   margin-bottom: 70px;
 }
 
-.mainForm {
+/* .mainForm {
   margin-bottom: 16px;
-}
+} */
 
 
 /* .formInput {
@@ -193,38 +194,12 @@ p a:hover {
   transition: border-color var(--animation);
 } */
 
-.formInput:hover,
-.formInput:focus {
+.form input:hover,
+.form input:focus {
   border-color: var(--green-hover);
 }
 
-.passwordWrapper {
-  position: relative;
-}
 
-.eyeBtn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-
-  width: 20px;
-  height: 20px;
-  background-color: transparent;
-  border: none;
-}
-
-.iconeye {
-  width: 20px;
-  height: 20px;
-  fill: transparent;
-  stroke: var(--dark);
-  transition: stroke var(--animation);
-}
-
-.iconeye:hover,
-.iconeye:active {
-  stroke: var(--accent);
-}
 
 .errorName {
   border-color: var(--error);
