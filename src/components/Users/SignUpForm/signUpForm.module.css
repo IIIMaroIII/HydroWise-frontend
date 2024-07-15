@@ -222,7 +222,7 @@ p a:hover {
     margin-bottom: 100px;
   }
 
-  .formSection {
+  .form {
     width: 436px;
     margin: 0 auto;
   }
@@ -239,15 +239,15 @@ p a:hover {
     letter-spacing: -0.01em;
   }
 
-  .formInput {
+  .inputContainer input {
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: -0.01em;
   }
 
-  .eyeBtn {
-    top: 18px;
-    right: 20px;
+  .inputContainer .togglePassword {
+    top: 50%;
+    right: 18px;
   }
 
   .btnform {
@@ -258,21 +258,7 @@ p a:hover {
     padding: 18px 0;
   }
 
-  .haveAccount {
-    gap: 8px;
-  }
-
-  .haveAccountText {
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
-  }
-
-  .haveAccountForm {
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
-  }
+    
 }
 
 @media (min-width: 1440px) {
