@@ -15,6 +15,8 @@ export const Calendar = ({ selectedDate }) => {
   const getCurrentDate = day => {
     const currentDate = new Date();
     currentDate.setDate(day);
+    currentDate.setMonth(selectedDate.getMonth());
+    currentDate.setFullYear(selectedDate.getFullYear());
     console.log(currentDate);
   };
   return (
