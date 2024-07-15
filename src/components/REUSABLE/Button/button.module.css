@@ -8,8 +8,8 @@
   cursor: pointer;
   transition: all 250ms ease-in-out;
   font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
+  /* font-size: inherit; */
+  /* font-weight: inherit; */
 }
 .btn:hover,
 .btn:focus {
