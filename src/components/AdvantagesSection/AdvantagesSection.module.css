@@ -1,0 +1,96 @@
+.homePageAdvantagesSection {
+  background-image: url('../../assets/pictures/HomePage/girl.png');
+  background-repeat: no-repeat;
+  height: 353px;
+  width: 343px;
+  position: relative;
+
+  @media (width>=768px) {
+    background-image: url('../../assets/pictures/HomePage/girl-tab.png');
+    height: 446px;
+    width: 704px;
+  }
+
+  @media (width>=1440px) {
+    background-image: url('../../assets/pictures/HomePage/girl-desk.png');
+    height: 736px;
+    width: 672px;
+  }
+}
+
+.homePageCustomers {
+  background-color: var(--white);
+  border-radius: 30px;
+  padding: 10px 14px;
+  width: 160px;
+  height: 48px;
+  position: absolute;
+  top: 209px;
+  left: 16px;
+  /* text-align: center; */
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 117%;
+  color: var(--dark-blue);
+}
+
+.homePageCustomersSpan {
+  color: var(--light-green);
+}
+
+.homePageBenefits {
+  padding-top: 265px;
+  padding-left: 159px;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+}
+
+.homePageBenefitsHabitDrive {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.homePageBenefitsHabitDrive,
+.homePageBenefitsStatistics,
+.homePageBenefitsSettings {
+  background-color: var(--dark-blue);
+  border-radius: 30px;
+  padding: 9px 12px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  font-weight: 700;
+  font-size: 8px;
+  line-height: 100%;
+  letter-spacing: -0.01em;
+}
+
+.homePageBenefitsStatistics {
+  background-color: var(--light-green);
+  color: var(--dark-blue);
+}
+
+.homePageBenefitsSettings {
+  background-color: var(--white);
+  color: var(--dark-blue);
+}
+
+.homePageBenefitsIcon {
+  /* width: 16px; 
+  height: 16px; */
+  background-color: var(--light-green);
+  border-radius: 100%;
+  /* margin-right: 4px; */
+  display: inline-block; /* Сменить на inline-block для правильного выравнивания */
+  vertical-align: middle;
+  text-align: center;
+}

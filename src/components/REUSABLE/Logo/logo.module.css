@@ -1,0 +1,11 @@
+.homePageLogo {
+  /* font-family: var(--font-family); */
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 111%;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #323f47;
+  text-decoration: none;
+}
