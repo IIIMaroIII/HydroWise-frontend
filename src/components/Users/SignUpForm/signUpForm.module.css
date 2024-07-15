@@ -106,7 +106,7 @@ h2.formTitle {
 }
 
 .inputContainer p {
-  color: #ff0000;
+  color: var(--red-error);
   margin: 5px 0 0;
 }
 
@@ -158,14 +158,17 @@ p a:hover {
   border: none;
   border-radius: 30px;
   color: var(--dark-grey);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
-  line-height: 18px;
+  line-height: 1.29;
   cursor: pointer;
   margin-top: 10px;
   margin-bottom: 16px;
   letter-spacing: -0.01em;
+  padding: 16px 0;
 }
+
+
 
 .form {
   margin-bottom: 70px;
@@ -200,73 +203,26 @@ p a:hover {
 }
 
 
-
-.errorName {
-  border-color: var(--error);
-}
-
-.errorSpan {
-  font-size: 10px;
-  line-height: 1.29;
-  letter-spacing: -0.01em;
-  color: var(--error);
-}
-
-.btnform {
-  width: 100%;
-  background-color: var(--green);
-  border-radius: 30px;
-  border: transparent;
-
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.01em;
-
-  padding: 16px 0;
-  transition: background-color var(--animation);
-}
-
 .btnform:hover,
 .btnform:active {
   background-color: var(--green-hover);
 }
 
-.btnform:disabled {
+/* .btnform:disabled {
   background-color: var(--disabled-color);
   color: var(--secondary-text);
   cursor: not-allowed;
-}
+} */
 
-.haveAccount {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
 
-.haveAccountText {
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.01em;
-  color: var(--grey-text);
-}
 
-.haveAccountForm {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: -0.01em;
-  text-decoration: underline;
-  color: var(--dark);
-}
 
 @media (min-width: 768px) {
   .form {
     margin-bottom: 100px;
   }
 
-  .formBlock {
+  .formSection {
     width: 436px;
     margin: 0 auto;
   }
