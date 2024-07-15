@@ -8,7 +8,14 @@
 
 }
 
+
+.imageSection {
+  display: none
+
+}
+
 .imageSection img {
+ 
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
@@ -129,7 +136,7 @@ p a:hover {
 
 .imageSection {
   background-color: #e6e6e6;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   border-left: 1px solid #ddd;
@@ -360,6 +367,13 @@ p a:hover {
 }
 
 @media (min-width: 1440px) {
+
+  .imageSection {
+    display: flex;
+    
+  }
+
+
   .welcomPadding {
       padding-bottom: 20px;
   }
