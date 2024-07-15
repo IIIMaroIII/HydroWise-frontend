@@ -1,18 +1,13 @@
 import { useState } from 'react';
 import { CalendarItem } from './CalendarList/CalendarItem/CalendarItem';
 import css from './calendar.module.css';
+import { daysInMonth } from 'src/utils/daysInMonth.js';
 
 export const Calendar = ({ selectedDate }) => {
   const [chosenDate, setChosenDate] = useState(null);
 
-  const daysInMonth = new Date(
-    selectedDate.getFullYear(),
-    selectedDate.getMonth() + 1,
-    0,
-  ).getDate();
-
   const daysArray = Array.from(
-    { length: daysInMonth },
+    { length: daysInMonth(selectedDate) },
     (_, index) => index + 1,
   );
   const getCurrentDate = day => {
