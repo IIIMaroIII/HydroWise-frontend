@@ -115,22 +115,22 @@ const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
           {preview && <img src={preview} alt="Avatar Preview" />}
         </div>
         <div>
-          <label>Your gender identity</label>
-          <label>
+          <label className='ap-label-name'>Your gender identity</label>
+          <label className='ap-text'>
             <input type="radio" value="woman" {...register('gender')} /> Woman
           </label>
-          <label>
+          <label className='ap-text'>
             <input type="radio" value="man" {...register('gender')} /> Man
           </label>
           {errors.gender && <p>{errors.gender.message}</p>}
         </div>
         <div>
-          <label>Your name</label>
+          <label className='ap-label-name'>Your name</label>
           <input type="text" {...register('name')} />
           {errors.name && <p>{errors.name.message}</p>}
         </div>
         <div>
-          <label>Email</label>
+          <label className='ap-label-name'>Email</label>
           <input type="email" {...register('email')} />
           {errors.email && <p>{errors.email.message}</p>}
         </div>
@@ -138,17 +138,17 @@ const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
           <DailyNorma />
         </div>
         <div>
-          <label>Your weight in kilograms:</label>
+          <label className='ap-text'>Your weight in kilograms:</label>
           <input type="number" {...register('weight')} />
           {errors.weight && <p>{errors.weight.message}</p>}
         </div>
         <div>
-          <label>The time of active participation in sports:</label>
+          <label className='ap-text'>The time of active participation in sports:</label>
           <input type="number" {...register('activeTime')} />
           {errors.activeTime && <p>{errors.activeTime.message}</p>}
         </div>
         <div>
-          <label>The required amount of water in liters per day:</label>
+          <label className='ap-text'>The required amount of water in liters per day:</label>
           <input type="number" {...register('waterIntake')} />
           {errors.waterIntake && <p>{errors.waterIntake.message}</p>}
         </div>
@@ -158,7 +158,7 @@ const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
           {errors.waterIntake && <p>{errors.waterIntake.message}</p>}
         </div>
 
-        <button type="submit">Save</button>
+        <button className='ap-button' type="submit">Save</button>
         <button type="button" onClick={onClose}>
           Cancel
         </button>
