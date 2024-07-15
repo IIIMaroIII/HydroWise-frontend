@@ -19,9 +19,16 @@ const WATER_ENDPOINTS = {
   monthly: '/v1/water/monthly',
 };
 
+const WATER_LIMITS = {
+  MIN_WATER_LIMIT: 10,
+  MAX_WATER_LIMIT: 5000,
+};
+
 const CONSTANTS = {
   USERS_ENDPOINTS,
   AXIOS,
   WATER_ENDPOINTS,
+  WATER_LIMITS,
 };
+
 export default CONSTANTS;
