@@ -3,6 +3,10 @@ const USERS_ENDPOINTS = {
   signIn: '/v1/users/login',
   logout: '/v1/users/logout',
   refresh: '/v1/users/refresh',
+  requestResetPassword: '/request-reset-password',
+  resetPassword: '/reset-pwd',
+  getGoogleUrl: '/get-oauth-url',
+  confirmGoogleAuhorization: '/confirm-oauth',
 };
 
 const AXIOS = {
