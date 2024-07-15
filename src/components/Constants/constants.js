@@ -1,8 +1,8 @@
 const USERS_ENDPOINTS = {
-  signUp: '/v1/auth/register',
-  signIn: '/v1/auth/login',
-  logout: '/v1/auth/logout',
-  refresh: '/v1/auth/refresh',
+  signUp: '/v1/users/register',
+  signIn: '/v1/users/login',
+  logout: '/v1/users/logout',
+  refresh: '/v1/users/refresh',
 };
 
 const AXIOS = {
@@ -18,6 +18,6 @@ const WATER_ENDPOINTS = {
 const CONSTANTS = {
   USERS_ENDPOINTS,
   AXIOS,
-  WATER_ENDPOINTS
+  WATER_ENDPOINTS,
 };
 export default CONSTANTS;
