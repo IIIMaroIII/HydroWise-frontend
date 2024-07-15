@@ -5,18 +5,27 @@ export const Calendar = ({ selectedDate }) => {
   const daysInMonth = new Date(
     selectedDate.getFullYear(),
     selectedDate.getMonth() + 1,
-    0
+    0,
   ).getDate();
 
   const daysArray = Array.from(
     { length: daysInMonth },
-    (_, index) => index + 1
+    (_, index) => index + 1,
   );
+  const getCurrentDate = day => {
+    const currentDate = new Date();
+    currentDate.setDate(day);
+    console.log(currentDate);
+  };
   return (
     <>
       <ul className={css.list}>
         {daysArray.map(day => (
-          <li key={day} className={css.item}>
+          <li
+            onClick={() => getCurrentDate(day)}
+            key={day}
+            className={css.item}
+          >
             <CalendarItem day={day} />
           </li>
         ))}
