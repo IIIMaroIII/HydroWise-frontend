@@ -4,8 +4,9 @@ const MainModal = ({ children, open, close }) => {
   return (
     <div>
       <Modal
+        appElement={document.getElementById('root')}
         isOpen={open}
-        onRequestClose={() => close(false)}
+        onRequestClose={() => close(close)}
         contentLabel="Example Modal"
       >
         {children}
