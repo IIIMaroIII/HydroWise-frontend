@@ -22,6 +22,9 @@ export const Calendar = ({ selectedDate }) => {
 
     setChosenDate(formattedDate);
     console.log(currentDate);
+    console.log('current day', currentDate.getDate());
+    console.log('current month', currentDate.getMonth() + 1);
+    console.log('current year', currentDate.getFullYear());
   };
   return (
     <>
@@ -36,7 +39,9 @@ export const Calendar = ({ selectedDate }) => {
           </li>
         ))}
       </ul>
-      {!chosenDate ? null : <b>Chosen date: {chosenDate}</b>}
+      {!chosenDate ? null : (
+        <b>Chosen date: {chosenDate} `для полного лога открыть консоль` </b>
+      )}
     </>
   );
 };
