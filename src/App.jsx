@@ -11,15 +11,14 @@ import RestrictedRoute from './RestrictedRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
 import './App.css';
-import Container from './components/REUSABLE/Container/Container';
+import ModalsPage from './pages/ModalsPage.jsx';
 
 function App() {
   return (
     <>
       <SharedLayout>
-        <Container>
-          <Routes>
-            {/* <Route
+        <Routes>
+          {/* <Route
             path="/tracker"
             element={
               <PrivateRoute redirectTo="/signin">
@@ -27,7 +26,7 @@ function App() {
               </PrivateRoute>
             }
           /> */}
-            {/* <Route
+          {/* <Route
             path="/signup"
             element={
               <RestrictedRoute redirectTo="/tracker">
@@ -36,7 +35,7 @@ function App() {
             }
           /> */}
 
-            {/* <Route
+          {/* <Route
             path="/signin"
             element={
               <RestrictedRoute redirectTo="/tracker">
@@ -44,16 +43,13 @@ function App() {
               </RestrictedRoute>
             }
           /> */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="/tracker" element={<TrackerPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/signin" element={<SignInPage />} />
-          </Routes>
-        </Container>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/tracker" element={<TrackerPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/signin" element={<SignInPage />} />
+        </Routes>
       </SharedLayout>
     </>
   );
 }
 export default App;
-
-// Request failed with status code 400 - user exist
