@@ -14,6 +14,8 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { signIn } from 'src/redux/users/operations.js';
 import { useDispatch } from 'react-redux';
 import Button from 'src/components/REUSABLE/Button/Button';
+import Logo from 'src/components/REUSABLE/Logo/Logo';
+import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSection';
 
 const SignInForm = () => {
   const dispatch = useDispatch();
@@ -57,8 +59,8 @@ const SignInForm = () => {
     <div className={css.signInContainer}>
       <div className={css.signInForm}>
         <div className={css.formSection}>
+          <Logo />
           <form className={css.c} onSubmit={handleSubmit(onSubmit)}>
-            {/* <h1> AquaTrack </h1> тут мусить бути перевикористовуване лого */}
             <h2>Sign In</h2>
             <div className={css.inputContainer}>
               <label>Email</label>
@@ -92,7 +94,7 @@ const SignInForm = () => {
             </p>
           </form>
         </div>
-        <div className={css.imageSection}></div>
+        <AdvantagesSection />
       </div>
       <ToastContainer />
     </div>
