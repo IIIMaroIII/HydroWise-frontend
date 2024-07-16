@@ -1,4 +1,4 @@
-import css from '../SignInForm/signInForm.module.css';
+import css from './signInForm.module.css';
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -56,14 +56,14 @@ const SignInForm = () => {
   };
 
   return (
-    <div className={css.signInContainer}>
-      <div className={css.signInForm}>
+    <div className={css.signUpContainer}>
+      <div className={css.signUpForm}>
         <div className={css.formSection}>
           <Logo />
-          <form className={css.c} onSubmit={handleSubmit(onSubmit)}>
-            <h2>Sign In</h2>
+          <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+            <h2 className={css.formTitle}>Sign In</h2>
             <div className={css.inputContainer}>
-              <label>Email</label>
+              <label className={css.formLabel}>Email</label>
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -72,7 +72,7 @@ const SignInForm = () => {
               {errors.email && <p>{errors.email.message}</p>}
             </div>
             <div className={css.inputContainer}>
-              <label>Password</label>
+              <label className={css.formLabel}>Password</label>
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Enter your password"
@@ -86,15 +86,20 @@ const SignInForm = () => {
               </span>
               {errors.password && <p>{errors.password.message}</p>}
             </div>
-            <Button type="submit" addClass={css.buttonSpanSignInForm}>
+            <Button addClass={css.btnform} type="submit">
               Sign In
             </Button>
             <p>
-              Don’t have an account? <a href="/signup">Sign Up</a>
+              Don’t have an account?{' '}
+              <a className={css.spanSingiN} href="/signup">
+                Sign Up
+              </a>
             </p>
           </form>
         </div>
-        <AdvantagesSection />
+        <div className={css.imageSection}>
+          <AdvantagesSection />
+        </div>
       </div>
       <ToastContainer />
     </div>
