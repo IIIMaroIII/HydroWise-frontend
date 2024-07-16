@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import DailyNorma from './DailyNorma';
 
+
 const MAX_CHAR_VALIDATION = 50;
 const MAX_CHAR_WATER_VALIDATION = 15;
 const MIN_CHAR_VALIDATION = 3;
@@ -102,7 +103,8 @@ const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
   if (!isOpen) return null;
 
   return (
-    <div>
+    <container>
+      <div >
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label className={css.apText}>Upload a photo</label>
@@ -117,10 +119,10 @@ const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
         <div> 
           <label className={css.apLabelName}>Your gender identity</label><br />
           <label className={css.apText}>
-            <input type="radio" value="woman" {...register('gender')} /> Woman
+              <input type="radio" value="woman" {...register('gender')} /> Woman 
           </label>
           <label className={css.apText}>
-            <input type="radio" value="man" {...register('gender')} /> Man
+              <input type="radio" value="man" {...register('gender')} />   Man
           </label>
           {errors.gender && <p>{errors.gender.message}</p>}
         </div>
@@ -162,8 +164,9 @@ const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
         <button className={css.apButtonCancel} type="button" onClick={onClose}>
           Cancel
         </button>
-      </form>
-    </div>
+        </form>
+        </div>
+    </container>
   );
 };
 export default UsersSettingsForm;
