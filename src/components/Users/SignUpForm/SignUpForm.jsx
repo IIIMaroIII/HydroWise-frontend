@@ -66,9 +66,9 @@ const SignUpForm = () => {
         <div className={css.formSection}>
           <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
             {/* <Logo /> */}
-            <h2>Sign Up</h2>
+            <h2 className={css.formTitle}>Sign Up</h2>
             <div className={css.inputContainer}>
-              <label>Email</label>
+              <label className={css.formLabel}>Email</label>
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -77,7 +77,7 @@ const SignUpForm = () => {
               {errors.email && <p>{errors.email.message}</p>}
             </div>
             <div className={css.inputContainer}>
-              <label>Password</label>
+              <label className={css.formLabel}>Password</label>
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Enter your password"
@@ -92,7 +92,7 @@ const SignUpForm = () => {
               {errors.password && <p>{errors.password.message}</p>}
             </div>
             <div className={css.inputContainer}>
-              <label>Repeat password</label>
+              <label className={css.formLabel}>Repeat password</label>
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Repeat password"
