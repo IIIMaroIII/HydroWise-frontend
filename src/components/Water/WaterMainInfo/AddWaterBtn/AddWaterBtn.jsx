@@ -14,7 +14,7 @@ const AddWaterBtn = () => {
   return (
     <Button addClass={css.btn} onClick={openModal}>
       <FaPlus className={css.plus_icon} />
-      <span>Add water</span>
+      Add water
     </Button>
   );
 };
