@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import CONSTANTS from 'src/components/Constants/constants.js';
-import { Axios, AxiosWithCredentials } from 'src/utils/axios.js';
+import { AxiosWithCredentials } from 'src/utils/axios.js';
 
 export const signUp = createAsyncThunk(
   'users/signUp',
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await Axios.post(
+      const res = await AxiosWithCredentials.post(
         `${CONSTANTS.USERS_ENDPOINTS.signUp}`,
         credentials,
       );
@@ -31,7 +31,6 @@ export const signIn = createAsyncThunk(
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }
-      // handleToken.set(res.data.data.accessToken);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -50,7 +49,6 @@ export const logout = createAsyncThunk(
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }
-      // handleToken.unset();
     } catch (error) {
       console.log(error);
       return rejectWithValue(error.message);
@@ -60,9 +58,7 @@ export const logout = createAsyncThunk(
 
 export const refresh = createAsyncThunk(
   'users/refresh',
-  async (_, { getState, rejectWithValue }) => {
-    // const token = getState().users.user.token;
-    // handleToken.set(token);
+  async (_, { rejectWithValue }) => {
     try {
       const res = await AxiosWithCredentials.post(
         `${CONSTANTS.USERS_ENDPOINTS.refresh}`,
@@ -70,7 +66,6 @@ export const refresh = createAsyncThunk(
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }
-      // handleToken.set(res.data.accessToken);
       return res.data;
     } catch (error) {
       console.log(error);

@@ -20,8 +20,6 @@ export const fetchDailyWater = createAsyncThunk(
 export const addWater = createAsyncThunk(
   'water/addWater',
   async (volume, { getState, rejectWithValue }) => {
-    // const token = getState().users.user.token;
-    // handleToken.set(token);
     try {
       const response = await AxiosWithCredentials.post(
         `${CONSTANTS.WATER_ENDPOINTS.water}`,
@@ -37,9 +35,7 @@ export const addWater = createAsyncThunk(
 
 export const deleteWater = createAsyncThunk(
   'water/deleteWater',
-  async (id, { getState, rejectWithValue }) => {
-    // const token = getState().users.user.token;
-    // handleToken.set(token);
+  async (id, { rejectWithValue }) => {
     try {
       const response = await AxiosWithCredentials.delete(
         `${CONSTANTS.WATER_ENDPOINTS.water}/${id}`,
@@ -54,9 +50,7 @@ export const deleteWater = createAsyncThunk(
 
 export const changeWater = createAsyncThunk(
   'water/changeWater',
-  async ({ id, updateVolume }, { getState, rejectWithValue }) => {
-    // const token = getState().users.user.token;
-    // handleToken.set(token);
+  async ({ id, updateVolume }, { rejectWithValue }) => {
     try {
       const response = await AxiosWithCredentials.patch(
         `${CONSTANTS.WATER_ENDPOINTS.water}/${id}`,
@@ -72,9 +66,7 @@ export const changeWater = createAsyncThunk(
 
 export const fetchMonthlyWater = createAsyncThunk(
   'water/fetchMonthly',
-  async (_, { getState, rejectWithValue }) => {
-    // const token = getState().users.user.token;
-    // handleToken.set(token);
+  async (_, { rejectWithValue }) => {
     try {
       const response = await AxiosWithCredentials.get(
         `${CONSTANTS.WATER_ENDPOINTS.monthly}`,
