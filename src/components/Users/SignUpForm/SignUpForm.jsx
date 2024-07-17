@@ -113,9 +113,9 @@ const SignUpForm = () => {
             </p>
           </form>
         </div>
-        <div className={css.imageSection}>
+        {/* <div className={css.imageSection}>
           <img src={Photo} alt="photo" />
-        </div>
+        </div> */}
       </div>
     </div>
   );
