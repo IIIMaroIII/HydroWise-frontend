@@ -39,7 +39,7 @@ const WaterForm = () => {
   const onSubmit = ({ waterValue }) => {
     console.log('Submitted data:', {
       time: now,
-      waterValue: round(waterValue),
+      waterValue: waterValue,
     });
   };
 
