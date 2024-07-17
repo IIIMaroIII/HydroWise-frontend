@@ -13,8 +13,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 import { signIn, signUp } from 'src/redux/users/operations.js';
-import Photo from './Rectangle 19.jpg';
 import toast from 'react-hot-toast';
+import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSection';
+import Logo from 'src/components/REUSABLE/Logo/Logo';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -65,7 +66,7 @@ const SignUpForm = () => {
       <div className={css.signUpForm}>
         <div className={css.formSection}>
           <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-            {/* <Logo /> */}
+          <Logo />
             <h2 className={css.formTitle}>Sign Up</h2>
             <div className={css.inputContainer}>
               <label className={css.formLabel}>Email</label>
@@ -113,7 +114,7 @@ const SignUpForm = () => {
           </form>
         </div>
         <div className={css.imageSection}>
-          <img src={Photo} alt="photo" />
+          <AdvantagesSection />
         </div>
       </div>
     </div>
