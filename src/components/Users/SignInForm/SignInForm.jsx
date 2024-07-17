@@ -25,7 +25,7 @@ const SignInForm = () => {
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Email is invalid').required('Email is required'),
     password: Yup.string()
-      .min(3, 'Password must be at least 3 characters')
+      .min(3, 'Password must be at least 6 characters')
       .required('Password is required'),
   });
 
@@ -73,17 +73,19 @@ const SignInForm = () => {
             </div>
             <div className={css.inputContainer}>
               <label className={css.formLabel}>Password</label>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Enter your password"
-                {...register('password')}
-              />
-              <span
-                className={css.togglePassword}
-                onClick={togglePasswordVisibility}
-              >
-                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-              </span>
+              <div className={css.inputWrapper}>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Enter your password"
+                  {...register('password')}
+                />
+                <span
+                  className={css.togglePassword}
+                  onClick={togglePasswordVisibility}
+                >
+                  <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+                </span>
+              </div>
               {errors.password && <p>{errors.password.message}</p>}
             </div>
             <Button addClass={css.btnform} type="submit">
