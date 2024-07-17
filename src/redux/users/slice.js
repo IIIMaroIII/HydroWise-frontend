@@ -12,12 +12,10 @@ export const usersSlice = createSlice({
         state.error = null;
       })
       .addCase(signUp.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-        state.token = payload.token;
+        state.user = payload.data;
         state.isLoggedIn = true;
         state.isLoading = null;
         state.error = null;
-        console.log('You`ve been successfully signed up🎊');
       })
       .addCase(signUp.rejected, (state, { payload }) => {
         state.error = payload;
@@ -28,8 +26,8 @@ export const usersSlice = createSlice({
         state.error = null;
       })
       .addCase(signIn.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-        state.token = payload.token;
+        state.user.email = payload.data.email;
+        state.user.token = payload.data.accessToken;
         state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;
@@ -58,7 +56,7 @@ export const usersSlice = createSlice({
         state.error = null;
       })
       .addCase(refresh.fulfilled, (state, { payload }) => {
-        state.user = payload;
+        state.user.token = payload.data.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
