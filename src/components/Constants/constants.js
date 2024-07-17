@@ -19,9 +19,15 @@ const WATER_ENDPOINTS = {
   monthly: '/v1/water/monthly',
 };
 
+const USER = {
+  DEFAULT_USER_IMAGE:
+    'https://img.icons8.com/?size=100&id=8VXh2TzKXNG8&format=png&color=000000',
+};
+
 const CONSTANTS = {
   USERS_ENDPOINTS,
   AXIOS,
   WATER_ENDPOINTS,
+  USER,
 };
 export default CONSTANTS;
