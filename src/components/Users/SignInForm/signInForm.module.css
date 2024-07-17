@@ -171,31 +171,29 @@ p {
 
 @media (min-width: 1440px) {
   .signUpForm {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    height: 736px;
+    background-color: var(--white);
+    border-radius: 30px;
+    overflow: hidden;
+  }
+  .imageSection {
+    display: block;
+  }
+  .formSection,
+  .imageSection {
     width: 672px;
     height: 736px;
-  }
-
-  .form {
     border-radius: 30px;
-  }
-
-  .formTitle {
-    margin-bottom: 20px;
   }
 
   .formSection {
     margin-right: 32px;
   }
 
-  .btnForm {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-  }
-
-  .formSection,
   .form {
-    height: auto;
-    padding: 48px;
+    padding: 130px 118px;
   }
 }

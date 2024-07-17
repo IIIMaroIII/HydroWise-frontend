@@ -56,8 +56,8 @@ const SignInForm = () => {
   };
 
   return (
-    <div className={css.signUpContainer}>
-      <div className={css.signUpForm}>
+    <div className={css.signInContainer}>
+      <div className={css.signInForm}>
         <div className={css.formSection}>
           <Logo />
           <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
@@ -91,7 +91,7 @@ const SignInForm = () => {
             </Button>
             <p>
               Don’t have an account?{' '}
-              <a className={css.spanSingiN} href="/signup">
+              <a className={css.spanSignIn} href="/signup">
                 Sign Up
               </a>
             </p>
