@@ -167,37 +167,6 @@ p {
 
     padding: 227px 102px;
   }
-
-  /* 
-  .formTitle {
-    font-size: 36px;
-    line-height: 1.06;
-    letter-spacing: -0.01em;
-  } */
-
-  /* .formLabel {
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
-  } */
-
-  /* .inputContainer input {
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
-  } */
-
-  /* .inputContainer .togglePassword {
-    top: 50%;
-    right: 18px;
-  } */
-
-  /* .btnform {
-    font-size: 16px;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
-    padding: 18px 0;
-  } */
 }
 
 @media (min-width: 1440px) {
