@@ -19,6 +19,11 @@ const WATER_ENDPOINTS = {
   monthly: '/v1/water/monthly',
 };
 
+const WATER_LIMITS = {
+  MIN_WATER_LIMIT: 10,
+  MAX_WATER_LIMIT: 5000,
+}; 
+
 const USER = {
   DEFAULT_USER_IMAGE:
     'https://img.icons8.com/?size=100&id=8VXh2TzKXNG8&format=png&color=000000',
@@ -28,6 +33,8 @@ const CONSTANTS = {
   USERS_ENDPOINTS,
   AXIOS,
   WATER_ENDPOINTS,
+  WATER_LIMITS,
   USER,
 };
+
 export default CONSTANTS;
