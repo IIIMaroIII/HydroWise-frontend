@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import CONSTANTS from 'src/components/Constants/constants.js';
-import { Axios, AxiosWithCredentials, handleToken } from 'src/utils/axios.js';
+import { Axios, AxiosWithCredentials } from 'src/utils/axios.js';
 
 export const signUp = createAsyncThunk(
   'users/signUp',
@@ -31,7 +31,7 @@ export const signIn = createAsyncThunk(
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }
-      handleToken.set(res.data.data.accessToken);
+      // handleToken.set(res.data.data.accessToken);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -46,11 +46,13 @@ export const logout = createAsyncThunk(
       const res = await AxiosWithCredentials.post(
         `${CONSTANTS.USERS_ENDPOINTS.logout}`,
       );
+      console.log(res);
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }
       // handleToken.unset();
     } catch (error) {
+      console.log(error);
       return rejectWithValue(error.message);
     }
   },
@@ -68,7 +70,7 @@ export const refresh = createAsyncThunk(
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }
-      handleToken.set(res.data.accessToken);
+      // handleToken.set(res.data.accessToken);
       return res.data;
     } catch (error) {
       console.log(error);

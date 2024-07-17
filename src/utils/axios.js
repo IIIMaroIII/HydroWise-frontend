@@ -26,13 +26,13 @@ AxiosWithCredentials.interceptors.request.use(
   },
 );
 
-export const handleToken = {
-  set(token) {
-    Axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    AxiosWithCredentials.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    Axios.defaults.headers.common.Authorization = '';
-    AxiosWithCredentials.defaults.headers.common.Authorization = '';
-  },
-};
+// export const handleToken = {
+//   set(token) {
+//     Axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+//     AxiosWithCredentials.defaults.headers.common.Authorization = `Bearer ${token}`;
+//   },
+//   unset() {
+//     Axios.defaults.headers.common.Authorization = '';
+//     AxiosWithCredentials.defaults.headers.common.Authorization = '';
+//   },
+// };
