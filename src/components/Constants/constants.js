@@ -10,7 +10,7 @@ const USERS_ENDPOINTS = {
 };
 
 const AXIOS = {
-  baseURL: 'https://waterwise-backend.onrender.com',
+  baseURL: 'http://localhost:3000',
 };
 
 const WATER_ENDPOINTS = {
