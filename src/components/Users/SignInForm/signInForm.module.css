@@ -139,9 +139,6 @@ p {
   padding: 16px 0;
 }
 
-.spanSingiN {
-}
-
 .form input:hover,
 .form input:focus {
   border-color: var(--green-hover);
@@ -153,9 +150,9 @@ p {
 }
 
 @media (min-width: 768px) {
-  .signUpContainer {
+  .formSection {
     padding: 32px;
-    background-color: var(--white);
+    display: block;
   }
 
   .signUpForm {
@@ -165,52 +162,45 @@ p {
   }
 
   .form {
-    margin-bottom: 100px;
+    min-width: 436px;
+    height: auto;
+
+    padding: 227px 102px;
   }
 
-  .form {
-    width: 436px;
-    margin: 0 auto;
-  }
-
+  /* 
   .formTitle {
     font-size: 36px;
     line-height: 1.06;
     letter-spacing: -0.01em;
-  }
+  } */
 
-  .formLabel {
+  /* .formLabel {
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: -0.01em;
-  }
+  } */
 
-  .inputContainer input {
+  /* .inputContainer input {
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: -0.01em;
-  }
+  } */
 
-  .inputContainer .togglePassword {
+  /* .inputContainer .togglePassword {
     top: 50%;
     right: 18px;
-  }
+  } */
 
-  .btnform {
+  /* .btnform {
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: -0.01em;
     padding: 18px 0;
-  }
+  } */
 }
 
 @media (min-width: 1440px) {
-  .imageSection {
-    display: block;
-    min-width: 672px;
-    height: 736px;
-  }
-
   .signUpForm {
     width: 672px;
     height: 736px;
