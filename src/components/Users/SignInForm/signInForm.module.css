@@ -109,6 +109,7 @@
 .spanSignIn {
   margin-top: 16px;
   display: flex;
+  gap: 5px;
   text-align: center;
   justify-content: center;
   color: #000;
@@ -120,6 +121,7 @@
 }
 
 .link {
+  height: 18px;
   color: #2f2f2f;
 }
 
