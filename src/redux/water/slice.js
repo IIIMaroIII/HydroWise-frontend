@@ -60,7 +60,7 @@ export const waterSlice = createSlice({
       })
       .addCase(addWater.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.water.items.push(action.payload);
+        state.water.dailyItems.push(action.payload);
         toast('You add a water record', {
           style: {
             borderRadius: '10px',
@@ -91,7 +91,7 @@ export const waterSlice = createSlice({
 
       .addCase(fetchMonthlyWater.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.water.monthlyItems = action.payload;
+        state.water.monthlyItems = action.payload.data;
       })
 
       .addCase(changeWater.rejected, handleRejected)

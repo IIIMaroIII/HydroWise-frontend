@@ -9,7 +9,7 @@ export const fetchDailyWater = createAsyncThunk(
       const response = await AxiosWithCredentials.get(
         `${CONSTANTS.WATER_ENDPOINTS.daily}/${day}/${month}/${year}`,
       );
-      console.log(response);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -71,7 +71,7 @@ export const fetchMonthlyWater = createAsyncThunk(
       const response = await AxiosWithCredentials.get(
         `${CONSTANTS.WATER_ENDPOINTS.monthly}/${month}/${year}`,
       );
-      console.log(response);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);

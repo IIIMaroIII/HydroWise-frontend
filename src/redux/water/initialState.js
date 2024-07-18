@@ -1,7 +1,8 @@
 export const initialState = {
   water: {
     dailyItems: [],
-    monthlyItems: [],
+    totalVolume: 0,
+    monthlyItems:[],
   },
   modalFlags: {
     isModalOpen: false,

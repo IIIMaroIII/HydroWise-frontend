@@ -15,11 +15,11 @@ const TrackerPage = () => {
   const selectedDate = useSelector(selectDate);
   const { day, month, year } = parseDate(selectedDate);
   const dispatch = useDispatch();
-  // useEffect(() => {
+  useEffect(() => {
     
-  //   dispatch(fetchDailyWater({ day, month, year }));
-  //   dispatch(fetchMonthlyWater({month, year }));
-  // }, [dispatch, day, month, year]);
+    dispatch(fetchDailyWater({ day, month, year }));
+    dispatch(fetchMonthlyWater({month, year }));
+  }, [dispatch, day, month, year]);
 
   const handleOnClick = () => {
     dispatch(refresh())
