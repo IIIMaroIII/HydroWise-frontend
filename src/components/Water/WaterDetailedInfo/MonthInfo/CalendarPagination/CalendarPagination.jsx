@@ -5,57 +5,45 @@ import Button from '../../../../../components/REUSABLE/Button/Button';
 // import { sprite } from '../../../shared/icons/index';
 
 import css from './calendarPagination.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectDate } from 'src/redux/water/selectors';
+import { parseDate } from 'src/utils/parseDate';
+import { changeChosenDate } from 'src/redux/water/slice';
 // import { Calendar } from '../Calendar/Calendar';
 
-export const CalendarPagination = ({ selectedDate, setSelectedDate }) => {
-  const goToPrevoiusMonth = () => {
-    const prevoiusMonth = new Date(
-      selectedDate.getFullYear(),
-      selectedDate.getMonth() - 1,
+export const CalendarPagination = () => {
+   const selectedDate = useSelector(selectDate);
+  
+   const { year } = parseDate(selectedDate);
+   const dispatch = useDispatch();
+   const monthAsName = new Date(selectedDate).toLocaleString('en-US', { month: 'long' });
+   
+  const goToPreviousMonth = () => {
+    const previousMonth = new Date(
+      new Date(selectedDate).getFullYear(),
+      new Date(selectedDate).getMonth() - 1,
       1
     );
-    setSelectedDate(prevoiusMonth);
+    dispatch(changeChosenDate(previousMonth.toISOString()));
   };
 
   const goToNextMonth = () => {
     const nextMonth = new Date(
-      selectedDate.getFullYear(),
-      selectedDate.getMonth() + 1,
+      new Date(selectedDate).getFullYear(),
+      new Date(selectedDate).getMonth() + 1,
       1
     );
-    setSelectedDate(nextMonth);
-    // updateNumberOfDays(nextMonth);
+    dispatch(changeChosenDate(nextMonth.toISOString()));
   };
-
-  // const updateNumberOfDays = date => {
-  //   const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-  //   const daysInMonth = lastDayOfMonth.getDate();
-  //   setNumberOfDaysInMonth(daysInMonth);
-  // };
-
-  // useEffect(() => {
-  //   updateNumberOfDays(selectedDate);
-  // }, [selectedDate]);
-
-  const formattedDate = selectedDate
-    .toLocaleString('en-GB', {
-      month: 'long',
-      year: 'numeric',
-    })
-    .replace(/(\w+) (\d+)/, '$1, $2');
-
   return (
     <div className={css.wrapper}>
-      <Button onClick={goToPrevoiusMonth} className={css.btn}>
+      <Button onClick={goToPreviousMonth} className={css.btn}>
        <BsChevronLeft size="12" className={css.arrow} />
       </Button>
-      <span className={css.span}>{formattedDate}</span>
+      <span className={css.span}>{`${monthAsName}, ${year}`}</span>
       <Button onClick={goToNextMonth} className={css.btn}>
         <BsChevronRight size="12" className={css.arrow} />
-      </Button>
-       {/* <svg width="20" height="20" className={css.pieIcon}>
-        <use xlinkHref={`${sprite}#pie_chart`}></use>
-      </svg> */}
+      </Button> 
     </div>
   );
 };
