@@ -15,7 +15,7 @@ const LogoutModal = () => {
     dispatch(logout())
       .unwrap()
       .then(() => {
-        toast.success('Registration successful!');
+        toast.success('Logout successful!');
         navigate('/');
       })
       .catch(() => toast.error('Oops, Logout went wrong, please try again!'));
