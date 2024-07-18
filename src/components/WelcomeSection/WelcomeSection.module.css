@@ -26,11 +26,15 @@
 
 .linkTracker {
   padding: 14px 19px;
-  background-color: #9be1a0;
+  background-color: var(--light-green);
 
   @media (width>=768px) {
     padding: 18px 40px;
   }
+}
+
+.linkTracker:hover {
+  background-color: var(--green);
 }
 
 .linkSignIn {
@@ -41,6 +45,11 @@
   @media (width>=768px) {
     padding: 18px 40px;
   }
+}
+
+.linkSignIn:hover {
+  border: 1px solid var(--green);
+  color: var(--green);
 }
 
 .homePageWelcomeSection {
@@ -105,4 +114,16 @@
     font-size: 80px;
     line-height: 95%;
   }
+}
+
+.disabledTracker {
+  pointer-events: none;
+  color: var(--grey);
+  background-color: transparent;
+}
+
+.disabledSignIn {
+  pointer-events: none;
+  border: 1px solid var(--dark-blue);
+  opacity: 0.2;
 }

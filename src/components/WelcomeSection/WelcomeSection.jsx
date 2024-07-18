@@ -3,8 +3,12 @@ import css from './WelcomeSection.module.css';
 import CustomNavLink from '../REUSABLE/CustomNavLink/CustomNavLink';
 import Logo from '../REUSABLE/Logo/Logo';
 import clsx from 'clsx';
+import { selectUserIsLoggedIn } from '../../redux/users/selectors.js';
+import { useSelector } from 'react-redux';
 
 const WelcomeSection = () => {
+  const isAuthenticated = useSelector(selectUserIsLoggedIn);
+
   return (
     <div className={css.homePageWelcomeSection}>
       <Logo />
@@ -16,18 +20,43 @@ const WelcomeSection = () => {
           Water consumption tracker
         </h1>
         <div className={css.homePageBtns}>
-          <CustomNavLink
-            className={clsx(css.homePageLinks, css.linkTracker)}
-            to="/signup"
-          >
-            Try tracker
-          </CustomNavLink>
-          <CustomNavLink
-            className={clsx(css.homePageLinks, css.linkSignIn)}
-            to="/signin"
-          >
-            Sign In
-          </CustomNavLink>
+          {!isAuthenticated ? (
+            <CustomNavLink
+              addClass={css.isActive}
+              className={clsx(css.homePageLinks, css.linkTracker)}
+              to="/signup"
+            >
+              Try tracker
+            </CustomNavLink>
+          ) : (
+            <div
+              className={clsx(
+                css.homePageLinks,
+                css.linkTracker,
+                css.disabledTracker,
+              )}
+            >
+              Try tracker
+            </div>
+          )}
+          {!isAuthenticated ? (
+            <CustomNavLink
+              className={clsx(css.homePageLinks, css.linkSignIn)}
+              to="/signin"
+            >
+              Sign In
+            </CustomNavLink>
+          ) : (
+            <div
+              className={clsx(
+                css.homePageLinks,
+                css.linkSignIn,
+                css.disabledSignIn,
+              )}
+            >
+              Sign In
+            </div>
+          )}
         </div>
       </div>
     </div>
