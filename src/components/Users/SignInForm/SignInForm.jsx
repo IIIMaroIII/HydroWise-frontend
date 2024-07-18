@@ -4,10 +4,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
-
+import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,6 +17,7 @@ import Button from 'src/components/REUSABLE/Button/Button';
 import Logo from 'src/components/REUSABLE/Logo/Logo';
 
 import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSection';
+import CustomNavLink from 'src/components/REUSABLE/CustomNavLink/CustomNavLink';
 
 const SignInForm = () => {
   const dispatch = useDispatch();
@@ -94,19 +93,18 @@ const SignInForm = () => {
             <Button addClass={css.btnform} type="submit">
               Sign In
             </Button>
-            <p>
-              Don’t have an account?{' '}
-              <a className={css.spanSignIn} href="/signup">
+            <div className={css.spanSignIn}>
+              <p>Don’t have an account? </p>
+              <CustomNavLink addClass={css.link} to="/signup">
                 Sign Up
-              </a>
-            </p>
+              </CustomNavLink>
+            </div>
           </form>
         </div>
         <div className={css.imageSection}>
           <AdvantagesSection />
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };
