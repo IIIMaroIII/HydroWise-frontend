@@ -19,6 +19,7 @@ const handlePending = state => {
   state.error = null;
   state.isLoading = true;
 };
+
 export const waterSlice = createSlice({
   name: 'water',
   initialState: initialState,
@@ -26,16 +27,9 @@ export const waterSlice = createSlice({
     changeModal(state, action) {
       state.modalFlags.isModalOpen = action.payload;
     },
-
-    //   changeChosenDate(state, {payload}) {
-    //     state.chosenDate = formatISO(payload);
-    //   },
-    // },
     setChosenDate(state, { payload }) {
       state.chosenDate = payload;
     },
-  },
-
     changeWaterModalEdit(state, action) {
       state.modalFlags.isWaterModalEdit = action.payload;
     },
@@ -45,16 +39,13 @@ export const waterSlice = createSlice({
     changeDeleteWaterModalOpen(state, action) {
       state.modalFlags.isDeleteWaterModalOpen = action.payload;
     },
-
     changeUsersSettingsModalOpen(state, action) {
       state.modalFlags.isUsersSettingsModalOpen = action.payload;
     },
-
     changeLogoutModalOpen(state, action) {
       state.modalFlags.isLogoutModalOpen = action.payload;
     },
   },
-
   extraReducers: builder => {
     builder
       .addCase(fetchDailyWater.pending, handlePending)
@@ -62,7 +53,6 @@ export const waterSlice = createSlice({
       .addCase(deleteWater.pending, handlePending)
       .addCase(changeWater.pending, handlePending)
       .addCase(fetchMonthlyWater.pending, handlePending)
-
       .addCase(fetchDailyWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.water.dailyItems = payload.data;
@@ -83,22 +73,11 @@ export const waterSlice = createSlice({
         state.water.dailyItems = state.water.dailyItems.filter(
           item => item.id !== action.payload.id,
         );
-
       })
-
-      // .addCase(changeWater.fulfilled, (state, action) => {
-      //   state.isLoading = false;
-      // const index = state.items.findIndex(contact => contact.id === action.payload.id);
-      // if (index !== -1) {
-      //   state.items[index] = action.payload;
-      // }
-      // })
-
       .addCase(fetchMonthlyWater.fulfilled, (state, action) => {
         state.isLoading = false;
         state.water.monthlyItems = action.payload.data;
       })
-
       .addCase(changeWater.rejected, handleRejected)
       .addCase(fetchDailyWater.rejected, handleRejected)
       .addCase(addWater.rejected, handleRejected)
@@ -106,6 +85,7 @@ export const waterSlice = createSlice({
       .addCase(fetchMonthlyWater.rejected, handleRejected);
   },
 });
+
 export const {
   changeModal,
   setChosenDate,
@@ -114,6 +94,6 @@ export const {
   changeDeleteWaterModalOpen,
   changeUsersSettingsModalOpen,
   changeLogoutModalOpen,
-
 } = waterSlice.actions;
+
 export const waterReducer = waterSlice.reducer;
