@@ -4,14 +4,12 @@ import { CalendarPagination } from './CalendarPagination/CalendarPagination';
 
 import css from './MonthInfo.module.css';
 
-
 export const MonthInfo = () => {
- 
   return (
-      <>
+    <>
       <div className={css.wrapper}>
         <h3 className={css.month}>Month</h3>
-        <CalendarPagination/>
+        <CalendarPagination />
       </div>
       <Calendar />
     </>

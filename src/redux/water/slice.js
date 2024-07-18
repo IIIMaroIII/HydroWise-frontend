@@ -8,6 +8,7 @@ import {
   fetchDailyWater,
   fetchMonthlyWater,
 } from './operations.js';
+import { formatISO } from 'date-fns';
 
 const handleRejected = state => {
   state.isLoading = false;
@@ -22,30 +23,32 @@ export const waterSlice = createSlice({
   name: 'water',
   initialState: initialState,
   reducers: {
-    changeModal(state,action) {
-    state.modalFlags.isModalOpen = action.payload;
+    changeModal(state, action) {
+      state.modalFlags.isModalOpen = action.payload;
     },
-    changeWaterModal(state,action) {
-    state.modalFlags.isWaterOpen = action.payload;
+    changeWaterModal(state, action) {
+      state.modalFlags.isWaterOpen = action.payload;
     },
-    changeDeleteWaterModalOpen(state,action) {
-    state.modalFlags.isDeleteWaterModalOpen = action.payload;
-    },
-
-    changeUsersSettingsModalOpen(state,action) {
-    state.modalFlags.isUsersSettingsModalOpen = action.payload;
+    changeDeleteWaterModalOpen(state, action) {
+      state.modalFlags.isDeleteWaterModalOpen = action.payload;
     },
 
-    changeLogoutModalOpen(state,action) {
-    state.modalFlags.isLogoutModalOpen = action.payload;
+    changeUsersSettingsModalOpen(state, action) {
+      state.modalFlags.isUsersSettingsModalOpen = action.payload;
     },
 
-    changeChosenDate(state,action){
-    state.chosenDate = action.payload;
-    }
+    changeLogoutModalOpen(state, action) {
+      state.modalFlags.isLogoutModalOpen = action.payload;
+    },
 
+    //   changeChosenDate(state, {payload}) {
+    //     state.chosenDate = formatISO(payload);
+    //   },
+    // },
+    setChosenDate(state, { payload }) {
+      state.chosenDate = payload;
+    },
   },
-    
   extraReducers: builder => {
     builder
       .addCase(fetchDailyWater.pending, handlePending)
@@ -54,9 +57,9 @@ export const waterSlice = createSlice({
       .addCase(changeWater.pending, handlePending)
       .addCase(fetchMonthlyWater.pending, handlePending)
 
-      .addCase(fetchDailyWater.fulfilled, (state, action) => {
+      .addCase(fetchDailyWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.water= action.payload.data;
+        state.water.dailyItems = payload.data;
       })
       .addCase(addWater.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -71,14 +74,9 @@ export const waterSlice = createSlice({
       })
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.water.dailyItems = state.water.dailyItems.filter(item => item.id !== action.payload.id);
-        toast(`You deleted a water record!`, {
-          style: {
-            borderRadius: '10px',
-            background: 'rgb(144, 26, 228)',
-            color: '#fff',
-          },
-        });
+        state.water.dailyItems = state.water.dailyItems.filter(
+          item => item.id !== action.payload.id,
+        );
       })
 
       // .addCase(changeWater.fulfilled, (state, action) => {
@@ -101,5 +99,13 @@ export const waterSlice = createSlice({
       .addCase(fetchMonthlyWater.rejected, handleRejected);
   },
 });
-export const { changeModal,changeWaterModal,changeDeleteWaterModalOpen, changeUsersSettingsModalOpen,changeLogoutModalOpen,changeChosenDate } = waterSlice.actions;
+export const {
+  changeModal,
+  changeWaterModal,
+  changeDeleteWaterModalOpen,
+  changeUsersSettingsModalOpen,
+  changeLogoutModalOpen,
+  changeChosenDate,
+  setChosenDate,
+} = waterSlice.actions;
 export const waterReducer = waterSlice.reducer;
