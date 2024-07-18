@@ -1,9 +1,12 @@
 export const selectWaterItems = state => state.water.water.dailyItems;
-export const selectDailyNorma = state => state.water.water.dailyNorma;
+export const selectTotalVolume = state => state.water.water.totalVolume;
 export const selectMonthlyWaterItems = state => state.water.water.monthlyItems;
 export const selectIsLoading = state => state.water.isLoading;
 export const selectIsError = state => state.water.error;
 export const selectModalFlags = state => state.water.modalFlags;
+
+export const selectDate = state => state.water.chosenDate;
+
 
 export const selectIsModalOpen = state => state.water.modalFlags.isModalOpen;
 export const selectIsDeleteWaterModalOpen = state =>
@@ -14,5 +17,6 @@ export const selectIsUsersSettingsModalOpen = state =>
   state.water.modalFlags.isUsersSettingsModalOpen;
 export const selectIsWaterModalEdit = state => state.water.modalFlags.isWaterModalEdit;
 export const selectIsWaterModalAdd = state => state.water.modalFlags.isWaterModalAdd;
+
 
 
