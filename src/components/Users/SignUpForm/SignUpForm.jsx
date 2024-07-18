@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Button from 'src/components/REUSABLE/Button/Button';
@@ -13,8 +12,10 @@ import Button from 'src/components/REUSABLE/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import { signUp } from 'src/redux/users/operations.js';
-import Photo from './Rectangle 19.jpg'; 
+import Photo from './Rectangle 19.jpg';
+import { signIn, signUp } from 'src/redux/users/operations.js';
+import toast from 'react-hot-toast';
+
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -40,14 +41,19 @@ const SignUpForm = () => {
   });
 
   const onSubmit = async data => {
-    dispatch(signUp(data))
+    const { email, password } = data;
+    dispatch(signUp({ email, password }))
       .unwrap()
       .then(() => {
-        toast.success('Registration successful!');
+        dispatch(signIn({ email, password }));
+        toast.success(
+          `We are so exited to meet you ${email} in WaterWise App! 🎊`,
+        );
         navigate('/tracker');
       })
       .catch(err => {
-        toast.error('There was an error during registration. Please try again.');
+        console.log(err);
+        toast.error(err);
       });
   };
 
@@ -60,10 +66,10 @@ const SignUpForm = () => {
       <div className={css.signUpForm}>
         <div className={css.formSection}>
           <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-            {/* <Logo /> */}
-            <h2>Sign Up</h2>
+          {/* <Logo /> */}
+            <h2 className={css.formTitle}>Sign Up</h2>
             <div className={css.inputContainer}>
-              <label>Email</label>
+              <label className={css.formLabel}>Email</label>
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -72,7 +78,7 @@ const SignUpForm = () => {
               {errors.email && <p>{errors.email.message}</p>}
             </div>
             <div className={css.inputContainer}>
-              <label>Password</label>
+              <label className={css.formLabel}>Password</label>
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Enter your password"
@@ -87,7 +93,7 @@ const SignUpForm = () => {
               {errors.password && <p>{errors.password.message}</p>}
             </div>
             <div className={css.inputContainer}>
-              <label>Repeat password</label>
+              <label className={css.formLabel}>Repeat password</label>
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Repeat password"
@@ -107,11 +113,10 @@ const SignUpForm = () => {
             </p>
           </form>
         </div>
-        <div className={css.imageSection}>
+        {/* <div className={css.imageSection}>
           <img src={Photo} alt="photo" />
-        </div>
+        </div> */}
       </div>
-      <ToastContainer />
     </div>
   );
 };

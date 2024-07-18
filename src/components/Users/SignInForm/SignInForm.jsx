@@ -13,6 +13,7 @@ import { signIn } from 'src/redux/users/operations.js';
 import { useDispatch } from 'react-redux';
 
 import Button from 'src/components/REUSABLE/Button/Button';
+import toast from 'react-hot-toast';
 
 import Logo from 'src/components/REUSABLE/Logo/Logo';
 
@@ -42,14 +43,12 @@ const SignInForm = () => {
   const onSubmit = async data => {
     dispatch(signIn(data))
       .unwrap()
-      .then(() => {
-        console.log('success');
-        toast.success('You`ve been successfully logged in 😬');
+      .then(res => {
+        toast.success(res.message);
         navigate('/tracker');
       })
       .catch(err => {
-        console.log(err);
-        toast.error('Oops, check your email and password and try again 😬');
+        toast.error(err.message);
       });
   };
 

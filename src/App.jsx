@@ -15,18 +15,14 @@ import ModalsPage from './pages/ModalsPage.jsx';
 import { refresh } from './redux/users/operations.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserIsLoggedIn } from './redux/users/selectors.js';
+import { setChosenDate } from './redux/water/slice.js';
+import { formatISO } from 'date-fns';
 
 function App() {
   const dispatch = useDispatch();
-  const isUserLoggedIn = useSelector(selectUserIsLoggedIn);
-
   useEffect(() => {
-    dispatch(refresh())
-      .unwrap()
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  }, [dispatch, isUserLoggedIn]);
-
+    dispatch(setChosenDate(formatISO(new Date())));
+  }, [dispatch]);
   return (
     <>
       <SharedLayout>

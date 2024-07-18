@@ -6,13 +6,15 @@
   border: none;
 
   cursor: pointer;
+  transform: scale(1);
   transition: all 250ms ease-in-out;
   font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
+  /* font-size: inherit; */
+  /* font-weight: inherit; */
 }
 .btn:hover,
 .btn:focus {
+  transform: scale(1.05);
 }
 
 .btn:disabled {
@@ -22,4 +24,5 @@
 }
 
 .btn.isSelected {
+  background-color: green;
 }
