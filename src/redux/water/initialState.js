@@ -1,8 +1,8 @@
 export const initialState = {
   water: {
-    dailyNorma: 2,
     dailyItems: [],
-    monthlyItems: [],
+    totalVolume: 0,
+    monthlyItems:[],
   },
   modalFlags: {
     isModalOpen: false,
@@ -13,7 +13,6 @@ export const initialState = {
     isWaterModalEdit: false,
     isWaterModalAdd: false,
   },
-  currentDate: null,
   chosenDate: null,
   isLoading: false,
   error: null,
