@@ -10,6 +10,8 @@ export const initialState = {
     isDeleteWaterModalOpen: false,
     isUsersSettingsModalOpen: false,
     isLogoutModalOpen: false,
+    isWaterModalEdit: false,
+    isWaterModalAdd: false,
   },
   chosenDate: null,
   isLoading: false,

@@ -26,8 +26,21 @@ export const waterSlice = createSlice({
     changeModal(state, action) {
       state.modalFlags.isModalOpen = action.payload;
     },
-    changeWaterModal(state, action) {
-      state.modalFlags.isWaterOpen = action.payload;
+
+    //   changeChosenDate(state, {payload}) {
+    //     state.chosenDate = formatISO(payload);
+    //   },
+    // },
+    setChosenDate(state, { payload }) {
+      state.chosenDate = payload;
+    },
+  },
+
+    changeWaterModalEdit(state, action) {
+      state.modalFlags.isWaterModalEdit = action.payload;
+    },
+    changeWaterModalAdd(state, action) {
+      state.modalFlags.isWaterModalAdd = action.payload;
     },
     changeDeleteWaterModalOpen(state, action) {
       state.modalFlags.isDeleteWaterModalOpen = action.payload;
@@ -40,15 +53,8 @@ export const waterSlice = createSlice({
     changeLogoutModalOpen(state, action) {
       state.modalFlags.isLogoutModalOpen = action.payload;
     },
-
-    //   changeChosenDate(state, {payload}) {
-    //     state.chosenDate = formatISO(payload);
-    //   },
-    // },
-    setChosenDate(state, { payload }) {
-      state.chosenDate = payload;
-    },
   },
+
   extraReducers: builder => {
     builder
       .addCase(fetchDailyWater.pending, handlePending)
@@ -77,6 +83,7 @@ export const waterSlice = createSlice({
         state.water.dailyItems = state.water.dailyItems.filter(
           item => item.id !== action.payload.id,
         );
+
       })
 
       // .addCase(changeWater.fulfilled, (state, action) => {
@@ -101,11 +108,12 @@ export const waterSlice = createSlice({
 });
 export const {
   changeModal,
-  changeWaterModal,
+  setChosenDate,
+  changeWaterModalEdit,
+  changeWaterModalAdd,
   changeDeleteWaterModalOpen,
   changeUsersSettingsModalOpen,
   changeLogoutModalOpen,
-  changeChosenDate,
-  setChosenDate,
+
 } = waterSlice.actions;
 export const waterReducer = waterSlice.reducer;
