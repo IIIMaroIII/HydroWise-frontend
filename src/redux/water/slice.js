@@ -40,6 +40,10 @@ export const waterSlice = createSlice({
     state.modalFlags.isLogoutModalOpen = action.payload;
     },
 
+    changeChosenDate(state,action){
+    state.chosenDate = action.payload;
+    }
+
   },
     
   extraReducers: builder => {
@@ -52,7 +56,7 @@ export const waterSlice = createSlice({
 
       .addCase(fetchDailyWater.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.water.items = action.payload;
+        state.water= action.payload.data;
       })
       .addCase(addWater.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -67,7 +71,7 @@ export const waterSlice = createSlice({
       })
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.water.items = state.water.items.filter(item => item.id !== action.payload.id);
+        state.water.dailyItems = state.water.dailyItems.filter(item => item.id !== action.payload.id);
         toast(`You deleted a water record!`, {
           style: {
             borderRadius: '10px',
@@ -97,5 +101,5 @@ export const waterSlice = createSlice({
       .addCase(fetchMonthlyWater.rejected, handleRejected);
   },
 });
-export const { changeModal,changeWaterModal,changeDeleteWaterModalOpen, changeUsersSettingsModalOpen,changeLogoutModalOpen } = waterSlice.actions;
+export const { changeModal,changeWaterModal,changeDeleteWaterModalOpen, changeUsersSettingsModalOpen,changeLogoutModalOpen,changeChosenDate } = waterSlice.actions;
 export const waterReducer = waterSlice.reducer;

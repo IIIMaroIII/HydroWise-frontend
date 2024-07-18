@@ -1,6 +1,5 @@
 export const initialState = {
   water: {
-    dailyNorma: 2,
     dailyItems: [],
     monthlyItems: [],
   },
@@ -11,8 +10,8 @@ export const initialState = {
     isUsersSettingsModalOpen: false,
     isLogoutModalOpen: false,
   },
-  currentDate: null,
-  chosenDate: null,
+  // currentDate: new Date(),
+  chosenDate: new Date().toISOString(),
   isLoading: false,
   error: null,
 };
