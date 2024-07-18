@@ -10,8 +10,7 @@ export const initialState = {
     isUsersSettingsModalOpen: false,
     isLogoutModalOpen: false,
   },
-  // currentDate: new Date(),
-  chosenDate: new Date().toISOString(),
+  chosenDate: null,
   isLoading: false,
   error: null,
 };

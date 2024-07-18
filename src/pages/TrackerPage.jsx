@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,13 +9,12 @@ import { fetchDailyWater, fetchMonthlyWater } from 'src/redux/water/operations';
 import { selectDate } from 'src/redux/water/selectors';
 import { parseDate } from 'src/utils/parseDate';
 
-
 const TrackerPage = () => {
-  const selectedDate = useSelector(selectDate);
-  const { day, month, year } = parseDate(selectedDate);
+  // const selectedDate = useSelector(selectDate);
+  // const { day, month, year } = parseDate(selectedDate);
   const dispatch = useDispatch();
   // useEffect(() => {
-    
+
   //   dispatch(fetchDailyWater({ day, month, year }));
   //   dispatch(fetchMonthlyWater({month, year }));
   // }, [dispatch, day, month, year]);
@@ -27,8 +25,6 @@ const TrackerPage = () => {
       .then(res => toast.success(res.message))
       .catch(err => toast.error(err.message));
   };
- 
-
 
   return (
     <div>

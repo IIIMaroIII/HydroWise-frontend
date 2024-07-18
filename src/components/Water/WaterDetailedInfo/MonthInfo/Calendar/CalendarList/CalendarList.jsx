@@ -1,25 +1,16 @@
-import { useSelector } from 'react-redux';
 import CalendarItem from './CalendarItem/CalendarItem.jsx';
-import { selectDate } from 'src/redux/water/selectors.js';
-// import { FaUpLong } from 'react-icons/fa6';
-import { daysInMonth } from 'src/utils/daysInMonth.js';
-import { parseDate } from 'src/utils/parseDate.js';
-import css from './calendarList.module.css'
+import css from './calendarList.module.css';
+import useChosenDate from 'src/hooks/useChosenDate.js';
 
 const CalendarList = () => {
-  const selectedDate = useSelector(selectDate);
-  const { month, year} = parseDate(selectedDate);
-   const days = daysInMonth(month, year);
+  const { getDaysOfMonth } = useChosenDate();
   return (
     <ul className={css.list}>
-      {
-        days.map((day, index) => {
-              return (<CalendarItem key={index} day={day}/>)
-          })} 
+      {getDaysOfMonth().map((day, index) => {
+        return <CalendarItem key={index} day={day} />;
+      })}
     </ul>
   );
-}
-
-
+};
 
 export default CalendarList;
