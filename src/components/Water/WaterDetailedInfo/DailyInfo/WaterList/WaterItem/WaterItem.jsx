@@ -17,12 +17,22 @@ const WaterItem = ({ item }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
 
+  const date = new Date(item.date);
+  const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  };
+
+  const itemTime = date.toLocaleString('en-US', options);
+
+
   return (
     <>
       <div>
         <FaGlassWater />
-        <p>{item.volume}</p>
-        <p>{item.date}</p>
+        <p>{item.volume} ml</p>
+        <p>{itemTime}</p>
       </div>
       <div className={css.btnContainer}>
         <Button
