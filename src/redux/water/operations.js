@@ -5,9 +5,8 @@ import { AxiosWithCredentials } from 'src/utils/axios.js';
 
 export const fetchDailyWater = createAsyncThunk(
   'water/fetchDaily',
-  async (chosenDate, { getState, rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
     try {
-
       const { chosenDate } = getState().water;
       const url = `${CONSTANTS.WATER_ENDPOINTS.daily}?chosenDate=${chosenDate}`;
       const response = await AxiosWithCredentials.get(url);
