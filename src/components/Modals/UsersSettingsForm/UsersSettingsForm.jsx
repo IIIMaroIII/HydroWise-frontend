@@ -6,6 +6,7 @@ import * as yup from 'yup';
 import axios from 'axios';
 import DailyNorma from './DailyNorma';
 import Container from 'src/components/REUSABLE/Container/Container.jsx';
+import Button from 'src/components/REUSABLE/Button/Button';
 
 const MAX_CHAR_VALIDATION = 50;
 const MAX_CHAR_WATER_VALIDATION = 15;
@@ -42,6 +43,7 @@ const schema = yup.object().shape({
     )
     .required('Water intake is required'),
 });
+
 const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
   const [preview, setPreview] = useState(null);
   const {
@@ -185,16 +187,13 @@ const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
             {errors.waterIntake && <p>{errors.waterIntake.message}</p>}
           </div>
 
-          <button className={css.apButton} type="submit">
+          <Button addClass={css.adButton} type="submit">
             Save
-          </button>
-          <button
-            className={css.apButtonCancel}
-            type="button"
-            onClick={onClose}
-          >
+          </Button>
+
+          <Button addClass={css.apButtonCancel} type='button' onClick={onClose}>
             Cancel
-          </button>
+          </Button>
         </form>
       </div>
     </Container>

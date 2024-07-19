@@ -1,22 +1,15 @@
 import { parseISO } from 'date-fns';
 import { useSelector } from 'react-redux';
+import CONSTANTS from 'src/components/Constants/constants';
 import { selectDate } from 'src/redux/water/selectors.js';
 
 const ChooseDate = () => {
   const selectedDate = useSelector(selectDate);
-  const days = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Sunday',
-    'Saturday',
-  ];
-  const parsedDate = new Date(parseISO(selectedDate));
-  const date = new Date();
 
   const ifToday = () => {
+    const parsedDate = new Date(parseISO(selectedDate));
+    const date = new Date();
+
     const formatedDate = date => {
       const year = date.getFullYear();
       const month = date.getMonth() + 1;
@@ -24,14 +17,13 @@ const ChooseDate = () => {
 
       return `${year}/${month}/${day}`;
     };
-    return formatedDate(parsedDate) === formatedDate(date);
+    const chosenDay = CONSTANTS.DAYS[parsedDate.getDay()];
+    return formatedDate(parsedDate) === formatedDate(date)
+      ? 'Today'
+      : `${parsedDate.getDate()}, ${chosenDay}`;
   };
 
-  const chosenDay = days[parsedDate.getDay()];
-
-  return (
-    <div>{ifToday() ? 'Today' : `${parsedDate.getDate()}, ${chosenDay}`}</div>
-  );
+  return <div>{ifToday()}</div>;
 };
 
 export default ChooseDate;
