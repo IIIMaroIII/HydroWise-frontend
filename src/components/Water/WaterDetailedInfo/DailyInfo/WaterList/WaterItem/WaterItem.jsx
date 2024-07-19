@@ -1,10 +1,6 @@
 import { FaGlassWater, FaPen, FaTrash } from 'react-icons/fa6';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
 import css from './WaterItem.module.css';
-import { useState } from 'react';
-import MainModal from 'src/components/Modals/Modal/MainModal.jsx';
-import WaterModal from 'src/components/Modals/Modal/WaterModal/WaterModal.jsx';
-import DeleteWaterModal from 'src/components/Modals/Modal/DeleteWaterModal/DeleteWaterModal.jsx';
 import {
   changeDeleteWaterModalOpen,
   changeModal,
