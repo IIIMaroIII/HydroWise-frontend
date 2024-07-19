@@ -31,6 +31,8 @@ const WaterItem = ({ item }) => {
         <Button
           addClass={css.button}
           onClick={() => {
+            console.log(changeModal());
+
             dispatch(changeWaterModalEdit(true));
             dispatch(changeModal(true));
           }}

@@ -8,7 +8,6 @@ import {
   fetchDailyWater,
   fetchMonthlyWater,
 } from './operations.js';
-import { formatISO } from 'date-fns';
 
 const handleRejected = state => {
   state.isLoading = false;
