@@ -10,9 +10,17 @@ const WelcomeSection = () => {
   const isAuthenticated = useSelector(selectUserIsLoggedIn);
 
   return (
-    <div className={css.homePageWelcomeSection}>
+    <div
+      className={clsx(css.homePageWelcomeSection, {
+        [css.disabled]: isAuthenticated,
+      })}
+    >
       <Logo />
-      <div className={css.homePageWelcomeSectionContainer}>
+      <div
+        className={clsx(css.homePageWelcomeSectionContainer, {
+          [css.disabled]: isAuthenticated,
+        })}
+      >
         <p className={css.homePageWelcomeSectionText}>
           Record daily water intake and track
         </p>
