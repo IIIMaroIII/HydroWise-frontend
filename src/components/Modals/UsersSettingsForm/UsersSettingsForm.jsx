@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import axios from 'axios';
 import DailyNorma from './DailyNorma';
+import Container from 'src/components/REUSABLE/Container/Container.jsx';
 
 
 const MAX_CHAR_VALIDATION = 50;
@@ -82,11 +83,7 @@ const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
     const file = e.target.files[0];
     setPreview(URL.createObjectURL(file));
   };
-  const handleBackdropClick = e => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
+
 
   useEffect(() => {
     const handleEscape = e => {
@@ -103,7 +100,7 @@ const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
   if (!isOpen) return null;
 
   return (
-    <container>
+    <Container>
       <div >
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
@@ -166,7 +163,7 @@ const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
         </button>
         </form>
         </div>
-    </container>
+    </Container>
   );
 };
 export default UsersSettingsForm;
