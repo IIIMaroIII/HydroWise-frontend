@@ -14,8 +14,6 @@ import { useDispatch } from 'react-redux';
 
 const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
 
   const date = new Date(item.date);
   const options = {
@@ -43,7 +41,6 @@ const WaterItem = ({ item }) => {
         >
           <FaPen />
         </Button>
-        {modalOpen && <MainModal open={modalOpen} close={setModalOpen} />}
 
         <Button
           addClass={css.button}
@@ -54,9 +51,6 @@ const WaterItem = ({ item }) => {
         >
           <FaTrash />
         </Button>
-        {modalDeleteOpen && (
-          <MainModal open={modalDeleteOpen} close={setModalDeleteOpen} />
-        )}
       </div>
     </>
   );
