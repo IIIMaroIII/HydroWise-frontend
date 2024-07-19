@@ -26,7 +26,6 @@ const WaterItem = ({ item }) => {
 
   const itemTime = date.toLocaleString('en-US', options);
 
-
   return (
     <>
       <div>
@@ -44,11 +43,7 @@ const WaterItem = ({ item }) => {
         >
           <FaPen />
         </Button>
-        {modalOpen && (
-          <MainModal open={modalOpen} close={setModalOpen}>
-            <WaterModal operationName="edit" />
-          </MainModal>
-        )}
+        {modalOpen && <MainModal open={modalOpen} close={setModalOpen} />}
 
         <Button
           addClass={css.button}
@@ -60,9 +55,7 @@ const WaterItem = ({ item }) => {
           <FaTrash />
         </Button>
         {modalDeleteOpen && (
-          <MainModal open={modalDeleteOpen} close={setModalDeleteOpen}>
-            <DeleteWaterModal />
-          </MainModal>
+          <MainModal open={modalDeleteOpen} close={setModalDeleteOpen} />
         )}
       </div>
     </>
