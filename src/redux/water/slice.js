@@ -70,22 +70,9 @@ export const waterSlice = createSlice({
       })
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.isLoading = false;
-<<<<<<< HEAD
-        state.water.items = state.water.items.filter(
-          item => item.id !== action.payload.id,
-        );
-        toast(`You deleted a water record!`, {
-          style: {
-            borderRadius: '10px',
-            background: 'rgb(144, 26, 228)',
-            color: '#fff',
-          },
-        });
-=======
         state.water.dailyItems = state.water.dailyItems.filter(
           item => item.id !== action.payload.id,
         );
->>>>>>> main
       })
       .addCase(fetchMonthlyWater.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -98,25 +85,14 @@ export const waterSlice = createSlice({
       .addCase(fetchMonthlyWater.rejected, handleRejected);
   },
 });
-<<<<<<< HEAD
-export const {
-  changeModal,
-  changeWaterModal,
-=======
-
 export const {
   changeModal,
   setChosenDate,
   changeWaterModalEdit,
   changeWaterModalAdd,
->>>>>>> main
   changeDeleteWaterModalOpen,
   changeUsersSettingsModalOpen,
   changeLogoutModalOpen,
 } = waterSlice.actions;
-<<<<<<< HEAD
-export const waterReducer = waterSlice.reducer;
-=======
 
 export const waterReducer = waterSlice.reducer;
->>>>>>> main
