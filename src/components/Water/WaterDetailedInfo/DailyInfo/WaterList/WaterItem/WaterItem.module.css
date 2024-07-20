@@ -54,11 +54,10 @@
 .wrapper {
   display: grid;
   gap: 6px 10px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(2, auto);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   /* .wrapper {
 
   } */

@@ -24,7 +24,11 @@ const UserBar = () => {
             }
           />
         </div>
-        {isPopoverOpen ? <FaAngleUp /> : <FaAngleDown />}
+        {isPopoverOpen ? (
+          <FaAngleUp className={css.arrowIcon} />
+        ) : (
+          <FaAngleDown className={css.arrowIcon} />
+        )}
       </Button>
       {isPopoverOpen && <UserBarPopover onClose={togglePopover} />}
     </>
