@@ -31,18 +31,38 @@ export const waterSlice = createSlice({
     },
     changeWaterModalEdit(state, action) {
       state.modalFlags.isWaterModalEdit = action.payload;
+      state.modalFlags.isDeleteWaterModalOpen = false;
+      state.modalFlags.isLogoutModalOpen = false;
+      state.modalFlags.isUsersSettingsModalOpen = false;
+      state.modalFlags.isWaterModalAdd = false;
     },
     changeWaterModalAdd(state, action) {
       state.modalFlags.isWaterModalAdd = action.payload;
+      state.modalFlags.isDeleteWaterModalOpen = false;
+      state.modalFlags.isLogoutModalOpen = false;
+      state.modalFlags.isUsersSettingsModalOpen = false;
+      state.modalFlags.isWaterModalEdit = false;
     },
     changeDeleteWaterModalOpen(state, action) {
       state.modalFlags.isDeleteWaterModalOpen = action.payload;
+      state.modalFlags.isWaterModalAdd = false;
+      state.modalFlags.isLogoutModalOpen = false;
+      state.modalFlags.isUsersSettingsModalOpen = false;
+      state.modalFlags.isWaterModalEdit = false;
     },
     changeUsersSettingsModalOpen(state, action) {
       state.modalFlags.isUsersSettingsModalOpen = action.payload;
+      state.modalFlags.isWaterModalAdd = false;
+      state.modalFlags.isLogoutModalOpen = false;
+      state.modalFlags.isDeleteWaterModalOpen = false;
+      state.modalFlags.isWaterModalEdit = false;
     },
     changeLogoutModalOpen(state, action) {
       state.modalFlags.isLogoutModalOpen = action.payload;
+      state.modalFlags.isWaterModalAdd = false;
+      state.modalFlags.isDeleteWaterModalOpen = false;
+      state.modalFlags.isUsersSettingsModalOpen = false;
+      state.modalFlags.isWaterModalEdit = false;
     },
   },
   extraReducers: builder => {
@@ -73,9 +93,9 @@ export const waterSlice = createSlice({
           item => item.id !== action.payload.id,
         );
       })
-      .addCase(fetchMonthlyWater.fulfilled, (state, action) => {
+      .addCase(fetchMonthlyWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.water.monthlyItems = action.payload.data;
+        state.water.monthlyItems = payload.data;
       })
       .addCase(changeWater.rejected, handleRejected)
       .addCase(fetchDailyWater.rejected, handleRejected)

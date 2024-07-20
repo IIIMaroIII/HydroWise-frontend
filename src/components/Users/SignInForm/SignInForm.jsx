@@ -1,21 +1,18 @@
 import css from './signInForm.module.css';
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-
 import { signIn } from 'src/redux/users/operations.js';
-import { useDispatch } from 'react-redux';
-
 import Button from 'src/components/REUSABLE/Button/Button';
-
 import Logo from 'src/components/REUSABLE/Logo/Logo';
-
 import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSection';
 import CustomNavLink from 'src/components/REUSABLE/CustomNavLink/CustomNavLink';
 
