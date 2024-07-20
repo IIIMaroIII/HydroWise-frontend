@@ -47,7 +47,7 @@ function App() {
             />
           }
 
-          {
+          {/* {
             <Route
               path="/signin"
               element={
@@ -56,7 +56,8 @@ function App() {
                 </RestrictedRoute>
               }
             />
-          }
+          } */}
+          {<Route path="/signin" element={<SignInPage />} />}
 
           {<Route path="/*" element={<HomePage />} />}
         </Routes>

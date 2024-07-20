@@ -64,6 +64,11 @@ const DAYS = [
   'Saturday',
 ];
 
+const DOMAINS = {
+  SERVER_LOCALHOST: 'http://localhost:3000',
+  SERVER_DEPLOY: 'https://waterwise-backend.onrender.com',
+};
+
 const CONSTANTS = {
   USERS_ENDPOINTS,
   AXIOS,
@@ -71,6 +76,7 @@ const CONSTANTS = {
   WATER_LIMITS,
   USER,
   DAYS,
+  DOMAINS,
 };
 
 export default CONSTANTS;

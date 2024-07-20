@@ -93,9 +93,9 @@ export const waterSlice = createSlice({
           item => item.id !== action.payload.id,
         );
       })
-      .addCase(fetchMonthlyWater.fulfilled, (state, action) => {
+      .addCase(fetchMonthlyWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.water.monthlyItems = action.payload.data;
+        state.water.monthlyItems = payload.data;
       })
       .addCase(changeWater.rejected, handleRejected)
       .addCase(fetchDailyWater.rejected, handleRejected)
