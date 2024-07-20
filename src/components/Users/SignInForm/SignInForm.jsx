@@ -13,7 +13,6 @@ import { signIn } from 'src/redux/users/operations.js';
 import { useDispatch } from 'react-redux';
 
 import Button from 'src/components/REUSABLE/Button/Button';
-import toast from 'react-hot-toast';
 
 import Logo from 'src/components/REUSABLE/Logo/Logo';
 
