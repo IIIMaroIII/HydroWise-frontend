@@ -10,17 +10,9 @@ const WelcomeSection = () => {
   const isAuthenticated = useSelector(selectUserIsLoggedIn);
 
   return (
-    <div
-      className={clsx(css.homePageWelcomeSection, {
-        [css.disabled]: isAuthenticated,
-      })}
-    >
+    <div className={clsx(css.homePageWelcomeSection)}>
       <Logo />
-      <div
-        className={clsx(css.homePageWelcomeSectionContainer, {
-          [css.disabled]: isAuthenticated,
-        })}
-      >
+      <div className={clsx(css.homePageWelcomeSectionContainer)}>
         <p className={css.homePageWelcomeSectionText}>
           Record daily water intake and track
         </p>
@@ -28,43 +20,23 @@ const WelcomeSection = () => {
           Water consumption tracker
         </h1>
         <div className={css.homePageBtns}>
-          {!isAuthenticated ? (
-            <CustomNavLink
-              addClass={css.isActive}
-              className={clsx(css.homePageLinks, css.linkTracker)}
-              to="/signup"
-            >
-              Try tracker
-            </CustomNavLink>
-          ) : (
-            <div
-              className={clsx(
-                css.homePageLinks,
-                css.linkTracker,
-                css.disabledTracker,
-              )}
-            >
-              Try tracker
-            </div>
-          )}
-          {!isAuthenticated ? (
-            <CustomNavLink
-              className={clsx(css.homePageLinks, css.linkSignIn)}
-              to="/signin"
-            >
-              Sign In
-            </CustomNavLink>
-          ) : (
-            <div
-              className={clsx(
-                css.homePageLinks,
-                css.linkSignIn,
-                css.disabledSignIn,
-              )}
-            >
-              Sign In
-            </div>
-          )}
+          <CustomNavLink
+            addClass={css.isActive}
+            className={clsx(css.homePageLinks, css.linkTracker, {
+              [css.disabledTracker]: isAuthenticated,
+            })}
+            to="/signup"
+          >
+            Try tracker
+          </CustomNavLink>
+          <CustomNavLink
+            className={clsx(css.homePageLinks, css.linkSignIn, {
+              [css.disabledSignIn]: isAuthenticated,
+            })}
+            to="/signin"
+          >
+            Sign In
+          </CustomNavLink>
         </div>
       </div>
     </div>
