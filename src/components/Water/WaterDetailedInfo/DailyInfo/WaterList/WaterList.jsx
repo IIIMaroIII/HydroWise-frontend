@@ -3,7 +3,10 @@ import css from '../WaterList/WaterList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectWaterItems } from 'src/redux/water/selectors.js';
 import { useEffect } from 'react';
-import { fetchDailyWater } from 'src/redux/water/operations.js';
+import {
+  fetchDailyWater,
+  fetchMonthlyWater,
+} from 'src/redux/water/operations.js';
 
 const WaterList = () => {
   const dispatch = useDispatch();
@@ -11,6 +14,7 @@ const WaterList = () => {
 
   useEffect(() => {
     dispatch(fetchDailyWater());
+    dispatch(fetchMonthlyWater());
   }, [dispatch]);
 
   return (
