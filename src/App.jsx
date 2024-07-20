@@ -10,13 +10,11 @@ import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
-import './App.css';
-import ModalsPage from './pages/ModalsPage.jsx';
-import { refresh } from './redux/users/operations.js';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUserIsLoggedIn } from './redux/users/selectors.js';
+import { useDispatch } from 'react-redux';
 import { setChosenDate } from './redux/water/slice.js';
 import { formatISO } from 'date-fns';
+
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,35 +25,40 @@ function App() {
     <>
       <SharedLayout>
         <Routes>
-          {/* <Route
-            path="/tracker"
-            element={
-              <PrivateRoute redirectTo="/signin">
-                <TrackerPage />
-              </PrivateRoute>
-            }
-          /> */}
-          {/* <Route
-            path="/signup"
-            element={
-              <RestrictedRoute redirectTo="/tracker">
-              <SignUpPage />
-              </RestrictedRoute>
-            }
-          /> */}
-
-          {/* <Route
-            path="/signin"
-            element={
-              <RestrictedRoute redirectTo="/tracker">
-                <SignInPage />
-              </RestrictedRoute>
-            }
-          /> */}
           <Route path="/" element={<HomePage />} />
-          <Route path="/tracker" element={<TrackerPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/signin" element={<SignInPage />} />
+          {
+            <Route
+              path="/tracker"
+              element={
+                <PrivateRoute redirectTo="/signin">
+                  <TrackerPage />
+                </PrivateRoute>
+              }
+            />
+          }
+          {
+            <Route
+              path="/signup"
+              element={
+                <RestrictedRoute redirectTo="/tracker">
+                  <SignUpPage />
+                </RestrictedRoute>
+              }
+            />
+          }
+
+          {
+            <Route
+              path="/signin"
+              element={
+                <RestrictedRoute redirectTo="/tracker">
+                  <SignInPage />
+                </RestrictedRoute>
+              }
+            />
+          }
+
+          {<Route path="/*" element={<HomePage />} />}
         </Routes>
       </SharedLayout>
     </>

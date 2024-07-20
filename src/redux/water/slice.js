@@ -84,7 +84,6 @@ export const waterSlice = createSlice({
       .addCase(fetchMonthlyWater.rejected, handleRejected);
   },
 });
-
 export const {
   changeModal,
   setChosenDate,

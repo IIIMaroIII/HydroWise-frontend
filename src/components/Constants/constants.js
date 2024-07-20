@@ -9,6 +9,31 @@ const USERS_ENDPOINTS = {
   confirmGoogleAuhorization: '/confirm-oauth',
 };
 
+export const TOAST = {
+  options: {
+    className: '',
+    duration: 5000,
+    style: {
+      background: '#363636',
+      color: '#fff',
+    },
+    success: {
+      duration: 3000,
+      theme: {
+        primary: 'var(--green)',
+        secondary: 'var(--black)',
+      },
+    },
+    error: {
+      duration: 3000,
+      theme: {
+        primary: 'var(--red-error)',
+        secondary: 'var(--black)',
+      },
+    },
+  },
+};
+
 const AXIOS = {
   baseURL: 'https://waterwise-backend.onrender.com',
 };
