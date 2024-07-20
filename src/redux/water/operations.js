@@ -55,8 +55,13 @@ export const fetchDailyWater = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const { chosenDate } = getState().water;
+      console.log('typeof ChosenDate in Thunk', typeof chosenDate);
       const url = `${CONSTANTS.WATER_ENDPOINTS.daily}?chosenDate=${chosenDate}`;
       const response = await AxiosWithCredentials.get(url);
+      console.log(
+        'typeof response[0].data.date in Thunk',
+        typeof response.data[0].date,
+      );
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);

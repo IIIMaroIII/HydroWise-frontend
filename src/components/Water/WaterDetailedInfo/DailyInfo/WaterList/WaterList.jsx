@@ -12,10 +12,10 @@ const WaterList = () => {
   const dispatch = useDispatch();
   const dailyItems = useSelector(selectWaterItems);
 
-  useEffect(() => {
-    dispatch(fetchDailyWater());
-    dispatch(fetchMonthlyWater());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchDailyWater());
+  //   dispatch(fetchMonthlyWater());
+  // }, [dispatch]);
 
   return (
     <ul className={css.list}>

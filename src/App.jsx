@@ -15,12 +15,15 @@ import { setChosenDate } from './redux/water/slice.js';
 import { formatISO } from 'date-fns';
 
 import './App.css';
-import MainModal from './components/Modals/Modal/MainModal.jsx';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setChosenDate(formatISO(new Date())));
+    console.log(
+      'dispatch formatISO into redux state',
+      setChosenDate(formatISO(new Date())),
+    );
   }, [dispatch]);
   return (
     <>
