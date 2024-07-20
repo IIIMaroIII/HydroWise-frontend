@@ -13,11 +13,11 @@ export const CalendarPagination = () => {
   return (
     <div className={css.wrapper}>
       <Button onClick={goToPreviousMonth} addClass={css.btn}>
-        <BsChevronLeft size="12" className={css.arrow} />
+        <BsChevronLeft className={css.arrow} />
       </Button>
       <span className={css.span}>{`${month}, ${chosenYear}`}</span>
       <Button onClick={goToNextMonth} addClass={css.btn}>
-        <BsChevronRight size="12" className={css.arrow} />
+        <BsChevronRight className={css.arrow} />
       </Button>
     </div>
   );

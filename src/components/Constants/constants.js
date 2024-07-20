@@ -54,12 +54,23 @@ const USER = {
     'https://img.icons8.com/?size=100&id=8VXh2TzKXNG8&format=png&color=000000',
 };
 
+const DAYS = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Sunday',
+  'Saturday',
+];
+
 const CONSTANTS = {
   USERS_ENDPOINTS,
   AXIOS,
   WATER_ENDPOINTS,
   WATER_LIMITS,
   USER,
+  DAYS,
 };
 
 export default CONSTANTS;
