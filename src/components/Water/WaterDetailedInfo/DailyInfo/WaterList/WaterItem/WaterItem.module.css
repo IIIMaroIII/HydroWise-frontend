@@ -52,8 +52,14 @@
 }
 
 .wrapper {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 6px 10px;
-  justify-content: space-between;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+}
+
+@media screen and (max-width: 768px) {
+  /* .wrapper {
+
+  } */
 }
