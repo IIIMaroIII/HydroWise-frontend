@@ -7,6 +7,7 @@ import { refresh } from 'src/redux/users/operations.js';
 import { fetchDailyWater, fetchMonthlyWater } from 'src/redux/water/operations';
 import { selectDate } from 'src/redux/water/selectors';
 import { parseDate } from 'src/utils/parseDate';
+import css from './TrackerPage.module.css';
 
 
 const TrackerPage = () => {
@@ -30,7 +31,7 @@ const TrackerPage = () => {
   };
 
   return (
-    <div>
+    <div className={css.container}>
       <Button onClick={handleOnClick}>Refresh the session</Button>
       <WaterMainInfo />
       <WaterDetailedInfo />

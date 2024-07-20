@@ -2,6 +2,7 @@ import { parseISO } from 'date-fns';
 import { useSelector } from 'react-redux';
 import CONSTANTS from 'src/components/Constants/constants';
 import { selectDate } from 'src/redux/water/selectors.js';
+import css from './chooseDate.module.css';
 
 const ChooseDate = () => {
   const selectedDate = useSelector(selectDate);
@@ -23,7 +24,7 @@ const ChooseDate = () => {
       : `${parsedDate.getDate()}, ${chosenDay}`;
   };
 
-  return <div>{ifToday()}</div>;
+  return <div className={css.day}>{ifToday()}</div>;
 };
 
 export default ChooseDate;
