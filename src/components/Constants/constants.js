@@ -80,8 +80,9 @@ export const IMAGES = {
   thirdUserMob2x: thirdUserMob2x,
   thirdUser1x: thirdUser1x,
   thirdUser2x: thirdUser2x,
+};
 
-  const DAYS = [
+const DAYS = [
   'Monday',
   'Tuesday',
   'Wednesday',
