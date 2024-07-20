@@ -20,6 +20,10 @@
   color: var(--white);
 }
 
+.container {
+  position: relative;
+}
+
 /* @media screen and (min-width:768px) {
     .user_bar_wrapper {
             gap: 10px;
