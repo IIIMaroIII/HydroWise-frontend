@@ -1,20 +1,18 @@
 @media screen and (min-width: 375px) {
   .container {
-    /* display: flex; */
-    /* justify-content: center; */
+    display: grid;
+    grid-gap: 16px;
     min-width: 375px;
-    padding: 0 16px;
+    padding: 16px;
     margin: 0 auto;
   }
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    display: grid;
     min-width: 704px;
     padding: 0 16px;
     margin: 0 auto;
-    grid-gap: 16px;
   }
 }
 
