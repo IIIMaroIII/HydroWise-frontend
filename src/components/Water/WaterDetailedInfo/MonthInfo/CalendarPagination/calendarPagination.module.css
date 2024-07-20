@@ -19,6 +19,7 @@
 .arrow {
     stroke: var(--dark-blue);
     stroke-width: 1;
+    font-size: 12px;
 }
 
 .pieIcon {

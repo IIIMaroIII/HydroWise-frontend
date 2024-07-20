@@ -50,3 +50,24 @@ branch -d'
 
 alias gbd-remote='git branch -r --merged origin/main | grep -v "origin/main" |
 sed "s/origin\///" |$
+
+//================ Home =================// ❗ mobile  
+ //=================== SignUpPage ============//
+
+- sign up btn +/-
+- mobile
+- tablet
+- desctop
+- rendering components //============= SignInPage =============// ❗ mobile ❗
+  tablet ❗ desctop //=============== TrackerPage =============// aquatrack
+  image WaterProgressBar +/-
+
+- addWaterBtn, editWaterBtn, deleteWaterBtn logOutBtn- do not open modals
+
+WaterList +/-
+
+UserBarPopover: UserBar +/-
+
+Calendar +/- CalendarItem +/-
+
+//=============== Modals ===============// DeleteWaterModal LogOutModal +/-

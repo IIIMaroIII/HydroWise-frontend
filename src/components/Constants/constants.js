@@ -22,6 +22,31 @@ const USERS_ENDPOINTS = {
   confirmGoogleAuhorization: '/confirm-oauth',
 };
 
+export const TOAST = {
+  options: {
+    className: '',
+    duration: 5000,
+    style: {
+      background: '#363636',
+      color: '#fff',
+    },
+    success: {
+      duration: 3000,
+      theme: {
+        primary: 'var(--green)',
+        secondary: 'var(--black)',
+      },
+    },
+    error: {
+      duration: 3000,
+      theme: {
+        primary: 'var(--red-error)',
+        secondary: 'var(--black)',
+      },
+    },
+  },
+};
+
 const AXIOS = {
   baseURL: 'https://waterwise-backend.onrender.com',
 };
@@ -55,6 +80,20 @@ export const IMAGES = {
   thirdUserMob2x: thirdUserMob2x,
   thirdUser1x: thirdUser1x,
   thirdUser2x: thirdUser2x,
+
+  const DAYS = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Sunday',
+  'Saturday',
+];
+
+const DOMAINS = {
+  SERVER_LOCALHOST: 'http://localhost:3000',
+  SERVER_DEPLOY: 'https://waterwise-backend.onrender.com',
 };
 
 const CONSTANTS = {
@@ -63,6 +102,8 @@ const CONSTANTS = {
   WATER_ENDPOINTS,
   WATER_LIMITS,
   USER,
+  DAYS,
+  DOMAINS,
 };
 
 export default CONSTANTS;
