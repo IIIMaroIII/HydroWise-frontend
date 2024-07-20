@@ -8,7 +8,6 @@ import {
   fetchDailyWater,
   fetchMonthlyWater,
 } from './operations.js';
-import { formatISO } from 'date-fns';
 
 const handleRejected = state => {
   state.isLoading = false;
@@ -32,18 +31,38 @@ export const waterSlice = createSlice({
     },
     changeWaterModalEdit(state, action) {
       state.modalFlags.isWaterModalEdit = action.payload;
+      state.modalFlags.isDeleteWaterModalOpen = false;
+      state.modalFlags.isLogoutModalOpen = false;
+      state.modalFlags.isUsersSettingsModalOpen = false;
+      state.modalFlags.isWaterModalAdd = false;
     },
     changeWaterModalAdd(state, action) {
       state.modalFlags.isWaterModalAdd = action.payload;
+      state.modalFlags.isDeleteWaterModalOpen = false;
+      state.modalFlags.isLogoutModalOpen = false;
+      state.modalFlags.isUsersSettingsModalOpen = false;
+      state.modalFlags.isWaterModalEdit = false;
     },
     changeDeleteWaterModalOpen(state, action) {
       state.modalFlags.isDeleteWaterModalOpen = action.payload;
+      state.modalFlags.isWaterModalAdd = false;
+      state.modalFlags.isLogoutModalOpen = false;
+      state.modalFlags.isUsersSettingsModalOpen = false;
+      state.modalFlags.isWaterModalEdit = false;
     },
     changeUsersSettingsModalOpen(state, action) {
       state.modalFlags.isUsersSettingsModalOpen = action.payload;
+      state.modalFlags.isWaterModalAdd = false;
+      state.modalFlags.isLogoutModalOpen = false;
+      state.modalFlags.isDeleteWaterModalOpen = false;
+      state.modalFlags.isWaterModalEdit = false;
     },
     changeLogoutModalOpen(state, action) {
       state.modalFlags.isLogoutModalOpen = action.payload;
+      state.modalFlags.isWaterModalAdd = false;
+      state.modalFlags.isDeleteWaterModalOpen = false;
+      state.modalFlags.isUsersSettingsModalOpen = false;
+      state.modalFlags.isWaterModalEdit = false;
     },
   },
   extraReducers: builder => {
