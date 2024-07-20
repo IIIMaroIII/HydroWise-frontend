@@ -51,18 +51,24 @@ branch -d'
 alias gbd-remote='git branch -r --merged origin/main | grep -v "origin/main" |
 sed "s/origin\///" |$
 
-//================ Home =================// ❗ mobile  
+//================ Home =================// 
+styles
  //=================== SignUpPage ============//
 
 - sign up btn +/-
 - mobile
 - tablet
 - desctop
-- rendering components //============= SignInPage =============// ❗ mobile ❗
-  tablet ❗ desctop //=============== TrackerPage =============// aquatrack
+- rendering components /
+/============= SignInPage =============//
+ ❗ mobile 
+ ❗ tablet 
+ ❗ desctop
+   //=============== TrackerPage =============// aquatrack
   image WaterProgressBar +/-
 
 - addWaterBtn, editWaterBtn, deleteWaterBtn logOutBtn- do not open modals
+-NEW UserSettingsForm(distance between the components, background-color,  ❗ desctop) +/-
 
 WaterList +/-
 
@@ -70,4 +76,8 @@ UserBarPopover: UserBar +/-
 
 Calendar +/- CalendarItem +/-
 
-//=============== Modals ===============// DeleteWaterModal LogOutModal +/-
+//=============== Modals ===============// 
+DeleteWaterModal
+ LogOutModal +/-
+NEW WaterModal +/-
+
