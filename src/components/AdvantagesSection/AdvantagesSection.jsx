@@ -28,7 +28,6 @@ const AdvantagesSection = ({ onOpenModal }) => {
               alt="First user"
               width="47"
               height="47"
-              loading="lazy"
             />
           </picture>
           <picture>
@@ -46,7 +45,6 @@ const AdvantagesSection = ({ onOpenModal }) => {
               alt="Second user"
               width="47"
               height="47"
-              loading="lazy"
             />
           </picture>
           <picture>
@@ -64,7 +62,6 @@ const AdvantagesSection = ({ onOpenModal }) => {
               alt="Third user"
               width="47"
               height="47"
-              loading="lazy"
             />
           </picture>
         </div>

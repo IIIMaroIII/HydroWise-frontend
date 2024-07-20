@@ -6,23 +6,11 @@ import UserSettingsModal from 'src/components/Modals/Modal/UserSettingsModal/Use
 import { useState } from 'react';
 
 const HomePage = () => {
-  // const [isModalOpen, setModalOpen] = useState(false);
-  const handleOpenModal = () => setModalOpen(true);
-  const handleCloseModal = () => setModalOpen(false);
-  const handleUpdate = data => {};
-
   return (
     <Container>
       <div className={css.homePageContainer}>
         <WelcomeSection />
-        <AdvantagesSection onOpenModal={handleOpenModal} />
-        {/* {isModalOpen && (
-          <UserSettingsModal
-            isOpen={isModalOpen}
-            onClose={handleCloseModal}
-            onUpdate={handleUpdate}
-          />
-        )} */}
+        <AdvantagesSection />
       </div>
     </Container>
   );
