@@ -32,7 +32,6 @@ const TrackerPage = () => {
 
   return (
     <div className={css.container}>
-      <Button onClick={handleOnClick}>Refresh the session</Button>
       <WaterMainInfo />
       <WaterDetailedInfo />
     </div>

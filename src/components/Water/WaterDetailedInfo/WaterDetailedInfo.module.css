@@ -2,9 +2,10 @@
   border-radius: 30px;
   background-color: var(--background-grey);
   /* width: 672px; */
+  padding: 40px 20px;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (min-width: 375px) {
   .wrapper {
     /* border-radius: 30px; */
     /* max-width: 343px; */
