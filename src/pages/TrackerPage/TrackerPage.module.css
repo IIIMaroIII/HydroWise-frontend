@@ -2,7 +2,6 @@
   .container {
     display: grid;
     grid-gap: 16px;
-    min-width: 375px;
     padding: 16px;
     margin: 0 auto;
   }
@@ -10,19 +9,12 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    min-width: 704px;
     padding: 32px;
-    margin: 0 auto;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .container {
-    min-width: 704px;
-    padding: 0 16px;
-    margin: 0 auto;
-
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 37px;
   }
