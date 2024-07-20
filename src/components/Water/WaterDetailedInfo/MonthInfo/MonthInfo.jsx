@@ -2,14 +2,24 @@ import { Calendar } from './Calendar/Calendar';
 import { CalendarPagination } from './CalendarPagination/CalendarPagination';
 import sprite from '../../../../assets/pictures/HomePage/sprite.svg';
 import css from './MonthInfo.module.css';
-import { useState } from 'react';
 import ChartComponent from 'src/components/Statistics/ChartComponent';
+import { setShowChart } from 'src/redux/chart/slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const MonthInfo = () => {
-  const [showChart, setShowChart] = useState(false);
+  const dispatch = useDispatch();
+  const showChart = useSelector(state => state.chart.showChart);
+  const navigate = useNavigate();
 
   const handleIconClick = () => {
-    setShowChart(!showChart);
+    const newShowChart = !showChart;
+    dispatch(setShowChart(newShowChart));
+    if (newShowChart) {
+      navigate('/tracker/statistics');
+    } else {
+      navigate('/tracker');
+    }
   };
 
   return (

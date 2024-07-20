@@ -15,6 +15,7 @@ import { setChosenDate } from './redux/water/slice.js';
 import { formatISO } from 'date-fns';
 
 import './App.css';
+import ChartComponent from './components/Statistics/ChartComponent';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +35,9 @@ function App() {
                   <TrackerPage />
                 </PrivateRoute>
               }
-            />
+            >
+              <Route path="statistics" element={<ChartComponent />} />
+            </Route>
           }
           {
             <Route
