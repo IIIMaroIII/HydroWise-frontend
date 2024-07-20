@@ -1,4 +1,3 @@
-import { FaGlassWater, FaPen, FaTrash } from 'react-icons/fa6';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
 import css from './WaterItem.module.css';
 import {
@@ -7,6 +6,7 @@ import {
   changeWaterModalEdit,
 } from 'src/redux/water/slice';
 import { useDispatch } from 'react-redux';
+import sprite from 'src/assets/pictures/HomePage/sprite.svg';
 
 const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -22,12 +22,11 @@ const WaterItem = ({ item }) => {
 
   return (
     <>
-      <div>
-        <FaGlassWater />
-        <p>{item.volume} ml</p>
-        <p>{itemTime}</p>
-      </div>
-      <div className={css.btnContainer}>
+      <svg className={css.iconGlass}>
+        <use href={`${sprite}#icon-glass`}></use>
+      </svg>
+      <div className={css.wrapper}>
+        <p className={css.volume}>{item.volume} ml</p>
         <Button
           addClass={css.button}
           onClick={() => {
@@ -35,9 +34,12 @@ const WaterItem = ({ item }) => {
             dispatch(changeModal(true));
           }}
         >
-          <FaPen />
+          <svg className={css.icon}>
+            <use href={`${sprite}#icon-pen`}></use>
+          </svg>
         </Button>
 
+        <p className={css.itemTime}>{itemTime}</p>
         <Button
           addClass={css.button}
           onClick={() => {
@@ -45,7 +47,9 @@ const WaterItem = ({ item }) => {
             dispatch(changeModal(true));
           }}
         >
-          <FaTrash />
+          <svg className={css.icon}>
+            <use href={`${sprite}#icon-trash`}></use>
+          </svg>
         </Button>
       </div>
     </>
