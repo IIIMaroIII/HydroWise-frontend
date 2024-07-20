@@ -3,12 +3,16 @@ import css from './WelcomeSection.module.css';
 import CustomNavLink from '../REUSABLE/CustomNavLink/CustomNavLink';
 import Logo from '../REUSABLE/Logo/Logo';
 import clsx from 'clsx';
+import { selectUserIsLoggedIn } from '../../redux/users/selectors.js';
+import { useSelector } from 'react-redux';
 
 const WelcomeSection = () => {
+  const isAuthenticated = useSelector(selectUserIsLoggedIn);
+
   return (
-    <div className={css.homePageWelcomeSection}>
+    <div className={clsx(css.homePageWelcomeSection)}>
       <Logo />
-      <div className={css.homePageWelcomeSectionContainer}>
+      <div className={clsx(css.homePageWelcomeSectionContainer)}>
         <p className={css.homePageWelcomeSectionText}>
           Record daily water intake and track
         </p>
@@ -17,13 +21,18 @@ const WelcomeSection = () => {
         </h1>
         <div className={css.homePageBtns}>
           <CustomNavLink
-            className={clsx(css.homePageLinks, css.linkTracker)}
+            addClass={css.isActive}
+            className={clsx(css.homePageLinks, css.linkTracker, {
+              [css.disabledTracker]: isAuthenticated,
+            })}
             to="/signup"
           >
             Try tracker
           </CustomNavLink>
           <CustomNavLink
-            className={clsx(css.homePageLinks, css.linkSignIn)}
+            className={clsx(css.homePageLinks, css.linkSignIn, {
+              [css.disabledSignIn]: isAuthenticated,
+            })}
             to="/signin"
           >
             Sign In
