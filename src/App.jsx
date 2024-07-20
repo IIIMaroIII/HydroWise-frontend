@@ -15,6 +15,7 @@ import { setChosenDate } from './redux/water/slice.js';
 import { formatISO } from 'date-fns';
 
 import './App.css';
+import MainModal from './components/Modals/Modal/MainModal.jsx';
 
 function App() {
   const dispatch = useDispatch();

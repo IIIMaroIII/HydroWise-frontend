@@ -3,20 +3,6 @@ import { formatISO, parseISO } from 'date-fns';
 import CONSTANTS from 'src/components/Constants/constants.js';
 import { AxiosWithCredentials } from 'src/utils/axios.js';
 
-export const fetchDailyWater = createAsyncThunk(
-  'water/fetchDaily',
-  async (_, { getState, rejectWithValue }) => {
-    try {
-      const { chosenDate } = getState().water;
-      const url = `${CONSTANTS.WATER_ENDPOINTS.daily}?chosenDate=${chosenDate}`;
-      const response = await AxiosWithCredentials.get(url);
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  },
-);
-
 export const addWater = createAsyncThunk(
   'water/addWater',
   async ({ waterValue, time }, { rejectWithValue }) => {
@@ -57,6 +43,20 @@ export const changeWater = createAsyncThunk(
         updateVolume,
       );
       console.log(response);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const fetchDailyWater = createAsyncThunk(
+  'water/fetchDaily',
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { chosenDate } = getState().water;
+      const url = `${CONSTANTS.WATER_ENDPOINTS.daily}?chosenDate=${chosenDate}`;
+      const response = await AxiosWithCredentials.get(url);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);

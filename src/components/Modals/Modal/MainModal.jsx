@@ -50,14 +50,6 @@ const MainModal = () => {
         contentLabel="Example Modal"
       >
         {renderModal()}
-        {/* <div>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
-          nobis rem harum voluptatibus placeat unde doloribus obcaecati labore
-          deserunt qui necessitatibus, asperiores ducimus sit tempora illo
-          sapiente, tempore quisquam dolor nisi at delectus? Quidem ipsum cumque
-          officia quasi ipsam ratione, nulla vel commodi fuga fugit natus iure
-          nihil perferendis earum.
-        </div> */}
       </Modal>
     </div>
   );
