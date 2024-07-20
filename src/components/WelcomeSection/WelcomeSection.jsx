@@ -34,7 +34,7 @@ const WelcomeSection = () => {
           <li>
             <CustomNavLink
               className={clsx(css.homePageLinks, css.linkSignIn, {
-                // [css.disabledSignIn]: isAuthenticated,
+                [css.disabledSignIn]: isAuthenticated,
               })}
               to="/signin"
             >
