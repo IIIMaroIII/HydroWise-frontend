@@ -1,11 +1,9 @@
 import css from './signInForm.module.css';
-
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,15 +22,17 @@ const SignInForm = () => {
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Email is invalid').required('Email is required'),
     password: Yup.string()
-      .min(3, 'Password must be at least 6 characters')
+      .min(6, 'Password must be at least 6 characters')
       .required('Password is required'),
   });
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isDirty, isValid },
   } = useForm({
+    mode: 'onChange',
     resolver: yupResolver(validationSchema),
   });
 
@@ -41,10 +41,11 @@ const SignInForm = () => {
       .unwrap()
       .then(res => {
         toast.success(res.message);
+        reset();
         navigate('/tracker');
       })
       .catch(err => {
-        toast.error(err.message);
+        toast.error('Email or password is incorrect, please try again!');
       });
   };
 
@@ -85,7 +86,11 @@ const SignInForm = () => {
               </div>
               {errors.password && <p>{errors.password.message}</p>}
             </div>
-            <Button addClass={css.btnform} type="submit">
+            <Button
+              disabled={!isDirty || !isValid}
+              addClass={css.btnform}
+              type="submit"
+            >
               Sign In
             </Button>
             <div className={css.spanSignIn}>
