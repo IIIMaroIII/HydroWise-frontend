@@ -8,7 +8,6 @@ import { fetchDailyWater, fetchMonthlyWater } from 'src/redux/water/operations';
 import { selectDate } from 'src/redux/water/selectors';
 import { parseDate } from 'src/utils/parseDate';
 import css from './TrackerPage.module.css';
-import Logo from 'src/components/REUSABLE/Logo/Logo';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { setShowChart } from 'src/redux/chart/slice';
@@ -42,7 +41,6 @@ const TrackerPage = () => {
 
   return (
     <div className={css.container}>
-      <Logo />
       <WaterMainInfo />
       <WaterDetailedInfo />
     </div>
