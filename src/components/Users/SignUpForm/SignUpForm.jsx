@@ -109,7 +109,7 @@ const SignUpForm = () => {
             </div>
             <Button addClass={css.btnform}> Sign Up</Button>
             <p className={css.alreadyHaveAcc}>
-              Already have an account? <a href="/signin">Sign In</a>
+              <span className={css.translucentText}> Already have an account?</span> <a href="/signin" className={css.signInRef}>Sign In</a>
             </p>
           </form>
         </div>
