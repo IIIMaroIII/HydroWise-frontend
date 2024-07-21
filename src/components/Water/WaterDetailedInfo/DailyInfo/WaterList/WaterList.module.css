@@ -3,7 +3,7 @@
   gap: 16px;
   overflow-x: scroll;
   width: 100%;
-  /* max-width: 672px; */
+  height: 98px;
   margin: 0 auto;
   padding-bottom: 24px;
 }
@@ -38,10 +38,19 @@
 
 @media screen and (min-width: 375px) {
   .list {
-    /* max-width: 303px; */
+    /* height: 134px; */
   }
 
   .item {
     min-width: 149px;
   }
+}
+
+@media screen and (min-width: 768px) {
+  .list {
+    height: 110px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
 }
