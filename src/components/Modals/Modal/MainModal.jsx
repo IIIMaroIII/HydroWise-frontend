@@ -53,6 +53,7 @@ const MainModal = () => {
         className={css.mainModalStyle}
       >
         {renderModal()}
+
         <button className={css.closeBtn} onClick={() => dispatch(changeModal(false))}>
           <RxCross1 className={css.crossIcon} />
         </button>
