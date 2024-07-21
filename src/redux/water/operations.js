@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { CiLogin } from 'react-icons/ci';
 import CONSTANTS from 'src/components/Constants/constants.js';
 import { AxiosWithCredentials } from 'src/utils/axios.js';
 
@@ -20,13 +21,18 @@ export const addWater = createAsyncThunk(
 
 export const deleteWater = createAsyncThunk(
   'water/deleteWater',
-  async (id, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
+    const id = getState().water.chosenWaterCardId;
+    console.log(id);
     try {
-      const response = await AxiosWithCredentials.delete(
+      await AxiosWithCredentials.delete(
         `${CONSTANTS.WATER_ENDPOINTS.water}/${id}`,
       );
-      console.log(response);
-      return response.data;
+
+      const items = getState().water.water.dailyItems.filter(
+        item => item._id !== id,
+      );
+      return items;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -35,14 +41,15 @@ export const deleteWater = createAsyncThunk(
 
 export const changeWater = createAsyncThunk(
   'water/changeWater',
-  async ({ id, updateVolume }, { rejectWithValue }) => {
+  async (formData, { rejectWithValue }) => {
     try {
-      const response = await AxiosWithCredentials.patch(
-        `${CONSTANTS.WATER_ENDPOINTS.water}/${id}`,
-        updateVolume,
-      );
-      console.log(response);
-      return response.data;
+      console.log('formData', formData);
+      // const response = await AxiosWithCredentials.patch(
+      //   `${CONSTANTS.WATER_ENDPOINTS.water}/${id}`,
+      //   formData,
+      // );
+      // console.log(response);
+      // return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

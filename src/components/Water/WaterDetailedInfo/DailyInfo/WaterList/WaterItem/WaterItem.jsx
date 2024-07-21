@@ -3,10 +3,12 @@ import css from './WaterItem.module.css';
 import {
   changeDeleteWaterModalOpen,
   changeModal,
+  changeWaterCardId,
   changeWaterModalEdit,
 } from 'src/redux/water/slice';
 import { useDispatch } from 'react-redux';
 import sprite from 'src/assets/pictures/HomePage/sprite.svg';
+import { CiLogin } from 'react-icons/ci';
 
 const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -36,6 +38,7 @@ const WaterItem = ({ item }) => {
           onClick={() => {
             dispatch(changeWaterModalEdit(true));
             dispatch(changeModal(true));
+            dispatch(changeWaterCardId(item._id));
           }}
         >
           <svg className={css.icon}>
@@ -49,6 +52,7 @@ const WaterItem = ({ item }) => {
           onClick={() => {
             dispatch(changeDeleteWaterModalOpen(true));
             dispatch(changeModal(true));
+            dispatch(changeWaterCardId(item._id));
           }}
         >
           <svg className={css.icon}>

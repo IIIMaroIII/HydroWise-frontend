@@ -50,18 +50,19 @@ const WaterForm = ({ operationName }) => {
     const formData = new FormData();
     formData.append('time', `${hours}:${minutes}`);
     formData.append('waterValue', waterValue);
+    console.log('formData', formData);
 
-    dispatch(addWater(formData))
-      .unwrap()
-      .then(result => {
-        toast.success(result.message);
-        reset();
-      })
-      .catch(err => {
-        toast.error(
-          'There was an error submitting the form, please try again!',
-        );
-      });
+    // dispatch(addWater(formData))
+    //   .unwrap()
+    //   .then(result => {
+    //     toast.success(result.message);
+    //     reset();
+    //   })
+    //   .catch(err => {
+    //     toast.error(
+    //       'There was an error submitting the form, please try again!',
+    //     );
+    //   });
   };
 
   const addWaterAmount = () => {
