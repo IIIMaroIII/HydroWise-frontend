@@ -1,4 +1,6 @@
-:root {
+@import url('../../../index.css');
+
+/* :root {
   --green: #9be1a0;
   --green-hover: #87d28d;
   --white: #ffffff;
@@ -6,7 +8,7 @@
   --dark-grey: #323f47;
   --black: #2f2f2f;
   --red-error: #ef5050;
-}
+} */
 
 .imageSection {
   display: none;
@@ -62,12 +64,12 @@
   flex-direction: column;
   justify-content: center;
   /* height: 100vh; */
-  background-color: var(--grey);
+  background-color: var(--light-grey);
 }
 
 h2.formTitle {
   margin-bottom: 20px;
-  color: var(--dark-grey);
+  color: var(--dark-blue);
   font-weight: 700;
   font: Mobile/H2;
   font-size: 32px;
@@ -88,7 +90,7 @@ h2.formTitle {
   line-height: 1.29;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--black);
+  color: var(--dark-grey);
 }
 
 .inputContainer input {
@@ -98,12 +100,12 @@ h2.formTitle {
   border-radius: 15px;
   font-size: 14px;
   font-weight: 400;
-  color: var(--black);
+  color: var(--dark-grey);
   opacity: 60%;
 }
 
 .inputContainer input:focus {
-  border-color: var(--green-hover);
+  border-color: var(--green);
   outline: none;
 }
 
@@ -115,7 +117,7 @@ h2.formTitle {
 p {
   text-align: center;
   margin-top: 20px;
-  color: var(--black);
+  color: var(--dark-grey);
   opacity: 50%;
   text-decoration: none;
   font-weight: 400;
@@ -124,7 +126,7 @@ p {
 }
 
 a {
-  color: var(--black);
+  color: var(--dark-grey);
   text-decoration: underline;
   font-size: 14px;
   font-weight: 700;
@@ -156,10 +158,10 @@ p a:hover {
 .btnform {
   width: 100%;
   padding: 10px;
-  background-color: var(--green);
+  background-color: var(--light-green);
   border: none;
   border-radius: 30px;
-  color: var(--dark-grey);
+  color: var(--dark-blue);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.29;
@@ -198,12 +200,12 @@ p a:hover {
 
 .form input:hover,
 .form input:focus {
-  border-color: var(--green-hover);
+  border-color: var(--green);
 }
 
 .btnform:hover,
 .btnform:active {
-  background-color: var(--green-hover);
+  background-color: var(--green);
 }
 
 /* .btnform:disabled {
