@@ -15,6 +15,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import Photo from './Rectangle 19.jpg';
 import { signIn, signUp } from 'src/redux/users/operations.js';
 import toast from 'react-hot-toast';
+import Logo from 'src/components/REUSABLE/Logo/Logo';
 
 
 const SignUpForm = () => {
@@ -63,7 +64,9 @@ const SignUpForm = () => {
 
   return (
     <div className={css.signUpContainer}>
+      
       <div className={css.signUpForm}>
+      <Logo />
         <div className={css.formSection}>
           <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
           {/* <Logo /> */}
