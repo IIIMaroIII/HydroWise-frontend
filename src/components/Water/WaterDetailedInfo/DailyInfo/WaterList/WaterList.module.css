@@ -1,9 +1,9 @@
 .list {
   display: flex;
   gap: 16px;
-  overflow-x: scroll;
-  width: 100%;
-  /* max-width: 672px; */
+  max-width: 672px;
+  overflow-x: auto;
+  white-space: nowrap;
   margin: 0 auto;
   padding-bottom: 24px;
 }
