@@ -1,10 +1,35 @@
+.chartContainer {
+  box-sizing: border-box;
+  margin-top: 47px;
+
+  @media (width>=768px) {
+    /* padding: 20px; */
+    margin-top: 49px;
+    padding-right: 23px;
+  }
+
+  @media (width>=1440px) {
+    padding-right: 10px;
+  }
+}
+
 .customTooltip {
-  background-color: white;
+  background-color: #dadada;
   border: 1px solid #ccc;
   padding: 5px;
-  border-radius: 3px;
+  border-radius: 15px;
+  width: 80px;
+  height: 39px;
+  /* left: 49.01%;
+right: 39.63%;
+top: 57.47%;
+bottom: 36.01%; */
 }
 
 .label {
-  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 187%;
+  color: var(--basic-dark-blue);
 }
