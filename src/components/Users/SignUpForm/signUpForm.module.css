@@ -1,3 +1,8 @@
+
+@import url('../../../index.css');
+
+
+
 .imageSection {
   display: none;
 }
@@ -15,18 +20,21 @@
   /* height: 100vh; */
   /* padding: 16px; */
   background-color: var(--white);
+  border-radius: 30px;
   overflow: hidden;
 }
 
 .signUpForm {
   display: flex;
-  background-color: var(--white);
-  border-radius: 30px;
+  flex-direction: column;
+  background-color: var(--light-grey);
+  /* border-radius: 30px; */
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-  overflow: hidden;
+  /* overflow: hidden; */
   /* max-width: 732px; */
   /* width: 100%; */
   margin: 0 auto;
+  padding: 32px;
 }
 
 .inputContainer .togglePassword {
@@ -52,12 +60,13 @@
   flex-direction: column;
   justify-content: center;
   /* height: 100vh; */
-  background-color: var(--grey);
+  background-color: var(--light-grey);
+  /* min-width: 311px; */
 }
 
 h2.formTitle {
   margin-bottom: 20px;
-  color: var(--dark-grey);
+  color: var(--dark-blue);
   font-weight: 700;
   font: Mobile/H2;
   font-size: 32px;
@@ -78,7 +87,7 @@ h2.formTitle {
   line-height: 1.29;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--black);
+  color: var(--dark-grey);
 }
 
 .inputContainer input {
@@ -88,42 +97,51 @@ h2.formTitle {
   border-radius: 15px;
   font-size: 14px;
   font-weight: 400;
-  color: var(--black);
+  color: var(--dark-grey);
   opacity: 60%;
 }
 
 .inputContainer input:focus {
-  border-color: var(--green-hover);
+  border-color: var(--green);
   outline: none;
 }
 
-.inputContainer p {
+.inputContainer .error{
   color: var(--red-error);
   margin: 5px 0 0;
 }
 
-/* p {
+
+.alreadyHaveAcc {
+
   text-align: center;
   margin-top: 20px;
-  color: var(--black);
-  opacity: 50%;
+  color: var(--dark-grey);
+ 
   text-decoration: none;
   font-weight: 400;
 
   font-size: 14px;
 }
-// Никаких БАЗОВЫХ СЕЛЕКТОРОВ !!!
-a {
-  color: var(--black);
-  text-decoration: underline;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 18px;
-  cursor: pointer;
-  letter-spacing: -0.01em;
+
+
+.translucentText{
+  opacity: 50%;
 }
 
-p a:hover {
+
+.signInRef {
+  color: var(--dark-grey);
+  text-decoration: underline;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  
+}
+
+/* .alreadyHaveAcc .signInRef:hover {
   text-decoration: underline;
 } */
 
@@ -146,10 +164,10 @@ p a:hover {
 .btnform {
   width: 100%;
   padding: 10px;
-  background-color: var(--green);
+  background-color: var(--light-green);
   border: none;
   border-radius: 30px;
-  color: var(--dark-grey);
+  color: var(--dark-blue);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.29;
@@ -188,12 +206,12 @@ p a:hover {
 
 .form input:hover,
 .form input:focus {
-  border-color: var(--green-hover);
+  border-color: var(--green);
 }
 
 .btnform:hover,
 .btnform:active {
-  background-color: var(--green-hover);
+  background-color: var(--green);
 }
 
 /* .btnform:disabled {
@@ -203,6 +221,12 @@ p a:hover {
 } */
 
 @media (min-width: 768px) {
+
+  .formSection {
+min-width: 436px;
+  }
+
+
   .form {
     margin-bottom: 100px;
   }
@@ -252,11 +276,12 @@ p a:hover {
   .signUpContainer {
     /* padding: 32px; */
     background-color: var(--white);
-    border-radius: 30px;
+    /* border-radius: 30px; */
+    min-width: 672px;
   }
 
   .signUpForm {
-    background-color: var(--white);
+    /* background-color: var(--white); */
     width: 100%;
     height: 100%;
     /* border-radius: 30px; */
@@ -270,9 +295,9 @@ p a:hover {
     margin-bottom: 20px;
   }
 
-  .formSection {
+  /* .formSection {
     margin-right: 32px;
-  }
+  } */
 
   .btnForm {
     display: flex;
