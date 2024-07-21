@@ -17,7 +17,7 @@ import { chartReducer } from './chart/slice';
 
 const rootReducer = {
   users: persistReducer(persistConfig.users, usersReducer),
-  water: waterReducer,
+  water: persistReducer(persistConfig.water, waterReducer),
   chart: chartReducer,
 };
 
@@ -27,6 +27,7 @@ const store = configureStore({
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredActionPaths: ['payload', 'meta.arg'],
       },
     }),
 });

@@ -3,11 +3,11 @@ import css from './WelcomeSection.module.css';
 import CustomNavLink from '../REUSABLE/CustomNavLink/CustomNavLink';
 import Logo from '../REUSABLE/Logo/Logo';
 import clsx from 'clsx';
-import { selectUserIsLoggedIn } from '../../redux/users/selectors.js';
-import { useSelector } from 'react-redux';
+// import { selectUserIsLoggedIn } from '../../redux/users/selectors.js';
+// import { useSelector } from 'react-redux';
 
 const WelcomeSection = () => {
-  const isAuthenticated = useSelector(selectUserIsLoggedIn);
+  // const isAuthenticated = useSelector(selectUserIsLoggedIn);
 
   return (
     <div className={clsx(css.homePageWelcomeSection)}>
