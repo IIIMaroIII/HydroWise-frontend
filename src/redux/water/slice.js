@@ -23,6 +23,9 @@ export const waterSlice = createSlice({
   name: 'water',
   initialState: initialState,
   reducers: {
+    changeWaterCardId(state, { payload }) {
+      state.chosenWaterCardId = payload;
+    },
     changeModal(state, action) {
       state.modalFlags.isModalOpen = action.payload;
     },
@@ -90,11 +93,13 @@ export const waterSlice = createSlice({
           },
         });
       })
-      .addCase(deleteWater.fulfilled, (state, action) => {
+      .addCase(deleteWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.water.dailyItems = state.water.dailyItems.filter(
-          item => item.id !== action.payload.id,
-        );
+        state.water.dailyItems = payload;
+      })
+      .addCase(changeWater.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        // state.water.dailyItems = payload;
       })
       .addCase(fetchMonthlyWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
@@ -116,6 +121,7 @@ export const {
   changeUsersSettingsModalOpen,
   changeLogoutModalOpen,
   totalDailyVolumes,
+  changeWaterCardId,
 } = waterSlice.actions;
 
 export const waterReducer = waterSlice.reducer;
