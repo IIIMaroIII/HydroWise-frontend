@@ -9,7 +9,7 @@
 
 @media screen and (min-width: 375px) {
   .list {
-    gap: 20px 18px;
+    /* gap: 20px 18px; */
   }
 }
 

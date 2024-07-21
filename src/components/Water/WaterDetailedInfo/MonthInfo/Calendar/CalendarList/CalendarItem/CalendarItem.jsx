@@ -17,7 +17,9 @@ export const CalendarItem = ({ day }) => {
   const { setChosenDay } = useChosenDate();
   const { dailyVolumesPercentage, dailyItems } = useDailyVolumes();
 
-  
+  const dailyVolume = () => {
+    return dailyVolumesPercentage > 100 ? 100 : dailyVolumesPercentage;
+  };
 
   return (
     <>
@@ -47,7 +49,7 @@ export const CalendarItem = ({ day }) => {
         >
           {day}
         </Button>
-        {!dailyItems ? <p> 0 %</p> : <p>{`${dailyVolumesPercentage}%`}</p>}
+        {!dailyItems ? <p> 0 %</p> : <p>{`${dailyVolume()}%`}</p>}
       </li>
     </>
   );
