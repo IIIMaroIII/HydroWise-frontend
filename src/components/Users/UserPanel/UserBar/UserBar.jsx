@@ -12,7 +12,7 @@ const UserBar = () => {
     setIsPopoverOpen(!isPopoverOpen);
   };
   return (
-    <>
+    <div className={css.container}>
       <Button onClick={togglePopover} addClass={css.user_bar_wrapper}>
         {<p>{user?.name}</p> ?? <p>User</p>}
         <div className={css.user_avatar}>
@@ -31,7 +31,7 @@ const UserBar = () => {
         )}
       </Button>
       {isPopoverOpen && <UserBarPopover onClose={togglePopover} />}
-    </>
+    </div>
   );
 };
 

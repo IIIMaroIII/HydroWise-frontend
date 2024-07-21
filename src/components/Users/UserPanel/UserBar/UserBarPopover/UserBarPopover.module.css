@@ -6,6 +6,7 @@
   display: flex;
   gap: 8px;
 }
+
 .popover_list {
   border-radius: 15px;
   width: 137px;
@@ -19,4 +20,15 @@
   padding: 14px 20px;
   gap: 8px;
   margin-top: 4px;
+  z-index: 999;
+}
+
+@media screen and (min-width: 375px) {
+}
+@media screen and (min-width: 768px) {
+  .popover_list {
+    margin-top: 8px;
+  }
+}
+@media screen and (min-width: 1440px) {
 }

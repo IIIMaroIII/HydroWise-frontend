@@ -4,7 +4,18 @@
   gap: 20px 18px;
   padding: 0;
   list-style-type: none;
-  padding-top: 24px;
+  margin-top: 24px;
+}
+
+@media screen and (min-width: 375px) {
+  /* .list {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    gap: 20px 18px;
+    padding: 0;
+    list-style-type: none;
+    padding-top: 24px;
+  } */
 }
 
 @media screen and (min-width: 768px) {
@@ -14,9 +25,8 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1440px) {
   .list {
-    grid-template-columns: repeat(8, auto);
     gap: 15px 43px;
   }
 }

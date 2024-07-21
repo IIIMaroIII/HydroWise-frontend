@@ -17,6 +17,8 @@ export const CalendarItem = ({ day }) => {
   const { setChosenDay } = useChosenDate();
   const { dailyVolumesPercentage, dailyItems } = useDailyVolumes();
 
+  
+
   return (
     <>
       <li className={css.item}>
