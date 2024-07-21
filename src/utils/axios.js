@@ -5,7 +5,7 @@ import store from 'src/redux/store.js';
 import toast from 'react-hot-toast';
 
 export const AxiosWithCredentials = axios.create({
-  baseURL: CONSTANTS.DOMAINS.SERVER_DEPLOY,
+  baseURL: CONSTANTS.DOMAINS.SERVER_LOCALHOST,
   withCredentials: true,
 });
 
