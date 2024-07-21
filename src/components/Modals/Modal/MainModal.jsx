@@ -1,4 +1,6 @@
 import Modal from 'react-modal';
+import css from './modal.module.css';
+import { RxCross1 } from 'react-icons/rx';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectIsModalOpen,
@@ -48,8 +50,13 @@ const MainModal = () => {
         isOpen={modal}
         onRequestClose={() => dispatch(changeModal(false))}
         contentLabel="Example Modal"
+        className={css.mainModalStyle}
       >
         {renderModal()}
+
+        <button className={css.closeBtn} onClick={() => dispatch(changeModal(false))}>
+          <RxCross1 className={css.crossIcon} />
+        </button>
       </Modal>
     </div>
   );

@@ -7,13 +7,17 @@
   padding: 6px 12px;
   width: 137px;
   height: 50px;
-  border: 1px solid black;
+  background-color: var(--basic-dark-blue);
 }
 
 .user_avatar {
   width: 38px;
   height: 38px;
   border-radius: 50%;
+}
+
+.arrowIcon {
+  color: var(--white);
 }
 
 /* @media screen and (min-width:768px) {

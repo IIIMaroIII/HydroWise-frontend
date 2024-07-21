@@ -16,17 +16,10 @@ import { formatISO, parseISO } from 'date-fns';
 
 import './App.css';
 import useChosenDate from './hooks/useChosenDate.js';
+import ChartComponent from './components/Statistics/ChartComponent';
 
 function App() {
   const { chosenDate } = useChosenDate();
-  console.log('chosenDate in App', chosenDate);
-  // console.log('getUtcDate', getUtcDate());
-  // console.log('parseISO getUtcDate', parseISO(getUtcDate()));
-  // console.log('parsedChosenDate', parsedChosenDate);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(setChosenDate(formatISO(new Date())));
-  // }, [dispatch]);
   return (
     <>
       <SharedLayout>
@@ -40,7 +33,9 @@ function App() {
                   <TrackerPage />
                 </PrivateRoute>
               }
-            />
+            >
+              <Route path="statistics" element={<ChartComponent />} />
+            </Route>
           }
           {
             <Route
