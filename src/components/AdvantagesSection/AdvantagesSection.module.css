@@ -151,6 +151,12 @@
 .homePageBenefitsItemsSettings {
   background-color: var(--white);
   color: var(--basic-dark-blue);
+  pointer-events: none;
+}
+
+.homePageBenefitsItemsSettingsActive {
+  cursor: pointer;
+  pointer-events: all;
 }
 
 .homePageBenefitsIcon {

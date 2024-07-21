@@ -42,6 +42,7 @@ const TrackerPage = () => {
 
   return (
     <div className={css.container}>
+      <Logo />
       <WaterMainInfo />
       <WaterDetailedInfo />
     </div>

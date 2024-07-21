@@ -6,6 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUserIsLoggedIn } from 'src/redux/users/selectors';
 import { IMAGES } from '../../components/Constants/constants.js';
 import { setShowChart } from '../../redux/chart/slice.js';
+import {
+  changeModal,
+  changeUsersSettingsModalOpen,
+} from 'src/redux/water/slice';
 
 const AdvantagesSection = ({ onOpenModal }) => {
   const isAuthenticated = useSelector(selectUserIsLoggedIn);
@@ -141,8 +145,15 @@ const AdvantagesSection = ({ onOpenModal }) => {
           className={clsx(
             css.homePageBenefitsItems,
             css.homePageBenefitsItemsSettings,
+            {
+              [css.homePageBenefitsItemsSettingsActive]: isAuthenticated,
+            },
           )}
-          onClick={onOpenModal}
+          onClick={() => {
+            dispatch(changeUsersSettingsModalOpen(true));
+            dispatch(changeModal(true));
+            onclose();
+          }}
         >
           Personal rate setting
         </li>
