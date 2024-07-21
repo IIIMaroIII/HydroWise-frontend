@@ -1,14 +1,7 @@
+
 @import url('../../../index.css');
 
-/* :root {
-  --green: #9be1a0;
-  --green-hover: #87d28d;
-  --white: #ffffff;
-  --grey: #f0eff4;
-  --dark-grey: #323f47;
-  --black: #2f2f2f;
-  --red-error: #ef5050;
-} */
+
 
 .imageSection {
   display: none;
@@ -118,7 +111,9 @@ h2.formTitle {
   margin: 5px 0 0;
 }
 
+
 .alreadyHaveAcc {
+
   text-align: center;
   margin-top: 20px;
   color: var(--dark-grey);
@@ -128,6 +123,7 @@ h2.formTitle {
 
   font-size: 14px;
 }
+
 
 .translucentText{
   opacity: 50%;
@@ -159,7 +155,7 @@ h2.formTitle {
 
 .imageSection img {
   object-fit: cover;
-  
+
   width: 100%;
 }
 
@@ -319,10 +315,6 @@ min-width: 436px;
   background-color: transparent;
 }
 
-
 .signUpContainer {
-
   margin: 0 auto;
-
 }
-

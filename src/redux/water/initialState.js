@@ -1,7 +1,10 @@
+import { formatISO } from 'date-fns';
+
 export const initialState = {
   water: {
-    dailyNorma: 2,
     dailyItems: [],
+    totalDailyVolume: 0,
+    totalMonthlyVolume: 0,
     monthlyItems: [],
   },
   modalFlags: {
@@ -10,9 +13,10 @@ export const initialState = {
     isDeleteWaterModalOpen: false,
     isUsersSettingsModalOpen: false,
     isLogoutModalOpen: false,
+    isWaterModalEdit: false,
+    isWaterModalAdd: false,
   },
-  currentDate: null,
-  chosenDate: null,
+  chosenDate: formatISO(new Date()),
   isLoading: false,
   error: null,
 };
