@@ -33,3 +33,7 @@ bottom: 36.01%; */
   line-height: 187%;
   color: var(--basic-dark-blue);
 }
+
+.container {
+  margin-top: 47px;
+}

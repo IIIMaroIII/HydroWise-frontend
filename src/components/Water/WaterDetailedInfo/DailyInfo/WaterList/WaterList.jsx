@@ -1,25 +1,15 @@
 import WaterItem from './WaterItem/WaterItem.jsx';
 import css from '../WaterList/WaterList.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectWaterItems } from 'src/redux/water/selectors.js';
-import { useEffect } from 'react';
-import {
-  fetchDailyWater,
-  fetchMonthlyWater,
-} from 'src/redux/water/operations.js';
+import {} from 'src/redux/water/operations.js';
 
 const WaterList = () => {
-  const dispatch = useDispatch();
   const dailyItems = useSelector(selectWaterItems);
-
-  useEffect(() => {
-    dispatch(fetchDailyWater());
-    dispatch(fetchMonthlyWater());
-  }, [dispatch]);
 
   return (
     <ul className={css.list}>
-      {dailyItems.length === 0 ? (
+      {!dailyItems ? (
         <p>You do not have any records!</p>
       ) : (
         dailyItems.map(item => {

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
 
-const LogoutModal = () => {
+const LogoutModal = ({ children, ...otherProps }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,11 +24,22 @@ const LogoutModal = () => {
       <h2 className={css.title}>Log out</h2>
       <p className={css.text}>Do you really want to leave?</p>
 
-      <Button addClass={css.logoutModal_logoutBtn} onClick={handleSubmit}>
-        Logout
+      <Button
+        addClass={css.logoutModal_logoutBtn}
+        onClick={handleSubmit}
+        {...otherProps}
+      >
+        {children || 'Log out'}
       </Button>
-      <Button addClass={css.logoutModal_cancelBtn} onClick={() => {}}>
-        Cancel
+      <Button
+        addClass={css.logoutModal_cancelBtn}
+        onClick={() => {
+          useDispatch(changeLogoutModalOpen(false));
+          dispatch(changeModal(false));
+        }}
+        {...otherProps}
+      >
+        {children || 'Cancel'}
       </Button>
     </div>
   );

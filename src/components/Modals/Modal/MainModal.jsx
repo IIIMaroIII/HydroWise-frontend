@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import css from './modal.module.css';
+import css from './mainModal.module.css';
 import { RxCross1 } from 'react-icons/rx';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -25,12 +25,26 @@ const MainModal = () => {
   const logoutModal = useSelector(selectIsLogoutModalOpen);
   const usersSettingsModal = useSelector(selectIsUsersSettingsModalOpen);
 
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+    overlay: {
+      backgroundColor: 'rgba(47, 47, 47, 0.6)',
+    },
+  };
+
   const renderModal = () => {
     if (waterModalEdit) {
-      return <WaterModal operationName="edit" />;
+      return <WaterModal operationType="edit" />;
     }
     if (waterModalAdd) {
-      return <WaterModal operationName="add" />;
+      return <WaterModal operationType="add" />;
     }
     if (deleteWaterModal) {
       return <DeleteWaterModal />;
@@ -44,16 +58,20 @@ const MainModal = () => {
   };
 
   return (
-    <div>
+    <div className={css.backdrop}>
       <Modal
         appElement={document.getElementById('root')}
         isOpen={modal}
         onRequestClose={() => dispatch(changeModal(false))}
         contentLabel="Example Modal"
-        className={css.mainModalStyle}
+        style={customStyles}
       >
         {renderModal()}
-        <button className={css.closeBtn} onClick={() => dispatch(changeModal(false))}>
+
+        <button
+          className={css.closeBtn}
+          onClick={() => dispatch(changeModal(false))}
+        >
           <RxCross1 className={css.crossIcon} />
         </button>
       </Modal>

@@ -7,7 +7,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '../Button/Button';
 import waterSchemas from 'src/Validation/Water/waterSchemas';
 import CONSTANTS from 'src/components/Constants/constants';
+import { useDispatch } from 'react-redux';
+import { addWater } from 'src/redux/water/operations';
+import { toast } from 'react-hot-toast';
+
 const WaterForm = ({ operationName }) => {
+  const dispatch = useDispatch();
   const [amount, setAmount] = useState(50);
   const buttonAddWater = useRef(null);
   const buttonSubtractWater = useRef(null);
@@ -37,10 +42,26 @@ const WaterForm = ({ operationName }) => {
   let waterAmount = watch('waterValue', '');
 
   const onSubmit = ({ waterValue }) => {
-    console.log('Submitted data:', {
-      time: now,
-      waterValue: waterValue,
-    });
+    if (Object.keys(errors).length > 0) {
+      toast.error('Please fix the errors before submitting.');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('time', `${hours}:${minutes}`);
+    formData.append('waterValue', waterValue);
+
+    dispatch(addWater(formData))
+      .unwrap()
+      .then(result => {
+        toast.success(result.message);
+        reset();
+      })
+      .catch(err => {
+        toast.error(
+          'There was an error submitting the form, please try again!',
+        );
+      });
   };
 
   const addWaterAmount = () => {
@@ -147,9 +168,9 @@ const WaterForm = ({ operationName }) => {
             {errors.waterValue && <p>{errors.waterValue.message}</p>}
           </label>
         </div>
-        <Button className={css.saveBtn}>
-          Save
-          {/* {operationName === 'edit' ? 'Update' : 'Add'} */}
+        <Button className={css.saveBtn} type="submit" onClick={onSubmit}>
+          {/* Save */}
+          {operationName === 'edit' ? 'Update Save' : 'Save'}
         </Button>
       </form>
     </div>

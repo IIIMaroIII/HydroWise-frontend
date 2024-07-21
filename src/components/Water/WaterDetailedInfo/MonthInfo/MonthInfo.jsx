@@ -30,16 +30,18 @@ const MonthInfo = () => {
         ) : (
           <h3 className={css.month}>Month</h3>
         )}
-        <CalendarPagination />
-        <svg
-          className={css.monthInfoIcon}
-          width="20"
-          height="20"
-          onClick={handleIconClick}
-          style={{ cursor: 'pointer' }}
-        >
-          <use href={`${sprite}#icon-pie-chart-02`}></use>
-        </svg>
+        <div className={css.paginationWrapper}>
+          <CalendarPagination />
+          <svg
+            className={css.monthInfoIcon}
+            width="20"
+            height="20"
+            onClick={handleIconClick}
+            style={{ cursor: 'pointer' }}
+          >
+            <use href={`${sprite}#icon-pie-chart-02`}></use>
+          </svg>
+        </div>
       </div>
       {showChart ? <ChartComponent /> : <Calendar />}
     </>
