@@ -15,6 +15,7 @@ import DeleteWaterModal from './DeleteWaterModal/DeleteWaterModal';
 import LogoutModal from './LogoutModal/LogoutModal';
 import UserSettingsModal from './UserSettingsModal/UserSettingsModal';
 import { changeModal } from 'src/redux/water/slice.js';
+import { bool } from 'yup';
 
 const MainModal = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,8 @@ const MainModal = () => {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
+      borderRadius: '15px',
+      boxShadow: '0px 4px 50px 0px rgba(0, 0, 0, 0.1)',
     },
     overlay: {
       backgroundColor: 'rgba(47, 47, 47, 0.6)',
