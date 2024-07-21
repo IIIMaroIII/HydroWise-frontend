@@ -109,12 +109,12 @@ h2.formTitle {
   outline: none;
 }
 
-.inputContainer p {
+.inputContainer .error{
   color: var(--red-error);
   margin: 5px 0 0;
 }
 
-p {
+.alreadyHaveAcc {
   text-align: center;
   margin-top: 20px;
   color: var(--dark-grey);
@@ -135,7 +135,7 @@ a {
   letter-spacing: -0.01em;
 }
 
-p a:hover {
+.alreadyHaveAcc a:hover {
   text-decoration: underline;
 }
 
