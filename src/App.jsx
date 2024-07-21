@@ -12,19 +12,21 @@ import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
 import { useDispatch } from 'react-redux';
 import { setChosenDate } from './redux/water/slice.js';
-import { formatISO } from 'date-fns';
+import { formatISO, parseISO } from 'date-fns';
 
 import './App.css';
+import useChosenDate from './hooks/useChosenDate.js';
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(setChosenDate(formatISO(new Date())));
-    console.log(
-      'dispatch formatISO into redux state',
-      setChosenDate(formatISO(new Date())),
-    );
-  }, [dispatch]);
+  const { chosenDate } = useChosenDate();
+  console.log('chosenDate in App', chosenDate);
+  // console.log('getUtcDate', getUtcDate());
+  // console.log('parseISO getUtcDate', parseISO(getUtcDate()));
+  // console.log('parsedChosenDate', parsedChosenDate);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(setChosenDate(formatISO(new Date())));
+  // }, [dispatch]);
   return (
     <>
       <SharedLayout>
