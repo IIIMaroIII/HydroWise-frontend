@@ -147,9 +147,9 @@ const WaterForm = ({ operationName }) => {
             {errors.waterValue && <p>{errors.waterValue.message}</p>}
           </label>
         </div>
-        <Button className={css.saveBtn}>
-          Save
-          {/* {operationName === 'edit' ? 'Update' : 'Add'} */}
+        <Button className={css.saveBtn} type="submit">
+          {/* Save */}
+          {operationName === 'edit' ? 'Update Save' : 'Save'}
         </Button>
       </form>
     </div>
