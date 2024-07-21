@@ -14,6 +14,8 @@ export const CalendarItem = ({ day }) => {
   const user = useSelector(selectUser);
   const percentage = (water.totalVolume / (user.dailyNorma * 1000)) * 100;
 
+  
+
   return (
     <>
       <li className={css.item}>
