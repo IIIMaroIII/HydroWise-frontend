@@ -1,17 +1,13 @@
 import css from './userSettingsForm.module.css';
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import Container from 'src/components/REUSABLE/Container/Container.jsx';
 import Button from 'src/components/REUSABLE/Button/Button';
-
 import { useSelector } from 'react-redux';
 import { selectUser } from 'src/redux/users/selectors.js';
 import { useDispatch } from 'react-redux';
-
 import userSettingsFormValidation from 'src/Validation/Forms/userSettingsForm';
 
-const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
+const UsersSettingsForm = () => {
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
@@ -24,6 +20,8 @@ const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
     resolver: yupResolver(userSettingsFormValidation),
     defaultValues: {
       gender: 'woman',
+      weight: 0,
+      activeTime: 0,
       waterIntake: 1.8,
     },
   });
@@ -41,29 +39,14 @@ const UsersSettingsForm = ({ isOpen, onClose, onUpdate }) => {
     // dispatch(updateUserSettings(formData));
 
     reset();
-    onClose();
   };
-
-  useEffect(() => {
-    const handleEscape = e => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-    document.addEventListener('keydown', handleEscape);
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-    };
-  }, [onClose]);
-
-  if (!isOpen) return null;
 
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Button addClass={css.apButtonCancel} type="button" onClick={onClose}>
+        {/* <Button addClass={css.apButtonCancel} type="button" onClick={onClose}>
           x
-        </Button>
+        </Button> */}
         <div>
           <img
             className={css.photoUrl}
