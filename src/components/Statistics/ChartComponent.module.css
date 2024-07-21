@@ -3,7 +3,6 @@
   margin-top: 47px;
 
   @media (width>=768px) {
-    /* padding: 20px; */
     margin-top: 49px;
     padding-right: 23px;
   }
@@ -13,27 +12,31 @@
   }
 }
 
-.customTooltip {
-  background-color: #dadada;
-  border: 1px solid #ccc;
-  padding: 5px;
-  border-radius: 15px;
-  width: 80px;
+.tooltipIcon {
+  width: 53px;
   height: 39px;
-  /* left: 49.01%;
-right: 39.63%;
-top: 57.47%;
-bottom: 36.01%; */
+  position: absolute;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+
+  @media (width>=768px) {
+    width: 80px;
+    height: 48px;
+  }
 }
 
 .label {
   font-family: 'Poppins', sans-serif;
+  fill: var(--basic-dark-blue);
   font-weight: 700;
-  font-size: 12px;
-  line-height: 187%;
-  color: var(--basic-dark-blue);
-}
+  font-size: 10px;
+  line-height: 100%;
+  position: absolute;
+  transform: translate(7px, 18px);
 
-.container {
-  margin-top: 47px;
+  @media (width>=768px) {
+    font-size: 12px;
+    line-height: 187%;
+    transform: translate(17px, 21px);
+  }
 }

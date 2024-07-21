@@ -10,14 +10,19 @@ import css from './ChartComponent.module.css';
 import { useMediaQuery } from '@mui/material';
 import sprite from '../../assets/pictures/HomePage/sprite.svg';
 
-const CustomTooltip = ({ active = false, payload = [] }) => {
+const CustomTooltip = ({ active = false, payload = [], coordinate }) => {
   if (active && payload && payload.length) {
+    const { x, y } = coordinate;
+
     return (
-      <svg className={css.tootipIcon} width="80" height="80">
+      <svg
+        className={css.tooltipIcon}
+        width="80"
+        height="48"
+        style={{ left: x, top: y }}
+      >
         <use href={`${sprite}#icon-Combined-Shape`}></use>
-        <text x="10" y="40" fill="black" className={css.label}>{`${
-          payload[0].value * 1000
-        } ml`}</text>
+        <text className={css.label}>{`${payload[0].value * 1000} ml`}</text>
       </svg>
     );
   }
