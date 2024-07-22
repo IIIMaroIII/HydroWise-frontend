@@ -24,9 +24,9 @@ function App() {
             <Route
               path="/tracker"
               element={
-                // <PrivateRoute redirectTo="/signup">
+                <PrivateRoute redirectTo="/signup">
                   <TrackerPage />
-                // </PrivateRoute>
+                </PrivateRoute>
               }
             >
               <Route path="statistics" element={<ChartComponent />} />
