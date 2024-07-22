@@ -5,9 +5,9 @@ import css from './WaterDailyNorma.module.css';
 const WaterDailyNorma = () => {
   const user = useSelector(selectUser);
   return (
-    <div className={css.daily_norma_wrapper}>
-      <p>{user.dailyNorma} L</p>
-      <div>My water daily norma</div>
+    <div className={css.WaterDailyNorma_wrapper}>
+      <p className={css.WaterDailyNorma}>{user.dailyNorma} L</p>
+      <p className={css.WaterDailyNorma_text} >My daily norma</p>
     </div>
   );
 };

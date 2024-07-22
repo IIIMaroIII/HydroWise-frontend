@@ -1,5 +1,11 @@
 .plus_icon {
-    color:#fff;
+    color:var(--white);
+}
+
+.btn_container{
+display: flex;
+justify-content: flex-end;
+
 }
 
 .btn {
@@ -7,18 +13,22 @@
     gap: 10px;
     justify-content: center;
     align-items: center;
-    background: #323f47;
+    background-color: var(--basic-dark-blue);
     border-radius: 30px;
     padding: 14px 20px;
     width: 140px;
     height: 46px;
-    color: #fff;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 42px; 
+
+    @media (width>=768px) {
+            padding: 18px 30px;
+            width: 178px;
+            height: 60px;
+            font-size: 14px;
+            margin-top: 56px;
+        }
 }
 
-@media screen and (min-width:768px) {
-.btn {
-        padding: 18px 30px;
-        width: 178px;
-        height: 60px;
-    }
-}
