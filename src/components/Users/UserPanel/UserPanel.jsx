@@ -11,9 +11,9 @@ const UserPanel = () => {
       <div className={css.text}>
         <h2>Hello</h2>{' '}
         {user?.name !== null ? (
-          <span className={css.span}>, {user.name}</span>
+          <span className={css.span}>, {user.name}!</span>
         ) : (
-          <span className={css.span}>, User</span>
+          <span className={css.span}>, User!</span>
         )}
       </div>
       <UserBar />
