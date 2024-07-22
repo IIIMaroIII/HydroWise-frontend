@@ -1,11 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Button from '../../../../../../REUSABLE/Button/Button';
 import css from './calendarItem.module.css';
-import {
-  selectMonthlyWaterItems,
-  selectTotalDailyVolume,
-} from 'src/redux/water/selectors';
-import { selectUser } from 'src/redux/users/selectors';
+
 import useChosenDate from 'src/hooks/useChosenDate.js';
 import { fetchDailyWater } from 'src/redux/water/operations.js';
 import toast from 'react-hot-toast';
@@ -17,10 +13,27 @@ export const CalendarItem = ({ day }) => {
   const { setChosenDay } = useChosenDate();
   const { dailyVolumesPercentage, dailyItems } = useDailyVolumes();
 
+  const items = document.querySelectorAll(`.${css.btn_item}`);
+
+  const target = e => {
+    const btn = e.currentTarget.children[0];
+    btn.classList.add(`${css.active}`);
+
+    items.forEach(item => {
+      if (item.id !== e.currentTarget.id)
+        item.classList.remove(`${css.active}`);
+    });
+  };
+
+  const dailyVolume = () => {
+    return dailyVolumesPercentage > 100 ? 100 : dailyVolumesPercentage;
+  };
+
   return (
     <>
-      <li className={css.item}>
+      <li className={css.item} id={day} onClick={target}>
         <Button
+          id={day}
           addClass={css.btn_item}
           onClick={() => {
             setChosenDay(day);
@@ -38,13 +51,14 @@ export const CalendarItem = ({ day }) => {
                 );
               })
               .catch(err => {
-                return toast.error(err?.data?.message);
+                console.error(err);
+                return toast.error(err);
               });
           }}
         >
           {day}
         </Button>
-        {!dailyItems ? <p> 0 %</p> : <p>{`${dailyVolumesPercentage}%`}</p>}
+        {!dailyItems ? <p> 0 %</p> : <p>{`${dailyVolume()}%`}</p>}
       </li>
     </>
   );

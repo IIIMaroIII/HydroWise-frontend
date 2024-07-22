@@ -4,10 +4,11 @@ import useChosenDate from 'src/hooks/useChosenDate.js';
 
 const CalendarList = () => {
   const { getDaysOfMonth } = useChosenDate();
+
   return (
     <ul className={css.list}>
-      {getDaysOfMonth().map((day, index) => {
-        return <CalendarItem key={index} day={day} />;
+      {getDaysOfMonth().map(day => {
+        return <CalendarItem key={day} day={day} />;
       })}
     </ul>
   );

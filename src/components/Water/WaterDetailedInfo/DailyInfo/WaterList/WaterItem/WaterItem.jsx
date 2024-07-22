@@ -22,9 +22,9 @@ const WaterItem = ({ item }) => {
   };
   const itemTime = date.toLocaleString('en-US', options);
 
-  const checkVolume = volume => {
-    if (volume < 1000) return `${volume} ml`;
-    if (volume > 1000) return `${volume} L`;
+  const checkVolume = () => {
+    if (item.volume < 1000) return `${item.volume} ml`;
+    if (item.volume > 1000) return `${item.volume} L`;
   };
 
   return (
@@ -33,7 +33,7 @@ const WaterItem = ({ item }) => {
         <use href={`${sprite}#icon-glass`}></use>
       </svg>
       <div className={css.wrapper}>
-        <p className={css.volume}>{checkVolume(item.volume)}</p>
+        <p className={css.volume}>{checkVolume()}</p>
         <Button
           addClass={css.button}
           onClick={() => {

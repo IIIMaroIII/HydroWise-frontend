@@ -1,5 +1,5 @@
-import { lazy, useEffect } from 'react';
-import { redirect, Route, Routes, useNavigate } from 'react-router-dom';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const SignInPage = lazy(() => import('./pages/SignInPage'));
@@ -9,6 +9,8 @@ const SignUpPage = lazy(() => import('./pages/SignUpPage'));
 import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
+
+
 import './App.css';
 import ChartComponent from './components/Statistics/ChartComponent';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,19 +22,6 @@ import {
 import { selectIsError } from './redux/water/selectors.js';
 
 function App() {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const errorUserStatus = useSelector(selectUserError);
-  // const errorWaterStatus = useSelector(selectIsError);
-  // const isUserAuthenticated = useSelector(selectUserIsLoggedIn);
-
-  // useEffect(() => {
-  //   if (errorUserStatus === 401 || errorWaterStatus === 401) {
-  //     dispatch(refresh());
-  //     navigate('/sigin');
-  //   }
-  // }, [dispatch, errorUserStatus, errorWaterStatus, navigate]);
-
   return (
     <>
       <SharedLayout>
