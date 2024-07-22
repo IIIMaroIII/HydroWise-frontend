@@ -6,7 +6,7 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size:262px 335px;
-      width: 343px;
+      min-width: 343px;
       padding:24px 16px 32px 16px;
 
       @media (min-device-pixel-ratio: 2),
@@ -19,7 +19,7 @@
 
       @media (width>=768px) {
             background-image: url('../../../assets/pictures/TrackerPage/bottle_for_water_tabx1.png');
-            width: 704px;
+            min-width: 704px;
             padding: 32px 32px 64px 32px;
             background-size: 374px 477px;
 
@@ -32,7 +32,7 @@
       
          @media (width>=1440px) {
             background-image: url('../../../assets/pictures/TrackerPage/bottle_for_water_1x1desk.png');
-            width: 672px;
+            min-width: 672px;
             padding-bottom: 64px;
             background-size: 472px 604px;
             
