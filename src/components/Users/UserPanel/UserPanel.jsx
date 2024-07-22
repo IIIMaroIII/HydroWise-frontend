@@ -4,7 +4,6 @@ import css from './UserPanel.module.css';
 import { useSelector } from 'react-redux';
 const UserPanel = () => {
   const user = useSelector(selectUser);
-  console.log(user);
 
   return (
     <div className={css.user_panel}>

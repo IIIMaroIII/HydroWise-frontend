@@ -60,7 +60,6 @@ export const fetchDailyWater = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const { chosenDate } = getState().water;
-      console.log('chosenDate in operations', chosenDate);
       const url = `${
         CONSTANTS.WATER_ENDPOINTS.daily
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
@@ -77,7 +76,6 @@ export const fetchMonthlyWater = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const { chosenDate } = getState().water;
-      console.log('chosenDate in operations', chosenDate);
       const url = `${
         CONSTANTS.WATER_ENDPOINTS.monthly
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
