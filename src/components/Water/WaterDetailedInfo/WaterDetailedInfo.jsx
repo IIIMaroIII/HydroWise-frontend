@@ -9,14 +9,18 @@ import {
 } from 'src/redux/water/operations.js';
 import { useEffect } from 'react';
 import { refresh } from 'src/redux/users/operations.js';
+import useChosenDate from 'src/hooks/useChosenDate.js';
 
 const WaterDetailedInfo = () => {
   const dispatch = useDispatch();
+  const { chosenDate } = useChosenDate();
 
   useEffect(() => {
-    dispatch(fetchDailyWater());
-    dispatch(fetchMonthlyWater());
-  }, [dispatch]);
+    if (chosenDate) {
+      dispatch(fetchDailyWater());
+      dispatch(fetchMonthlyWater());
+    }
+  }, [chosenDate, dispatch]);
 
   const handleRefresh = async () => {
     try {
