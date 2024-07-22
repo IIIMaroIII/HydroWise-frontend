@@ -4,6 +4,7 @@ import { useDailyVolumes } from 'src/hooks/useDailyVolumes.js';
 
 const WaterProgressBar = () => {
   const { dailyVolumesPercentage } = useDailyVolumes();
+  const displayPercentage = Math.min(dailyVolumesPercentage, 100);
 
   return (
     <div className={css.WaterProgressBar_container}>
@@ -11,14 +12,14 @@ const WaterProgressBar = () => {
       <div className={css.WaterProgressBar}>
         <div
           className={css.progress}
-          style={{ width: `${dailyVolumesPercentage}%` }}
+          style={{ width: `${displayPercentage}%` }}
         ></div>
         <div
           className={css.thumb}
-          style={{ left: `${dailyVolumesPercentage}%` }}
+          style={{ left: `${displayPercentage}%` }}
         >
           <div className={css.thumb_value}>{`${Math.round(
-            dailyVolumesPercentage,
+            displayPercentage,
           )}%`}</div>
         </div>
       </div>
