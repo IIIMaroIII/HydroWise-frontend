@@ -20,7 +20,9 @@ export const addWater = createAsyncThunk(
       );
       console.log('res.data in thunk', res.data);
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
@@ -40,7 +42,9 @@ export const deleteWater = createAsyncThunk(
       );
       return items;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
@@ -57,7 +61,9 @@ export const changeWater = createAsyncThunk(
       // console.log(response);
       // return response.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
