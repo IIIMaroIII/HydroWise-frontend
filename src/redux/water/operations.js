@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { CiLogin } from 'react-icons/ci';
 import CONSTANTS from 'src/components/Constants/constants.js';
 import { AxiosWithCredentials } from 'src/utils/axios.js';
 

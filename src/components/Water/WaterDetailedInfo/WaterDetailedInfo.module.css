@@ -1,26 +1,26 @@
 .wrapper {
   border-radius: 30px;
   background-color: var(--background-grey);
-  min-width: 320px;
+  /* min-width: 300px; */
   padding: 25px 15px;
 }
 
 @media screen and (min-width: 375px) {
   .wrapper {
-    max-width: 375px;
-    /* padding: 40px 20px; */
+    max-width: 343px;
+    padding: 40px 20px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .wrapper {
-    max-width: 768px;
-    /* padding: 40px 20px; */
+    max-width: 704px;
+    padding: 35px 32px;
   }
 }
 @media screen and (min-width: 1440px) {
   .wrapper {
-    max-width: 1440px;
-    /* padding: 40px 20px; */
+    max-width: 672px;
+    padding: 32px;
   }
 }

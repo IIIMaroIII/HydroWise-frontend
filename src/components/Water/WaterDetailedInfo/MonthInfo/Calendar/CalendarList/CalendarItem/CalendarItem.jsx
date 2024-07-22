@@ -11,8 +11,9 @@ import { fetchDailyWater } from 'src/redux/water/operations.js';
 import toast from 'react-hot-toast';
 import { totalDailyVolumes } from 'src/redux/water/slice.js';
 import { useDailyVolumes } from 'src/hooks/useDailyVolumes.js';
+import { useRef } from 'react';
 
-export const CalendarItem = ({ day }) => {
+export const CalendarItem = ({ day, target, ref }) => {
   const dispatch = useDispatch();
   const { setChosenDay } = useChosenDate();
   const { dailyVolumesPercentage, dailyItems } = useDailyVolumes();
@@ -23,7 +24,7 @@ export const CalendarItem = ({ day }) => {
 
   return (
     <>
-      <li className={css.item}>
+      <li className={css.item} id={day}>
         <Button
           addClass={css.btn_item}
           onClick={() => {
