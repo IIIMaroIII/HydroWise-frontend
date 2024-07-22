@@ -9,8 +9,12 @@ const UserPanel = () => {
   return (
     <div className={css.user_panel}>
       <div>
-        Hello, dear{' '}
-        {user?.name !== null ? <span>{user.name}</span> : <span>User</span>}
+        Hello,{' '}
+        {user?.name !== null ? (
+          <span>{user.name}</span>
+        ) : (
+          <span>{user.email}</span>
+        )}
       </div>
       <UserBar />
     </div>
