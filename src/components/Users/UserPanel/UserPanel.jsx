@@ -10,7 +10,7 @@ const UserPanel = () => {
     <div className={css.user_panel}>
       <div>
         Hello, dear{' '}
-        {user?.name !== null ? <span>user.name</span> : <span>User</span>}
+        {user?.name !== null ? <span>{user.name}</span> : <span>User</span>}
       </div>
       <UserBar />
     </div>
