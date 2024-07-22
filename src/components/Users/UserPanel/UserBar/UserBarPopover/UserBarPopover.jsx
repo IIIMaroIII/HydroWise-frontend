@@ -1,4 +1,3 @@
-import { useRef, useEffect } from 'react';
 import { CiSettings } from 'react-icons/ci';
 import { FiLogOut } from 'react-icons/fi';
 import css from './UserBarPopover.module.css';
@@ -12,11 +11,8 @@ import Button from 'src/components/REUSABLE/Button/Button.jsx';
 const UserBarPopover = ({ onClose }) => {
   const dispatch = useDispatch();
 
-
-
-
   return (
-    <ul className={css.popover_list} >
+    <ul className={css.popover_list}>
       <li>
         <Button
           addClass={css.popover_btn}
