@@ -1,4 +1,4 @@
-import { lazy, useEffect } from 'react';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
@@ -10,16 +10,18 @@ import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
-import { useDispatch } from 'react-redux';
-import { setChosenDate } from './redux/water/slice.js';
-import { formatISO, parseISO } from 'date-fns';
 
 import './App.css';
-import useChosenDate from './hooks/useChosenDate.js';
 import ChartComponent from './components/Statistics/ChartComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import { refresh } from './redux/users/operations.js';
+import {
+  selectUserError,
+  selectUserIsLoggedIn,
+} from './redux/users/selectors.js';
+import { selectIsError } from './redux/water/selectors.js';
 
 function App() {
-  const { chosenDate } = useChosenDate();
   return (
     <>
       <SharedLayout>
@@ -29,7 +31,7 @@ function App() {
             <Route
               path="/tracker"
               element={
-                <PrivateRoute redirectTo="/signin">
+                <PrivateRoute redirectTo="/signup">
                   <TrackerPage />
                 </PrivateRoute>
               }
@@ -41,14 +43,14 @@ function App() {
             <Route
               path="/signup"
               element={
-                <RestrictedRoute redirectTo="/tracker">
+                <RestrictedRoute redirectTo="/signin">
                   <SignUpPage />
                 </RestrictedRoute>
               }
             />
           }
 
-          {/* {
+          {
             <Route
               path="/signin"
               element={
@@ -57,8 +59,8 @@ function App() {
                 </RestrictedRoute>
               }
             />
-          } */}
-          {<Route path="/signin" element={<SignInPage />} />}
+          }
+          {/* {<Route path="/signin" element={<SignInPage />} />} */}
 
           {<Route path="/*" element={<HomePage />} />}
         </Routes>

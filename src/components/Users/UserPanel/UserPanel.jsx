@@ -1,15 +1,20 @@
-import { useSelector } from 'react-redux';
-
-import { selectUser } from 'src/redux/users/selectors';
+import { selectUser } from 'src/redux/users/selectors.js';
 import UserBar from './UserBar/UserBar.jsx';
 import css from './UserPanel.module.css';
+import { useSelector } from 'react-redux';
 const UserPanel = () => {
   const user = useSelector(selectUser);
 
   return (
     <div className={css.user_panel}>
-      {/* <div>Hello, dear {!user.name ? <p>User</p> : <p>{user.name}</p>}</div> */}
-      <div>Hello, dear {<span>{user?.name}</span> ?? <span>User</span>}</div>
+      <div className={css.text}>
+        <h2>Hello</h2>{' '}
+        {user?.name !== null ? (
+          <span className={css.span}>, {user.name}!</span>
+        ) : (
+          <span className={css.span}>, User!</span>
+        )}
+      </div>
       <UserBar />
     </div>
   );

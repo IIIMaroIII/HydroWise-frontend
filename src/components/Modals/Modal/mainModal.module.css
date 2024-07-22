@@ -1,16 +1,14 @@
-/* .backdrop {
-  background: rgb(47, 47, 47, 60%);
-} */
-
 .mainModalStyle {
   padding: 40px 20px 40px 20px;
   border-radius: 15px;
   box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
   background: rgb(255, 255, 255);
-  position: absolute;
+  position: relative;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
+  height: 85vh;
+  overflow: auto;
 }
 @media screen and (min-width: 768px) {
   .mainModalStyle {

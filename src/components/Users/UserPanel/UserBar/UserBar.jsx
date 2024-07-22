@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'src/redux/users/selectors';
 import UserBarPopover from './UserBarPopover/UserBarPopover.jsx';
@@ -7,14 +7,24 @@ import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
 const UserBar = () => {
   const user = useSelector(selectUser);
+  const itemRef = useRef();
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const togglePopover = () => {
     setIsPopoverOpen(!isPopoverOpen);
   };
+
+  // const btn = document.querySelector(`.${css.user_bar_wrapper}`);
+  
+
+
   return (
-    <div className={css.container}>
+    <div className={css.container} ref={itemRef}>
       <Button onClick={togglePopover} addClass={css.user_bar_wrapper}>
-        {<p>{user?.name}</p> ?? <p>User</p>}
+        {user?.name !== null ? (
+          <span className={css.span}>{user.name}</span>
+        ) : (
+          <span className={css.span}>User</span>
+        )}
         <div className={css.user_avatar}>
           <img
             alt="User Avatar"

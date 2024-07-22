@@ -1,50 +1,69 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import CONSTANTS from 'src/components/Constants/constants.js';
-import { AxiosWithCredentials } from 'src/utils/axios.js';
+import AxiosWithCredentials from 'src/utils/axios.js';
 
 export const addWater = createAsyncThunk(
   'water/addWater',
-  async ({ waterValue, time }, { rejectWithValue }) => {
+  async (formData, { getState, rejectWithValue }) => {
     try {
-      const response = await AxiosWithCredentials.post(
+      const chosenDate = getState().water.chosenDate;
+      formData.append('date', chosenDate);
+      console.log('thunk request');
+      const res = await AxiosWithCredentials.post(
         `${CONSTANTS.WATER_ENDPOINTS.water}`,
-        { waterValue, time },
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
       );
-      console.log(response);
-      return response.data;
+      console.log('res.data in thunk', res.data);
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
 
 export const deleteWater = createAsyncThunk(
   'water/deleteWater',
-  async (id, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
+    const id = getState().water.chosenWaterCardId;
+    console.log(id);
     try {
-      const response = await AxiosWithCredentials.delete(
+      await AxiosWithCredentials.delete(
         `${CONSTANTS.WATER_ENDPOINTS.water}/${id}`,
       );
-      console.log(response);
-      return response.data;
+
+      const items = getState().water.water.dailyItems.filter(
+        item => item._id !== id,
+      );
+      return items;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
 
 export const changeWater = createAsyncThunk(
   'water/changeWater',
-  async ({ id, updateVolume }, { rejectWithValue }) => {
+  async (formData, { rejectWithValue }) => {
     try {
-      const response = await AxiosWithCredentials.patch(
-        `${CONSTANTS.WATER_ENDPOINTS.water}/${id}`,
-        updateVolume,
-      );
-      console.log(response);
-      return response.data;
+      console.log('formData', formData);
+      // const response = await AxiosWithCredentials.patch(
+      //   `${CONSTANTS.WATER_ENDPOINTS.water}/${id}`,
+      //   formData,
+      // );
+      // console.log(response);
+      // return response.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
@@ -54,14 +73,16 @@ export const fetchDailyWater = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const { chosenDate } = getState().water;
-      console.log('chosenDate in operations', chosenDate);
       const url = `${
         CONSTANTS.WATER_ENDPOINTS.daily
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
       const response = await AxiosWithCredentials.get(url);
+
       return response.data.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
@@ -71,25 +92,16 @@ export const fetchMonthlyWater = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const { chosenDate } = getState().water;
-      console.log('chosenDate in operations', chosenDate);
       const url = `${
         CONSTANTS.WATER_ENDPOINTS.monthly
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
       const response = await AxiosWithCredentials.get(url);
+
       return response.data.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
-  // async ({ month, year }, { rejectWithValue }) => {
-  //   try {
-  //     const response = await AxiosWithCredentials.get(
-  //       `${CONSTANTS.WATER_ENDPOINTS.monthly}/${month}/${year}`,
-  //     );
-  //     console.log(response.data);
-  //     return response.data;
-  //   } catch (error) {
-  //     return rejectWithValue(error.message);
-  //   }
-  // },
 );

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import CONSTANTS from 'src/components/Constants/constants.js';
-import { AxiosWithCredentials } from 'src/utils/axios.js';
+import AxiosWithCredentials from 'src/utils/axios.js';
 
 export const signUp = createAsyncThunk(
   'users/signUp',
@@ -15,11 +15,9 @@ export const signUp = createAsyncThunk(
       }
       return res.data;
     } catch (error) {
-      return rejectWithValue({
-        message: error.message,
-        statusCode: error.response?.status,
-        data: error.response?.data,
-      });
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
@@ -32,16 +30,14 @@ export const signIn = createAsyncThunk(
         `${CONSTANTS.USERS_ENDPOINTS.signIn}`,
         credentials,
       );
-      if (res.status > 300) {
-        return rejectWithValue(res.message);
-      }
+      // if (res.status > 300) {
+      //   return rejectWithValue(res.message);
+      // }
       return res.data;
     } catch (error) {
-      return rejectWithValue({
-        message: error.message,
-        statusCode: error.response?.status,
-        data: error.response?.data,
-      });
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
@@ -53,17 +49,14 @@ export const logout = createAsyncThunk(
       const res = await AxiosWithCredentials.post(
         `${CONSTANTS.USERS_ENDPOINTS.logout}`,
       );
-      console.log(res);
+
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }
     } catch (error) {
-      console.log(error);
-      return rejectWithValue({
-        message: error.message,
-        statusCode: error.response?.status,
-        data: error.response?.data,
-      });
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
@@ -72,20 +65,21 @@ export const refresh = createAsyncThunk(
   'users/refresh',
   async (_, { rejectWithValue }) => {
     try {
+      console.log('Attempting to call refresh endpoint...');
       const res = await AxiosWithCredentials.post(
         `${CONSTANTS.USERS_ENDPOINTS.refresh}`,
       );
-      if (res.status > 300) {
-        return rejectWithValue(res.statusText);
-      }
+
+      console.log('Refresh response:', res.data);
       return res.data;
     } catch (error) {
-      console.log(error);
-      return rejectWithValue({
-        message: error.message,
-        statusCode: error.response?.status,
-        data: error.response?.data,
-      });
+      console.log(
+        'Refresh error response:',
+        error.response ? error.response.data : error.message,
+      );
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
