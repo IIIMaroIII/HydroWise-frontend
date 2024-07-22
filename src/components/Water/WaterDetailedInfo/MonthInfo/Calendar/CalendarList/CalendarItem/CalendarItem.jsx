@@ -1,22 +1,28 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Button from '../../../../../../REUSABLE/Button/Button';
 import css from './calendarItem.module.css';
-import {
-  selectMonthlyWaterItems,
-  selectTotalDailyVolume,
-} from 'src/redux/water/selectors';
-import { selectUser } from 'src/redux/users/selectors';
+
 import useChosenDate from 'src/hooks/useChosenDate.js';
 import { fetchDailyWater } from 'src/redux/water/operations.js';
 import toast from 'react-hot-toast';
 import { totalDailyVolumes } from 'src/redux/water/slice.js';
 import { useDailyVolumes } from 'src/hooks/useDailyVolumes.js';
-import { useRef } from 'react';
 
-export const CalendarItem = ({ day, target, ref }) => {
+export const CalendarItem = ({ day }) => {
   const dispatch = useDispatch();
   const { setChosenDay } = useChosenDate();
   const { dailyVolumesPercentage, dailyItems } = useDailyVolumes();
+
+  const items = document.querySelectorAll(`.${css.item}`);
+
+  const target = e => {
+    e.target.classList.add(`${css.active}`);
+
+    items.forEach(item => {
+      const newItem = item.children[0];
+      if (newItem.id !== e.target.id) newItem.classList.remove(`${css.active}`);
+    });
+  };
 
   const dailyVolume = () => {
     return dailyVolumesPercentage > 100 ? 100 : dailyVolumesPercentage;
@@ -24,8 +30,9 @@ export const CalendarItem = ({ day, target, ref }) => {
 
   return (
     <>
-      <li className={css.item} id={day}>
+      <li className={css.item} id={day} onClick={target}>
         <Button
+          id={day}
           addClass={css.btn_item}
           onClick={() => {
             setChosenDay(day);

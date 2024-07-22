@@ -32,7 +32,7 @@
   background-color: #cccccc;
 }
 
-.item .active {
+.active {
   color: var(--basic-green);
   background-color: var(--basic-dark-blue);
 }
