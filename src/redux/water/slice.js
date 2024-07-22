@@ -90,14 +90,6 @@ export const waterSlice = createSlice({
       })
       .addCase(addWater.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.water.dailyItems.push(action.payload);
-        toast('You add a water record', {
-          style: {
-            borderRadius: '10px',
-            background: 'rgb(144, 26, 228)',
-            color: '#fff',
-          },
-        });
       })
       .addCase(deleteWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
@@ -117,11 +109,11 @@ export const waterSlice = createSlice({
       })
       .addCase(fetchDailyWater.rejected, (state, payload) => {
         state.isLoading = false;
-        state.error = payload.payload.statusCode;
+        state.error = payload.statusCode;
       })
       .addCase(addWater.rejected, (state, payload) => {
         state.isLoading = false;
-        state.error = payload.payload.statusCode;
+        state.error = payload.statusCode;
       })
       .addCase(deleteWater.rejected, (state, payload) => {
         state.isLoading = false;

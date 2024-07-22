@@ -1,24 +1,26 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { CiLogin } from 'react-icons/ci';
 import CONSTANTS from 'src/components/Constants/constants.js';
 import AxiosWithCredentials from 'src/utils/axios.js';
 
 export const addWater = createAsyncThunk(
   'water/addWater',
-  async ({ waterValue, time }, { rejectWithValue }) => {
+  async (formData, { getState, rejectWithValue }) => {
     try {
-      const response = await AxiosWithCredentials.post(
+      const chosenDate = getState().water.chosenDate;
+      formData.append('date', chosenDate);
+      console.log('thunk request');
+      const res = await AxiosWithCredentials.post(
         `${CONSTANTS.WATER_ENDPOINTS.water}`,
-        { waterValue, time },
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
       );
-      console.log(response);
-      return response.data;
+      console.log('res.data in thunk', res.data);
     } catch (error) {
-      return rejectWithValue({
-        message: error.message,
-        statusCode: error.response?.status,
-        data: error.response?.data,
-      });
+      return rejectWithValue(error.response.data);
     }
   },
 );
@@ -38,11 +40,7 @@ export const deleteWater = createAsyncThunk(
       );
       return items;
     } catch (error) {
-      return rejectWithValue({
-        message: error.message,
-        statusCode: error.response?.status,
-        data: error.response?.data,
-      });
+      return rejectWithValue(error.response.data);
     }
   },
 );
@@ -59,11 +57,7 @@ export const changeWater = createAsyncThunk(
       // console.log(response);
       // return response.data;
     } catch (error) {
-      return rejectWithValue({
-        message: error.message,
-        statusCode: error.response?.status,
-        data: error.response?.data,
-      });
+      return rejectWithValue(error.response.data);
     }
   },
 );

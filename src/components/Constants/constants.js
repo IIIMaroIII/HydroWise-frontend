@@ -52,7 +52,7 @@ const AXIOS = {
 };
 
 const WATER_ENDPOINTS = {
-  water: '/v1/water/',
+  water: '/v1/water',
   daily: '/v1/water/daily',
   monthly: '/v1/water/monthly',
 };
