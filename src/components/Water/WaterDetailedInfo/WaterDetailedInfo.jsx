@@ -13,6 +13,11 @@ import { refresh } from 'src/redux/users/operations.js';
 const WaterDetailedInfo = () => {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchDailyWater());
+    dispatch(fetchMonthlyWater());
+  }, [dispatch]);
+
   const handleRefresh = async () => {
     try {
       const result = await dispatch(refresh()).unwrap();
