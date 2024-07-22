@@ -20,7 +20,8 @@ export const CalendarItem = ({ day }) => {
     btn.classList.add(`${css.active}`);
 
     items.forEach(item => {
-      if (item.id !== e.target.id) item.classList.remove(`${css.active}`);
+      if (item.id !== e.currentTarget.id)
+        item.classList.remove(`${css.active}`);
     });
   };
 
