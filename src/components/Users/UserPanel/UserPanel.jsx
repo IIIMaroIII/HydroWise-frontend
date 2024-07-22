@@ -8,12 +8,12 @@ const UserPanel = () => {
 
   return (
     <div className={css.user_panel}>
-      <div>
-        Hello,{' '}
+      <div className={css.text}>
+        <h2>Hello</h2>{' '}
         {user?.name !== null ? (
-          <span>{user.name}</span>
+          <span className={css.span}>, {user.name}</span>
         ) : (
-          <span>{user.email}</span>
+          <span className={css.span}>, User</span>
         )}
       </div>
       <UserBar />
