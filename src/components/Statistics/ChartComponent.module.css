@@ -1,15 +1,6 @@
 .chartContainer {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   margin-top: 47px;
-
-  @media (width>=768px) {
-    margin-top: 49px;
-    padding-right: 23px;
-  }
-
-  @media (width>=1440px) {
-    padding-right: 10px;
-  }
 }
 
 .tooltipIcon {
@@ -18,11 +9,6 @@
   position: absolute;
   transform: translate(-50%, -100%);
   pointer-events: none;
-
-  @media (width>=768px) {
-    width: 80px;
-    height: 48px;
-  }
 }
 
 .label {
@@ -42,11 +28,23 @@
 }
 
 @media screen and (min-width: 375px) {
+  .chartContainer {
+    margin-left: -25px;
+  }
 }
 @media screen and (min-width: 768px) {
-  .container {
+  .chartContainer {
     margin-top: 62px;
+    padding-right: 23px;
+  }
+
+  .tooltipIcon {
+    width: 80px;
+    height: 48px;
   }
 }
 @media screen and (min-width: 1440px) {
+  .chartContainer {
+    padding-right: 10px;
+  }
 }
