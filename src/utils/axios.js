@@ -74,6 +74,9 @@ AxiosWithCredentials.interceptors.response.use(
         ] = `Bearer ${result.data.accessToken}`;
         return AxiosWithCredentials(originalRequest);
       } catch (err) {
+        toast(
+          'You have been redirected to Sign In page due to network error or empty cookies',
+        );
         console.error('Failed to refresh token', err);
         window.location.href = '/signin';
       }
