@@ -8,10 +8,14 @@ import Button from '../Button/Button';
 import waterSchemas from 'src/Validation/Water/waterSchemas';
 import CONSTANTS from 'src/components/Constants/constants';
 import { useDispatch } from 'react-redux';
-import { addWater } from 'src/redux/water/operations';
+import { addWater, fetchDailyWater } from 'src/redux/water/operations';
 import { toast } from 'react-hot-toast';
+import useChosenDate from 'src/hooks/useChosenDate.js';
+import { changeModal } from 'src/redux/water/slice.js';
 
 const WaterForm = ({ operationName }) => {
+  const { chosenDate, getHoursAndMinutes } = useChosenDate();
+  const { hours, minutes } = getHoursAndMinutes();
   const dispatch = useDispatch();
   const [amount, setAmount] = useState(50);
   const buttonAddWater = useRef(null);
@@ -27,42 +31,33 @@ const WaterForm = ({ operationName }) => {
   } = useForm({
     mode: 'onChange',
     resolver: yupResolver(waterSchemas.waterTemplateSchema),
+    defaultValues: {
+      waterValue: 50,
+    },
   });
 
-  const getCurrentTime = () => {
-    const now = new Date();
-    return {
-      now: now,
-      hours: String(now.getHours()).padStart(2, '0'),
-      minutes: String(now.getMinutes()).padStart(2, '0'),
-    };
-  };
-  const { now, hours, minutes } = getCurrentTime();
+  let waterAmount = watch('waterValue', 50);
 
-  let waterAmount = watch('waterValue', '');
-
-  const onSubmit = ({ waterValue }) => {
+  const onSubmit = async data => {
+    const { waterValue } = data;
     if (Object.keys(errors).length > 0) {
       toast.error('Please fix the errors before submitting.');
       return;
     }
 
-    const formData = new FormData();
-    formData.append('time', `${hours}:${minutes}`);
-    formData.append('waterValue', waterValue);
-    console.log('formData', formData);
+    if (waterValue === undefined || waterValue === null) {
+      toast.error('Water value is required.');
+      return;
+    }
 
-    // dispatch(addWater(formData))
-    //   .unwrap()
-    //   .then(result => {
-    //     toast.success(result.message);
-    //     reset();
-    //   })
-    //   .catch(err => {
-    //     toast.error(
-    //       'There was an error submitting the form, please try again!',
-    //     );
-    //   });
+    const formData = new FormData();
+    console.log('waterValue before append', waterValue);
+    formData.append('waterValue', waterValue);
+    await dispatch(addWater(formData))
+      .unwrap()
+      .then(() => toast.success('You have succesfully added your record'));
+    dispatch(changeModal(false));
+    await dispatch(fetchDailyWater());
   };
 
   const addWaterAmount = () => {

@@ -13,6 +13,13 @@ import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
 import './App.css';
 import ChartComponent from './components/Statistics/ChartComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import { refresh } from './redux/users/operations.js';
+import {
+  selectUserError,
+  selectUserIsLoggedIn,
+} from './redux/users/selectors.js';
+import { selectIsError } from './redux/water/selectors.js';
 
 function App() {
   return (

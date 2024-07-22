@@ -16,14 +16,18 @@ export const useDailyVolumes = () => {
 
   useEffect(() => {
     if (!dailyItems || dailyItems.length === 0) return;
-    const totalVolume =
-      dailyItems.reduce((total, record) => total + record.volume, 0) || 0;
+    const totalVolume = dailyItems.reduce((total, record) => {
+      if (record?.volume) {
+        return total + Math.round((record.volume / 1000) * 100) / 100;
+      }
+      return total + Math.round((0 / 1000) * 100) / 100;
+    }, 0);
     dispatch(totalDailyVolumes(totalVolume));
   }, [dailyItems, dispatch]);
 
   const dailyVolumesPercentage =
     totalDailyVolume > 0
-      ? Math.round((totalDailyVolume / (user.dailyNorma * 1000)) * 100)
+      ? Math.round((totalDailyVolume / user.dailyNorma) * 100)
       : 0;
 
   return { dailyItems, totalDailyVolume, dailyVolumesPercentage };

@@ -8,19 +8,34 @@ import {
   fetchMonthlyWater,
 } from 'src/redux/water/operations.js';
 import { useEffect } from 'react';
+import { refresh } from 'src/redux/users/operations.js';
+import useChosenDate from 'src/hooks/useChosenDate.js';
 
 const WaterDetailedInfo = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchDailyWater());
-    dispatch(fetchMonthlyWater());
-  }, [dispatch]);
+  const { chosenDate } = useChosenDate();
 
+  useEffect(() => {
+    if (chosenDate) {
+      dispatch(fetchDailyWater());
+      dispatch(fetchMonthlyWater());
+    }
+  }, [chosenDate, dispatch]);
+
+  const handleRefresh = async () => {
+    try {
+      const result = await dispatch(refresh()).unwrap();
+      console.log('Token refreshed successfully:', result);
+    } catch (error) {
+      console.error('Failed to refresh token', error);
+    }
+  };
   return (
     <section className={css.wrapper}>
       <UserPanel />
       <DailyInfo />
       <MonthInfo />
+      <button onClick={handleRefresh}>Refresh Token</button>
     </section>
   );
 };

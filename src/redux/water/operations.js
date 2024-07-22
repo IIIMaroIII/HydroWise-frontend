@@ -1,19 +1,26 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import CONSTANTS from 'src/components/Constants/constants.js';
-import { AxiosWithCredentials } from 'src/utils/axios.js';
+import AxiosWithCredentials from 'src/utils/axios.js';
 
 export const addWater = createAsyncThunk(
   'water/addWater',
-  async ({ waterValue, time }, { rejectWithValue }) => {
+  async (formData, { getState, rejectWithValue }) => {
     try {
-      const response = await AxiosWithCredentials.post(
+      const chosenDate = getState().water.chosenDate;
+      formData.append('date', chosenDate);
+      console.log('thunk request');
+      const res = await AxiosWithCredentials.post(
         `${CONSTANTS.WATER_ENDPOINTS.water}`,
-        { waterValue, time },
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
       );
-      console.log(response);
-      return response.data;
+      console.log('res.data in thunk', res.data);
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data);
     }
   },
 );
@@ -33,7 +40,7 @@ export const deleteWater = createAsyncThunk(
       );
       return items;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data);
     }
   },
 );
@@ -50,7 +57,7 @@ export const changeWater = createAsyncThunk(
       // console.log(response);
       // return response.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data);
     }
   },
 );
@@ -64,9 +71,10 @@ export const fetchDailyWater = createAsyncThunk(
         CONSTANTS.WATER_ENDPOINTS.daily
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
       const response = await AxiosWithCredentials.get(url);
+
       return response.data.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data);
     }
   },
 );
@@ -80,20 +88,10 @@ export const fetchMonthlyWater = createAsyncThunk(
         CONSTANTS.WATER_ENDPOINTS.monthly
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
       const response = await AxiosWithCredentials.get(url);
+
       return response.data.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data);
     }
   },
-  // async ({ month, year }, { rejectWithValue }) => {
-  //   try {
-  //     const response = await AxiosWithCredentials.get(
-  //       `${CONSTANTS.WATER_ENDPOINTS.monthly}/${month}/${year}`,
-  //     );
-  //     console.log(response.data);
-  //     return response.data;
-  //   } catch (error) {
-  //     return rejectWithValue(error.message);
-  //   }
-  // },
 );

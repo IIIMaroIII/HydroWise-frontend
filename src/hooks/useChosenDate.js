@@ -69,7 +69,28 @@ const useChosenDate = () => {
     return `${year}-${month}-${day}T${hour}:${minute}:${second}${timezone}`;
   };
 
+  const getHoursAndMinutes = () => {
+    if (chosenDate) {
+      const date = new Date(chosenDate);
+      const hours = String(date.getHours()).padStart(2, '0');
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      return { hours, minutes };
+    }
+    return { hours: null, minutes: null };
+  };
+
+  const setHoursAndMinutes = (hours, minutes) => {
+    if (chosenDate) {
+      const updatedDate = new Date(chosenDate);
+      updatedDate.setHours(hours);
+      updatedDate.setMinutes(minutes);
+      dispatch(setChosenDate(formatLocalISO(updatedDate)));
+    }
+  };
+
   return {
+    getHoursAndMinutes,
+    setHoursAndMinutes,
     chosenDate,
     getDaysOfMonth,
     setNewChosenDate,
