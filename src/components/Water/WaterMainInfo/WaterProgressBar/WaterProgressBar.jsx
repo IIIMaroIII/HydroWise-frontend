@@ -17,9 +17,7 @@ const WaterProgressBar = () => {
           className={css.thumb}
           style={{ left: `${dailyVolumesPercentage}%` }}
         >
-          <div className={css.thumb_value}>{`${Math.round(
-            dailyVolumesPercentage,
-          )}%`}</div>
+          <div className={css.thumb_value}>{`${dailyVolumesPercentage}%`}</div>
         </div>
       </div>
       <div className={css.progress_labels}>

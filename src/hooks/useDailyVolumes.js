@@ -27,7 +27,7 @@ export const useDailyVolumes = () => {
 
   const dailyVolumesPercentage =
     totalDailyVolume > 0
-      ? Math.round((totalDailyVolume / (user.dailyNorma * 1000)) * 100)
+      ? Math.round((totalDailyVolume / user.dailyNorma) * 100)
       : 0;
 
   return { dailyItems, totalDailyVolume, dailyVolumesPercentage };

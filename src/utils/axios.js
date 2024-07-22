@@ -24,7 +24,7 @@ const AxiosWithCredentials = axios.create({
     return Promise.reject(error);
   },
 ); 
-Рабочий вариант
+Рабочий вариант был
 */
 
 AxiosWithCredentials.interceptors.request.use(
