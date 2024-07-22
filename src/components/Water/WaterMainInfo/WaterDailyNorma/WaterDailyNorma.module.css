@@ -1,8 +1,45 @@
-.daily_norma_wrapper{
+.WaterDailyNorma_wrapper{
     border-radius: 15px;
     padding: 12px;
     width: 102px;
     height: 54px;
     box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
-    background: #fff;
+    background-color: var(--white);
+    margin-top:78px;
+
+
+@media (width>=768px) {
+    margin-top: 101px;
+    width: 129px;
+    height: 78px;
+   }
+}
+
+.WaterDailyNorma{
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: var(--basic-dark-blue);
+
+ @media (width>=768px) {
+    font-size: 14px;
+    line-height: 1.49;
+        }
+
+ @media (width>=1440px) {
+    font-size: 15px;
+        }
+}
+
+.WaterDailyNorma_text{
+   color: var(--text-grey-white);
+   font-weight: 400;
+   font-size: 10px; 
+   line-height: 1;
+   margin-top: 6px;
+
+@media (width>=768px) {
+        font-size: 12px;
+        line-height: 1.87;
+    }
 }

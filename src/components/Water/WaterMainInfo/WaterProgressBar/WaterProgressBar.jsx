@@ -6,9 +6,9 @@ const WaterProgressBar = () => {
   const { dailyVolumesPercentage } = useDailyVolumes();
 
   return (
-    <div className={css.water_progress_container}>
-      <h2>Today</h2>
-      <div className={css.progress_bar}>
+    <div className={css.WaterProgressBar_container}>
+      <h2 className={css.WaterProgressBar_h2}>Today</h2>
+      <div className={css.WaterProgressBar}>
         <div
           className={css.progress}
           style={{ width: `${dailyVolumesPercentage}%` }}

@@ -48,7 +48,7 @@ export const TOAST = {
 };
 
 const AXIOS = {
-  baseURL: 'https://waterwise-backend.onrender.com',
+  baseURL: 'https://localhost:3000',
 };
 
 const WATER_ENDPOINTS = {
