@@ -1,4 +1,4 @@
-import { lazy, useEffect } from 'react';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
@@ -10,16 +10,11 @@ import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
-import { useDispatch } from 'react-redux';
-import { setChosenDate } from './redux/water/slice.js';
-import { formatISO, parseISO } from 'date-fns';
 
 import './App.css';
-import useChosenDate from './hooks/useChosenDate.js';
 import ChartComponent from './components/Statistics/ChartComponent';
 
 function App() {
-  const { chosenDate } = useChosenDate();
   return (
     <>
       <SharedLayout>
@@ -29,9 +24,9 @@ function App() {
             <Route
               path="/tracker"
               element={
-                <PrivateRoute redirectTo="/signup">
+                // <PrivateRoute redirectTo="/signup">
                   <TrackerPage />
-                </PrivateRoute>
+                // </PrivateRoute>
               }
             >
               <Route path="statistics" element={<ChartComponent />} />

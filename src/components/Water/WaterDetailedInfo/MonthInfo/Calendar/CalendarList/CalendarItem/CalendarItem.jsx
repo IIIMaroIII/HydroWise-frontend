@@ -51,7 +51,7 @@ export const CalendarItem = ({ day }) => {
                 );
               })
               .catch(err => {
-                console.log(err);
+                console.error(err);
                 return toast.error(err);
               });
           }}
