@@ -74,7 +74,9 @@ export const fetchDailyWater = createAsyncThunk(
 
       return response.data.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );
@@ -91,7 +93,9 @@ export const fetchMonthlyWater = createAsyncThunk(
 
       return response.data.data;
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(
+        error.response ? error.response.data : error.message,
+      );
     }
   },
 );

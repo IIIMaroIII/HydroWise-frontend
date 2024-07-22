@@ -47,10 +47,23 @@ AxiosWithCredentials.interceptors.response.use(
   async error => {
     const originalRequest = error.config;
 
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (error.response.data.status === 401 && !originalRequest._retry) {
       toast.error('Your access token has been expired!');
+      console.log('originalRequest', originalRequest);
       originalRequest._retry = true;
-
+      console.log('error.response.data.status', error.response.data.status);
+      console.log('error.response.data.message', error.response.data.message);
+      // console.log(
+      //   'if condition ',
+      //   error.response.data.status === 401 &&
+      //     error.response.data.message === 'The session was not found!',
+      // );
+      // if (
+      //   error.response.data.status === 401 &&
+      //   error.response.data.message === 'The session was not found!'
+      // ) {
+      //   window.location.href = '/signin';
+      // }
       try {
         const result = await store.dispatch(refresh()).unwrap();
         toast.success(
