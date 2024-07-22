@@ -4,13 +4,13 @@ const users = {
   key: 'users',
   storage,
   whitelist: ['user', 'isLoggedIn'],
-  //   blacklist: ["contacts", "isError", "isLoading", "productData"],
+  blacklist: ['isLoggedIn'],
 };
 const water = {
   key: 'water',
   storage,
   whitelist: ['water'],
-  blacklist: ['totalDailyVolume', 'totalMonthlyVolume'],
+  // blacklist: ['totalDailyVolume', 'totalMonthlyVolume'],
 };
 
 export const persistConfig = {

@@ -105,7 +105,7 @@ export const waterSlice = createSlice({
       })
       .addCase(changeWater.rejected, (state, payload) => {
         state.isLoading = false;
-        state.error = payload.payload.statusCode;
+        state.error = payload.statusCode;
       })
       .addCase(fetchDailyWater.rejected, (state, payload) => {
         state.isLoading = false;
@@ -117,11 +117,11 @@ export const waterSlice = createSlice({
       })
       .addCase(deleteWater.rejected, (state, payload) => {
         state.isLoading = false;
-        state.error = payload.payload.statusCode;
+        state.error = payload.statusCode;
       })
       .addCase(fetchMonthlyWater.rejected, (state, payload) => {
         state.isLoading = false;
-        state.error = payload.payload.statusCode;
+        state.error = payload.statusCode;
       });
     // .addCase(retryAction, (state, action) => {
     //   console.log('Retry action received:', action);
