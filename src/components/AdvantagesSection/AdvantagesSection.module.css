@@ -5,16 +5,37 @@
   width: 343px;
   position: relative;
 
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('../../assets/pictures/HomePage/girl@2x.png');
+    background-size: 343px 353px;
+  }
+
   @media (width>=768px) {
     background-image: url('../../assets/pictures/HomePage/girl-tab.png');
     height: 446px;
     width: 704px;
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../../assets/pictures/HomePage/girl-tab@2x.png');
+      background-size: 704px 446px;
+    }
   }
 
   @media (width>=1440px) {
     background-image: url('../../assets/pictures/HomePage/girl-desk.png');
     height: 736px;
     width: 672px;
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url('../../assets/pictures/HomePage/girl-desk@2x.png');
+      background-size: 672px 736px;
+    }
   }
 }
 
@@ -151,6 +172,12 @@
 .homePageBenefitsItemsSettings {
   background-color: var(--white);
   color: var(--basic-dark-blue);
+  pointer-events: none;
+}
+
+.homePageBenefitsItemsSettingsActive {
+  cursor: pointer;
+  pointer-events: all;
 }
 
 .homePageBenefitsIcon {
