@@ -1,5 +1,5 @@
 import { lazy, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { redirect, Route, Routes, useNavigate } from 'react-router-dom';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const SignInPage = lazy(() => import('./pages/SignInPage'));
@@ -9,17 +9,30 @@ const SignUpPage = lazy(() => import('./pages/SignUpPage'));
 import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
-
-import { useDispatch } from 'react-redux';
-import { setChosenDate } from './redux/water/slice.js';
-import { formatISO, parseISO } from 'date-fns';
-
 import './App.css';
-import useChosenDate from './hooks/useChosenDate.js';
 import ChartComponent from './components/Statistics/ChartComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import { refresh } from './redux/users/operations.js';
+import {
+  selectUserError,
+  selectUserIsLoggedIn,
+} from './redux/users/selectors.js';
+import { selectIsError } from './redux/water/selectors.js';
 
 function App() {
-  const { chosenDate } = useChosenDate();
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const errorUserStatus = useSelector(selectUserError);
+  // const errorWaterStatus = useSelector(selectIsError);
+  // const isUserAuthenticated = useSelector(selectUserIsLoggedIn);
+
+  // useEffect(() => {
+  //   if (errorUserStatus === 401 || errorWaterStatus === 401) {
+  //     dispatch(refresh());
+  //     navigate('/sigin');
+  //   }
+  // }, [dispatch, errorUserStatus, errorWaterStatus, navigate]);
+
   return (
     <>
       <SharedLayout>

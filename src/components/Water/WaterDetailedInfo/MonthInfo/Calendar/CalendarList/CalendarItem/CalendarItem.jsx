@@ -17,8 +17,6 @@ export const CalendarItem = ({ day }) => {
   const { setChosenDay } = useChosenDate();
   const { dailyVolumesPercentage, dailyItems } = useDailyVolumes();
 
-  
-
   return (
     <>
       <li className={css.item}>
@@ -40,8 +38,7 @@ export const CalendarItem = ({ day }) => {
                 );
               })
               .catch(err => {
-                console.log(err);
-                return toast.error(err);
+                return toast.error(err?.data?.message);
               });
           }}
         >

@@ -17,7 +17,11 @@ export const useDailyVolumes = () => {
   useEffect(() => {
     if (!dailyItems || dailyItems.length === 0) return;
     const totalVolume =
-      dailyItems.reduce((total, record) => total + record.volume, 0) || 0;
+      dailyItems.reduce(
+        (total, record) =>
+          total + Math.round((record.volume / 1000) * 100) / 100,
+        0,
+      ) || 0;
     dispatch(totalDailyVolumes(totalVolume));
   }, [dailyItems, dispatch]);
 

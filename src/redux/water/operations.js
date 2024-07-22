@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { CiLogin } from 'react-icons/ci';
 import CONSTANTS from 'src/components/Constants/constants.js';
-import { AxiosWithCredentials } from 'src/utils/axios.js';
+import AxiosWithCredentials from 'src/utils/axios.js';
 
 export const addWater = createAsyncThunk(
   'water/addWater',
@@ -14,7 +14,11 @@ export const addWater = createAsyncThunk(
       console.log(response);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue({
+        message: error.message,
+        statusCode: error.response?.status,
+        data: error.response?.data,
+      });
     }
   },
 );
@@ -34,7 +38,11 @@ export const deleteWater = createAsyncThunk(
       );
       return items;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue({
+        message: error.message,
+        statusCode: error.response?.status,
+        data: error.response?.data,
+      });
     }
   },
 );
@@ -51,7 +59,11 @@ export const changeWater = createAsyncThunk(
       // console.log(response);
       // return response.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue({
+        message: error.message,
+        statusCode: error.response?.status,
+        data: error.response?.data,
+      });
     }
   },
 );
@@ -66,9 +78,10 @@ export const fetchDailyWater = createAsyncThunk(
         CONSTANTS.WATER_ENDPOINTS.daily
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
       const response = await AxiosWithCredentials.get(url);
+
       return response.data.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data);
     }
   },
 );
@@ -83,20 +96,14 @@ export const fetchMonthlyWater = createAsyncThunk(
         CONSTANTS.WATER_ENDPOINTS.monthly
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
       const response = await AxiosWithCredentials.get(url);
+
+      // if (response.status === 401) {
+      //   return rejectWithValue('Unauthorized');
+      // }
+
       return response.data.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(error.response.data);
     }
   },
-  // async ({ month, year }, { rejectWithValue }) => {
-  //   try {
-  //     const response = await AxiosWithCredentials.get(
-  //       `${CONSTANTS.WATER_ENDPOINTS.monthly}/${month}/${year}`,
-  //     );
-  //     console.log(response.data);
-  //     return response.data;
-  //   } catch (error) {
-  //     return rejectWithValue(error.message);
-  //   }
-  // },
 );
