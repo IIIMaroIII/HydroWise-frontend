@@ -21,21 +21,23 @@ const DeleteWaterModal = ({ children, ...otherProps }) => {
       .catch(() => toast.error('Oops, delete went wrong, please try again!'));
   };
   return (
-    <div>
+    <div className={css.deleteModal}>
       <h2 className={css.title}>Delete</h2>
       <p className={css.text}>Do you really delete?</p>
-      <Button addClass={css.btn} onClick={handleSubmit} {...otherProps}>
-        {children || 'Delete'}
-      </Button>
-      <Button
-        addClass={css.btn}
-        onClick={() => {
-          dispatch(changeDeleteWaterModalOpen(false));
-          dispatch(changeModal(false));
-        }}
-      >
-        {children || 'Cancel'}
-      </Button>
+      <div className={css.btnWrap}>
+        <Button addClass={css.btn} onClick={handleSubmit} {...otherProps}>
+          {children || 'Delete'}
+        </Button>
+        <Button
+          addClass={css.cancelBtn}
+          onClick={() => {
+            dispatch(changeDeleteWaterModalOpen(false));
+            dispatch(changeModal(false));
+          }}
+        >
+          {children || 'Cancel'}
+        </Button>
+      </div>
     </div>
   );
 };
