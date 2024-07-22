@@ -13,12 +13,13 @@ export const CalendarItem = ({ day }) => {
   const { setChosenDay } = useChosenDate();
   const { dailyVolumesPercentage, dailyItems } = useDailyVolumes();
 
-  const items = document.querySelectorAll(`.${css.item}`);
+  const items = document.querySelectorAll(`.${css.btn_item}`);
 
   const target = e => {
     e.target.classList.add(`${css.active}`);
 
     items.forEach(item => {
+      console.log(item)
       const newItem = item.children[0];
       if (newItem.id !== e.target.id) newItem.classList.remove(`${css.active}`);
     });
