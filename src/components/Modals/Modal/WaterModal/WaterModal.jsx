@@ -26,7 +26,7 @@ const WaterModal = ({ operationType }) => {
     }
   };
   return (
-    <div>
+    <div className={css.waterModal}>
       <h2>{WaterFormType()}</h2>
       <WaterForm operationName={operationType} />
     </div>
