@@ -46,7 +46,6 @@ const WaterForm = ({ operationName }) => {
     }
 
     if (waterValue === undefined || waterValue === null) {
-      toast.error('Water value is required.');
       return;
     }
 
