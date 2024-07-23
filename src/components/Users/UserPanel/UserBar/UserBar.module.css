@@ -10,6 +10,12 @@
   background-color: var(--basic-dark-blue);
 }
 
+.user_bar_wrapper:hover,
+.user_bar_wrapper:active,
+.user_bar_wrapper:focus {
+  transform: scale(1);
+}
+
 .user_avatar {
   width: 38px;
   height: 38px;

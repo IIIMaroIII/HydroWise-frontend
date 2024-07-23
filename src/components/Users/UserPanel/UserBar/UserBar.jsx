@@ -1,21 +1,24 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'src/redux/users/selectors';
 import UserBarPopover from './UserBarPopover/UserBarPopover.jsx';
 import css from './UserBar.module.css';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
+import { useClickAway } from 'react-use';
+import { useRef } from 'react';
+
 const UserBar = () => {
   const user = useSelector(selectUser);
-  const itemRef = useRef();
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const itemRef = useRef(null);
   const togglePopover = () => {
     setIsPopoverOpen(!isPopoverOpen);
   };
 
-  // const btn = document.querySelector(`.${css.user_bar_wrapper}`);
-  
-
+  useClickAway(itemRef, () => {
+    setIsPopoverOpen(false);
+  });
 
   return (
     <div className={css.container} ref={itemRef}>
