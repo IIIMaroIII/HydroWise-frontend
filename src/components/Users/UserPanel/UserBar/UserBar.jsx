@@ -5,29 +5,24 @@ import UserBarPopover from './UserBarPopover/UserBarPopover.jsx';
 import css from './UserBar.module.css';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
+import { useClickAway } from 'react-use';
+import { useRef } from 'react';
+import { faL } from '@fortawesome/free-solid-svg-icons';
+
 const UserBar = () => {
   const user = useSelector(selectUser);
-  // const btnRef = useRef(null);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const itemRef = useRef(null);
   const togglePopover = () => {
     setIsPopoverOpen(!isPopoverOpen);
   };
 
-  // useEffect(() => {
-  //   const onClick = e => {
-  //     if (btnRef && !btnRef.current.contains(e.target)) {
-  //       setIsPopoverOpen(false);
-  //     }
-  //   };
-  //   document.addEventListener('click', onClick);
-
-  //   return () => {
-  //     document.removeEventListener('click', onClick);
-  //   };
-  // }, []);
+  useClickAway(itemRef, () => {
+    setIsPopoverOpen(false);
+  });
 
   return (
-    <div className={css.container}>
+    <div className={css.container} ref={itemRef}>
       <Button onClick={togglePopover} addClass={css.user_bar_wrapper}>
         {user?.name !== null ? (
           <span className={css.span}>{user.name}</span>

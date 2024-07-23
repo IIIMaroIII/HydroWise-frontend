@@ -8,11 +8,13 @@ import {
   changeUsersSettingsModalOpen,
 } from 'src/redux/water/slice';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
+
 const UserBarPopover = ({ onClose }) => {
   const dispatch = useDispatch();
 
+
   return (
-    <ul className={css.popover_list}>
+    <ul className={css.popover_list} >
       <li>
         <Button
           addClass={css.popover_btn}

@@ -27,34 +27,3 @@ const Button = ({
 };
 
 export default Button;
-
-// const Button = forwardRef(
-//   (
-//     {
-//       children,
-//       addClass = '',
-//       selected = false,
-//       disabled = false,
-//       ...otherProps
-//     },
-//     ref,
-//   ) => {
-//     return (
-//       <button
-//         ref={ref}
-//         className={clsx(
-//           css.btn,
-//           {
-//             [css.isSelected]: selected,
-//             [css.isDisabled]: disabled,
-//           },
-//           addClass,
-//         )}
-//         disabled={disabled}
-//         {...otherProps}
-//       >
-//         {children}
-//       </button>
-//     );
-//   },
-// );
