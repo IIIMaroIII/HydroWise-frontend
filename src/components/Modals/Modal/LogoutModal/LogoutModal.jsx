@@ -13,10 +13,11 @@ const LogoutModal = ({ children, ...otherProps }) => {
   const handleSubmit = async () => {
     await dispatch(logout())
       .unwrap()
-      .then(
-        () => dispatch(changeModal(false)),
-        toast.success('You have been successfully logged out, see you soon!'),
-      )
+      .then(() => {
+        dispatch(changeModal(false));
+        navigate('/');
+        toast.success('You have been successfully logged out, see you soon!');
+      })
       .catch(err => toast.error(err?.message ?? 'Internal network error'));
   };
 
