@@ -80,10 +80,9 @@ AxiosWithCredentials.interceptors.response.use(
   async error => {
     const originalRequest = error.config;
 
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (error.response.data.status === 401 && !originalRequest._retry) {
       toast.error('Your access token has been expired!');
       originalRequest._retry = true;
-
       try {
         const result = await store.dispatch(refresh()).unwrap();
         toast.success(
@@ -91,7 +90,7 @@ AxiosWithCredentials.interceptors.response.use(
         );
         originalRequest.headers[
           'Authorization'
-        ] = `Bearer ${result.accessToken}`; // ПРОВЕРИТЬ result! должна быть data, но пока работает
+        ] = `Bearer ${result.data.accessToken}`; // ПРОВЕРИТЬ result! должна быть data, но пока работает
         return AxiosWithCredentials(originalRequest);
       } catch (err) {
         toast(
@@ -100,9 +99,18 @@ AxiosWithCredentials.interceptors.response.use(
         console.error('Failed to refresh token', err);
         window.location.href = '/signin';
       }
+    } else {
+      const result = await store.dispatch(refresh()).unwrap();
+      toast.success(
+        'Your expired access token has been successfully refreshed!',
+      );
+      originalRequest.headers[
+        'Authorization'
+      ] = `Bearer ${result.data.accessToken}`; // ПРОВЕРИТЬ result! должна быть data, но пока работает
+      return AxiosWithCredentials(originalRequest);
     }
 
-    toast.error(error.message);
+    toast.error(error.response?.data.message);
     return Promise.reject(error);
   },
 );
