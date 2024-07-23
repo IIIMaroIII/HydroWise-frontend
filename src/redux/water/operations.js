@@ -8,8 +8,8 @@ export const addWater = createAsyncThunk(
     try {
       const chosenDate = getState().water.chosenDate;
       formData.append('date', chosenDate);
-      console.log('thunk request');
-      const res = await AxiosWithCredentials.post(
+
+      await AxiosWithCredentials.post(
         `${CONSTANTS.WATER_ENDPOINTS.water}`,
         formData,
         {
@@ -18,7 +18,6 @@ export const addWater = createAsyncThunk(
           },
         },
       );
-      console.log('res.data in thunk', res.data);
     } catch (error) {
       return rejectWithValue(
         error.response ? error.response.data : error.message,
@@ -51,15 +50,23 @@ export const deleteWater = createAsyncThunk(
 
 export const changeWater = createAsyncThunk(
   'water/changeWater',
-  async (formData, { rejectWithValue }) => {
+  async (formData, { getState, rejectWithValue }) => {
     try {
-      console.log('formData', formData);
-      // const response = await AxiosWithCredentials.patch(
-      //   `${CONSTANTS.WATER_ENDPOINTS.water}/${id}`,
-      //   formData,
-      // );
-      // console.log(response);
-      // return response.data;
+      const chosenDate = getState().water.chosenDate;
+      const chosenCardId = getState().water.chosenWaterCardId;
+
+      formData.append('date', chosenDate);
+      formData.append('chosenCardId', chosenCardId);
+
+      await AxiosWithCredentials.patch(
+        `${CONSTANTS.WATER_ENDPOINTS.water}/${chosenCardId}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      );
     } catch (error) {
       return rejectWithValue(
         error.response ? error.response.data : error.message,

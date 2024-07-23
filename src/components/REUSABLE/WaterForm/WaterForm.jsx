@@ -8,7 +8,11 @@ import Button from '../Button/Button';
 import waterSchemas from 'src/Validation/Water/waterSchemas';
 import CONSTANTS from 'src/components/Constants/constants';
 import { useDispatch } from 'react-redux';
-import { addWater, fetchDailyWater } from 'src/redux/water/operations';
+import {
+  addWater,
+  changeWater,
+  fetchDailyWater,
+} from 'src/redux/water/operations';
 import { toast } from 'react-hot-toast';
 import useChosenDate from 'src/hooks/useChosenDate.js';
 import { changeModal } from 'src/redux/water/slice.js';
@@ -50,13 +54,25 @@ const WaterForm = ({ operationName }) => {
     }
 
     const formData = new FormData();
-    console.log('waterValue before append', waterValue);
     formData.append('waterValue', waterValue);
-    await dispatch(addWater(formData))
-      .unwrap()
-      .then(() => toast.success('You have succesfully added your record'));
-    dispatch(changeModal(false));
-    await dispatch(fetchDailyWater());
+    console.log('operationName', operationName);
+    if (operationName === 'add') {
+      await dispatch(addWater(formData))
+        .unwrap()
+        .then(() => toast.success('You have succesfully added your record'));
+      dispatch(changeModal(false));
+      await dispatch(fetchDailyWater());
+    } else {
+      await dispatch(changeWater(formData))
+        .unwrap()
+        .then(() =>
+          toast.success(
+            'You have succesfully changed water amount in your record',
+          ),
+        );
+      dispatch(changeModal(false));
+      await dispatch(fetchDailyWater());
+    }
   };
 
   const addWaterAmount = () => {
