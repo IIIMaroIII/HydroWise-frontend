@@ -20,6 +20,7 @@ const WaterDetailedInfo = () => {
       dispatch(fetchDailyWater());
       dispatch(fetchMonthlyWater());
     }
+    dispatch(fetchMonthlyWater());
   }, [chosenDate, dispatch]);
 
   const handleRefresh = async () => {

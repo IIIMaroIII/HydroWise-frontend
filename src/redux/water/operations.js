@@ -104,7 +104,7 @@ export const fetchMonthlyWater = createAsyncThunk(
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
       const response = await AxiosWithCredentials.get(url);
 
-      return response.data.data;
+      return response.data;
     } catch (error) {
       return rejectWithValue(
         error.response ? error.response.data : error.message,
