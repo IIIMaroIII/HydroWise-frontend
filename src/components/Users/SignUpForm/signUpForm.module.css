@@ -4,42 +4,51 @@
   display: none;
 }
 
+.imageSection img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
 .signUpContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 16px;
+  /* height: 100vh; */
+  /* padding: 16px; */
   background-color: var(--white);
+  border-radius: 30px;
+  overflow: hidden;
 }
 
 .signUpForm {
   display: flex;
   flex-direction: column;
-  background-color: var(--white);
-  border-radius: 30px;
-  overflow: hidden;
-  width: 343px;
-  height: 780px;
-  margin-top: 16px;
-  padding: 16px;
-}
-
-.inputContainer {
-  position: relative;
-  margin-bottom: 16px;
-  display: flex;
-  flex-direction: column;
+  background-color: var(--light-grey);
+  /* border-radius: 30px; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  /* overflow: hidden; */
+  /* max-width: 732px; */
+  /* width: 100%; */
+  margin: 0 auto;
+  padding: 32px;
 }
 
 .inputContainer .togglePassword {
   position: absolute;
+  top: 50%;
   right: 18px;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
   cursor: pointer;
 }
 
 .formSection {
   flex: 1;
+  padding: 16px;
+  overflow: hidden;
 }
 
 .formSection,
@@ -47,8 +56,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 170px 16px;
-  background-color: #f0eff4;
+  /* height: 100vh; */
+  background-color: var(--light-grey);
+  /* min-width: 311px; */
 }
 
 h2.formTitle {
@@ -89,7 +99,7 @@ h2.formTitle {
 }
 
 .inputContainer input:focus {
-  border-color: var(--green-hover);
+  border-color: var(--green);
   outline: none;
 }
 
@@ -123,9 +133,16 @@ h2.formTitle {
   letter-spacing: -0.01em;
 }
 
+/* .alreadyHaveAcc .signInRef:hover {
+  text-decoration: underline;
+} */
+
 .imageSection {
+  /* background-color: #e6e6e6; */
+  /* display: flex; */
   justify-content: center;
   align-items: center;
+  /* border-left: 1px solid #ddd; */
 }
 
 .imageSection img {
@@ -133,6 +150,8 @@ h2.formTitle {
 
   width: 100%;
 }
+
+/* other rules */
 
 .btnform {
   width: 100%;
@@ -152,6 +171,31 @@ h2.formTitle {
   letter-spacing: -0.01em;
   padding: 16px 0;
 }
+.form {
+  margin-bottom: 70px;
+}
+
+/* .mainForm {
+  margin-bottom: 16px;
+} */
+
+/* .formInput {
+  width: 100%;
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  outline: transparent;
+  background-color: transparent;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  color: var(--dark);
+
+  padding: 16px;
+
+  transition: border-color var(--animation);
+} */
 
 .form input:hover,
 .form input:focus {
@@ -162,6 +206,12 @@ h2.formTitle {
 .btnform:active {
   background-color: #87d28d;
 }
+
+/* .btnform:disabled {
+  background-color: var(--disabled-color);
+  color: var(--secondary-text);
+  cursor: not-allowed;
+} */
 
 .btnform:disabled {
   cursor: not-allowed;
@@ -175,51 +225,97 @@ h2.formTitle {
 
 @media (min-width: 768px) {
   .formSection {
-    padding: 32px;
-    display: block;
+    min-width: 436px;
+  }
+
+  .form {
+    margin-bottom: 100px;
+  }
+
+  .form {
+    width: 436px;
+    margin: 0 auto;
   }
 
   .formTitle {
     font-size: 36px;
+    line-height: 1.06;
+    letter-spacing: -0.01em;
   }
 
-  .signUpForm {
-    width: 704px;
-    height: 960px;
-    background-color: var(--white);
+  .formLabel {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
   }
 
-  .form {
-    min-width: 436px;
-    height: auto;
-    padding: 227px 102px;
+  .inputContainer input {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+
+  .inputContainer .togglePassword {
+    top: 50%;
+    right: 18px;
+  }
+
+  .btnform {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+
+    padding: 18px 0;
   }
 }
 
 @media (min-width: 1440px) {
-  .signUpForm {
+  .imageSection {
     display: flex;
-    justify-content: space-between;
-    width: auto;
-    height: 736px;
+  }
+
+  .signUpContainer {
+    /* padding: 32px; */
     background-color: var(--white);
+    /* border-radius: 30px; */
+    min-width: 672px;
+  }
+
+  .signUpForm {
+    /* background-color: var(--white); */
+    width: 100%;
+    height: 100%;
+    /* border-radius: 30px; */
+  }
+
+  /* .form {
     border-radius: 30px;
-    overflow: hidden;
-    gap: 32px;
+  } */
+
+  .formTitle {
+    margin-bottom: 20px;
   }
 
-  .imageSection {
-    display: block;
-  }
+  /* .formSection {
+    margin-right: 32px;
+  } */
 
-  .formSection,
-  .imageSection {
-    width: 672px;
-    height: 736px;
-    border-radius: 30px;
+  .btnForm {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
   }
+}
 
-  .form {
-    padding: 130px 118px;
-  }
+.formInput:-webkit-autofill,
+.formInput:-webkit-autofill:hover,
+.formInput:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--dark);
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: transparent;
+}
+
+.signUpContainer {
+  margin: 0 auto;
 }
