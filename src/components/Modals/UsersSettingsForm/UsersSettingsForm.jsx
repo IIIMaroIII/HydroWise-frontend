@@ -8,9 +8,11 @@ import { useDispatch } from 'react-redux';
 import userSettingsFormValidation from 'src/Validation/Forms/userSettingsForm';
 import { BsExclamationLg } from 'react-icons/bs';
 import { FiLogOut } from 'react-icons/fi';
+import { useState } from 'react';
 
 const UsersSettingsForm = () => {
   const dispatch = useDispatch();
+  const [photoPreview, setPhotoPreview] = useState(null);
 
   const user = useSelector(selectUser);
   const {
@@ -24,6 +26,7 @@ const UsersSettingsForm = () => {
     defaultValues: {
       gender: 'woman',
       weight: 0,
+      email: user.email,
       activeTime: 0,
       waterIntake: 1.8,
     },
@@ -41,36 +44,58 @@ const UsersSettingsForm = () => {
     formData.append('activeTime', data.activeTime);
     formData.append('waterIntake', data.waterIntake);
 
-    console.log(Object.fromEntries(formData.entries()));
-    reset();
+    console.log('data', data);
+  };
+
+  const handleFileChange = e => {
+    const file = e.target.files[0];
+    if (file) {
+      setPhotoPreview(URL.createObjectURL(file));
+    }
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className={css.settingsForm}>
         <div className={css.photoUrlWrapper}>
-          <img
+          {/* <img
             className={css.photoUrl}
             src={'src/assets/pictures/userImg.png'}
             alt="photoUrl Preview"
-          />
+          /> */}
+          {photoPreview ? (
+            <img
+              className={css.photoUrl}
+              src={photoPreview}
+              alt="Photo Preview"
+            />
+          ) : (
+            <img
+              className={css.photoUrl}
+              src={'src/assets/pictures/userImg.png'}
+              alt="Default Preview"
+            />
+          )}
           <div className={css.fileWrapper}>
-            <input
+            {/* <input
               className={css.file}
               type="file"
               name="file"
               {...register('photoUrl')}
-            />
+            /> */}
             <div className={css.uploadPhotoBtnContainer}>
-              <FiLogOut className={css.logOutIcon} />
-              <Button addClass={css.uploadPhoto}>Upload a photo</Button>
+              <Button addClass={css.uploadPhoto}>
+                <FiLogOut className={css.logOutIcon} />
+                <p>Upload a photo</p>
+                <input
+                  className={css.file}
+                  type="file"
+                  name="file"
+                  {...register('photoUrl')}
+                  onChange={handleFileChange}
+                />
+              </Button>
             </div>
-            <input
-              className={css.file}
-              type="file"
-              name="file"
-              {...register('photoUrl')}
-            />
           </div>
         </div>
         {errors.photoUrl && <p>{errors.photoUrl.message}</p>}
