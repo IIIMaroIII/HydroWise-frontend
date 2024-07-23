@@ -23,20 +23,11 @@ const WaterDetailedInfo = () => {
     dispatch(fetchMonthlyWater());
   }, [chosenDate, dispatch]);
 
-  const handleRefresh = async () => {
-    try {
-      const result = await dispatch(refresh()).unwrap();
-      console.log('Token refreshed successfully:', result);
-    } catch (error) {
-      console.error('Failed to refresh token', error);
-    }
-  };
   return (
     <section className={css.wrapper}>
       <UserPanel />
       <DailyInfo />
       <MonthInfo />
-      <button onClick={handleRefresh}>Refresh Token</button>
     </section>
   );
 };
