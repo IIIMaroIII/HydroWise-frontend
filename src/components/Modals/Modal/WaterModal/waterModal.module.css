@@ -1,3 +1,7 @@
+.waterModal {
+  max-width: 344px;
+}
+
 .title {
   color: rgb(50, 63, 71);
   display: inline;
