@@ -12,7 +12,6 @@ import Button from 'src/components/REUSABLE/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import Photo from './Rectangle 19.jpg';
 import { signIn, signUp } from 'src/redux/users/operations.js';
 import toast from 'react-hot-toast';
 import Logo from 'src/components/REUSABLE/Logo/Logo';
@@ -69,7 +68,6 @@ const SignUpForm = () => {
       <Logo />
         <div className={css.formSection}>
           <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          {/* <Logo /> */}
             <h2 className={css.formTitle}>Sign Up</h2>
             <div className={css.inputContainer}>
               <label className={css.formLabel}>Email</label>
