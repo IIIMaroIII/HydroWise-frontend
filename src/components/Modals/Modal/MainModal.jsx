@@ -45,25 +45,25 @@ const MainModal = () => {
   };
 
   return (
-    <div className={css.backdrop}>
-      <Modal
-        appElement={document.getElementById('root')}
-        isOpen={modal}
-        onRequestClose={() => dispatch(changeModal(false))}
-        contentLabel="Example Modal"
-        overlayClassName={css.modalOverlay}
-        className={css.modalContent}
-      >
-        {renderModal()}
+    <Modal
+      appElement={document.getElementById('root')}
+      isOpen={modal}
+      onRequestClose={() => dispatch(changeModal(false))}
+      contentLabel="Example Modal"
+      overlayClassName={css.modalOverlay}
+      className={css.modalContent}
+      shouldCloseOnOverlayClick={true}
+      shouldCloseOnEsc={true}
+    >
+      {renderModal()}
 
-        <button
-          className={css.closeBtn}
-          onClick={() => dispatch(changeModal(false))}
-        >
-          <RxCross1 className={css.crossIcon} />
-        </button>
-      </Modal>
-    </div>
+      <button
+        className={css.closeBtn}
+        onClick={() => dispatch(changeModal(false))}
+      >
+        <RxCross1 className={css.crossIcon} />
+      </button>
+    </Modal>
   );
 };
 
