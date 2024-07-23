@@ -15,7 +15,6 @@ import DeleteWaterModal from './DeleteWaterModal/DeleteWaterModal';
 import LogoutModal from './LogoutModal/LogoutModal';
 import UserSettingsModal from './UserSettingsModal/UserSettingsModal';
 import { changeModal } from 'src/redux/water/slice.js';
-import { bool } from 'yup';
 
 const MainModal = () => {
   const dispatch = useDispatch();
