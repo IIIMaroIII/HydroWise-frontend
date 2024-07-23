@@ -19,10 +19,10 @@ const UserBar = () => {
         setIsPopoverOpen(false);
       }
     };
-    document.addEventListener('mousedown', onClick);
+    document.addEventListener('click', onClick);
 
     return () => {
-      document.removeEventListener('mousedown', onClick);
+      document.removeEventListener('click', onClick);
     };
   }, []);
 
