@@ -25,6 +25,22 @@ const MainModal = () => {
   const logoutModal = useSelector(selectIsLogoutModalOpen);
   const usersSettingsModal = useSelector(selectIsUsersSettingsModalOpen);
 
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      borderRadius: '15px',
+      boxShadow: '0px 4px 50px 0px rgba(0, 0, 0, 0.1)',
+    },
+    overlay: {
+      backgroundColor: 'rgba(47, 47, 47, 0.6)',
+    },
+  };
+
   const renderModal = () => {
     if (waterModalEdit) {
       return <WaterModal operationType="edit" />;
@@ -44,25 +60,28 @@ const MainModal = () => {
   };
 
   return (
-    <Modal
-      appElement={document.getElementById('root')}
-      isOpen={modal}
-      onRequestClose={() => dispatch(changeModal(false))}
-      contentLabel="Example Modal"
-      overlayClassName={css.modalOverlay}
-      className={css.modalContent}
-      shouldCloseOnOverlayClick={true}
-      shouldCloseOnEsc={true}
-    >
-      {renderModal()}
-
-      <button
-        className={css.closeBtn}
-        onClick={() => dispatch(changeModal(false))}
+    <div className={css.backdrop}>
+      <Modal
+        appElement={document.getElementById('root')}
+        isOpen={modal}
+        onRequestClose={() => dispatch(changeModal(false))}
+        contentLabel="Example Modal"
+        overlayClassName={css.modalOverlay}
+        className={css.modalContent}
+        shouldCloseOnOverlayClick={true}
+        shouldCloseOnEsc={true}
+        style={customStyles}
       >
-        <RxCross1 className={css.crossIcon} />
-      </button>
-    </Modal>
+        {renderModal()}
+
+        <button
+          className={css.closeBtn}
+          onClick={() => dispatch(changeModal(false))}
+        >
+          <RxCross1 className={css.crossIcon} />
+        </button>
+      </Modal>
+    </div>
   );
 };
 
