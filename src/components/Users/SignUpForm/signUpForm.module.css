@@ -159,6 +159,7 @@ h2.formTitle {
   background-color: var(--light-green);
   border: none;
   border-radius: 30px;
+  background-color: #9be1a0;
   color: var(--dark-blue);
   font-size: 14px;
   font-weight: 700;
@@ -198,12 +199,12 @@ h2.formTitle {
 
 .form input:hover,
 .form input:focus {
-  border-color: var(--green);
+  color: var(--green);
 }
 
 .btnform:hover,
 .btnform:active {
-  background-color: var(--green);
+  color: var(--green);
 }
 
 /* .btnform:disabled {
