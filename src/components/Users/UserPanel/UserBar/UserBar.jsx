@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'src/redux/users/selectors';
 import UserBarPopover from './UserBarPopover/UserBarPopover.jsx';
@@ -7,32 +7,28 @@ import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
 const UserBar = () => {
   const user = useSelector(selectUser);
-  const btnRef = useRef(null);
+  // const btnRef = useRef(null);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const togglePopover = () => {
     setIsPopoverOpen(!isPopoverOpen);
   };
 
-  useEffect(() => {
-    const onClick = e => {
-      if (btnRef && !btnRef.current.contains(e.target)) {
-        setIsPopoverOpen(false);
-      }
-    };
-    document.addEventListener('click', onClick);
+  // useEffect(() => {
+  //   const onClick = e => {
+  //     if (btnRef && !btnRef.current.contains(e.target)) {
+  //       setIsPopoverOpen(false);
+  //     }
+  //   };
+  //   document.addEventListener('click', onClick);
 
-    return () => {
-      document.removeEventListener('click', onClick);
-    };
-  }, []);
+  //   return () => {
+  //     document.removeEventListener('click', onClick);
+  //   };
+  // }, []);
 
   return (
     <div className={css.container}>
-      <Button
-        onClick={togglePopover}
-        addClass={css.user_bar_wrapper}
-        ref={btnRef}
-      >
+      <Button onClick={togglePopover} addClass={css.user_bar_wrapper}>
         {user?.name !== null ? (
           <span className={css.span}>{user.name}</span>
         ) : (
