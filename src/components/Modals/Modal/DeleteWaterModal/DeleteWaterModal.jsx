@@ -4,10 +4,8 @@ import { changeDeleteWaterModalOpen, changeModal } from 'src/redux/water/slice';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
 import toast from 'react-hot-toast';
 import { deleteWater } from 'src/redux/water/operations.js';
-import { selectChosenWaterCardId } from 'src/redux/water/selectors.js';
 
 const DeleteWaterModal = ({ children, ...otherProps }) => {
-  const chosenWaterCardId = useSelector(selectChosenWaterCardId);
   const dispatch = useDispatch();
 
   const handleSubmit = () => {

@@ -1,5 +1,4 @@
 .apFrame {
-  width: 373px;
   padding: 14px 0px 14px 16px;
   border: 1px solid rgba(47, 47, 47, 0.15);
   border-radius: 15px;
@@ -35,18 +34,25 @@
 }
 
 .uploadPhoto {
+  width: 175px;
+  height: 100%;
   background-color: white;
   border: none;
   cursor: pointer;
   color: rgb(47, 47, 47);
   font-size: 16px;
   font-weight: 400;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .photoUrl {
   display: inline-block;
   width: 100px;
   height: 100px;
+  border-radius: 50%;
 }
 
 .photoUrlWrapper {
@@ -63,11 +69,11 @@
   width: 20px;
   height: 20px;
 }
-.uploadPhotoBtnContainer {
+/* .uploadPhotoBtnContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 .apLabelName {
   display: flex;
   flex-direction: column;
@@ -93,7 +99,7 @@
   margin-right: 20px;
   margin-bottom: 24px;
 }
-.apLabelName:not(last-child) {
+.apLabelName {
   margin-bottom: 14px;
 }
 .reqWaterText {

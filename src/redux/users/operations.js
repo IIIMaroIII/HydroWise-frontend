@@ -46,13 +46,7 @@ export const logout = createAsyncThunk(
   'users/logout',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await AxiosWithCredentials.post(
-        `${CONSTANTS.USERS_ENDPOINTS.logout}`,
-      );
-
-      if (res.status > 300) {
-        return rejectWithValue(res.statusText);
-      }
+      await AxiosWithCredentials.post(`${CONSTANTS.USERS_ENDPOINTS.logout}`);
     } catch (error) {
       return rejectWithValue(
         error.response ? error.response.data : error.message,

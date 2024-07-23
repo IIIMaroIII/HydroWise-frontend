@@ -16,7 +16,7 @@ const WaterDetailedInfo = () => {
   const { chosenDate } = useChosenDate();
 
   useEffect(() => {
-    if (chosenDate) {
+    if (!chosenDate) {
       dispatch(fetchDailyWater());
       dispatch(fetchMonthlyWater());
     }

@@ -4,19 +4,21 @@ import { logout } from 'src/redux/users/operations';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
+import { changeLogoutModalOpen, changeModal } from 'src/redux/water/slice.js';
 
 const LogoutModal = ({ children, ...otherProps }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    dispatch(logout())
+  const handleSubmit = async () => {
+    await dispatch(logout())
       .unwrap()
       .then(() => {
-        toast.success('Logout successful!');
+        dispatch(changeModal(false));
         navigate('/');
+        toast.success('You have been successfully logged out, see you soon!');
       })
-      .catch(() => toast.error('Oops, Logout went wrong, please try again!'));
+      .catch(err => toast.error(err?.message ?? 'Internal network error'));
   };
 
   return (
@@ -34,10 +36,7 @@ const LogoutModal = ({ children, ...otherProps }) => {
         </Button>
         <Button
           addClass={css.logoutModal_cancelBtn}
-          onClick={() => {
-            useDispatch(changeLogoutModalOpen(false));
-            dispatch(changeModal(false));
-          }}
+          onClick={() => dispatch(changeModal(false))}
           {...otherProps}
         >
           {children || 'Cancel'}
