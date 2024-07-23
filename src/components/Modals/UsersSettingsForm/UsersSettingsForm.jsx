@@ -9,6 +9,9 @@ import userSettingsFormValidation from 'src/Validation/Forms/userSettingsForm';
 import { BsExclamationLg } from 'react-icons/bs';
 import { FiLogOut } from 'react-icons/fi';
 import { useState } from 'react';
+import { update } from 'src/redux/users/operations.js';
+import { changeModal } from 'src/redux/water/slice.js';
+import toast from 'react-hot-toast';
 
 const UsersSettingsForm = () => {
   const dispatch = useDispatch();
@@ -44,7 +47,13 @@ const UsersSettingsForm = () => {
     formData.append('activeTime', data.activeTime);
     formData.append('waterIntake', data.waterIntake);
 
-    console.log('data', data);
+    dispatch(update(formData))
+      .unwrap()
+      .then(() => {
+        toast.success('You have successfully updated your profile!');
+        dispatch(changeModal(false));
+        reset();
+      });
   };
 
   const handleFileChange = e => {
