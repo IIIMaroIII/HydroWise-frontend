@@ -30,8 +30,6 @@ const UsersSettingsForm = () => {
       gender: 'woman',
       weight: 0,
       email: user.email,
-      activeTime: 0,
-      waterIntake: 1.8,
     },
   });
 
@@ -45,7 +43,9 @@ const UsersSettingsForm = () => {
     formData.append('email', data.email);
     formData.append('weight', data.weight);
     formData.append('activeTime', data.activeTime);
-    formData.append('waterIntake', data.waterIntake);
+    if (data.waterIntake) {
+      formData.append('waterIntake', data.waterIntake);
+    }
 
     dispatch(update(formData))
       .unwrap()

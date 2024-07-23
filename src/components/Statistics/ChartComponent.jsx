@@ -14,6 +14,7 @@ import { selectMonthlyWaterItems } from 'src/redux/water/selectors';
 import { useEffect } from 'react';
 import { fetchMonthlyWater } from 'src/redux/water/operations';
 import { format, subDays } from 'date-fns';
+import useChosenDate from 'src/hooks/useChosenDate.js';
 
 const CustomTooltip = ({ active = false, payload = [], coordinate }) => {
   if (active && payload && payload.length) {
