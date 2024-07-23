@@ -26,22 +26,6 @@ const MainModal = () => {
   const logoutModal = useSelector(selectIsLogoutModalOpen);
   const usersSettingsModal = useSelector(selectIsUsersSettingsModalOpen);
 
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      borderRadius: '15px',
-      boxShadow: '0px 4px 50px 0px rgba(0, 0, 0, 0.1)',
-    },
-    overlay: {
-      backgroundColor: 'rgba(47, 47, 47, 0.6)',
-    },
-  };
-
   const renderModal = () => {
     if (waterModalEdit) {
       return <WaterModal operationType="edit" />;
@@ -67,7 +51,8 @@ const MainModal = () => {
         isOpen={modal}
         onRequestClose={() => dispatch(changeModal(false))}
         contentLabel="Example Modal"
-        style={customStyles}
+        overlayClassName={css.modalOverlay}
+        className={css.modalContent}
       >
         {renderModal()}
 
