@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectMonthlyWaterItems } from 'src/redux/water/selectors';
 import { useEffect } from 'react';
 import { fetchMonthlyWater } from 'src/redux/water/operations';
-import { format } from 'date-fns';
+import { format, subDays } from 'date-fns';
 
 const CustomTooltip = ({ active = false, payload = [], coordinate }) => {
   if (active && payload && payload.length) {
@@ -42,30 +42,27 @@ const ChartComponent = () => {
     dispatch(fetchMonthlyWater());
   }, [dispatch]);
 
-  const chartData = [];
+  const today = new Date();
+  const sevenDaysAgo = subDays(today, 7);
 
-  if (monthlyWaterItems && Array.isArray(monthlyWaterItems)) {
-    const now = new Date();
-    const sevenDaysAgo = new Date(now.setDate(now.getDate() - 7));
-    console.log(sevenDaysAgo);
-
-    const dataMap = monthlyWaterItems.reduce((acc, item) => {
-      const itemDate = new Date(item.date);
-      const day = format(itemDate, 'd');
-
-      if (itemDate >= sevenDaysAgo) {
-        acc[day] = (acc[day] || 0) + item.volume;
-      }
-
-      return acc;
-    }, {});
-
-    for (const [date, volume] of Object.entries(dataMap)) {
-      chartData.push({ date, volume });
-    }
+  const dateArray = [];
+  for (let i = 6; i >= 0; i--) {
+    const date = subDays(today, i);
+    dateArray.push(format(date, 'yyyy-MM-dd'));
   }
-  console.log(chartData);
-  console.log(monthlyWaterItems);
+
+  const dataMap = monthlyWaterItems.reduce((acc, item) => {
+    const itemDate = format(new Date(item.date), 'yyyy-MM-dd');
+    if (new Date(item.date) >= sevenDaysAgo) {
+      acc[itemDate] = (acc[itemDate] || 0) + item.volume;
+    }
+    return acc;
+  }, {});
+
+  const chartData = dateArray.map(date => ({
+    date: format(new Date(date), 'd'),
+    volume: dataMap[date] || 0,
+  }));
 
   const formatYAxis = tickItem => {
     if (tickItem === 0) {
@@ -118,7 +115,6 @@ const ChartComponent = () => {
             axisLine={false}
             tickLine={false}
             tickFormatter={formatYAxis}
-            // ticks={yTicks}
             tick={{
               fill: '#323f47',
               fontSize: isSmallScreen ? 14 : 15,
