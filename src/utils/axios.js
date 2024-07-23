@@ -42,6 +42,39 @@ AxiosWithCredentials.interceptors.request.use(
   },
 );
 
+// AxiosWithCredentials.interceptors.response.use(
+//   response => response,
+//   async error => {
+//     const originalRequest = error.config;
+
+//     if (error.response.data.status === 401 && !originalRequest._retry) {
+//       toast.error('Your access token has been expired!');
+//       console.log('originalRequest', originalRequest);
+//       originalRequest._retry = true;
+//       console.log('error.response.data.status', error.response.data.status);
+//       console.log('error.response.data.message', error.response.data.message);
+//       try {
+//         const result = await store.dispatch(refresh());
+//         toast.success(
+//           'Your expired access token has been successfully refreshed!',
+//         );
+//         originalRequest.headers[
+//           'Authorization'
+//         ] = `Bearer ${result.data.accessToken}`;
+//         return AxiosWithCredentials(originalRequest);
+//       } catch (err) {
+//         toast(
+//           'You have been redirected to Sign In page due to network error or empty cookies',
+//         );
+//         console.error('Failed to refresh token', err);
+//         window.location.href = '/signin';
+//       }
+//     }
+
+//     toast.error(error.message);
+//     return Promise.reject(error);
+//   },
+// );
 AxiosWithCredentials.interceptors.response.use(
   response => response,
   async error => {
@@ -58,9 +91,12 @@ AxiosWithCredentials.interceptors.response.use(
         );
         originalRequest.headers[
           'Authorization'
-        ] = `Bearer ${result.data.accessToken}`;
+        ] = `Bearer ${result.accessToken}`; // ПРОВЕРИТЬ result! должна быть data, но пока работает
         return AxiosWithCredentials(originalRequest);
       } catch (err) {
+        toast(
+          'You have been redirected to Sign In page due to network error or empty cookies',
+        );
         console.error('Failed to refresh token', err);
         window.location.href = '/signin';
       }

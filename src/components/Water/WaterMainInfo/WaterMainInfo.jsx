@@ -7,11 +7,11 @@ import Logo from 'src/components/REUSABLE/Logo/Logo';
 
 const WaterMainInfo = () => {
   return (
-    <section className={css.section_wrapper}>
-      <Logo />
-      <WaterDailyNorma />
-      <WaterProgressBar />
-      <AddWaterBtn />
+    <section className={css.section_WaterMainInfo_wrapper}>
+      <Logo/>
+        <WaterDailyNorma />
+        <WaterProgressBar />
+        <AddWaterBtn />
     </section>
   );
 };
