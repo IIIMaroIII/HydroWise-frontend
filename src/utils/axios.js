@@ -91,7 +91,7 @@ AxiosWithCredentials.interceptors.response.use(
         );
         originalRequest.headers[
           'Authorization'
-        ] = `Bearer ${result.accessToken}`;
+        ] = `Bearer ${result.accessToken}`; // ПРОВЕРИТЬ result! должна быть data, но пока работает
         return AxiosWithCredentials(originalRequest);
       } catch (err) {
         toast(
