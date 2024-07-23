@@ -53,7 +53,6 @@
 }
 
 .formTitle {
-  margin-bottom: 20px;
   color: #323f47;
   font-weight: 700;
   font-size: 32px;
@@ -197,6 +196,7 @@
     background-color: var(--white);
     border-radius: 30px;
     overflow: hidden;
+    gap: 32px;
   }
   .imageSection {
     display: block;
@@ -206,10 +206,6 @@
     width: 672px;
     height: 736px;
     border-radius: 30px;
-  }
-
-  .formSection {
-    margin-right: 32px;
   }
 
   .form {
