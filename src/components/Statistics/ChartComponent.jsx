@@ -9,6 +9,11 @@ import {
 import css from './ChartComponent.module.css';
 import { useMediaQuery } from '@mui/material';
 import sprite from '../../assets/pictures/HomePage/sprite.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectMonthlyWaterItems } from 'src/redux/water/selectors';
+import { useEffect } from 'react';
+import { fetchMonthlyWater } from 'src/redux/water/operations';
+import { format } from 'date-fns';
 
 const CustomTooltip = ({ active = false, payload = [], coordinate }) => {
   if (active && payload && payload.length) {
@@ -22,31 +27,52 @@ const CustomTooltip = ({ active = false, payload = [], coordinate }) => {
         style={{ left: x, top: y }}
       >
         <use href={`${sprite}#icon-Combined-Shape`}></use>
-        <text className={css.label}>{`${payload[0].value * 1000} ml`}</text>
+        <text className={css.label}>{`${payload[0].value} ml`}</text>
       </svg>
     );
   }
   return null;
 };
 
-const data = [
-  { name: '16', value: 1.8 },
-  { name: '17', value: 1.5 },
-  { name: '18', value: 2 },
-  { name: '19', value: 1.75 },
-  { name: '20', value: 2.2 },
-  { name: '21', value: 2.3 },
-  { name: '22', value: 2.1 },
-];
-
 const ChartComponent = () => {
-  const yTicks = Array.from({ length: 6 }, (_, i) => i * 0.5);
+  const dispatch = useDispatch();
+  const monthlyWaterItems = useSelector(selectMonthlyWaterItems);
+
+  useEffect(() => {
+    dispatch(fetchMonthlyWater());
+  }, [dispatch]);
+
+  const chartData = [];
+
+  if (monthlyWaterItems && Array.isArray(monthlyWaterItems)) {
+    const now = new Date();
+    const sevenDaysAgo = new Date(now.setDate(now.getDate() - 7));
+    console.log(sevenDaysAgo);
+
+    const dataMap = monthlyWaterItems.reduce((acc, item) => {
+      const itemDate = new Date(item.date);
+      const day = format(itemDate, 'd');
+
+      if (itemDate >= sevenDaysAgo) {
+        acc[day] = (acc[day] || 0) + item.volume;
+      }
+
+      return acc;
+    }, {});
+
+    for (const [date, volume] of Object.entries(dataMap)) {
+      chartData.push({ date, volume });
+    }
+  }
+  console.log(chartData);
+  console.log(monthlyWaterItems);
 
   const formatYAxis = tickItem => {
     if (tickItem === 0) {
       return '0%';
     }
-    return `${tickItem} L`;
+    const yTicks = tickItem / 1000;
+    return `${yTicks} L`;
   };
 
   const isSmallScreen = useMediaQuery('(max-width:767px)');
@@ -64,7 +90,7 @@ const ChartComponent = () => {
   return (
     <div className={css.chartContainer}>
       <ResponsiveContainer width="100%" height={isSmallScreen ? 256 : 273}>
-        <AreaChart data={data}>
+        <AreaChart data={chartData}>
           <defs>
             <linearGradient
               id="colorValue"
@@ -79,7 +105,7 @@ const ChartComponent = () => {
             </linearGradient>
           </defs>
           <XAxis
-            dataKey="name"
+            dataKey="date"
             axisLine={false}
             tickLine={false}
             tick={{
@@ -92,7 +118,7 @@ const ChartComponent = () => {
             axisLine={false}
             tickLine={false}
             tickFormatter={formatYAxis}
-            ticks={yTicks}
+            // ticks={yTicks}
             tick={{
               fill: '#323f47',
               fontSize: isSmallScreen ? 14 : 15,
@@ -102,7 +128,7 @@ const ChartComponent = () => {
           />
           <Tooltip content={<CustomTooltip />} />
           <Area
-            dataKey="value"
+            dataKey="volume"
             stroke="#87d28d"
             strokeWidth={isSmallScreen ? 2 : 3}
             fill="url(#colorValue)"
