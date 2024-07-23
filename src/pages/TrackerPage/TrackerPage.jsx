@@ -20,9 +20,11 @@ const TrackerPage = () => {
   }, [location.pathname, dispatch]);
 
   return (
-    <div className={css.container}>
-      <WaterMainInfo />
-      <WaterDetailedInfo />
+    <div className={css.flex}>
+      <div className={css.container}>
+        <WaterMainInfo />
+        <WaterDetailedInfo />
+      </div>
     </div>
   );
 };
