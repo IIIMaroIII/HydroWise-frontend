@@ -1,5 +1,4 @@
 .apFrame {
-  width: 373px;
   padding: 14px 0px 14px 16px;
   border: 1px solid rgba(47, 47, 47, 0.15);
   border-radius: 15px;
@@ -93,7 +92,7 @@
   margin-right: 20px;
   margin-bottom: 24px;
 }
-.apLabelName:not(last-child) {
+.apLabelName {
   margin-bottom: 14px;
 }
 .reqWaterText {

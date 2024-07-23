@@ -35,7 +35,7 @@
   justify-content: center;
 }
 .waterControlContainer {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: start;
   gap: 8px;
