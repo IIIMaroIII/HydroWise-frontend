@@ -7,8 +7,6 @@ import clsx from 'clsx';
 // import { useSelector } from 'react-redux';
 
 const WelcomeSection = () => {
-  // const isAuthenticated = useSelector(selectUserIsLoggedIn);
-
   return (
     <div className={clsx(css.homePageWelcomeSection)}>
       <Logo />
@@ -19,21 +17,25 @@ const WelcomeSection = () => {
         <h1 className={css.homePageWelcomeSectionHeader}>
           Water consumption tracker
         </h1>
-        <div className={css.homePageBtns}>
-          <CustomNavLink
-            addClass={css.isActive}
-            className={clsx(css.homePageLinks, css.linkTracker)}
-            to="/signup"
-          >
-            Try tracker
-          </CustomNavLink>
-          <CustomNavLink
-            className={clsx(css.homePageLinks, css.linkSignIn)}
-            to="/signin"
-          >
-            Sign In
-          </CustomNavLink>
-        </div>
+        <ul className={css.homePageBtns}>
+          <li>
+            <CustomNavLink
+              addClass={css.isActive}
+              className={clsx(css.homePageLinks, css.linkTracker, {})}
+              to="/signup"
+            >
+              Try tracker
+            </CustomNavLink>
+          </li>
+          <li>
+            <CustomNavLink
+              className={clsx(css.homePageLinks, css.linkSignIn, {})}
+              to="/signin"
+            >
+              Sign In
+            </CustomNavLink>
+          </li>
+        </ul>
       </div>
     </div>
   );

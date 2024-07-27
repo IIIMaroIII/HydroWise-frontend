@@ -7,26 +7,58 @@
   padding: 6px 12px;
   width: 137px;
   height: 50px;
-  border: 1px solid black;
+  background-color: var(--basic-dark-blue);
+}
+
+.user_bar_wrapper:hover,
+.user_bar_wrapper:active,
+.user_bar_wrapper:focus {
+  transform: scale(1);
 }
 
 .user_avatar {
   width: 38px;
   height: 38px;
-  border-radius: 50%;
+  border-radius: 100%;
+  object-fit: cover;
 }
 
-/* @media screen and (min-width:768px) {
-    .user_bar_wrapper {
-            gap: 10px;
-            width: 157px;
-            height: 56px;
-        }
-    .user_avatar {
+.arrowIcon {
+  color: var(--white);
+}
+
+.container {
+  position: relative;
+}
+
+.span {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 11px;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+
+@media screen and (min-width: 768px) {
+  .user_bar_wrapper {
+    gap: 10px;
+    width: 157px;
+    height: 56px;
+  }
+  /* .user_avatar {
             width: 44px;
             height: 44px
-         }
-  } */
+         } */
+
+  .span {
+    font-size: 16px;
+  }
+
+  .user_avatar {
+    width: 44px;
+    height: 44px;
+  }
+}
 
 /* @media screen and (min-width:1440px) {
      

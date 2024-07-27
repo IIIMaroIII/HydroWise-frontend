@@ -1,3 +1,8 @@
+deleted by Myroslava const customStyles = { content: { top: '50%', left: '50%',
+right: 'auto', bottom: 'auto', marginRight: '-50%', transform: 'translate(-50%,
+-50%)', borderRadius: '15px', boxShadow: '0px 4px 50px 0px rgba(0, 0, 0, 0.1)',
+}, overlay: { backgroundColor: 'rgba(47, 47, 47, 0.6)', }, };
+
 This template provides a minimal setup to get React working in Vite with HMR and
 some ESLint rules.
 
@@ -51,24 +56,23 @@ branch -d'
 alias gbd-remote='git branch -r --merged origin/main | grep -v "origin/main" |
 sed "s/origin\///" |$
 
-//================ Home =================// 
-styles
- //=================== SignUpPage ============//
+//================ Home =================// styles //===================
+SignUpPage ============//
 
 - sign up btn +/-
 - mobile
 - tablet
 - desctop
-- rendering components /
-/============= SignInPage =============//
- ❗ mobile 
- ❗ tablet 
- ❗ desctop
-   //=============== TrackerPage =============// aquatrack
-  image WaterProgressBar +/-
+- rendering components / /============= SignInPage =============//
 
-- addWaterBtn, editWaterBtn, deleteWaterBtn logOutBtn- do not open modals
--NEW UserSettingsForm(distance between the components, background-color,  ❗ desctop) +/-
+* mobile
+* tablet
+* desctop //=============== TrackerPage =============// aquatrack image
+  WaterProgressBar +/-
+
+- addWaterBtn, editWaterBtn, deleteWaterBtn logOutBtn- do not open modals -NEW
+  UserSettingsForm(distance between the components, background-color, ❗
+  desctop) +/-
 
 WaterList +/-
 
@@ -76,8 +80,5 @@ UserBarPopover: UserBar +/-
 
 Calendar +/- CalendarItem +/-
 
-//=============== Modals ===============// 
-DeleteWaterModal
- LogOutModal +/-
-NEW WaterModal +/-
-
+//=============== Modals ===============// DeleteWaterModal LogOutModal +/- NEW
+WaterModal +/-

@@ -8,9 +8,11 @@
   --background-grey: #f0eff4;
   --white: #ffffff;
   --red-error: #ef5050;
+
   --transition-delay: 500ms;
   --default-delay: 250ms;
   --disabled-grey: #bcbcbc;
+  --text-grey-white:#2F2F2F99;
 }
 
 body {
@@ -35,4 +37,10 @@ img {
   display: block;
   width: 100%;
   height: auto;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

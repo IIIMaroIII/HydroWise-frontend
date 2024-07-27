@@ -2,12 +2,22 @@ import css from './AdvantagesSection.module.css';
 import sprite from '../../assets/pictures/HomePage/sprite.svg';
 import CustomNavLink from '../REUSABLE/CustomNavLink/CustomNavLink';
 import clsx from 'clsx';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUserIsLoggedIn } from 'src/redux/users/selectors';
 import { IMAGES } from '../../components/Constants/constants.js';
+import { setShowChart } from '../../redux/chart/slice.js';
+import {
+  changeModal,
+  changeUsersSettingsModalOpen,
+} from 'src/redux/water/slice';
 
 const AdvantagesSection = ({ onOpenModal }) => {
   const isAuthenticated = useSelector(selectUserIsLoggedIn);
+  const dispatch = useDispatch();
+
+  const handleLinkClick = () => {
+    dispatch(setShowChart(true));
+  };
 
   return (
     <div className={css.homePageAdvantagesSection}>
@@ -115,7 +125,8 @@ const AdvantagesSection = ({ onOpenModal }) => {
                 css.homePageBenefitsLinks,
                 css.homePageBenefitsLinksStatistics,
               )}
-              to="/tracker"
+              to="/tracker/statistics"
+              onClick={handleLinkClick}
             >
               View statistics
             </CustomNavLink>
@@ -134,8 +145,15 @@ const AdvantagesSection = ({ onOpenModal }) => {
           className={clsx(
             css.homePageBenefitsItems,
             css.homePageBenefitsItemsSettings,
+            {
+              [css.homePageBenefitsItemsSettingsActive]: isAuthenticated,
+            },
           )}
-          onClick={onOpenModal}
+          onClick={() => {
+            dispatch(changeUsersSettingsModalOpen(true));
+            dispatch(changeModal(true));
+            onclose();
+          }}
         >
           Personal rate setting
         </li>

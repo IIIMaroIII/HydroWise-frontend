@@ -1,11 +1,13 @@
 .list {
   display: flex;
   gap: 16px;
-  overflow-x: scroll;
-  width: 100%;
-  /* max-width: 672px; */
-  margin: 0 auto;
+  max-width: 672px;
+  overflow-x: auto;
+  white-space: nowrap;
   padding-bottom: 24px;
+  height: 122px;
+  align-items: center;
+  margin-top: 24px;
 }
 
 .list::-webkit-scrollbar {
@@ -36,12 +38,27 @@
   gap: 10px;
 }
 
-@media screen and (max-width: 375px) {
+.p {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 375px) {
   .list {
-    /* max-width: 303px; */
+    /* height: 134px; */
   }
 
   .item {
     min-width: 149px;
   }
 }
+
+/* @media screen and (min-width: 768px) {
+  .list {
+    height: 110px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+} */

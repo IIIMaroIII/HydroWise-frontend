@@ -1,0 +1,45 @@
+.waterModal {
+  max-width: 344px;
+}
+
+.title {
+  color: rgb(50, 63, 71);
+  display: inline;
+  line-height: 32px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.text {
+  margin-bottom: 20px;
+  color: rgb(50, 63, 71);
+  font-size: 18px;
+  font-weight: 400;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 700;
+}
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media (min-width: 768px) {
+  .waterModal {
+    width: 516px;
+  }
+  .text {
+    font-size: 18px;
+  }
+  .title {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1440px) {
+  .waterModal {
+    width: 516px;
+  }
+  .title {
+    font-size: 28px;
+  }
+}

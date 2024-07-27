@@ -16,6 +16,7 @@ export const initialState = {
     isWaterModalEdit: false,
     isWaterModalAdd: false,
   },
+  chosenWaterCardId: null,
   chosenDate: formatISO(new Date()),
   isLoading: false,
   error: null,

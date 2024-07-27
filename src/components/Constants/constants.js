@@ -16,6 +16,7 @@ const USERS_ENDPOINTS = {
   signIn: '/v1/users/login',
   logout: '/v1/users/logout',
   refresh: '/v1/users/refresh',
+  updateUser: '/v1/users/update',
   requestResetPassword: '/request-reset-password',
   resetPassword: '/reset-pwd',
   getGoogleUrl: '/get-oauth-url',
@@ -48,11 +49,11 @@ export const TOAST = {
 };
 
 const AXIOS = {
-  baseURL: 'https://waterwise-backend.onrender.com',
+  baseURL: 'https://localhost:3000',
 };
 
 const WATER_ENDPOINTS = {
-  water: '/v1/water/',
+  water: '/v1/water',
   daily: '/v1/water/daily',
   monthly: '/v1/water/monthly',
 };
@@ -97,6 +98,13 @@ const DOMAINS = {
   SERVER_DEPLOY: 'https://waterwise-backend.onrender.com',
 };
 
+const MODALS = {
+  SETTINGS_USER_MODAL: {
+    MAX_CHAR_VALIDATION: 50,
+    MAX_CHAR_WATER_VALIDATION: 15,
+    MIN_CHAR_VALIDATION: 3,
+  },
+};
 const CONSTANTS = {
   USERS_ENDPOINTS,
   AXIOS,
@@ -105,6 +113,7 @@ const CONSTANTS = {
   USER,
   DAYS,
   DOMAINS,
+  MODALS,
 };
 
 export default CONSTANTS;

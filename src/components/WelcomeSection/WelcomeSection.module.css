@@ -27,6 +27,7 @@
 .linkTracker {
   padding: 14px 19px;
   background-color: var(--basic-green);
+  transition: background-color var(--default-delay) cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (width>=768px) {
     padding: 18px 40px;
@@ -41,6 +42,8 @@
   padding: 14px 28px;
   background-color: transparent;
   border: 1px solid var(--basic-dark-blue);
+  transition: color var(--default-delay) cubic-bezier(0.4, 0, 0.2, 1),
+    border-color var(--default-delay) cubic-bezier(0.4, 0, 0.2, 1);
 
   @media (width>=768px) {
     padding: 18px 40px;

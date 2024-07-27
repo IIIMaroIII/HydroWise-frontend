@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
-import { logout, refresh, signIn, signUp } from './operations.js';
+import { logout, refresh, signIn, signUp, update } from './operations.js';
 
 export const usersSlice = createSlice({
   name: 'users',
@@ -17,9 +17,9 @@ export const usersSlice = createSlice({
         state.isLoading = null;
         state.error = null;
       })
-      .addCase(signUp.rejected, (state, { payload }) => {
-        state.error = payload;
+      .addCase(signUp.rejected, (state, action) => {
         state.isLoading = false;
+        state.error = action.payload;
       })
       .addCase(signIn.pending, state => {
         state.isLoading = true;
@@ -32,9 +32,10 @@ export const usersSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(signIn.rejected, (state, { payload }) => {
-        state.error = payload;
+      .addCase(signIn.rejected, (state, action) => {
         state.isLoading = false;
+        state.error = action.payload;
+        state.isLoggedIn = false;
       })
       .addCase(logout.pending, state => {
         state.isLoading = true;
@@ -47,9 +48,23 @@ export const usersSlice = createSlice({
         state.error = null;
         state.token = null;
       })
-      .addCase(logout.rejected, (state, { payload }) => {
-        state.error = payload;
+      .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
+        state.error = action.payload;
+        state.isLoggedIn = false;
+      })
+      .addCase(update.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(update.fulfilled, (state, { payload }) => {
+        state.user = payload.data;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(update.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       })
       .addCase(refresh.pending, state => {
         state.isRefreshing = true;
@@ -61,9 +76,10 @@ export const usersSlice = createSlice({
         state.isRefreshing = false;
         state.error = null;
       })
-      .addCase(refresh.rejected, (state, { payload }) => {
-        state.error = payload;
-        state.isRefreshing = false;
+      .addCase(refresh.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        state.isLoggedIn = false;
       });
   },
 });

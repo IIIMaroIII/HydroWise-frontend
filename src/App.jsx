@@ -1,4 +1,4 @@
-import { lazy, useEffect } from 'react';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
@@ -10,23 +10,11 @@ import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
-import { useDispatch } from 'react-redux';
-import { setChosenDate } from './redux/water/slice.js';
-import { formatISO, parseISO } from 'date-fns';
 
 import './App.css';
-import useChosenDate from './hooks/useChosenDate.js';
+import ChartComponent from './components/Statistics/ChartComponent';
 
 function App() {
-  const { chosenDate } = useChosenDate();
-  console.log('chosenDate in App', chosenDate);
-  // console.log('getUtcDate', getUtcDate());
-  // console.log('parseISO getUtcDate', parseISO(getUtcDate()));
-  // console.log('parsedChosenDate', parsedChosenDate);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(setChosenDate(formatISO(new Date())));
-  // }, [dispatch]);
   return (
     <>
       <SharedLayout>
@@ -36,24 +24,26 @@ function App() {
             <Route
               path="/tracker"
               element={
-                <PrivateRoute redirectTo="/signin">
+                <PrivateRoute redirectTo="/signup">
                   <TrackerPage />
                 </PrivateRoute>
               }
-            />
+            >
+              <Route path="statistics" element={<ChartComponent />} />
+            </Route>
           }
           {
             <Route
               path="/signup"
               element={
-                <RestrictedRoute redirectTo="/tracker">
+                <RestrictedRoute redirectTo="/signin">
                   <SignUpPage />
                 </RestrictedRoute>
               }
             />
           }
 
-          {/* {
+          {
             <Route
               path="/signin"
               element={
@@ -62,8 +52,8 @@ function App() {
                 </RestrictedRoute>
               }
             />
-          } */}
-          {<Route path="/signin" element={<SignInPage />} />}
+          }
+          {/* {<Route path="/signin" element={<SignInPage />} />} */}
 
           {<Route path="/*" element={<HomePage />} />}
         </Routes>

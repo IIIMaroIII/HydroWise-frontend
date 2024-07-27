@@ -1,0 +1,64 @@
+.modalContent {
+  padding: 40px 20px 40px 20px;
+  position: fixed;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255);
+  width: 303px;
+}
+
+@media screen and (min-width: 768px) {
+  .modalContent {
+    padding: 40px;
+  }
+  .crossIcon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .closeBtn {
+    padding: 7px;
+    right: 20px;
+  }
+}
+
+.backdrop {
+  background-color: rgba(47, 47, 47, 0.6);
+}
+
+.crossIcon {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  display: block;
+}
+
+.closeBtn {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  padding: 6px;
+  top: 20px;
+  right: 16px;
+}
+@media (min-width: 768px) and (max-width: 1439px) {
+  .modalContent {
+    width: 648px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .modalContent {
+    width: 920px;
+  }
+}

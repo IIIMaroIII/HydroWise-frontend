@@ -12,10 +12,12 @@ const AddWaterBtn = () => {
     dispatch(changeWaterModalAdd(true));
   };
   return (
-    <Button addClass={css.btn} onClick={openModal}>
-      <FaPlus className={css.plus_icon} />
-      Add water
-    </Button>
+    <div className={css.btn_container}>
+      <Button addClass={css.btn} onClick={openModal}>
+        <FaPlus className={css.plus_icon} />
+        Add water
+      </Button>
+    </div>
   );
 };
 

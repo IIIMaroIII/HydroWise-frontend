@@ -3,10 +3,13 @@ import css from './WaterItem.module.css';
 import {
   changeDeleteWaterModalOpen,
   changeModal,
+  changeWaterCardId,
   changeWaterModalEdit,
 } from 'src/redux/water/slice';
 import { useDispatch } from 'react-redux';
 import sprite from 'src/assets/pictures/HomePage/sprite.svg';
+
+import { CiLogin } from 'react-icons/ci';
 
 const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -17,8 +20,12 @@ const WaterItem = ({ item }) => {
     minute: 'numeric',
     hour12: true,
   };
-
   const itemTime = date.toLocaleString('en-US', options);
+
+  const checkVolume = () => {
+    if (item.volume < 1000) return `${item.volume} ml`;
+    if (item.volume > 1000) return `${item.volume} L`;
+  };
 
   return (
     <>
@@ -26,12 +33,13 @@ const WaterItem = ({ item }) => {
         <use href={`${sprite}#icon-glass`}></use>
       </svg>
       <div className={css.wrapper}>
-        <p className={css.volume}>{item.volume} ml</p>
+        <p className={css.volume}>{checkVolume()}</p>
         <Button
           addClass={css.button}
           onClick={() => {
             dispatch(changeWaterModalEdit(true));
             dispatch(changeModal(true));
+            dispatch(changeWaterCardId(item._id));
           }}
         >
           <svg className={css.icon}>
@@ -45,6 +53,7 @@ const WaterItem = ({ item }) => {
           onClick={() => {
             dispatch(changeDeleteWaterModalOpen(true));
             dispatch(changeModal(true));
+            dispatch(changeWaterCardId(item._id));
           }}
         >
           <svg className={css.icon}>

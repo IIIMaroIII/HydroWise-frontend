@@ -5,18 +5,32 @@ import UserBarPopover from './UserBarPopover/UserBarPopover.jsx';
 import css from './UserBar.module.css';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
+import { useClickAway } from 'react-use';
+import { useRef } from 'react';
+
 const UserBar = () => {
   const user = useSelector(selectUser);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const itemRef = useRef(null);
   const togglePopover = () => {
     setIsPopoverOpen(!isPopoverOpen);
   };
+
+  useClickAway(itemRef, () => {
+    setIsPopoverOpen(false);
+  });
+
   return (
-    <>
+    <div className={css.container} ref={itemRef}>
       <Button onClick={togglePopover} addClass={css.user_bar_wrapper}>
-        {<p>{user?.name}</p> ?? <p>User</p>}
-        <div className={css.user_avatar}>
+        {user?.name !== null ? (
+          <span className={css.span}>{user.name}</span>
+        ) : (
+          <span className={css.span}>User</span>
+        )}
+        <div>
           <img
+            className={css.user_avatar}
             alt="User Avatar"
             src={
               user?.photoUrl ??
@@ -24,10 +38,14 @@ const UserBar = () => {
             }
           />
         </div>
-        {isPopoverOpen ? <FaAngleUp /> : <FaAngleDown />}
+        {isPopoverOpen ? (
+          <FaAngleUp className={css.arrowIcon} />
+        ) : (
+          <FaAngleDown className={css.arrowIcon} />
+        )}
       </Button>
       {isPopoverOpen && <UserBarPopover onClose={togglePopover} />}
-    </>
+    </div>
   );
 };
 

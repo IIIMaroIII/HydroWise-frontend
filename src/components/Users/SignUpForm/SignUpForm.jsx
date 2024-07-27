@@ -12,9 +12,9 @@ import Button from 'src/components/REUSABLE/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-import Photo from './Rectangle 19.jpg';
 import { signIn, signUp } from 'src/redux/users/operations.js';
 import toast from 'react-hot-toast';
+import Logo from 'src/components/REUSABLE/Logo/Logo';
 
 
 const SignUpForm = () => {
@@ -63,10 +63,11 @@ const SignUpForm = () => {
 
   return (
     <div className={css.signUpContainer}>
+      
       <div className={css.signUpForm}>
+      <Logo />
         <div className={css.formSection}>
           <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          {/* <Logo /> */}
             <h2 className={css.formTitle}>Sign Up</h2>
             <div className={css.inputContainer}>
               <label className={css.formLabel}>Email</label>
@@ -75,7 +76,7 @@ const SignUpForm = () => {
                 placeholder="Enter your email"
                 {...register('email')}
               />
-              {errors.email && <p>{errors.email.message}</p>}
+              {errors.email && <p className={css.error}>{errors.email.message}</p>}
             </div>
             <div className={css.inputContainer}>
               <label className={css.formLabel}>Password</label>
@@ -90,7 +91,7 @@ const SignUpForm = () => {
               >
                 <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
               </span>
-              {errors.password && <p>{errors.password.message}</p>}
+              {errors.password && <p className={css.error}>{errors.password.message}</p>}
             </div>
             <div className={css.inputContainer}>
               <label className={css.formLabel}>Repeat password</label>
@@ -105,11 +106,11 @@ const SignUpForm = () => {
               >
                 <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
               </span>
-              {errors.repeatPassword && <p>{errors.repeatPassword.message}</p>}
+              {errors.repeatPassword && <p className={css.error}>{errors.repeatPassword.message}</p>}
             </div>
             <Button addClass={css.btnform}> Sign Up</Button>
-            <p>
-              Already have an account? <a href="/signin">Sign In</a>
+            <p className={css.alreadyHaveAcc}>
+              <span className={css.translucentText}> Already have an account?</span> <a href="/signin" className={css.signInRef}>Sign In</a>
             </p>
           </form>
         </div>

@@ -7,7 +7,20 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '../Button/Button';
 import waterSchemas from 'src/Validation/Water/waterSchemas';
 import CONSTANTS from 'src/components/Constants/constants';
+import { useDispatch } from 'react-redux';
+import {
+  addWater,
+  changeWater,
+  fetchDailyWater,
+} from 'src/redux/water/operations';
+import { toast } from 'react-hot-toast';
+import useChosenDate from 'src/hooks/useChosenDate.js';
+import { changeModal } from 'src/redux/water/slice.js';
+
 const WaterForm = ({ operationName }) => {
+  const { chosenDate, getHoursAndMinutes } = useChosenDate();
+  const { hours, minutes } = getHoursAndMinutes();
+  const dispatch = useDispatch();
   const [amount, setAmount] = useState(50);
   const buttonAddWater = useRef(null);
   const buttonSubtractWater = useRef(null);
@@ -22,25 +35,44 @@ const WaterForm = ({ operationName }) => {
   } = useForm({
     mode: 'onChange',
     resolver: yupResolver(waterSchemas.waterTemplateSchema),
+    defaultValues: {
+      waterValue: 50,
+    },
   });
 
-  const getCurrentTime = () => {
-    const now = new Date();
-    return {
-      now: now,
-      hours: String(now.getHours()).padStart(2, '0'),
-      minutes: String(now.getMinutes()).padStart(2, '0'),
-    };
-  };
-  const { now, hours, minutes } = getCurrentTime();
+  let waterAmount = watch('waterValue', 50);
 
-  let waterAmount = watch('waterValue', '');
+  const onSubmit = async data => {
+    const { waterValue } = data;
+    if (Object.keys(errors).length > 0) {
+      toast.error('Please fix the errors before submitting.');
+      return;
+    }
 
-  const onSubmit = ({ waterValue }) => {
-    console.log('Submitted data:', {
-      time: now,
-      waterValue: waterValue,
-    });
+    if (waterValue === undefined || waterValue === null) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('waterValue', waterValue);
+    console.log('operationName', operationName);
+    if (operationName === 'add') {
+      await dispatch(addWater(formData))
+        .unwrap()
+        .then(() => toast.success('You have succesfully added your record'));
+      dispatch(changeModal(false));
+      await dispatch(fetchDailyWater());
+    } else {
+      await dispatch(changeWater(formData))
+        .unwrap()
+        .then(() =>
+          toast.success(
+            'You have succesfully changed water amount in your record',
+          ),
+        );
+      dispatch(changeModal(false));
+      await dispatch(fetchDailyWater());
+    }
   };
 
   const addWaterAmount = () => {
@@ -147,8 +179,9 @@ const WaterForm = ({ operationName }) => {
             {errors.waterValue && <p>{errors.waterValue.message}</p>}
           </label>
         </div>
-        <Button className={css.saveBtn}>
-          {operationName === 'edit' ? 'Update' : 'Add'}
+        <Button className={css.saveBtn} type="submit" onClick={onSubmit}>
+          {/* Save */}
+          {operationName === 'edit' ? 'Update Save' : 'Save'}
         </Button>
       </form>
     </div>
