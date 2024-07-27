@@ -95,7 +95,7 @@ const DAYS = [
 
 const DOMAINS = {
   SERVER_LOCALHOST: 'http://localhost:3000',
-  SERVER_DEPLOY: 'https://waterwise-backend.onrender.com',
+  SERVER_DEPLOY: 'https://hydrowise-backend.onrender.com',
 };
 
 const MODALS = {
