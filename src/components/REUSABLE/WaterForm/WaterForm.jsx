@@ -61,7 +61,7 @@ const WaterForm = ({ operationName }) => {
         .unwrap()
         .then(() => toast.success('You have succesfully added your record'));
       dispatch(changeModal(false));
-      await dispatch(fetchDailyWater());
+      // await dispatch(fetchDailyWater());
     } else {
       await dispatch(changeWater(formData))
         .unwrap()
@@ -71,7 +71,7 @@ const WaterForm = ({ operationName }) => {
           ),
         );
       dispatch(changeModal(false));
-      await dispatch(fetchDailyWater());
+      // await dispatch(fetchDailyWater());
     }
   };
 

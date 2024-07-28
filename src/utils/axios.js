@@ -3,29 +3,12 @@ import axios from 'axios';
 import CONSTANTS from 'src/components/Constants/constants.js';
 import store from 'src/redux/store.js';
 import toast from 'react-hot-toast';
-import { refresh } from 'src/redux/users/operations.js';
+import { logout, refresh } from 'src/redux/users/operations.js';
 
 const AxiosWithCredentials = axios.create({
-  baseURL: CONSTANTS.DOMAINS.SERVER_DEPLOY,
+  baseURL: CONSTANTS.DOMAINS.SERVER_LOCALHOST,
   withCredentials: true,
 });
-
-/*AxiosWithCredentials.interceptors.request.use(
-  config => {
-    const state = store.getState();
-    const token = selectUserToken(state);
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  error => {
-    toast.error(error.message);
-    return Promise.reject(error);
-  },
-); 
-Рабочий вариант был
-*/
 
 AxiosWithCredentials.interceptors.request.use(
   config => {
@@ -43,82 +26,36 @@ AxiosWithCredentials.interceptors.request.use(
 );
 
 AxiosWithCredentials.interceptors.response.use(
-  response => response,
-  async error => {
-    const originalRequest = error.config;
+  res => res,
+  async err => {
+    console.log('err.response in interceptors', err.response);
+    const status = err?.response?.status || null;
 
-    if (error.response.data.status === 401 && !originalRequest._retry) {
-      toast.error('Your access token has been expired!');
+    const originalRequest = err.config;
+
+    // Проверка статуса ошибки и флага _retry
+    if (status === 401 && !originalRequest._retry) {
+      // Устанавливаем флаг _retry, чтобы предотвратить бесконечный цикл
       originalRequest._retry = true;
+      console.log('Status 401 detected, attempting to refresh token...');
       try {
         const result = await store.dispatch(refresh()).unwrap();
-        toast.success(
-          'Your expired access token has been successfully refreshed!',
-        );
-        originalRequest.headers[
-          'Authorization'
-        ] = `Bearer ${result.data.accessToken}`; // ПРОВЕРИТЬ result! должна быть data, но пока работает
+        console.log('result in interceptors response', result);
+
+        originalRequest.headers.Authorization = `Bearer ${result}`;
+
+        // Повторяем оригинальный запрос
         return AxiosWithCredentials(originalRequest);
-      } catch (err) {
-        toast(
-          'You have been redirected to Sign In page due to network error or empty cookies',
-        );
-        console.error('Failed to refresh token', err);
-        window.location.href = '/signin';
+      } catch (refreshError) {
+        console.log('Refresh failed:', refreshError);
+        toast('Your session has expired. Please login');
+        await store.dispatch(logout());
       }
-    } else {
-      const result = await store.dispatch(refresh()).unwrap();
-      toast.success(
-        'Your expired access token has been successfully refreshed!',
-      );
-      originalRequest.headers[
-        'Authorization'
-      ] = `Bearer ${result.data.accessToken}`; // ПРОВЕРИТЬ result! должна быть data, но пока работает
-      return AxiosWithCredentials(originalRequest);
     }
 
-    toast.error(error.response?.data.message);
-    return Promise.reject(error);
+    // Возвращаем отклоненное обещание для других ошибок
+    return Promise.reject(err);
   },
 );
-/**    Доработать 400, 500      */
-// AxiosWithCredentials.interceptors.response.use(
-//   response => response,
-//   async error => {
-//     const originalRequest = error.config;
-
-//     if (error.data.response.status === 401 && !originalRequest._retry) {
-//       toast.error('Your access token has been expired!');
-//       originalRequest._retry = true;
-//       try {
-//         const result = await store.dispatch(refresh()).unwrap();
-//         toast.success(
-//           'Your expired access token has been successfully refreshed!',
-//         );
-//         originalRequest.headers[
-//           'Authorization'
-//         ] = `Bearer ${result.data.accessToken}`;
-//         return AxiosWithCredentials(originalRequest);
-//       } catch (err) {
-//         toast(
-//           'You have been redirected to Sign In page due to network error or empty cookies',
-//         );
-//         console.error('Failed to refresh token', err);
-//         window.location.href = '/signin';
-//         return Promise.reject(err);
-//       }
-//     }
-
-//     if (error.response.data.status === 400) {
-//       toast.error('Bad Request: ' + error.response.data.message);
-//     } else if (error.response.data.status === 500) {
-//       toast.error('Internal Server Error: ' + error.response.data.message);
-//     } else {
-//       toast.error(error.response?.data.message || 'An error occurred');
-//     }
-
-//     return Promise.reject(error);
-//   },
-// );
 
 export default AxiosWithCredentials;

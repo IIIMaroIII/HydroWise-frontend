@@ -1,6 +1,4 @@
-// import { retryAction } from '../../middleware/authMiddleware.js';
 import { createSlice } from '@reduxjs/toolkit';
-import toast from 'react-hot-toast';
 import { initialState } from './initialState';
 import {
   addWater,
@@ -9,7 +7,6 @@ import {
   fetchDailyWater,
   fetchMonthlyWater,
 } from './operations.js';
-// import store from '../store.js';
 
 export const waterSlice = createSlice({
   name: 'water',
@@ -59,9 +56,6 @@ export const waterSlice = createSlice({
       state.modalFlags.isUsersSettingsModalOpen = false;
       state.modalFlags.isWaterModalEdit = false;
     },
-    totalDailyVolumes(state, { payload }) {
-      state.water.totalDailyVolume = payload;
-    },
   },
   extraReducers: builder => {
     builder
@@ -84,10 +78,6 @@ export const waterSlice = createSlice({
         state.error = null;
         state.isLoading = true;
       })
-      .addCase(fetchDailyWater.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.water.dailyItems = payload;
-      })
       .addCase(addWater.fulfilled, (state, action) => {
         state.isLoading = false;
       })
@@ -98,38 +88,29 @@ export const waterSlice = createSlice({
       .addCase(changeWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
       })
+      .addCase(fetchDailyWater.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.water.dailyItems = payload.data;
+      })
       .addCase(fetchMonthlyWater.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.water.monthlyItems = payload.data;
       })
-      .addCase(changeWater.rejected, (state, payload) => {
+      .addCase(changeWater.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload.statusCode;
       })
-      .addCase(fetchDailyWater.rejected, (state, payload) => {
+      .addCase(fetchDailyWater.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload.statusCode;
       })
-      .addCase(addWater.rejected, (state, payload) => {
+      .addCase(addWater.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload.statusCode;
       })
-      .addCase(deleteWater.rejected, (state, payload) => {
+      .addCase(deleteWater.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload.statusCode;
       })
-      .addCase(fetchMonthlyWater.rejected, (state, payload) => {
+      .addCase(fetchMonthlyWater.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload.statusCode;
       });
-    // .addCase(retryAction, (state, action) => {
-    //   console.log('Retry action received:', action);
-    //   state.error = null;
-    //   store.dispatch({
-    //     ...action.payload.originalAction,
-    //     type: `${action.payload.type}/pending`,
-    //   });
-    // });
   },
 });
 export const {
@@ -140,7 +121,6 @@ export const {
   changeDeleteWaterModalOpen,
   changeUsersSettingsModalOpen,
   changeLogoutModalOpen,
-  totalDailyVolumes,
   changeWaterCardId,
 } = waterSlice.actions;
 

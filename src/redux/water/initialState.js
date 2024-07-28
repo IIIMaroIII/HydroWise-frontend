@@ -3,8 +3,6 @@ import { formatISO } from 'date-fns';
 export const initialState = {
   water: {
     dailyItems: [],
-    totalDailyVolume: 0,
-    totalMonthlyVolume: 0,
     monthlyItems: [],
   },
   modalFlags: {

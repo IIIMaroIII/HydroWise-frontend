@@ -42,11 +42,10 @@ export const usersSlice = createSlice({
         state.error = null;
       })
       .addCase(logout.fulfilled, state => {
-        state.user = initialState.user;
         state.isLoggedIn = false;
         state.isLoading = false;
         state.error = null;
-        state.token = null;
+        state.user.token = null;
       })
       .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
@@ -71,15 +70,14 @@ export const usersSlice = createSlice({
         state.error = null;
       })
       .addCase(refresh.fulfilled, (state, { payload }) => {
-        state.user.token = payload.data.accessToken;
+        state.user.token = payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
       })
       .addCase(refresh.rejected, (state, action) => {
-        state.isLoading = false;
+        state.isRefreshing = false;
         state.error = action.payload;
-        state.isLoggedIn = false;
       });
   },
 });

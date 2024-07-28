@@ -1,25 +1,11 @@
 import css from './logoutModal.module.css';
 import { useDispatch } from 'react-redux';
 import { logout } from 'src/redux/users/operations';
-import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
-import { changeLogoutModalOpen, changeModal } from 'src/redux/water/slice.js';
+import { changeModal } from 'src/redux/water/slice.js';
 
 const LogoutModal = ({ children, ...otherProps }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleSubmit = async () => {
-    await dispatch(logout())
-      .unwrap()
-      .then(() => {
-        dispatch(changeModal(false));
-        navigate('/');
-        toast.success('You have been successfully logged out, see you soon!');
-      })
-      .catch(err => toast.error(err?.message ?? 'Internal network error'));
-  };
 
   return (
     <div className={css.logoutModal}>
@@ -29,7 +15,7 @@ const LogoutModal = ({ children, ...otherProps }) => {
         <div className={css.btnWrap}>
           <Button
             addClass={css.logoutModal_logoutBtn}
-            onClick={handleSubmit}
+            onClick={async () => await dispatch(logout())}
             {...otherProps}
           >
             {children || 'Log out'}
