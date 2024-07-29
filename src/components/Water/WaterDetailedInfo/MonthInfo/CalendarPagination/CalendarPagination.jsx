@@ -5,7 +5,10 @@ import useChosenDate from 'src/hooks/useChosenDate.js';
 import monthAsName from 'src/utils/monthAsName.js';
 import css from './calendarPagination.module.css';
 import { useDispatch } from 'react-redux';
-import { fetchMonthlyWater } from 'src/redux/water/operations.js';
+import {
+  fetchDailyWater,
+  fetchMonthlyWater,
+} from 'src/redux/water/operations.js';
 
 export const CalendarPagination = () => {
   const { chosenDate, goToPreviousMonth, goToNextMonth, chosenYear } =
@@ -18,7 +21,9 @@ export const CalendarPagination = () => {
       <Button
         onClick={() => {
           goToPreviousMonth();
-          dispatch(fetchMonthlyWater());
+          dispatch(fetchMonthlyWater())
+            .unwrap()
+            .then(() => dispatch(fetchDailyWater()));
         }}
         addClass={css.btn}
       >
@@ -28,7 +33,9 @@ export const CalendarPagination = () => {
       <Button
         onClick={() => {
           goToNextMonth();
-          dispatch(fetchMonthlyWater());
+          dispatch(fetchMonthlyWater())
+            .unwrap()
+            .then(() => dispatch(fetchDailyWater()));
         }}
         addClass={css.btn}
       >

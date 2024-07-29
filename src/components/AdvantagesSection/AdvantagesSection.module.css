@@ -12,7 +12,7 @@
     background-size: 343px 353px;
   }
 
-  @media (width>=768px) {
+  @media (min-width: 768px) and (max-width: 1439px) {
     background-image: url('../../assets/pictures/HomePage/girl-tab.png');
     height: 446px;
     width: 704px;
@@ -25,7 +25,7 @@
     }
   }
 
-  @media (width>=1440px) {
+  @media (min-width: 1440px) {
     background-image: url('../../assets/pictures/HomePage/girl-desk.png');
     height: 736px;
     width: 672px;
@@ -57,7 +57,7 @@
   display: inline-flex;
   gap: 4px;
 
-  @media (width>=768px) {
+  @media (min-width: 768px) {
     top: 283px;
     left: 32px;
     padding: 10px 20px;
@@ -66,7 +66,7 @@
     width: 237px;
   }
 
-  @media (width>=1440px) {
+  @media (min-width: 1440px) {
     top: 537px;
   }
 }
@@ -89,7 +89,7 @@
   height: 28px;
   z-index: 100;
 
-  @media (width>=768px) {
+  @media (min-width: 768px) {
     width: 47px;
     height: 47px;
   }
@@ -100,7 +100,7 @@
   left: 17.91px;
   z-index: 2;
 
-  @media (width>=768px) {
+  @media (min-width: 768px) {
     left: 28px;
   }
 }
@@ -110,7 +110,7 @@
   left: 8.49px;
   z-index: 1;
 
-  @media (width>=768px) {
+  @media (min-width: 768px) {
     left: 9px;
   }
 }
@@ -122,13 +122,13 @@
   gap: 4px;
   flex-wrap: wrap;
 
-  @media (width>=768px) {
+  @media (min-width: 768px) {
     padding-top: 336px;
     padding-left: 430px;
     gap: 10px;
   }
 
-  @media (width>=1440px) {
+  @media (min-width: 1440px) {
     padding-top: 594px;
     padding-left: 398px;
   }
@@ -155,7 +155,7 @@
   line-height: 100%;
   letter-spacing: -0.01em;
 
-  @media (width>=768px) {
+  @media (min-width: 768px) {
     padding: 11px 16px;
     font-size: 12px;
   }

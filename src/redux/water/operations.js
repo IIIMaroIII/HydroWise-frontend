@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 import CONSTANTS from 'src/components/Constants/constants.js';
 import AxiosWithCredentials from 'src/utils/axios.js';
 
@@ -83,9 +84,15 @@ export const fetchDailyWater = createAsyncThunk(
       const url = `${
         CONSTANTS.WATER_ENDPOINTS.daily
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
-      const response = await AxiosWithCredentials.get(url);
 
-      return response.data.data;
+      const { data } = await AxiosWithCredentials.get(url);
+
+      if (data.status === 200) {
+        toast.success(data.message);
+      }
+
+      console.log('data', data);
+      return data;
     } catch (error) {
       return rejectWithValue(
         error.response ? error.response.data : error.message,
@@ -102,9 +109,15 @@ export const fetchMonthlyWater = createAsyncThunk(
       const url = `${
         CONSTANTS.WATER_ENDPOINTS.monthly
       }?chosenDate=${encodeURIComponent(chosenDate)}`;
-      const response = await AxiosWithCredentials.get(url);
+      const { data } = await AxiosWithCredentials.get(url);
 
-      return response.data;
+      if (data.status === 200) {
+        toast.success(data.message);
+      }
+
+      console.log('data', data);
+
+      return data;
     } catch (error) {
       return rejectWithValue(
         error.response ? error.response.data : error.message,

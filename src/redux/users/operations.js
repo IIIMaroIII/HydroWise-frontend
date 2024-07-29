@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import CONSTANTS from 'src/components/Constants/constants.js';
 import AxiosWithCredentials from 'src/utils/axios.js';
+import { changeModal } from '../water/slice.js';
+import toast from 'react-hot-toast';
 
 export const signUp = createAsyncThunk(
   'users/signUp',
@@ -30,9 +32,6 @@ export const signIn = createAsyncThunk(
         `${CONSTANTS.USERS_ENDPOINTS.signIn}`,
         credentials,
       );
-      // if (res.status > 300) {
-      //   return rejectWithValue(res.message);
-      // }
       return res.data;
     } catch (error) {
       return rejectWithValue(
@@ -44,13 +43,17 @@ export const signIn = createAsyncThunk(
 
 export const logout = createAsyncThunk(
   'users/logout',
-  async (_, { rejectWithValue }) => {
+  async (_, { dispatch, rejectWithValue }) => {
+    dispatch(changeModal(false));
     try {
       await AxiosWithCredentials.post(`${CONSTANTS.USERS_ENDPOINTS.logout}`);
+      toast.success('You have been successfully logged out, see you soon!');
     } catch (error) {
-      return rejectWithValue(
-        error.response ? error.response.data : error.message,
-      );
+      const message = error.response
+        ? error.response.data.message
+        : error.response.message;
+      toast.error(message);
+      return rejectWithValue(message);
     }
   },
 );
@@ -60,12 +63,12 @@ export const refresh = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       console.log('Attempting to call refresh endpoint...');
-      const res = await AxiosWithCredentials.post(
+      const { data } = await AxiosWithCredentials.post(
         `${CONSTANTS.USERS_ENDPOINTS.refresh}`,
       );
-
-      console.log('Refresh response:', res.data);
-      return res.data;
+      console.log('data in refresh operations', data.data);
+      // AxiosWithCredentials.defaults.headers.common.Authorization = `Bearer ${data.accessToken}`;
+      return data.data.accessToken;
     } catch (error) {
       console.log(
         'Refresh error response:',
@@ -77,6 +80,7 @@ export const refresh = createAsyncThunk(
     }
   },
 );
+
 export const update = createAsyncThunk(
   'users/update',
   async (formData, { rejectWithValue }) => {

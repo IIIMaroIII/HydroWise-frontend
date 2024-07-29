@@ -15,5 +15,4 @@ export const initialState = {
   isLoading: false,
   isLoggedIn: false,
   isRefreshing: false,
-  error: null,
 };

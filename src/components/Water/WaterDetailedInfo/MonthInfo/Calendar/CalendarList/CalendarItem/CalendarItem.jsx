@@ -5,14 +5,10 @@ import css from './calendarItem.module.css';
 import useChosenDate from 'src/hooks/useChosenDate.js';
 import { fetchDailyWater } from 'src/redux/water/operations.js';
 import toast from 'react-hot-toast';
-import { totalDailyVolumes } from 'src/redux/water/slice.js';
-import { useDailyVolumes } from 'src/hooks/useDailyVolumes.js';
-import { useMonthlyVolumes } from 'src/hooks/useMonthlyVolumes';
 
-export const CalendarItem = ({ day, month }) => {
+export const CalendarItem = ({ day }) => {
   const dispatch = useDispatch();
-  const { setChosenDay, chosenDate} = useChosenDate();
-  // const { dailyVolumesPercentage, dailyItems } = useDailyVolumes();
+  const { setChosenDay } = useChosenDate();
 
   const items = document.querySelectorAll(`.${css.btn_item}`);
 
@@ -26,14 +22,7 @@ export const CalendarItem = ({ day, month }) => {
     });
   };
 
-  // const dailyVolume = () => {
-  //   return dailyVolumesPercentage > 100 ? 100 : dailyVolumesPercentage;
-  // };
-
-  const { dailyPercentages } = useMonthlyVolumes();
-  const formattedDay = `${month}-${String(day).padStart(2, '0')}`;
-  const percentage = dailyPercentages[formattedDay] || 0;
-
+  const percentage = 0;
 
   return (
     <>
@@ -43,28 +32,12 @@ export const CalendarItem = ({ day, month }) => {
           addClass={css.btn_item}
           onClick={() => {
             setChosenDay(day);
-            dispatch(fetchDailyWater())
-              .unwrap()
-              .then(res => {
-                if (res) {
-                  return toast.success(
-                    'Your daily records have been successfully fetched!',
-                  );
-                }
-                dispatch(totalDailyVolumes(0));
-                return toast(
-                  'Your have not got any volume records for chosen day!',
-                );
-              })
-              .catch(err => {
-                console.error(err);
-                return toast.error(err);
-              });
+            dispatch(fetchDailyWater());
           }}
         >
           {day}
         </Button>
-         <p>{`${percentage}%`}</p>
+        <p>{`${percentage}%`}</p>
       </li>
     </>
   );

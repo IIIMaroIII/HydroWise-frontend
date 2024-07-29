@@ -8,20 +8,19 @@ import {
   fetchMonthlyWater,
 } from 'src/redux/water/operations.js';
 import { useEffect } from 'react';
-import { refresh } from 'src/redux/users/operations.js';
 import useChosenDate from 'src/hooks/useChosenDate.js';
 
 const WaterDetailedInfo = () => {
-  const dispatch = useDispatch();
   const { chosenDate } = useChosenDate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!chosenDate) {
-      dispatch(fetchDailyWater());
-      dispatch(fetchMonthlyWater());
+    if (chosenDate) {
+      dispatch(fetchDailyWater())
+        .unwrap()
+        .then(() => dispatch(fetchMonthlyWater()));
     }
-    dispatch(fetchMonthlyWater());
-  }, [chosenDate, dispatch]);
+  }, [dispatch, chosenDate]);
 
   return (
     <section className={css.wrapper}>
