@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { logout, refresh } from 'src/redux/users/operations.js';
 
 const AxiosWithCredentials = axios.create({
-  baseURL: CONSTANTS.DOMAINS.SERVER_LOCALHOST,
+  baseURL: CONSTANTS.DOMAINS.SERVER_DEPLOY,
   withCredentials: true,
 });
 
@@ -28,10 +28,14 @@ AxiosWithCredentials.interceptors.request.use(
 AxiosWithCredentials.interceptors.response.use(
   res => res,
   async err => {
+    console.log('err in interceptors', err);
     console.log('err.response in interceptors', err.response);
-    const status = err?.response?.status || null;
+    const status = err?.response?.data.status || err?.response?.status || null;
+    const statusText =
+      err?.response?.data.message || err?.response?.statusText || null;
 
     const originalRequest = err.config;
+    console.log('originalRequest', originalRequest);
 
     // Проверка статуса ошибки и флага _retry
     if (status === 401 && !originalRequest._retry) {
@@ -48,12 +52,15 @@ AxiosWithCredentials.interceptors.response.use(
         return AxiosWithCredentials(originalRequest);
       } catch (refreshError) {
         console.log('Refresh failed:', refreshError);
-        toast('Your session has expired. Please login');
+        toast('Your session has expired. Please login again');
         await store.dispatch(logout());
       }
     }
+    if (status === 500 || status === 400 || status === 403 || status === 409) {
+      return toast.error(statusText);
+    }
+    toast(statusText);
 
-    // Возвращаем отклоненное обещание для других ошибок
     return Promise.reject(err);
   },
 );

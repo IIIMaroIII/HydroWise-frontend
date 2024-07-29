@@ -101,6 +101,7 @@ export const waterSlice = createSlice({
       })
       .addCase(fetchDailyWater.rejected, (state, { payload }) => {
         state.isLoading = false;
+        state.water.dailyItems = payload.data;
       })
       .addCase(addWater.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -110,6 +111,7 @@ export const waterSlice = createSlice({
       })
       .addCase(fetchMonthlyWater.rejected, (state, { payload }) => {
         state.isLoading = false;
+        state.water.monthlyItems = payload.data;
       });
   },
 });

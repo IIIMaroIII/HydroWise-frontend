@@ -21,11 +21,11 @@ const AdvantagesSection = () => {
           <picture>
             <source
               srcSet={`${IMAGES.firstUser1x} 1x, ${IMAGES.firstUser2x} 2x`}
-              media="(min-width: 768px)"
+              // media="(min-width: 768px)"
             />
             <source
               srcSet={`${IMAGES.firstUserMob1x} 1x, ${IMAGES.firstUserMob2x} 2x`}
-              media="(max-width: 767px)"
+              // media="(max-width: 767px)"
             />
             <img
               src={IMAGES.firstUser1x}
@@ -38,11 +38,11 @@ const AdvantagesSection = () => {
           <picture>
             <source
               srcSet={`${IMAGES.secondUser1x} 1x, ${IMAGES.secondUser2x} 2x`}
-              media="(min-width: 768px)"
+              // media="(min-width: 768px)"
             />
             <source
               srcSet={`${IMAGES.secondUserMob1x} 1x, ${IMAGES.secondUserMob2x} 2x`}
-              media="(max-width: 767px)"
+              // media="(max-width: 767px)"
             />
             <img
               src={IMAGES.secondUser1x}
@@ -55,11 +55,11 @@ const AdvantagesSection = () => {
           <picture>
             <source
               srcSet={`${IMAGES.thirdUser1x} 1x, ${IMAGES.thirdUser2x} 2x`}
-              media="(min-width: 768px)"
+              // media="(min-width: 768px)"
             />
             <source
               srcSet={`${IMAGES.thirdUserMob1x} 1x, ${IMAGES.thirdUserMob2x} 2x`}
-              media="(max-width: 767px)"
+              // media="(max-width: 767px)"
             />
             <img
               src={IMAGES.thirdUser1x}
@@ -95,7 +95,7 @@ const AdvantagesSection = () => {
               Habit drive
             </CustomNavLink>
           ) : (
-            <div
+            <CustomNavLink
               className={clsx(
                 css.homePageBenefitsLinks,
                 css.homePageBenefitsLinksHabitDrive,
@@ -105,7 +105,7 @@ const AdvantagesSection = () => {
                 <use href={`${sprite}#icon-Ellipse-13`}></use>
               </svg>
               Habit drive
-            </div>
+            </CustomNavLink>
           )}
         </li>
         <li
@@ -125,14 +125,14 @@ const AdvantagesSection = () => {
               View statistics
             </CustomNavLink>
           ) : (
-            <div
+            <CustomNavLink
               className={clsx(
                 css.homePageBenefitsLinks,
                 css.homePageBenefitsLinksStatistics,
               )}
             >
               View statistics
-            </div>
+            </CustomNavLink>
           )}
         </li>
         <li

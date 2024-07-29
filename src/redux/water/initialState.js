@@ -17,5 +17,4 @@ export const initialState = {
   chosenWaterCardId: null,
   chosenDate: formatISO(new Date()),
   isLoading: false,
-  error: null,
 };

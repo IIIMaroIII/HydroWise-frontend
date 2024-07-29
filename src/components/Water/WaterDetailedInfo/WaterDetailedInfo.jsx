@@ -14,10 +14,13 @@ const WaterDetailedInfo = () => {
   const { chosenDate } = useChosenDate();
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchDailyWater());
-  //   dispatch(fetchMonthlyWater());
-  // }, [dispatch, chosenDate]);
+  useEffect(() => {
+    if (chosenDate) {
+      dispatch(fetchDailyWater())
+        .unwrap()
+        .then(() => dispatch(fetchMonthlyWater()));
+    }
+  }, [dispatch, chosenDate]);
 
   return (
     <section className={css.wrapper}>
