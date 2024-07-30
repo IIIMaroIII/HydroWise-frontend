@@ -7,7 +7,7 @@ import {
   changeWaterModalEdit,
 } from 'src/redux/water/slice';
 import { useDispatch } from 'react-redux';
-import sprite from '/src/assets/pictures/HomePage/sprite.svg';
+// import sprite from '/src/assets/pictures/HomePage/sprite.svg';
 
 import { CiLogin } from 'react-icons/ci';
 
@@ -30,7 +30,9 @@ const WaterItem = ({ item }) => {
   return (
     <>
       <svg className={css.iconGlass}>
-        <use href={`${sprite}#icon-glass`}></use>
+        <use
+          href={`./src/assets/pictures/HomePage/sprite.svg#icon-glass`}
+        ></use>
       </svg>
       <div className={css.wrapper}>
         <p className={css.volume}>{checkVolume()}</p>
@@ -43,7 +45,9 @@ const WaterItem = ({ item }) => {
           }}
         >
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-pen`}></use>
+            <use
+              href={`/src/assets/pictures/HomePage/sprite.svg#icon-pen`}
+            ></use>
           </svg>
         </Button>
 
@@ -57,7 +61,9 @@ const WaterItem = ({ item }) => {
           }}
         >
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-trash`}></use>
+            <use
+              href={`./src/assets/pictures/HomePage/sprite.svg#icon-trash`}
+            ></use>
           </svg>
         </Button>
       </div>
