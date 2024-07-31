@@ -1,5 +1,4 @@
 import css from './AdvantagesSection.module.css';
-import sprite from '../../assets/pictures/HomePage/sprite.svg';
 import CustomNavLink from '../REUSABLE/CustomNavLink/CustomNavLink';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +8,7 @@ import {
   changeModal,
   changeUsersSettingsModalOpen,
 } from 'src/redux/water/slice';
+import sprite from '/src/assets/pictures/HomePage/sprite.svg';
 
 const AdvantagesSection = () => {
   const isAuthenticated = useSelector(selectUserIsLoggedIn);
