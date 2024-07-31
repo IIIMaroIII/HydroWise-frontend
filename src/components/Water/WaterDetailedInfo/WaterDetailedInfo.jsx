@@ -9,7 +9,7 @@ import {
 } from 'src/redux/water/operations.js';
 import { useEffect } from 'react';
 
-import useAuth from 'src/hooks/usAuth.js';
+import useAuth from 'src/hooks/useAuth.js';
 
 const WaterDetailedInfo = () => {
   const { isUserRefreshing } = useAuth();
