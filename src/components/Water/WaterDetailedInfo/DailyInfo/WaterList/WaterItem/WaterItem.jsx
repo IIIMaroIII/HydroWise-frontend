@@ -7,9 +7,7 @@ import {
   changeWaterModalEdit,
 } from 'src/redux/water/slice';
 import { useDispatch } from 'react-redux';
-import sprite from '/public/sprite.svg';
-
-import { CiLogin } from 'react-icons/ci';
+import sprite from '/sprite.svg';
 
 const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
