@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
@@ -11,18 +11,9 @@ import RestrictedRoute from './RestrictedRoute';
 import SharedLayout from './components/SharedLayout/SharedLayout.jsx';
 
 import './App.css';
-import useAuth from './hooks/useAuth.js';
-import MainModal from './components/Modals/Modal/MainModal.jsx';
-import Loader from './components/REUSABLE/Loader/Loader.jsx';
-import useModals from './hooks/useModals.js';
 
 function App() {
-  const { isUserRefreshing } = useAuth();
-  // const { changeModal, dispatch } = useModals();
-
-  return isUserRefreshing ? (
-    <div>Refreshing the access token of current User</div>
-  ) : (
+  return (
     <>
       <SharedLayout>
         <Routes>
