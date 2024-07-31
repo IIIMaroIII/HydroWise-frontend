@@ -7,11 +7,6 @@
   grid-template-columns: 100%;
 }
 
-.flex {
-  display: flex;
-  align-items: center;
-}
-
 @media screen and (min-width: 375px) {
   .container {
     max-width: 375px;
@@ -22,8 +17,6 @@
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
-
-    /* grid-template-rows: 1fr 1fr; */
     padding: 32px;
   }
 }
@@ -33,5 +26,11 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 0 37px;
     max-width: 1440px;
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+    height: 100vh;
   }
 }
