@@ -1,6 +1,5 @@
 import { Calendar } from './Calendar/Calendar';
 import { CalendarPagination } from './CalendarPagination/CalendarPagination';
-import sprite from '/public/sprite.svg';
 import css from './MonthInfo.module.css';
 
 const MonthInfo = () => {
@@ -11,7 +10,7 @@ const MonthInfo = () => {
         <div className={css.paginationWrapper}>
           <CalendarPagination />
           <svg width="20" height="20" style={{ cursor: 'pointer' }}>
-            <use href={`${sprite}#icon-pie-chart-02`}></use>
+            <use href={'/sprite.svg#icon-pie-chart-02'}></use>
           </svg>
         </div>
       </div>
