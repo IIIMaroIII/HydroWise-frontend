@@ -8,11 +8,19 @@ import {
   fetchMonthlyWater,
 } from 'src/redux/water/operations.js';
 import { useEffect } from 'react';
-import useChosenDate from 'src/hooks/useChosenDate.js';
+
+import useAuth from 'src/hooks/usAuth.js';
 
 const WaterDetailedInfo = () => {
-  const { chosenDate } = useChosenDate();
+  const { isUserRefreshing } = useAuth();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isUserRefreshing) return;
+    dispatch(fetchDailyWater())
+      .unwrap()
+      .then(() => dispatch(fetchMonthlyWater()));
+  }, [dispatch, isUserRefreshing]);
 
   return (
     <section className={css.wrapper}>

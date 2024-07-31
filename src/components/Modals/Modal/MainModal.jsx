@@ -1,29 +1,24 @@
 import Modal from 'react-modal';
 import css from './mainModal.module.css';
 import { RxCross1 } from 'react-icons/rx';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectIsModalOpen,
-  selectIsWaterModalEdit,
-  selectIsWaterModalAdd,
-  selectIsDeleteWaterModalOpen,
-  selectIsLogoutModalOpen,
-  selectIsUsersSettingsModalOpen,
-} from '../../../redux/water/selectors';
+import { useDispatch } from 'react-redux';
 import WaterModal from './WaterModal/WaterModal';
 import DeleteWaterModal from './DeleteWaterModal/DeleteWaterModal';
 import LogoutModal from './LogoutModal/LogoutModal';
 import UserSettingsModal from './UserSettingsModal/UserSettingsModal';
 import { changeModal } from 'src/redux/water/slice.js';
+import useModals from 'src/hooks/useModals.js';
 
-const MainModal = () => {
+const MainModal = ({ children }) => {
   const dispatch = useDispatch();
-  const waterModalEdit = useSelector(selectIsWaterModalEdit);
-  const waterModalAdd = useSelector(selectIsWaterModalAdd);
-  const modal = useSelector(selectIsModalOpen);
-  const deleteWaterModal = useSelector(selectIsDeleteWaterModalOpen);
-  const logoutModal = useSelector(selectIsLogoutModalOpen);
-  const usersSettingsModal = useSelector(selectIsUsersSettingsModalOpen);
+  const {
+    waterModalAdd,
+    waterModalEdit,
+    modal,
+    deleteWaterModal,
+    logoutModal,
+    usersSettingsModal,
+  } = useModals();
 
   const customStyles = {
     content: {
@@ -73,6 +68,7 @@ const MainModal = () => {
         style={customStyles}
       >
         {renderModal()}
+        {children}
 
         <button
           className={css.closeBtn}
