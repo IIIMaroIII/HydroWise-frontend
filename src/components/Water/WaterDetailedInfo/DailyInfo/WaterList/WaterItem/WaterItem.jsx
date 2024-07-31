@@ -8,6 +8,7 @@ import {
 } from 'src/redux/water/slice';
 import { useDispatch } from 'react-redux';
 import sprite from '/sprite.svg';
+import { CiLogin } from 'react-icons/ci';
 
 const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const WaterItem = ({ item }) => {
   return (
     <>
       <svg className={css.iconGlass}>
-        <use href={`${sprite}#icon-glass`}></use>
+        <use href={'/sprite.svg#icon-glass'}></use>
       </svg>
       <div className={css.wrapper}>
         <p className={css.volume}>{checkVolume()}</p>
@@ -41,7 +42,7 @@ const WaterItem = ({ item }) => {
           }}
         >
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-pen`}></use>
+            <use href={'/sprite.svg#icon-pen'}></use>
           </svg>
         </Button>
 
@@ -55,7 +56,7 @@ const WaterItem = ({ item }) => {
           }}
         >
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-trash`}></use>
+            <use href={'/sprite.svg#icon-trash'}></use>
           </svg>
         </Button>
       </div>
