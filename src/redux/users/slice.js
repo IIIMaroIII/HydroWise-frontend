@@ -68,6 +68,7 @@ export const usersSlice = createSlice({
       })
       .addCase(refresh.rejected, state => {
         state.isRefreshing = false;
+        state.isLoggedIn = false;
       });
   },
 });

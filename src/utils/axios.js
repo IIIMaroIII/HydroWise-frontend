@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { logout, refresh } from 'src/redux/users/operations.js';
 
 const AxiosWithCredentials = axios.create({
-  baseURL: CONSTANTS.DOMAINS.SERVER_DEPLOY,
+  baseURL: CONSTANTS.DOMAINS.SERVER_LOCALHOST,
   withCredentials: true,
 });
 
@@ -37,9 +37,11 @@ AxiosWithCredentials.interceptors.response.use(
     const originalRequest = err.config;
     console.log('originalRequest', originalRequest);
 
-    // Проверка статуса ошибки и флага _retry
-    if (status === 401 && !originalRequest._retry) {
-      // Устанавливаем флаг _retry, чтобы предотвратить бесконечный цикл
+    if (status === 401 && statusText === 'Missing session cookies') {
+      toast(`${statusText}. Try to log in again.`);
+      console.log('mission cookies with _retry');
+      window.location.href = '/signin';
+    } else if (status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       console.log('Status 401 detected, attempting to refresh token...');
       try {
@@ -48,13 +50,18 @@ AxiosWithCredentials.interceptors.response.use(
 
         originalRequest.headers.Authorization = `Bearer ${result}`;
 
-        // Повторяем оригинальный запрос
         return AxiosWithCredentials(originalRequest);
       } catch (refreshError) {
         console.log('Refresh failed:', refreshError);
+
         toast('Your session has expired. Please login again');
         await store.dispatch(logout());
       }
+    } else {
+      console.log('mission cookies with _retry');
+      window.location.href = '/';
+      console.log('after mission cookies with retry redirect to homePage');
+      return;
     }
     if (status === 500 || status === 400 || status === 403 || status === 409) {
       return toast.error(statusText);
