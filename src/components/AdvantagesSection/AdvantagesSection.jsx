@@ -8,7 +8,6 @@ import {
   changeModal,
   changeUsersSettingsModalOpen,
 } from 'src/redux/water/slice';
-import sprite from '/src/assets/pictures/HomePage/sprite.svg';
 
 const AdvantagesSection = () => {
   const isAuthenticated = useSelector(selectUserIsLoggedIn);
@@ -89,9 +88,9 @@ const AdvantagesSection = () => {
               )}
               to="/tracker"
             >
-              <svg className={css.homePageBenefitsIcon} width="8" height="8">
+              {/* <svg className={css.homePageBenefitsIcon} width="8" height="8">
                 <use href={`${sprite}#icon-Ellipse-13`}></use>
-              </svg>
+              </svg> */}
               Habit drive
             </CustomNavLink>
           ) : (
@@ -101,9 +100,9 @@ const AdvantagesSection = () => {
                 css.homePageBenefitsLinksHabitDrive,
               )}
             >
-              <svg className={css.homePageBenefitsIcon} width="8" height="8">
+              {/* <svg className={css.homePageBenefitsIcon} width="8" height="8">
                 <use href={`${sprite}#icon-Ellipse-13`}></use>
-              </svg>
+              </svg> */}
               Habit drive
             </CustomNavLink>
           )}
