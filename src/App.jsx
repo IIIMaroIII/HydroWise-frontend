@@ -18,23 +18,10 @@ import useModals from './hooks/useModals.js';
 
 function App() {
   const { isUserRefreshing } = useAuth();
-  const { changeModal, dispatch } = useModals();
-
-  const handleRefreshing = () => {
-    dispatch(changeModal(true));
-    return (
-      <MainModal>
-        <div>Refreshing the access token of current User</div>
-        <Loader />
-      </MainModal>
-    );
-  };
+  // const { changeModal, dispatch } = useModals();
 
   return isUserRefreshing ? (
-    () => {
-      handleRefreshing();
-      dispatch(changeModal(false));
-    }
+    <div>Refreshing the access token of current User</div>
   ) : (
     <>
       <SharedLayout>
