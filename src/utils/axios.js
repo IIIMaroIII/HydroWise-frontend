@@ -60,7 +60,6 @@ AxiosWithCredentials.interceptors.response.use(
     } else {
       console.log('mission cookies with _retry');
       window.location.href = '/';
-      console.log('after mission cookies with retry redirect to homePage');
       return;
     }
     if (status === 500 || status === 400 || status === 403 || status === 409) {

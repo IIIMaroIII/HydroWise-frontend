@@ -38,10 +38,8 @@ export const usersSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(logout.fulfilled, state => {
-        state.isLoggedIn = false;
-        state.isLoading = false;
-        state.user.token = null;
+      .addCase(logout.fulfilled, () => {
+        return { ...initialState };
       })
       .addCase(logout.rejected, state => {
         state.isLoading = false;
