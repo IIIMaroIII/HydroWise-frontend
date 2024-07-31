@@ -5,11 +5,6 @@
   align-items: center;
 }
 
-.monthInfoIcon {
-  fill: white;
-  stroke: white;
-  color: white;
-}
 
 .month {
   font-weight: 700;

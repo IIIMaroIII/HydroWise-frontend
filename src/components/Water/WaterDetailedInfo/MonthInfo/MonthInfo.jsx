@@ -11,7 +11,6 @@ const MonthInfo = () => {
         <div className={css.paginationWrapper}>
           <CalendarPagination />
           <svg
-            className={css.monthInfoIcon}
             width="20"
             height="20"
             style={{ cursor: 'pointer' }}
