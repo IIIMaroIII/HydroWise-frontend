@@ -136,6 +136,8 @@
 
 .homePageBenefitsLinks {
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
 .homePageBenefitsLinksStatistics {

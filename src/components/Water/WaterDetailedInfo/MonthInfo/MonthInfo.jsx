@@ -1,6 +1,5 @@
 import { Calendar } from './Calendar/Calendar';
 import { CalendarPagination } from './CalendarPagination/CalendarPagination';
-import sprite from '/sprite.svg';
 import css from './MonthInfo.module.css';
 
 const MonthInfo = () => {
