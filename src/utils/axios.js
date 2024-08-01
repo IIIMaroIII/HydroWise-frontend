@@ -57,8 +57,8 @@ AxiosWithCredentials.interceptors.response.use(
           autoClose: 7000,
         },
       );
+      store.getState().users = initialState;
       setTimeout(() => {
-        store.getState().users = initialState;
         window.location.replace('/');
         console.log('mission cookies with _retry');
       }, 4000);
