@@ -44,9 +44,14 @@ AxiosWithCredentials.interceptors.response.use(
 
     if (status === 401 && statusText === 'Email or password invalid!') {
       toast.error(statusText);
-    } else if (status === 401 && statusText === 'Missing session cookies') {
+    } else if (
+      (status === 401 && statusText === 'Missing session cookies') ||
+      (status === 401 && statusText === 'The session was not found!') ||
+      (status === 401 &&
+        statusText === 'The refresh session token has expired!')
+    ) {
       toast(
-        'You have lost cookies somewhere and been redirected to Sign Up Page. Try to log in again, please.',
+        'You have lost cookies somewhere or the session was not found and been redirected to Sign Up Page. Try to log in again, please.',
         {
           autoClose: 7000,
         },
