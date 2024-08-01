@@ -3,8 +3,7 @@ import axios from 'axios';
 import CONSTANTS from 'src/components/Constants/constants.js';
 import store from 'src/redux/store.js';
 import toast from 'react-hot-toast';
-import { logout, refresh } from 'src/redux/users/operations.js';
-import { initialState } from 'src/redux/users/initialState.js';
+import { refresh } from 'src/redux/users/operations.js';
 
 const AxiosWithCredentials = axios.create({
   baseURL: CONSTANTS.DOMAINS.SERVER_DEPLOY,
