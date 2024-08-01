@@ -4,6 +4,7 @@ import CONSTANTS from 'src/components/Constants/constants.js';
 import store from 'src/redux/store.js';
 import toast from 'react-hot-toast';
 import { logout, refresh } from 'src/redux/users/operations.js';
+import { initialState } from 'src/redux/users/initialState.js';
 
 const AxiosWithCredentials = axios.create({
   baseURL: CONSTANTS.DOMAINS.SERVER_DEPLOY,
@@ -57,6 +58,7 @@ AxiosWithCredentials.interceptors.response.use(
         },
       );
       setTimeout(() => {
+        store.getState().users = initialState;
         window.location.replace('/');
         console.log('mission cookies with _retry');
       }, 4000);
