@@ -51,7 +51,7 @@ AxiosWithCredentials.interceptors.response.use(
         statusText === 'The refresh session token has expired!')
     ) {
       toast(
-        'You have lost cookies somewhere and been redirected to Sign Up Page. Try to log in again, please.',
+        'You have lost cookies somewhere or the session was not found and been redirected to Sign Up Page. Try to log in again, please.',
         {
           autoClose: 7000,
         },
