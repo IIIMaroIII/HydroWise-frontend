@@ -30,6 +30,11 @@ AxiosWithCredentials.interceptors.response.use(
   async err => {
     console.log('err in interceptors', err);
     console.log('err.response in interceptors', err.response);
+    console.log(
+      'err.response.data.message in interceptors',
+      err.response.data.message,
+    );
+
     const status = err?.response?.data.status || err?.response?.status || null;
     const statusText =
       err?.response?.data.message || err?.response?.statusText || null;
@@ -37,10 +42,16 @@ AxiosWithCredentials.interceptors.response.use(
     const originalRequest = err.config;
     console.log('originalRequest', originalRequest);
 
-    if (status === 401 && statusText === 'Missing session cookies') {
-      toast(`${statusText}. Try to log in again.`);
+    if (status === 401 && statusText === 'Email or password invalid!') {
+      toast.error(statusText);
+    } else if (status === 401 && statusText === 'Missing session cookies') {
+      toast(
+        'You have lost cookies somewhere and been redirected to Sign Up Page. Try to log in again, please.',
+        {
+          autoClose: 7000,
+        },
+      );
       console.log('mission cookies with _retry');
-      window.location.href = '/signin';
     } else if (status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       console.log('Status 401 detected, attempting to refresh token...');
@@ -54,18 +65,13 @@ AxiosWithCredentials.interceptors.response.use(
       } catch (refreshError) {
         console.log('Refresh failed:', refreshError);
 
-        toast('Your session has expired. Please login again');
-        await store.dispatch(logout());
+        // toast('Your session has expired. Please login again');
+        // await store.dispatch(logout());
       }
-    } else {
-      console.log('mission cookies with _retry');
-      window.location.href = '/';
-      return;
     }
     if (status === 500 || status === 400 || status === 403 || status === 409) {
-      return toast.error(statusText);
+      toast.error(statusText);
     }
-    toast(statusText);
 
     return Promise.reject(err);
   },

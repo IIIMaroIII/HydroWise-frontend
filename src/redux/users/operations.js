@@ -71,10 +71,6 @@ export const refresh = createAsyncThunk(
       // AxiosWithCredentials.defaults.headers.common.Authorization = `Bearer ${data.accessToken}`;
       return data.data.accessToken;
     } catch (error) {
-      console.log(
-        'Refresh error response:',
-        error.response ? error.response.data : error.message,
-      );
       return rejectWithValue(
         error.response ? error.response.data : error.message,
       );
