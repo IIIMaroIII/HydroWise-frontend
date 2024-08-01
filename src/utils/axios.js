@@ -51,7 +51,7 @@ AxiosWithCredentials.interceptors.response.use(
         statusText === 'The refresh session token has expired!')
     ) {
       toast(
-        'You have lost cookies somewhere or the session was not found and you will been redirected to Home Page. Try to log in again, please.',
+        'You have lost cookies somewhere or the session was not found and been redirected to Home Page. Try to log in again, please.',
         {
           autoClose: 7000,
         },
@@ -59,7 +59,7 @@ AxiosWithCredentials.interceptors.response.use(
       setTimeout(() => {
         window.location.replace('/');
         console.log('mission cookies with _retry');
-      }, 5000);
+      }, 4000);
     } else if (status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       console.log('Status 401 detected, attempting to refresh token...');
