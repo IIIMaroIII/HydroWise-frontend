@@ -51,13 +51,14 @@ AxiosWithCredentials.interceptors.response.use(
       (status === 401 &&
         statusText === 'The refresh session token has expired!')
     ) {
+      localStorage.clear();
       toast(
         'You have lost cookies somewhere or the session was not found and been redirected to Home Page. Try to log in again, please.',
         {
           autoClose: 7000,
         },
       );
-      store.getState().users = initialState;
+
       setTimeout(() => {
         window.location.replace('/');
         console.log('mission cookies with _retry');
