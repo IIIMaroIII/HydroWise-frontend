@@ -96,18 +96,18 @@ export const waterSlice = createSlice({
         state.isLoading = false;
         state.water.monthlyItems = payload.data;
       })
-      .addCase(changeWater.rejected, (state, { payload }) => {
-        state.isLoading = false;
+      .addCase(changeWater.rejected, () => {
+        return { ...initialState };
       })
       .addCase(fetchDailyWater.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.water.dailyItems = payload.data;
       })
-      .addCase(addWater.rejected, (state, { payload }) => {
-        state.isLoading = false;
+      .addCase(addWater.rejected, () => {
+        return { ...initialState };
       })
-      .addCase(deleteWater.rejected, (state, { payload }) => {
-        state.isLoading = false;
+      .addCase(deleteWater.rejected, () => {
+        return { ...initialState };
       })
       .addCase(fetchMonthlyWater.rejected, (state, { payload }) => {
         state.isLoading = false;
