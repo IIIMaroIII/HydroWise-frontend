@@ -55,23 +55,27 @@ const WaterForm = ({ operationName }) => {
 
     const formData = new FormData();
     formData.append('waterValue', waterValue);
-    console.log('operationName', operationName);
+
     if (operationName === 'add') {
       await dispatch(addWater(formData))
         .unwrap()
-        .then(() => toast.success('You have succesfully added your record'));
-      dispatch(changeModal(false));
-      // await dispatch(fetchDailyWater());
+        .then(res => {
+          toast.success('You have successfully added your record');
+          console.log('res addWater fulfilled', res);
+          dispatch(changeModal(false));
+          dispatch(fetchDailyWater());
+        });
     } else {
       await dispatch(changeWater(formData))
         .unwrap()
-        .then(() =>
+        .then(res => {
+          console.log('res in editWater fulfilled', res);
           toast.success(
-            'You have succesfully changed water amount in your record',
-          ),
-        );
-      dispatch(changeModal(false));
-      // await dispatch(fetchDailyWater());
+            'You have successfully changed water amount in your record',
+          );
+          dispatch(changeModal(false));
+          dispatch(fetchDailyWater());
+        });
     }
   };
 

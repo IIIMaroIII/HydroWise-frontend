@@ -43,9 +43,6 @@ const SignInForm = () => {
         toast.success(res.message);
         reset();
         navigate('/tracker');
-      })
-      .catch(err => {
-        toast.error('Email or password is incorrect, please try again!');
       });
   };
 

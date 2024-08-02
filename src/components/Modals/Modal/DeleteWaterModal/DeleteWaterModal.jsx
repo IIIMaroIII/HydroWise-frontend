@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import css from './deleteWaterModal.module.css';
 import { changeDeleteWaterModalOpen, changeModal } from 'src/redux/water/slice';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
@@ -12,11 +12,10 @@ const DeleteWaterModal = ({ children, ...otherProps }) => {
     dispatch(deleteWater())
       .unwrap()
       .then(() => {
-        toast.success('Delete successful!');
+        toast.success('You have successfully deleted your water volume!');
         dispatch(changeDeleteWaterModalOpen(false));
         dispatch(changeModal(false));
-      })
-      .catch(() => toast.error('Oops, delete went wrong, please try again!'));
+      });
   };
   return (
     <div className={css.deleteModal}>
