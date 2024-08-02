@@ -36,9 +36,9 @@ export const selectPercentage = state => {
 
   const percentage = (volume() / (dailyNorma * 1000)) * 100;
   if (isNaN(percentage)) {
-    return '0';
+    return 0;
   } else {
     if (percentage < 100) return percentage;
-    if (percentage > 100) return `100`;
+    if (percentage > 100) return 100;
   }
 };

@@ -9,7 +9,7 @@ import { selectPercentage } from 'src/redux/water/selectors.js';
 export const CalendarItem = ({ day }) => {
   const dispatch = useDispatch();
   const { setChosenDay } = useChosenDate();
-  const percentage = useSelector(selectPercentage);
+  const percentage = useSelector(selectPercentage).toFixed(0);
 
   const items = document.querySelectorAll(`.${css.btn_item}`);
 
