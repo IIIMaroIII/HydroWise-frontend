@@ -38,6 +38,7 @@ export const selectPercentage = state => {
   if (isNaN(percentage)) {
     return '0';
   } else {
-    return percentage;
+    if (percentage < 100) return percentage;
+    if (percentage > 100) return `100`;
   }
 };
