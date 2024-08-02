@@ -1,13 +1,17 @@
+import { useSelector } from 'react-redux';
 import css from './WaterProgressBar.module.css';
+import { selectPercentage } from 'src/redux/water/selectors.js';
 
 const WaterProgressBar = () => {
+  const percentage = useSelector(selectPercentage);
+
   return (
     <div className={css.WaterProgressBar_container}>
       <h2 className={css.WaterProgressBar_h2}>Today</h2>
       <div className={css.WaterProgressBar}>
         <div className={css.progress}></div>
         <div className={css.thumb}>
-          <div className={css.thumb_value}>{`0%`}</div>
+          <div className={css.thumb_value}>{`${percentage}%`}</div>
         </div>
       </div>
       <div className={css.progress_labels}>
