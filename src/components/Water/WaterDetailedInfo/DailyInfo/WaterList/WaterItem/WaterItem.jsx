@@ -22,7 +22,7 @@ const WaterItem = ({ item }) => {
 
   const checkVolume = () => {
     if (item.volume < 1000) return `${item.volume} ml`;
-    if (item.volume > 1000) return `${item.volume} L`;
+    if (item.volume >= 1000) return `${item.volume / 1000} L`;
   };
 
   return (
