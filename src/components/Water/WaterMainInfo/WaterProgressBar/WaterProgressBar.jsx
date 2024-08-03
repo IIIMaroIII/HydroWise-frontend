@@ -3,7 +3,7 @@ import css from './WaterProgressBar.module.css';
 import { selectPercentage } from 'src/redux/water/selectors.js';
 
 const WaterProgressBar = () => {
-  const percentage = useSelector(selectPercentage);
+   const percentage = useSelector(selectPercentage).toFixed(0);
 
   return (
     <div className={css.WaterProgressBar_container}>
