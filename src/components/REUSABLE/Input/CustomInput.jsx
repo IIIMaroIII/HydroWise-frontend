@@ -14,7 +14,7 @@ const CustomInput = forwardRef(
       placeHolder = '',
       inputClass = '',
       disabled = false,
-      activated = false,
+      //   activated = false,
       error = false,
       ...otherProps
     },
@@ -24,11 +24,14 @@ const CustomInput = forwardRef(
     const [isInactive, setIsInactive] = useState(true);
 
     const handleFocus = () => {
+      console.log('Input focused');
+
       setIsFocused(true);
       setIsInactive(false);
     };
 
     const handleBlur = () => {
+      console.log('Input blurred');
       setIsFocused(false);
       setIsInactive(true);
     };
@@ -36,14 +39,14 @@ const CustomInput = forwardRef(
     return (
       <>
         {label ? (
-          <label className={clsx(css.label, labelClass)}>
+          <label className={clsx(labelClass, css.label)}>
             <input
               ref={ref}
-              className={clsx(css.input, inputClass, {
+              className={clsx(inputClass, css.input, {
                 [css.disabled]: disabled,
                 [css.inactive]: isInactive,
                 [css.focused]: isFocused,
-                [css.activated]: activated,
+                // [css.activated]: activated,
                 [css.error]: error,
               })}
               type={inputType}
@@ -59,11 +62,11 @@ const CustomInput = forwardRef(
         ) : (
           <input
             ref={ref}
-            className={clsx(css.input, inputClass, {
+            className={clsx(inputClass, css.input, {
               [css.disabled]: disabled,
               [css.inactive]: isInactive,
               [css.focused]: isFocused,
-              [css.activated]: activated,
+              //   [css.activated]: activated,
               [css.error]: error,
             })}
             type={inputType}
@@ -84,28 +87,3 @@ const CustomInput = forwardRef(
 CustomInput.displayName = 'CustomInput';
 
 export default CustomInput;
-
-/*
-Разбор кода
-
-Импорт библиотек:
-clsx: Библиотека для условного объединения классов.
-css: Импортирует стили из CSS-модуля customInput.module.css.
-
-Пропсы компонента:
-children: Дочерние элементы, передаваемые в компонент. Используется для добавления элементов рядом с полем ввода, например, иконок или кнопок.
-label: Указывает, будет ли отображаться элемент <label>.
-labelName: Текст внутри <label>.
-labelClass: Дополнительные классы для стилизации <label>.
-inputType: Тип поля ввода (например, "text", "password").
-inputName: Имя поля ввода.
-placeHolder: Текст-подсказка внутри поля ввода.
-inputClass: Дополнительные классы для стилизации <input>.
-disabled: Указывает, заблокировано ли поле ввода.
-inactive, focused, activated, error: Логические флаги для применения соответствующих стилей.
-
-Рендеринг:
-Если label равно true, рендерится <label> с вложенным <input> и текстом labelName.
-Если label равно false, рендерится только <input>.
-children размещаются рядом с полем ввода или <label> в зависимости от значения label.
-*/

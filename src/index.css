@@ -29,8 +29,8 @@
   --error-color: #ef5050;
 
   --input-border-inactive-color: rgba(47, 47, 47, 0.2);
-  --input-border-focused-color: rgba(47, 47, 47, 0.2);
-  --input-border-activated-color: rgba(47, 47, 47, 0.4);
+  --input-border-focused-color: rgba(47, 47, 47, 0.4);
+  /* --input-border-activated-color: rgba(47, 47, 47, 0.4); */
   --input-text-inactive-color: rgba(47, 47, 47, 0.6);
 
   --signin-btn-disabled-color: rgba(47, 47, 47, 0.2);
@@ -51,12 +51,19 @@ body {
 }
 
 input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
-select:-webkit-autofill {
-  /* Стили для автозаполненных полей */
-  -webkit-box-shadow: 0 0 0px 1000px white inset;
-  box-shadow: 0 0 0px 1000px white inset;
-  -webkit-text-fill-color: #000;
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid var(--input-border-inactive-color) !important;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* Цвет фона */
+  box-shadow: 0 0 0px 1000px transparent inset !important; /* Цвет фона для других браузеров */
+  transition: background-color 5000s ease-in-out 0s !important;
+  -webkit-text-fill-color: var(--dark) !important; /* Цвет текста */
 }
 
 input[type='number']::-webkit-inner-spin-button,
