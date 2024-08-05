@@ -64,6 +64,7 @@ const SignInForm = () => {
             <CustomInput
               type="email"
               placeholder="Enter your email"
+              error={errors.email ? true : false}
               {...register('email')}
             />
             {errors.email && <p>{errors.email.message}</p>}
@@ -74,6 +75,7 @@ const SignInForm = () => {
               <CustomInput
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Enter your password"
+                error={errors.password ? true : false}
                 {...register('password')}
               />
               <span

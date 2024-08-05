@@ -63,11 +63,6 @@
   color: var(--black);
 }
 
-.inputContainer input:focus {
-  border-color: var(--green-hover);
-  outline: none;
-}
-
 .inputContainer p {
   color: #ef5050;
   margin: 5px 0 0;
