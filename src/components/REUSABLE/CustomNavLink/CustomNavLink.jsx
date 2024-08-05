@@ -12,6 +12,7 @@ const CustomNavLink = ({ addClass = '', children, ...otherProps }) => {
 
   return (
     <>
+      {/* <NavLink className={props => addClassName(props)} {...otherProps}> */}
       <NavLink className={props => addClassName(props)} {...otherProps}>
         {children}
       </NavLink>
@@ -20,3 +21,17 @@ const CustomNavLink = ({ addClass = '', children, ...otherProps }) => {
 };
 
 export default CustomNavLink;
+
+/*
+Использование 
+
+          <CustomNavLink
+            addClass={clsx(css.homePageLinks, css.linkTracker, {
+              [css.isActive]: isActive,
+            })}
+            to="/signup"
+          >
+            Try tracker  >>> children 
+          </CustomNavLink>
+
+*/
