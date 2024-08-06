@@ -13,11 +13,7 @@ const WaterList = () => {
         <p className={css.p}>You do not have any records!</p>
       ) : (
         dailyItems.map(item => {
-          return (
-            <li key={item._id} className={css.item}>
-              <WaterItem item={item} />
-            </li>
-          );
+          return <WaterItem key={item._id} item={item} />;
         })
       )}
     </ul>

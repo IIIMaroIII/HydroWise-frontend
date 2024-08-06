@@ -1,12 +1,13 @@
-.wrapper {
-  padding-top: 24px;
+.paginationContainer {
+  outline: 1px solid var(--basic-dark-blue);
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 24px;
 }
 
-
-.month {
+.title {
   font-weight: 700;
   font-size: 20px;
   line-height: 120%;

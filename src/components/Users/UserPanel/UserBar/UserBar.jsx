@@ -7,11 +7,13 @@ import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 import Button from 'src/components/REUSABLE/Button/Button.jsx';
 import { useClickAway } from 'react-use';
 import { useRef } from 'react';
+import Container from 'src/components/REUSABLE/Container/Container.jsx';
 
 const UserBar = () => {
   const user = useSelector(selectUser);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const itemRef = useRef(null);
+
   const togglePopover = () => {
     setIsPopoverOpen(!isPopoverOpen);
   };
@@ -21,8 +23,12 @@ const UserBar = () => {
   });
 
   return (
-    <div className={css.container} ref={itemRef}>
-      <Button onClick={togglePopover} addClass={css.user_bar_wrapper}>
+    <div className={css.userBarContainer} ref={itemRef}>
+      <Button
+        ariaHidden
+        onClick={togglePopover}
+        addClass={css.user_bar_wrapper}
+      >
         {user?.name !== null ? (
           <span className={css.span}>{user.name}</span>
         ) : (

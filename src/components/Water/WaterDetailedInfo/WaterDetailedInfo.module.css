@@ -1,29 +1,24 @@
-.wrapper {
+.waterDetailedInfoContainer {
+  outline: 1px solid red;
+  padding: 40px 20px;
   border-radius: 30px;
   background-color: var(--background-grey);
-  /* min-width: 300px; */
-  padding: 25px 15px;
 }
 
 @media screen and (min-width: 375px) {
-  .wrapper {
-    max-width: 343px;
-    padding: 40px 20px;
-    height: 770px
+  .waterDetailedInfoContainer {
+    width: 343px;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .wrapper {
-    max-width: 704px;
-    padding: 35px 32px;
-    height: 738px;
+  .waterDetailedInfoContainer {
+    padding: 32px;
+    width: 704px;
   }
 }
 @media screen and (min-width: 1440px) {
-  .wrapper {
-    max-width: 672px;
-    padding: 32px;
-    height: 736px;
+  .waterDetailedInfoContainer {
+    width: calc((100% - 32px) / 2);
   }
 }

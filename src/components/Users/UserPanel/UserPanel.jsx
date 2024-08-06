@@ -2,21 +2,23 @@ import { selectUser } from 'src/redux/users/selectors.js';
 import UserBar from './UserBar/UserBar.jsx';
 import css from './UserPanel.module.css';
 import { useSelector } from 'react-redux';
+import Container from 'src/components/REUSABLE/Container/Container.jsx';
+
 const UserPanel = () => {
   const user = useSelector(selectUser);
 
   return (
-    <div className={css.user_panel}>
-      <div className={css.text}>
-        <h2>Hello</h2>{' '}
+    <Container addClass={css.userPanelContainer}>
+      <h2 className={css.title}>
+        Hello
         {user?.name !== null ? (
           <span className={css.span}>, {user.name}!</span>
         ) : (
           <span className={css.span}>, User!</span>
         )}
-      </div>
+      </h2>
       <UserBar />
-    </div>
+    </Container>
   );
 };
 

@@ -1,25 +1,49 @@
+.dailyInfoContainer {
+  outline: 1px solid blue;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  margin-bottom: 40px;
+}
+
 .plusIcon {
-  background-color: var(--basic-green);
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+
   padding: 7px;
+
+  color: var(--dark);
+  background-color: var(--basic-green);
+
+  transform: scale(1);
+  transition: color var(--transition-delay) var(--transition),
+    background-color var(--transition-delay) var(--transition),
+    transform var(--transition-delay) var(--transition);
 }
 
-.btn {
+button.btn {
   display: flex;
   gap: 10px;
   background-color: transparent;
   align-items: center;
+  padding: 0;
+  color: var(--dark);
+
+  transform: scale(1);
+  transition: transform var(--transition-delay) var(--transition);
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+button.btn:hover,
+button.btn:focus {
+  background-color: transparent;
+  transform: scale(1.1);
+}
+
+button.btn:hover .plusIcon {
+  background-color: var(--dark);
+  color: var(--white);
 }
 
 .btnSpan {
