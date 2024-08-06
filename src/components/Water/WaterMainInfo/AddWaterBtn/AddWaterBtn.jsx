@@ -7,17 +7,19 @@ import { changeModal, changeWaterModalAdd } from 'src/redux/water/slice';
 const AddWaterBtn = () => {
   const dispatch = useDispatch();
 
-  const openModal = () => {
-    dispatch(changeModal(true));
-    dispatch(changeWaterModalAdd(true));
-  };
   return (
-    <div className={css.btn_container}>
-      <Button addClass={css.btn} onClick={openModal}>
-        <FaPlus className={css.plus_icon} />
-        Add water
+    <>
+      <Button
+        addClass={css.btn}
+        onClick={() => {
+          dispatch(changeWaterModalAdd(true));
+          dispatch(changeModal(true));
+        }}
+      >
+        <FaPlus className={css.plusIcon} />
+        <span className={css.btnSpan}>Add water</span>
       </Button>
-    </div>
+    </>
   );
 };
 

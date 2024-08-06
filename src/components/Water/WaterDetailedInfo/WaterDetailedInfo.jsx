@@ -2,14 +2,16 @@ import UserPanel from 'src/components/Users/UserPanel/UserPanel.jsx';
 import css from './WaterDetailedInfo.module.css';
 import MonthInfo from './MonthInfo/MonthInfo.jsx';
 import DailyInfo from './DailyInfo/DailyInfo.jsx';
+import Container from 'src/components/REUSABLE/Container/Container.jsx';
+import CustomInput from 'src/components/REUSABLE/Input/CustomInput.jsx';
 
 const WaterDetailedInfo = () => {
   return (
-    <section className={css.wrapper}>
+    <Container className={css.waterDetailedInfoContainer}>
       <UserPanel />
       <DailyInfo />
       <MonthInfo />
-    </section>
+    </Container>
   );
 };
 

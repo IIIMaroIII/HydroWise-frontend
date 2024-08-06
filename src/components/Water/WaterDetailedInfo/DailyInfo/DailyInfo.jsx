@@ -5,11 +5,12 @@ import css from '../DailyInfo/DailyInfo.module.css';
 import { FaPlus } from 'react-icons/fa6';
 import { changeModal, changeWaterModalAdd } from 'src/redux/water/slice.js';
 import { useDispatch } from 'react-redux';
+import Container from 'src/components/REUSABLE/Container/Container.jsx';
 
 const DailyInfo = () => {
   const dispatch = useDispatch();
   return (
-    <div className={css.container}>
+    <Container addClass={css.dailyInfoContainer}>
       <div className={css.todayLine}>
         <ChooseDate />
         <Button
@@ -24,7 +25,7 @@ const DailyInfo = () => {
         </Button>
       </div>
       <WaterList />
-    </div>
+    </Container>
   );
 };
 

@@ -14,7 +14,6 @@ const CustomInput = forwardRef(
       placeHolder = '',
       inputClass = '',
       disabled = false,
-      //   activated = false,
       error = false,
       ...otherProps
     },
@@ -24,14 +23,11 @@ const CustomInput = forwardRef(
     const [isInactive, setIsInactive] = useState(true);
 
     const handleFocus = () => {
-      console.log('Input focused');
-
       setIsFocused(true);
       setIsInactive(false);
     };
 
     const handleBlur = () => {
-      console.log('Input blurred');
       setIsFocused(false);
       setIsInactive(true);
     };
@@ -39,16 +35,20 @@ const CustomInput = forwardRef(
     return (
       <>
         {label ? (
-          <label className={clsx(labelClass, css.label)}>
+          <label className={clsx(css.label, {}, labelClass)}>
+            {labelName}
             <input
               ref={ref}
-              className={clsx(inputClass, css.input, {
-                [css.disabled]: disabled,
-                [css.inactive]: isInactive,
-                [css.focused]: isFocused,
-                // [css.activated]: activated,
-                [css.error]: error,
-              })}
+              className={clsx(
+                css.input,
+                {
+                  [css.disabled]: disabled,
+                  [css.inactive]: isInactive,
+                  [css.focused]: isFocused,
+                  [css.error]: error,
+                },
+                inputClass,
+              )}
               type={inputType}
               placeholder={placeHolder}
               name={inputName}
@@ -57,18 +57,21 @@ const CustomInput = forwardRef(
               onBlur={handleBlur}
               {...otherProps}
             />
-            {labelName}
+            {children}
           </label>
         ) : (
           <input
             ref={ref}
-            className={clsx(inputClass, css.input, {
-              [css.disabled]: disabled,
-              [css.inactive]: isInactive,
-              [css.focused]: isFocused,
-              //   [css.activated]: activated,
-              [css.error]: error,
-            })}
+            className={clsx(
+              css.input,
+              {
+                [css.disabled]: disabled,
+                [css.inactive]: isInactive,
+                [css.focused]: isFocused,
+                [css.error]: error,
+              },
+              inputClass,
+            )}
             type={inputType}
             placeholder={placeHolder}
             name={inputName}

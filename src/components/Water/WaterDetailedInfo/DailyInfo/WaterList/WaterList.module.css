@@ -1,64 +1,39 @@
 .list {
   display: flex;
-  gap: 16px;
-  max-width: 672px;
+  height: 134px;
+  gap: 8px;
   overflow-x: auto;
   white-space: nowrap;
-  padding-bottom: 24px;
-  height: 122px;
-  align-items: center;
-  margin-top: 24px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+
+  padding-bottom: 32px;
+  padding-top: 24px;
 }
 
 .list::-webkit-scrollbar {
-  /* border: 1px solid black; */
-  /* width: 235px; */
-  /* width: 303px; */
-  height: 8px;
+  height: 4px; /* Высота скроллбара */
 }
 
 .list::-webkit-scrollbar-thumb {
-  background-color: darkgray;
-  border-radius: 9px;
+  background-color: rgba(0, 0, 0, 0.5); /* Цвет "ползунка" */
+  border-radius: 4px; /* Закругление углов "ползунка" */
 }
 
-/* .list::-webkit-scrollbar-track {
-  width: 10px;
-} */
-
-.item {
-  min-width: 149px;
-  /* min-height: 74px; */
-  border-radius: 15px;
-  background-color: var(--white);
-
-  display: flex;
-  align-items: center;
-  padding: 18px 14px;
-  gap: 10px;
-}
-
-.p {
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
+.list::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1); /* Цвет фона трека */
+  border-radius: 4px; /* Закругление углов трека */
 }
 
 @media screen and (min-width: 375px) {
-  .list {
-    /* height: 134px; */
-  }
-
-  .item {
-    min-width: 149px;
-  }
 }
 
-/* @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .list {
-    height: 110px;
+    gap: 32px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-} */
+}

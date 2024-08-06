@@ -9,6 +9,7 @@ import {
 import { useDispatch } from 'react-redux';
 import sprite from '/sprite.svg';
 import { CiLogin } from 'react-icons/ci';
+import Container from 'src/components/REUSABLE/Container/Container.jsx';
 
 const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -23,16 +24,19 @@ const WaterItem = ({ item }) => {
 
   const checkVolume = () => {
     if (item.volume < 1000) return `${item.volume} ml`;
-    if (item.volume > 1000) return `${item.volume} L`;
+    if (item.volume > 1000) return `${item.volume / 1000} L`;
   };
 
   return (
-    <>
+    <li key={item._id} className={css.item}>
       <svg className={css.iconGlass}>
         <use href={'/sprite.svg#icon-glass'}></use>
       </svg>
-      <div className={css.wrapper}>
+      <Container addClass={css.dataWrapper}>
         <p className={css.volume}>{checkVolume()}</p>
+        <p className={css.itemTime}>{itemTime}</p>
+      </Container>
+      <Container addClass={css.iconsWrapper}>
         <Button
           addClass={css.button}
           onClick={() => {
@@ -45,8 +49,6 @@ const WaterItem = ({ item }) => {
             <use href={'/sprite.svg#icon-pen'}></use>
           </svg>
         </Button>
-
-        <p className={css.itemTime}>{itemTime}</p>
         <Button
           addClass={css.button}
           onClick={() => {
@@ -59,8 +61,8 @@ const WaterItem = ({ item }) => {
             <use href={'/sprite.svg#icon-trash'}></use>
           </svg>
         </Button>
-      </div>
-    </>
+      </Container>
+    </li>
   );
 };
 
