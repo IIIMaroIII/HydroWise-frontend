@@ -4,12 +4,14 @@ import css from './calendarItem.module.css';
 
 import useChosenDate from 'src/hooks/useChosenDate.js';
 import { fetchDailyWater } from 'src/redux/water/operations.js';
-import { selectPercentage } from 'src/redux/water/selectors.js';
+import { convertDailyTotalVolumeToPercentage } from 'src/redux/water/selectors.js';
 
 export const CalendarItem = ({ day }) => {
   const dispatch = useDispatch();
   const { setChosenDay } = useChosenDate();
-  const percentage = useSelector(selectPercentage).toFixed(0);
+  const percentage = useSelector(convertDailyTotalVolumeToPercentage).toFixed(
+    0,
+  );
 
   const items = document.querySelectorAll(`.${css.btn_item}`);
 
