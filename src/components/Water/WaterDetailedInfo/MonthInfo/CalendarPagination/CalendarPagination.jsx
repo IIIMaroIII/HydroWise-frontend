@@ -24,7 +24,7 @@ export const CalendarPagination = () => {
           dispatch(fetchMonthlyWater())
             .unwrap()
             .then(() => dispatch(fetchDailyWater()))
-            .catch(e => console.error(e));
+            .catch(console.error);
         }}
         addClass={css.btn}
       >
@@ -37,7 +37,7 @@ export const CalendarPagination = () => {
           dispatch(fetchMonthlyWater())
             .unwrap()
             .then(() => dispatch(fetchDailyWater()))
-            .catch(e => console.error(e));
+            .catch(console.error);
         }}
         addClass={css.btn}
       >
