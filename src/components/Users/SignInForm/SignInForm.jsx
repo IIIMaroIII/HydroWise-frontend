@@ -57,63 +57,66 @@ const SignInForm = () => {
   return (
     <Container addClass={css.signInFormContainer}>
       <Logo addClass={css.logo} />
-      <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-        <h2 className={css.title}>Sign In</h2>
+      <Container addClass={css.formWrapper}>
+        {' '}
+        <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+          <h2 className={css.title}>Sign In</h2>
 
-        <CustomInput
-          label={true}
-          labelName="Email"
-          labelClass={css.label}
-          inputType="email"
-          inputClass={css.input}
-          placeholder="Enter your email"
-          error={errors.email ? true : false}
-          {...register('email', {
-            onBlur: () => {},
-            onFocus: () => {},
-          })}
-        />
-        {errors.email && (
-          <p className={css.errorMessage}>{errors.email.message}</p>
-        )}
-        <CustomInput
-          label={true}
-          labelName="Password"
-          labelClass={css.label}
-          inputType={showPassword ? 'text' : 'password'}
-          inputClass={clsx(css.input, css.inputPassword)}
-          placeholder="Enter your password"
-          error={errors.password ? true : false}
-          {...register('password', {
-            onBlur: () => {},
-            onFocus: () => {},
-          })}
-        >
-          <span
-            className={css.togglePassword}
-            onClick={togglePasswordVisibility}
+          <CustomInput
+            label={true}
+            labelName="Email"
+            labelClass={css.label}
+            inputType="email"
+            inputClass={css.input}
+            placeholder="Enter your email"
+            error={errors.email ? true : false}
+            {...register('email', {
+              onBlur: () => {},
+              onFocus: () => {},
+            })}
+          />
+          {errors.email && (
+            <p className={css.errorMessage}>{errors.email.message}</p>
+          )}
+          <CustomInput
+            label={true}
+            labelName="Password"
+            labelClass={css.label}
+            inputType={showPassword ? 'text' : 'password'}
+            inputClass={clsx(css.input, css.inputPassword)}
+            placeholder="Enter your password"
+            error={errors.password ? true : false}
+            {...register('password', {
+              onBlur: () => {},
+              onFocus: () => {},
+            })}
           >
-            <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-          </span>
-        </CustomInput>
+            <span
+              className={css.togglePassword}
+              onClick={togglePasswordVisibility}
+            >
+              <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+            </span>
+          </CustomInput>
 
-        {errors.password && (
-          <p className={css.errorMessage}>{errors.password.message}</p>
-        )}
-        <Button
-          disabled={!isDirty || !isValid}
-          addClass={css.button}
-          type="submit"
-        >
-          Sign In
-        </Button>
-        <div className={css.spanSignIn}>
-          <p>Don’t have an account? </p>
-          <CustomNavLink addClass={css.link} to="/signup">
-            Sign Up
-          </CustomNavLink>
-        </div>
-      </form>
+          {errors.password && (
+            <p className={css.errorMessage}>{errors.password.message}</p>
+          )}
+          <Button
+            disabled={!isDirty || !isValid}
+            addClass={css.button}
+            type="submit"
+          >
+            Sign In
+          </Button>
+          <div className={css.spanSignIn}>
+            <p>Don’t have an account? </p>
+            <CustomNavLink addClass={css.link} to="/signup">
+              Sign Up
+            </CustomNavLink>
+          </div>
+        </form>
+      </Container>
     </Container>
   );
 };

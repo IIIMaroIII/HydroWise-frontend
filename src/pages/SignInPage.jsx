@@ -9,7 +9,7 @@ const SignInPage = () => {
   return (
     <Container type="section" addClass={css.signInPageContainer}>
       <SignInForm />
-      {width <= 767 ? null : <AdvantagesSection />}
+      {width <= 1439 ? null : <AdvantagesSection />}
     </Container>
   );
 };
