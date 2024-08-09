@@ -38,7 +38,7 @@
     background-image: url('../../assets/pictures/HomePage/girl-desk.png');
     background-position: center;
     background-size: cover;
-    flex-basis: calc((1440px - 32px) / 2);
+    flex-basis: calc((100% - 32px) / 2);
     padding: 537px 32px 64px 32px;
 
     @media (min-device-pixel-ratio: 2),
