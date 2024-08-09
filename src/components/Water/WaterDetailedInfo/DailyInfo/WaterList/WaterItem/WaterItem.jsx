@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import sprite from '/sprite.svg';
 import { CiLogin } from 'react-icons/ci';
 import Container from 'src/components/REUSABLE/Container/Container.jsx';
+import useChosenDate from 'src/hooks/useChosenDate.js';
 
 const WaterItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const WaterItem = ({ item }) => {
       </svg>
       <Container addClass={css.dataWrapper}>
         <p className={css.volume}>{checkVolume()}</p>
-        <p className={css.itemTime}>{itemTime}</p>
+        <p className={css.itemTime}>{returnAmPmTime}</p>
       </Container>
       <Container addClass={css.iconsWrapper}>
         <Button
