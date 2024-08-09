@@ -60,22 +60,28 @@
   border-radius: 30px;
   background-color: var(--background-grey);
 
-  @media (width>=768px) {
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+
+  @media (min-width: 768px) {
     padding: 32px 93px 68px 32px;
   }
 
-  @media (width>=1440px) {
+  @media (min-width: 1440px) {
     padding: 32px 61px 206px 32px;
+    flex-basis: calc((1440px - 32px) / 2);
+    box-shadow: none;
+    margin-bottom: 0;
   }
 
-  &.disabled {
+  .homePageWelcomeSection.disabled {
     padding-bottom: 67px;
 
-    @media (width>=768px) {
+    @media (min-width: 768px) {
       padding-bottom: 50px;
     }
 
-    @media (width>=1440px) {
+    @media (min-width: 1440px) {
       padding-bottom: 188px;
     }
   }

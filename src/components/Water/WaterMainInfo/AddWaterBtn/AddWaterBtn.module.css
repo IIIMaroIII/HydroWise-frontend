@@ -1,34 +1,60 @@
-.plus_icon {
-    color:var(--white);
+.plusIcon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+
+  color: var(--white);
+  background-color: transparent;
+
+  transform: scale(1);
+  transition: color var(--transition-delay) var(--transition),
+    background-color var(--transition-delay) var(--transition),
+    transform var(--transition-delay) var(--transition);
 }
 
-.btn_container{
-display: flex;
-justify-content: flex-end;
+button.btn {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 
+  background-color: var(--basic-dark-blue);
+  color: var(--white);
+
+  margin-left: auto;
+  margin-top: 42px;
+  border-radius: 30px;
+  padding: 14px 20px;
+  font-size: 14px;
+
+  transform: scale(1);
+  transition: transform var(--transition-delay) var(--transition),
+    color var(--transition-delay) var(--transition);
 }
 
-.btn {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--basic-dark-blue);
-    border-radius: 30px;
-    padding: 14px 20px;
-    width: 140px;
-    height: 46px;
-    color: var(--white);
-    font-weight: 700;
-    font-size: 14px;
-    margin-top: 42px; 
-
-    @media (width>=768px) {
-            padding: 18px 30px;
-            width: 178px;
-            height: 60px;
-            font-size: 14px;
-            margin-top: 56px;
-        }
+button.btn:hover,
+button.btn:focus {
+  background-color: var(--basic-dark-blue);
+  color: var(--green);
 }
 
+button.btn:hover .plusIcon,
+button.btn:focus .plusIcon {
+  color: var(--green);
+}
+
+.btnSpan {
+  font-weight: 700;
+  line-height: 150%;
+}
+
+@media (min-width: 767px) {
+  button.btn {
+    font-size: 16px;
+    padding: 18px 30px;
+  }
+
+  .plusIcon {
+    width: 24px;
+    height: 24px;
+  }
+}

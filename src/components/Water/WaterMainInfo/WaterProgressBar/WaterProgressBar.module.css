@@ -1,4 +1,3 @@
-
 .WaterProgressBar_container {
   border-radius: 15px;
   padding: 12px;
@@ -7,19 +6,18 @@
   box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
   background-color: var(--white);
   margin: 0 auto;
-  margin-top:48px;
+  margin-top: 48px;
 
-  @media (width>=768px) {
+  @media (min-width: 768px) {
     width: 295px;
     height: 106px;
     padding: 20px;
-    margin-top: 89px;
-    }
-
-        @media (width>=1440px) {
-          margin-top: 216px;
-        }
-  
+    margin-top: 63px;
+    margin-bottom: 26px;
+  }
+  @media (min-width: 1440px) {
+    margin-top: 215px;
+  }
 }
 
 .WaterProgressBar_h2 {
@@ -27,24 +25,24 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 1;
-  color:  var(--basic-dark-blue);
+  color: var(--basic-dark-blue);
 
-  @media (width>=768px) {
-      font-size: 15px;
-    }
+  @media (min-width: 768px) {
+    font-size: 15px;
+  }
 }
 
 .WaterProgressBar {
   position: relative;
-  background-color: #F0EFF4;
+  background-color: #f0eff4;
   border-radius: 9px;
   width: 174px;
   height: 6px;
 
-  @media (width>=768px) {
-      width: 255px;
-      height: 8px;
-    }
+  @media (min-width: 768px) {
+    width: 255px;
+    height: 8px;
+  }
 }
 
 .progress {

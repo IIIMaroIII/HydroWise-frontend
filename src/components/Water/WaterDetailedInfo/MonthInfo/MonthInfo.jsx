@@ -1,3 +1,4 @@
+import Container from 'src/components/REUSABLE/Container/Container.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { Calendar } from './Calendar/Calendar';
 import { CalendarPagination } from './CalendarPagination/CalendarPagination';
@@ -23,9 +24,9 @@ const MonthInfo = () => {
 
   return (
     <>
-      <div className={css.wrapper}>
-        <h3 className={css.month}>Month</h3>
-        <div className={css.paginationWrapper}>
+      <Container addClass={css.paginationContainer}>
+        <h3 className={css.title}>Month</h3>
+        <Container addClass={css.paginationWrapper}>
           <CalendarPagination />
           {showChart ? (
             <svg className={css.chartIcon} onClick={handleClick}>

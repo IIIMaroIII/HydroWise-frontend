@@ -17,7 +17,9 @@ const AdvantagesSection = () => {
     <div className={css.homePageAdvantagesSection}>
       <div className={css.homePageCustomers}>
         <div className={css.homePageCustomersPhotoContainer}>
-          <picture>
+          <picture
+            className={clsx(css.homePageCustomersPhoto, css.firstUserPhoto)}
+          >
             <source
               srcSet={`${IMAGES.firstUser1x} 1x, ${IMAGES.firstUser2x} 2x`}
               // media="(min-width: 768px)"
@@ -28,13 +30,14 @@ const AdvantagesSection = () => {
             />
             <img
               src={IMAGES.firstUser1x}
-              className={css.homePageCustomersPhoto}
               alt="First user"
-              width="47"
-              height="47"
+              // width="47"
+              // height="47"
             />
           </picture>
-          <picture>
+          <picture
+            className={clsx(css.homePageCustomersPhoto, css.secondUserPhoto)}
+          >
             <source
               srcSet={`${IMAGES.secondUser1x} 1x, ${IMAGES.secondUser2x} 2x`}
               // media="(min-width: 768px)"
@@ -45,13 +48,14 @@ const AdvantagesSection = () => {
             />
             <img
               src={IMAGES.secondUser1x}
-              className={clsx(css.homePageCustomersPhoto, css.secondUserPhoto)}
               alt="Second user"
-              width="47"
-              height="47"
+              // width="47"
+              // height="47"
             />
           </picture>
-          <picture>
+          <picture
+            className={clsx(css.homePageCustomersPhoto, css.thirdUserPhoto)}
+          >
             <source
               srcSet={`${IMAGES.thirdUser1x} 1x, ${IMAGES.thirdUser2x} 2x`}
               // media="(min-width: 768px)"
@@ -62,14 +66,13 @@ const AdvantagesSection = () => {
             />
             <img
               src={IMAGES.thirdUser1x}
-              className={clsx(css.homePageCustomersPhoto, css.thirdUserPhoto)}
               alt="Third user"
-              width="47"
-              height="47"
+              // width="47"
+              // height="47"
             />
           </picture>
         </div>
-        <div>
+        <div className={css.happyCustomersWrapper}>
           Our <span className={css.homePageCustomersSpan}>happy</span> customers
         </div>
       </div>
@@ -96,8 +99,8 @@ const AdvantagesSection = () => {
               className={clsx(
                 css.homePageBenefitsLinks,
                 css.homePageBenefitsLinksHabitDrive,
-                )}
-                to='/signin'
+              )}
+              to="/signin"
             >
               <span className={css.homePageBenefitsIcon}></span>
               Habit drive

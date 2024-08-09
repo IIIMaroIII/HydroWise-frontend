@@ -1,36 +1,24 @@
-.container {
-  display: grid;
-  grid-gap: 16px;
-  padding: 16px;
-  margin: 0 auto;
-  grid-template-rows: repeat(2, auto);
-  grid-template-columns: 100%;
+.trackerPageContainer {
+  height: 100%;
+  font-family: inherit;
 }
-
+/* 
 @media screen and (min-width: 375px) {
-  .container {
-    max-width: 375px;
-    margin: 0 auto;
+  .trackerPageContainer {
   }
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding: 32px;
+  .trackerPageContainer {
   }
-}
+} */
 
 @media screen and (min-width: 1440px) {
-  .container {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 0 37px;
-    max-width: 1440px;
-  }
-
-  .flex {
+  .trackerPageContainer {
     display: flex;
-    align-items: center;
-    height: 100vh;
+    gap: 32px;
+    justify-content: space-between;
+
+    width: 100%;
   }
 }

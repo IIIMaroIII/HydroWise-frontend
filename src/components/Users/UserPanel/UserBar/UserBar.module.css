@@ -1,3 +1,8 @@
+.userBarContainer {
+  display: inline-block;
+  position: relative;
+}
+
 .user_bar_wrapper {
   display: flex;
   justify-content: center;
@@ -8,12 +13,21 @@
   width: 137px;
   height: 50px;
   background-color: var(--basic-dark-blue);
+
+  transition: color var(--transition-delay) var(--transition);
 }
 
 .user_bar_wrapper:hover,
-.user_bar_wrapper:active,
 .user_bar_wrapper:focus {
   transform: scale(1);
+  background-color: var(--basic-dark-blue);
+}
+
+.user_bar_wrapper:hover .arrowIcon,
+.user_bar_wrapper:focus .arrowIcon,
+.user_bar_wrapper:hover .span,
+.user_bar_wrapper:focus .span {
+  color: var(--green);
 }
 
 .user_avatar {
@@ -25,10 +39,7 @@
 
 .arrowIcon {
   color: var(--white);
-}
-
-.container {
-  position: relative;
+  transition: color var(--transition-delay) var(--transition);
 }
 
 .span {
@@ -37,6 +48,8 @@
   line-height: 11px;
   letter-spacing: -0.01em;
   color: var(--white);
+
+  transition: color var(--transition-delay) var(--transition);
 }
 
 @media screen and (min-width: 768px) {

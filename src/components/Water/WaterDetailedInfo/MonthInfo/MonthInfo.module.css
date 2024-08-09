@@ -1,8 +1,15 @@
-.wrapper {
-  padding-top: 24px;
+.paginationContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
 }
 
 .chartIcon {
@@ -10,13 +17,6 @@
   width: 20px;
   height: 20px;
   fill: transparent;
-}
-
-.month {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 120%;
-  letter-spacing: -0.01em;
 }
 
 .paginationWrapper {

@@ -2,15 +2,14 @@ import WaterDetailedInfo from 'src/components/Water/WaterDetailedInfo/WaterDetai
 import WaterMainInfo from 'src/components/Water/WaterMainInfo/WaterMainInfo.jsx';
 
 import css from './TrackerPage.module.css';
+import Container from 'src/components/REUSABLE/Container/Container.jsx';
 
 const TrackerPage = () => {
   return (
-    <div className={css.flex}>
-      <div className={css.container}>
-        <WaterMainInfo />
-        <WaterDetailedInfo />
-      </div>
-    </div>
+    <Container type="section" className={css.trackerPageContainer}>
+      <WaterMainInfo />
+      <WaterDetailedInfo />
+    </Container>
   );
 };
 
