@@ -37,8 +37,8 @@ const MonthInfo = () => {
               <use href={'/sprite.svg#icon-pie-chart-02'}></use>
             </svg>
           )}
-        </div>
-      </div>
+        </Container>
+      </Container>
       {showChart ? <ChartComponent /> : <Calendar />}
     </>
   );

@@ -14,19 +14,6 @@ export const CalendarItem = ({ day, activeDay, setActiveDay }) => {
     0,
   );
 
-  const items = document.querySelectorAll(`.${css.btn_item}`);
-
-  const target = e => {
-    const btn = e.currentTarget.children[0];
-    btn.classList.add(`${css.active}`);
-
-    items.forEach(item => {
-      if (item.id !== e.currentTarget.id)
-        item.classList.remove(`${css.active}`);
-    });
-  };
-
-  const percentage = 0;
 
   return (
     <>
