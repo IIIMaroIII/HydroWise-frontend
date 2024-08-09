@@ -15,12 +15,13 @@ import AdvantagesSection from 'src/components/AdvantagesSection/AdvantagesSectio
 import CustomNavLink from 'src/components/REUSABLE/CustomNavLink/CustomNavLink';
 import { useWindowSize } from 'react-use';
 import CustomInput from 'src/components/REUSABLE/Input/CustomInput.jsx';
+import clsx from 'clsx';
+import Container from 'src/components/REUSABLE/Container/Container.jsx';
 
 const SignInForm = () => {
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const { width } = useWindowSize();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Email is invalid').required('Email is required'),
@@ -54,56 +55,66 @@ const SignInForm = () => {
   };
 
   return (
-    <>
-      <div className={css.formSection}>
-        <Logo addClass={css.logo} />
-        <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
-          <h2 className={css.formTitle}>Sign In</h2>
-          <div className={css.inputContainer}>
-            <label className={css.formLabel}>Email</label>
-            <CustomInput
-              type="email"
-              placeholder="Enter your email"
-              error={errors.email ? true : false}
-              {...register('email')}
-            />
-            {errors.email && <p>{errors.email.message}</p>}
-          </div>
-          <div className={css.inputContainer}>
-            <label className={css.formLabel}>Password</label>
-            <div className={css.inputWrapper}>
-              <CustomInput
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Enter your password"
-                error={errors.password ? true : false}
-                {...register('password')}
-              />
-              <span
-                className={css.togglePassword}
-                onClick={togglePasswordVisibility}
-              >
-                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-              </span>
-            </div>
-            {errors.password && <p>{errors.password.message}</p>}
-          </div>
-          <Button
-            disabled={!isDirty || !isValid}
-            addClass={css.btnform}
-            type="submit"
+    <Container addClass={css.signInFormContainer}>
+      <Logo addClass={css.logo} />
+      <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+        <h2 className={css.title}>Sign In</h2>
+
+        <CustomInput
+          label={true}
+          labelName="Email"
+          labelClass={css.label}
+          inputType="email"
+          inputClass={css.input}
+          placeholder="Enter your email"
+          error={errors.email ? true : false}
+          {...register('email', {
+            onBlur: () => {},
+            onFocus: () => {},
+          })}
+        />
+        {errors.email && (
+          <p className={css.errorMessage}>{errors.email.message}</p>
+        )}
+        <CustomInput
+          label={true}
+          labelName="Password"
+          labelClass={css.label}
+          inputType={showPassword ? 'text' : 'password'}
+          inputClass={clsx(css.input, css.inputPassword)}
+          placeholder="Enter your password"
+          error={errors.password ? true : false}
+          {...register('password', {
+            onBlur: () => {},
+            onFocus: () => {},
+          })}
+        >
+          <span
+            className={css.togglePassword}
+            onClick={togglePasswordVisibility}
           >
-            Sign In
-          </Button>
-          <div className={css.spanSignIn}>
-            <p>Don’t have an account? </p>
-            <CustomNavLink addClass={css.link} to="/signup">
-              Sign Up
-            </CustomNavLink>
-          </div>
-        </form>
-      </div>
-      {width <= 767 ? null : <AdvantagesSection />}
-    </>
+            <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+          </span>
+        </CustomInput>
+
+        {errors.password && (
+          <p className={css.errorMessage}>{errors.password.message}</p>
+        )}
+        <Button
+          disabled={!isDirty || !isValid}
+          addClass={css.button}
+          type="submit"
+        >
+          Sign In
+        </Button>
+        <div className={css.spanSignIn}>
+          <p>Don’t have an account? </p>
+          <CustomNavLink addClass={css.link} to="/signup">
+            Sign Up
+          </CustomNavLink>
+        </div>
+      </form>
+    </Container>
   );
 };
 export default SignInForm;

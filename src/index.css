@@ -29,7 +29,7 @@
   --error-color: #ef5050;
 
   --input-border-inactive-color: rgba(47, 47, 47, 0.2);
-  --input-border-focused-color: rgba(47, 47, 47, 0.4);
+  --input-border-activated-color: rgba(47, 47, 47, 0.6);
   --input-text-inactive-color: rgba(47, 47, 47, 0.6);
 
   --signin-btn-disabled-color: rgba(47, 47, 47, 0.2);
@@ -60,7 +60,7 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  border: 1px solid var(--input-border-inactive-color) !important;
+  /* border: 1px solid var(--input-border-inactive-color) !important; */
   -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* Цвет фона */
   box-shadow: 0 0 0px 1000px transparent inset !important; /* Цвет фона для других браузеров */
   transition: background-color 5000s ease-in-out 0s !important;

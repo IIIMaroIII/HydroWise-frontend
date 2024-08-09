@@ -15,6 +15,8 @@ const CustomInput = forwardRef(
       inputClass = '',
       disabled = false,
       error = false,
+      onBlur,
+      onFocus,
       ...otherProps
     },
     ref,
@@ -22,21 +24,49 @@ const CustomInput = forwardRef(
     const [isFocused, setIsFocused] = useState(false);
     const [isInactive, setIsInactive] = useState(true);
 
-    const handleFocus = () => {
+    const handleFocus = e => {
       setIsFocused(true);
       setIsInactive(false);
+      if (onFocus) onFocus(e);
     };
 
-    const handleBlur = () => {
+    const handleBlur = e => {
       setIsFocused(false);
       setIsInactive(true);
+      if (onBlur) onBlur(e);
     };
 
     return (
       <>
         {label ? (
-          <label className={clsx(css.label, {}, labelClass)}>
-            {labelName}
+          <>
+            <label className={clsx(css.label, labelClass)}>
+              {labelName}
+              <input
+                ref={ref}
+                className={clsx(
+                  css.input,
+                  {
+                    [css.disabled]: disabled,
+                    [css.inactive]: isInactive,
+                    [css.focused]: isFocused,
+                    [css.error]: error,
+                  },
+                  inputClass,
+                )}
+                type={inputType}
+                placeholder={placeHolder}
+                name={inputName}
+                disabled={disabled}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                {...otherProps}
+              />
+              {children}
+            </label>
+          </>
+        ) : (
+          <>
             <input
               ref={ref}
               className={clsx(
@@ -58,30 +88,8 @@ const CustomInput = forwardRef(
               {...otherProps}
             />
             {children}
-          </label>
-        ) : (
-          <input
-            ref={ref}
-            className={clsx(
-              css.input,
-              {
-                [css.disabled]: disabled,
-                [css.inactive]: isInactive,
-                [css.focused]: isFocused,
-                [css.error]: error,
-              },
-              inputClass,
-            )}
-            type={inputType}
-            placeholder={placeHolder}
-            name={inputName}
-            disabled={disabled}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
-            {...otherProps}
-          />
+          </>
         )}
-        {children}
       </>
     );
   },

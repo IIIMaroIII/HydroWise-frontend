@@ -1,5 +1,4 @@
 .dailyInfoContainer {
-  outline: 1px solid blue;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
