@@ -1,11 +1,26 @@
-.SignUpContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-  
-    @media (1440px<=width) {
-      gap: 32px;
-      flex-wrap: nowrap;
-    }
+.signInPageContainer {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .signInPageContainer {
+    width: 343px;
   }
-  
+}
+
+@media (min-width: 768px) and (max-width: 1439px) {
+  .signInPageContainer {
+    width: 704px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .signInPageContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 32px;
+    width: 1440px;
+  }
+}
