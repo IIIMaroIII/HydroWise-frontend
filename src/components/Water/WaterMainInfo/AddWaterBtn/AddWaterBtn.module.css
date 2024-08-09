@@ -1,6 +1,6 @@
 .plusIcon {
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
 
   color: var(--white);
@@ -15,15 +15,16 @@
 button.btn {
   display: flex;
   gap: 10px;
-  background-color: var(--basic-dark-blue);
   align-items: center;
-  padding: 18px 30px;
+
+  background-color: var(--basic-dark-blue);
   color: var(--white);
 
   margin-left: auto;
-  /* margin-top: 26px; */
-
-  border-radius: 33px;
+  margin-top: 42px;
+  border-radius: 30px;
+  padding: 14px 20px;
+  font-size: 14px;
 
   transform: scale(1);
   transition: transform var(--transition-delay) var(--transition),
@@ -44,4 +45,16 @@ button.btn:focus .plusIcon {
 .btnSpan {
   font-weight: 700;
   line-height: 150%;
+}
+
+@media (min-width: 767px) {
+  button.btn {
+    font-size: 16px;
+    padding: 18px 30px;
+  }
+
+  .plusIcon {
+    width: 24px;
+    height: 24px;
+  }
 }

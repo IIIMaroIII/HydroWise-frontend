@@ -1,10 +1,10 @@
 .label {
   display: block;
-  margin-bottom: 8px;
-  font-size: inherit;
-  line-height: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
+
   color: var(--dark);
 }
 
@@ -13,31 +13,34 @@
   padding: 16px;
   border: 1px solid var(--input-border-inactive-color);
   border-radius: 15px;
-  font-size: inherit;
-  font-weight: inherit;
-  outline: none;
 
-  background-color: transparent;
-
-  transition: all var(--transition-delay) var(--transition);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.01em;
 
   color: var(--input-text-inactive-color);
+
+  outline: none;
+  background-color: transparent;
+  transition: all var(--transition-delay) var(--transition);
 }
 
-.input:hover {
-  border: 1px solid var(--hover-green);
+.input.inactive {
+  color: var(--input-text-inactive-color);
+  border: 1px solid var(--input-border-inactive-color);
 }
-
-.focused {
+.input.focused {
   color: var(--dark);
-  border: 1px solid var(--input-border-focused-color);
+  border: 1px solid var(--input-border-activated-color);
 }
 
-.error {
+.input.error {
   color: var(--error-color);
   border: 1px solid var(--error-color);
   background-color: transparent;
 }
-.error::placeholder {
-  color: var(--error-color);
+
+.input:hover:not(:focus) {
+  border: 1px solid var(--dark);
 }

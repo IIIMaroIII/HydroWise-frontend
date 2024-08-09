@@ -1,6 +1,4 @@
 .paginationContainer {
-  outline: 1px solid var(--basic-dark-blue);
-
   display: flex;
   justify-content: space-between;
   align-items: center;
