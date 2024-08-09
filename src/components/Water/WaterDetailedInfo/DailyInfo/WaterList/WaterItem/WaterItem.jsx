@@ -27,6 +27,7 @@ const WaterItem = ({ item }) => {
       <Container addClass={css.dataWrapper}>
         <p className={css.volume}>{checkVolume()}</p>
         <p className={css.itemTime}>{returnAmPmTime}</p>
+        <p className={css.itemTime}>{returnAmPmTime(item.date)}</p>
       </Container>
       <Container addClass={css.iconsWrapper}>
         <Button
@@ -42,7 +43,6 @@ const WaterItem = ({ item }) => {
           </svg>
         </Button>
 
-        <p className={css.itemTime}>{returnAmPmTime(item.date)}</p>
         <Button
           addClass={css.button}
           onClick={() => {
